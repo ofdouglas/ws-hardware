@@ -1,18 +1,22 @@
 ---
 id: ADR-023
 title: Dedicated CBUS gateway reset and BOOT0
-status: accepted
+status: superseded
 scope: Board 1 gateway recovery
 created: 2026-09-06
 accepted_on: 2026-09-06
 accepted_by: Explicit maintainer instruction USR-24
 supersedes: none
-superseded_by: none
+superseded_by: ADR-042
 requirements: [B1-R024]
 questions: [B1-Q013]
 ---
 
-# Decision
+# Current authority
+
+[ADR-042](042-header-resistors-recovery-scope.md) defers automated CBUS recovery to Rev B under USR-36. Preserve this historical decision; it no longer requires Rev A CBUS circuitry. Ordinary reset, BOOT0-low defaults and SWD remain.
+
+# Historical decision
 
 Allocate FT232HL ACBUS5 (pad 29, B1-P261) to gateway reset and ACBUS6 (pad 30, B1-P262) to gateway BOOT0. The endpoints are STM32 NRST (pad 7, B1-P175) and PB8/BOOT0 (pad 61, B1-P229). Configure both CBUS pins as GPIO in EEPROM. Preserve UART TX/RX/RTS/CTS and independent SWD access.
 

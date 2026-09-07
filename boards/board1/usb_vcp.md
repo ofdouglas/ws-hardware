@@ -1,6 +1,6 @@
 # USB bridge, VCP and gateway recovery
 
-Status: selected baseline with implementation checks open. Authority: ADR-001/005/013/015/018/022/023/024/027/028/030/031/040. See [USB input](usb_input.md) for the attachment ramp, buck enable circuit and current model; this note does not reinstate earlier converter or supervisor proposals.
+Status: selected baseline with implementation checks open. Authority: ADR-001/005/013/015/018/022/024/027/028/030/031/040/042. See [USB input](usb_input.md) for the attachment ramp, buck enable circuit and current model; this note does not reinstate earlier converter or supervisor proposals.
 
 ## Power domains and control
 
@@ -30,14 +30,14 @@ Configuration proposal: UART mode, VCP enabled, bus-powered descriptor matching 
 
 ## VCP isolation and recovery
 
-SN74LV125APWR B1-B016 is powered by 3V3_SYS and uses all four channels for TX/RX/RTS/CTS, two in each direction. This is power-off signal isolation, not galvanic isolation. ADR-040 accepts PWREN# directly to all four /OE inputs, with the existing bridge-domain pull-up; no separate rail-valid logic or SYS pull-up is required. Complete receiver defaults during capture. Startup timing is settled; retain the existing FTDI reset RC and input ramp. Do not require application firmware to enable the ROM-programming path. Verify thresholds, leakage and propagation at 12 Mbaud with short gateway/FTDI routes (B1-Q002/008).
+SN74LV125APWR B1-B016 is powered by 3V3_SYS and uses all four channels for TX/RX/RTS/CTS, two in each direction. This is power-off signal isolation, not galvanic isolation. ADR-040 accepts PWREN# directly to all four /OE inputs, with the existing bridge-domain pull-up; no separate rail-valid logic or SYS pull-up is required. Complete receiver defaults during capture. Startup timing is settled; retain the existing FTDI reset RC and input ramp. The VCP enable remains independent of application firmware. Verify thresholds, leakage and propagation at 12 Mbaud with short gateway/FTDI routes (B1-Q002/008).
 
-ADR-023 allocates CBUS5/6 for gateway reset and BOOT0. B1-B053 components/polarities remain TBD: default reset released and BOOT0 low, share NRST with SWD without driving it high, and preserve power-off safety. The VCP quad has no spare channels for these controls. Linux ftdi_sio/libgpiod control, STM32 option bytes/ROM pins and actual programming remain B1-Q013 checks. See [pinmap](pinmap.md).
+[ADR-042](../../docs/decisions/042-header-resistors-recovery-scope.md) defers automated CBUS reset/BOOT0 recovery to Rev B. Leave ACBUS5/6 unconnected; B1-B053 has zero Rev A parts/footprints. Retain default-low gateway BOOT0 and NRST shared with SWD under B1-B010/B1-Q005. No Linux CBUS control or ROM-programming sign-off is required for Rev A.
 
 ## Evidence and completion
 
 [FT232H datasheet](https://ftdichip.com/wp-content/uploads/2024/09/DS_FT232H.pdf), [UM232H bus-power guidance](https://ftdichip.com/wp-content/uploads/2020/07/DS_UM232H.pdf), and [EEPROM ADR/evidence](../../docs/decisions/018-ftdi-eeprom.md) are retained sources. Earlier review used FT_000288 v2.2; current datasheet/errata reconciliation remains open. Earlier research is retained in Git history.
 
-Validate current waveforms, EEPROM/reset timing, full-duplex VCP/flow control, off-state leakage and resume/ROM programming. No schematic or bench sign-off is asserted; [requirements](requirements.md) retains B1-Q002/008/012/013.
+Validate current waveforms, EEPROM/reset timing, full-duplex VCP/flow control, off-state leakage and resume and SWD programming. No schematic or bench sign-off is asserted; [requirements](requirements.md) retains B1-Q002/008/012; B1-Q013 is resolved by Rev A deferral.
 
-Research update: [current dispositions](research/README.md) records accepted startup/direct PWREN# enable (ADR-040), remaining support details and separate MCU/CBUS recovery proposals. ROM pin conflicts remain for targeted review; startup measurements are bring-up work.
+Current disposition: ADR-040 settles startup/direct PWREN# enable; ADR-042 defers automated recovery. Complete support wiring during capture; measurements belong to bring-up.

@@ -59,19 +59,22 @@ USR-04 targets several Mbaud for onboard UARTs, exact rates TBD. This replaces t
 | B1-R017 | Rev A terminals | accepted | Expose FD_CAN_A, FD_CAN_B and RS-485 differential pairs plus one or two ground terminals | Connector continuity, labeling, termination and protection review | USR-05; ADR-006; B1-Q004 |
 | B1-R018 | Rev A power/scope | superseded | USB-only active-PC operation; include B1-R017 signal terminals; defer external power, extra transceivers and further connectors to later revisions | Scope and power-state review | USR-03/05; ADR-001; ADR-006; replaced by B1-R022 |
 | B1-R019 | Rev A LEDs | accepted | One controllable LED per MCU and one board power LED | Pin/resource and all-on current review | USR-06; ADR-007 |
-| B1-R020 | Rev A GPIO | accepted | Provide a few spare I/O pins per MCU on breakouts | Four GPIOs per MCU accepted ADR-039; full pinmux audit and electrical/load contract pending | USR-06; ADR-007; B1-Q010 |
+| B1-R020 | Rev A GPIO | superseded | General spare-I/O breakouts deferred; replaced by B1-R027 timing interface | No general-breakout circuitry implied | USR-35; ADR-041 |
 | B1-R021 | Board 1 RS-485 | accepted | External rate ceiling 12 Mbps; expanded Board 1 has LEFT/RIGHT p2p ports only; bench MULTIDROP remains in family architecture | Topology, rate and power review | USR-06; ADR-007; B1-Q009 |
-| B1-R022 | Rev A power/scope | accepted | USB-only active-PC operation with bus terminals and GPIO breakouts; external power and additional PHYs remain for later revisions | Scope and power-state review | ADR-001; ADR-007; replaces B1-R018 |
+| B1-R022 | Rev A power/scope | accepted | USB-only active-PC operation with bus terminals and timing/debug headers; external power and additional PHYs remain for later revisions | Scope and power-state review | ADR-001; ADR-007; replaces B1-R018 |
 | B1-R023 | Main buck efficiency | accepted | Support conservative full networking load within 500 mA total USB current; no fixed 90% or light-load efficiency target | Full-load USB current and startup measurements; approx 70.7% steady-state break-even under current assumptions | ADR-021 |
-| B1-R024 | Gateway recovery | accepted | Provide dedicated FTDI CBUS GPIO control of STM32 reset and BOOT0 for ROM UART programming; preserve SWD and RTS/CTS | Review defaults and power-off behavior; demonstrate Linux GPIO control and ROM programming without application firmware | USR-24; ADR-023; B1-Q013 |
-| B1-R025 | MCU text debug | accepted | Give each MCU a dedicated 115200-baud TX/RX/GND UART on a three-pin 0.1-inch header | Pin/peripheral and clock review; simultaneous bidirectional debug/network traffic; header/adapter/off-state checks | USR-26; ADR-032; B1-Q014 |
+| B1-R024 | Rev B recovery | deferred | Automated FTDI CBUS reset/BOOT0 recovery deferred; ordinary reset, BOOT0-low defaults and SWD remain in Rev A | Rev A has no B1-B053 parts or footprints; first programming uses SWD | USR-36; ADR-042 supersedes ADR-023; B1-Q013 |
+| B1-R025 | MCU text debug | accepted | Give each MCU a dedicated 115200-baud TX/RX/GND UART on the combined eight-pin 0.1-inch header (B1-R027; ADR-041) | Pin/peripheral and clock review; simultaneous bidirectional debug/network traffic; header/adapter/off-state checks | USR-26; ADR-032; B1-Q014 |
 | B1-R026 | Rev A termination | accepted | Implement the CAN fixed-plus-jumper endpoint arrangement and fixed local RS-485 120 ohm termination in ADR-034 | Review endpoint routing, jumper modes, resistor ratings and measured waveforms | USR-28; ADR-034; B1-Q003/004/009 |
+
+| B1-R027 | Timing/debug access | accepted | One 1x8, 0.1-inch header per MCU: debug RX/TX, GND x2, shared SYNC/TRIG interrupt-capable inputs, private EVENT0/EVENT1 outputs; exact order in timing_headers.md; each of six signals has 330 ohm in series close to its MCU pin (24 total); shared SYNC and TRIG each have a pull-down to GND | Verify pads and interrupt lines before schematic approval; probe access at layout; timing response at bring-up | USR-35/36/37; ADR-041/042; B1-Q005/010/014 |
 
 ## Deferred / undecided features
 
 | Feature | Status | MVP handling | Basis |
 |---|---|---|---|
-| Full 17-pair backbone, 24 V trunk/tap, test SPI, trigger/fault hardware | deferred | No circuitry, connectors or reserved pins implied | ADR-003 |
+| Full 17-pair backbone, 24 V trunk/tap, test SPI, backbone trigger/fault hardware | deferred | No circuitry, connectors or reserved pins implied | ADR-003 |
+| General ADC, SPI/I2C and spare GPIO breakouts | deferred | Revisit header design in later revision; no support footprints | USR-35; ADR-041 |
 | CAN3 and its initial-DNP local PHY/termination | deferred | Excluded from proposed baseline; no footprint implied | SRC-ARCH §4.2; B1-Q001 |
 | Second Board 1 RS-485 p2p port | deferred | Rev A has one; expanded Board 1 has LEFT/RIGHT, two total | ADR-007 |
 | RS_485_MULTIDROP (historical RS485_SHARED) | deferred | Descoped for Board 1 currently; retained in overall bench architecture | USR-06 clarification; ADR-007 |
@@ -83,20 +86,20 @@ USR-04 targets several Mbaud for onboard UARTs, exact rates TBD. This replaces t
 
 | ID | Status | Owner | Question / required result | Blocks | Resolution |
 |---|---|---|---|---|---|
-| B1-Q001 | resolved | Maintainer | Rev A networking scope | Scope freeze | USR-05/06 / ADR-007: both CANs, onboard UARTs, VCP, one external RS-485, signal terminals and GPIO breakouts; added PHYs deferred |
+| B1-Q001 | resolved | Maintainer | Rev A networking scope | Scope freeze | USR-05/06 / ADR-007: both CANs, onboard UARTs, VCP, one external RS-485, signal terminals and timing/debug headers; added PHYs deferred |
 | B1-Q002 | open | Power designer | Complete USB-B/FT232HL/TPS560430 power proposal: budget, current datasheets/errata, support parts, protection, EN control/isolation and any auxiliary allowance | Power schematic | TPS560430 selected ADR-021; ADR-040 settles FTDI startup and direct PWREN# buffer enable. Support counts/defaults and electrical checks remain; measurements are bring-up work |
 | B1-Q003 | open | Interface designer | Choose CAN arbitration/data and onboard UART rates; qualify accepted multidrop driver/pulls, PHY behavior and termination | Interface timing and electrical review | Driver/pulls and termination selected ADR-033/034/035/039; rates and electrical qualification pending |
 | B1-Q004 | open | Board designer | Define external bus access, connector pinouts, grounding/protection, debug/reset headers, test points and mechanical constraints | Connector allocation and layout | TBD |
 | B1-Q005 | open | Board designer | Verify exact MCU/package peripherals, simultaneous mux use, clocks/boot/reset/debug, electrical compatibility and availability | Pinmap and schematic freeze | TBD |
 | B1-Q006 | open | Firmware/test owner | Define representative workloads, rates, queue/memory reporting and pass thresholds for simultaneous links and bare-metal/RTOS | Experiment acceptance | TBD |
-| B1-Q007 | resolved | Maintainer | Spin A power operating scope | Power-state architecture | User: exclusively USB powered, requires PC on; advanced power deferred; bus terminals and GPIO breakouts included. See current B1-R022 |
+| B1-Q007 | resolved | Maintainer | Spin A power operating scope | Power-state architecture | User: exclusively USB powered, requires PC on; advanced power deferred; bus terminals and timing/debug headers included. See current B1-R022 |
 | B1-Q008 | open | Clock/firmware designer | Implement 168 MHz gateway and 12 Mbaud VCP; qualify selected crystals/load capacitors and PLL/peripheral clocks including CAN and onboard UART divisors | Clock and pinmap freeze | ADR-014/030 finalize MCU and FTDI crystal MPNs; ADR-031 accepts load capacitors; load/startup/drive and clock-tree/bench review pending |
 | B1-Q009 | open | Interface designer | Qualify selected RS-485 PHY, half-duplex termination/bias/protection; finalize operating rate, DE-/RE control, cable and power-off assumptions | RS-485 schematic | ST3485EBDR and termination topology decided ADR-034; 12 Mbps ceiling retained. Bias investigation rs485_bias.md records accepted 330 ohm legs ADR-036; loading/leakage/power-off checks and owned Digi kit revision/rate remain open, alongside MCU thresholds/control/protection |
-| B1-Q010 | open | Board designer | Qualify the five selected LED/resistor networks; finalize four GPIOs per MCU with load and protection contract | Pinmap and final power budget | LED/resistor parts and four GPIOs/MCU accepted ADR-029/039; current/load allowances in usb_input.md remain planning estimates, not ratings |
+| B1-Q010 | open | Board designer | Qualify LED networks and assign SYNC/TRIG interrupt inputs plus private EVENT outputs per MCU; review external-drive and load contract | Schematic approval; waveform checks at bring-up | ADR-041; B1-R027; pad allocation TBD; current allowances remain estimates |
 | B1-Q011 | open | Power designer | Qualify converter efficiency envelope, passives, layout and losses | Main power design approval | USR-13 limits efficiency qualification to full networking load; see buck_tps560430.md and decoupling.md; temperature/full-load corners and measurements pending |
 | B1-Q012 | open | Interface designer | Qualify selected FTDI EEPROM: clock and word-program timing, supply ramp, reset/read delay, rapid power cycling, current datasheets/errata and SOIC footprint | USB bridge schematic freeze | AT93C56B-SSHM-B selected USR-23 / ADR-018; startup timing settled ADR-040. Complete support wiring and programming procedure; program/readback and normal startup/replug measurements at bring-up do not block capture |
-| B1-Q013 | open | Interface designer | Design CBUS reset/BOOT0 interfaces, polarity, defaults, off-state protection and SWD sharing; verify option bytes, ROM-probed pin behavior and Linux control | Gateway recovery schematic and programming sign-off | ADR-023 allocates CBUS5/6; B1-B053 components TBD; workbook endpoints updated but unverified |
-| B1-Q014 | open | Interface/firmware designer | Qualify debug UART pinmux, baud clocks, selected header cuts/footprint; finalize header order, adapter interface and unpowered-input behavior | Debug UART schematic and bring-up | ADR-032 accepts four ports at 115200 baud; SERCOM2 and LPUART1 draft mappings in workbook; B1-B059 header cuts accepted ADR-039; B1-B060 support parts TBD |
+| B1-Q013 | resolved | Board designer | Rev A disposition of automated CBUS reset/BOOT0 recovery | No Rev A gate | USR-36 / ADR-042: defer to Rev B after confirmed PB14 ROM-startup/RS-485 DE conflict; no B1-B053 circuitry. Ordinary reset/boot/SWD checks remain B1-Q005. This is scope resolution, not electrical validation |
+| B1-Q014 | open | Interface/firmware designer | Qualify debug UART pinmux, baud clocks, selected header cuts/footprint; implement the timing_headers.md pin order and finalize adapter interface and unpowered-input behavior | Debug UART schematic and bring-up | ADR-032 accepts four ports at 115200 baud; SERCOM2 and LPUART1 draft mappings in workbook; B1-B059 header cuts updated ADR-041; B1-B076 supplies all eight debug series resistors within the 24 total; B1-B060 excludes them and covers any residual support only |
 
 Owners are roles, not assigned people. Close questions with evidence/ADR links; retain their IDs. No open question has been silently answered by a generated part or pin choice.
 
@@ -108,7 +111,7 @@ Draft implementation evidence for B1-R001/002/003/005/007/014/015/016/019/020/02
 
 USR-23 / ADR-018 selects B1-B013 for B1-R005/012. The new FTDI sheet covers bridge and EEPROM pads; B1-Q002/008/012 remain open for the linked implementation checks.
 
-USR-25 / [ADR-026](../../docs/decisions/026-reva-connectors.md) accepts exact connector MPNs in BOM B1-B009/022/027 for B1-R007/017/020. B1-Q004 remains open for terminal numbering, polarity, footprints and debug cable/adapter checks; B1-Q005 retains MCU debug qualification. ADR-039 settles the four 1x5 GPIO headers, four 1x3 debug headers and one source-strip purchase. B1-Q010 retains GPIO mux/order, physical cut verification and load/protection limits. Terminal order remains B1-Q004.
+ADR-026 retains connector MPN selections. ADR-041 / USR-35 replaces the separate GPIO/debug headers with four combined 1x8 timing/debug headers. One selected 40-position strip supplies all 32 positions. General ADC, SPI/I2C and GPIO breakouts are deferred. Resistor selections and PCB test pads plus fitted scope-ground access from ADR-039 remain in force. Exact timing MCU pads remain TBD under B1-Q005/010; scope-ground pin count/MPN remain layout work. B1-Q004/005 retain terminal numbering, footprints, SWD cable/key and adapter checks. See [timing headers](timing_headers.md).
 
 [ADR-027](../../docs/decisions/027-ceramic-capacitor-mpns.md) accepts ceramic capacitor MPNs in B036–041/045/048 and bridge support mapping for B1-R001/012/023. B1-Q002/011 remain open for effective capacitance, core regulation, damping pulse and implementation qualification.
 
@@ -116,7 +119,7 @@ ADR-029 accepts exact LED and raw-VBUS damping MPNs for B1-R019/012; B1-Q002/010
 
 ADR-030 finalizes USB-B connector and crystal MPNs. The interim REF tolerance conflict was resolved by ADR-031 below; B1-Q008 retains loading/gain/drive/startup qualification. See crystal_networks.md for the accepted initial load capacitors.
 
-ADR-031 resolves the B1-Q002 REF tolerance subissue with RMCF0805FT12K0 and accepts crystal capacitor MPNs; B1-Q002/008 remain open for other qualification. GPIO series-resistor proposal is in gpio_breakouts.md under B1-Q010.
+ADR-031 resolves the B1-Q002 REF tolerance subissue with RMCF0805FT12K0 and accepts crystal capacitor MPNs; B1-Q002/008 remain open for other qualification. General-purpose breakouts and their support-resistor proposal are deferred by ADR-041.
 
 BOM reconciliation exposes accepted ADR-027/028 bridge allocations as B1-B061–065, split from B1-B017 with no added scope. B1-Q002/012 retain count/rail qualification. [Selected interfaces](interfaces.md) implements ADR-033/034/037/038/039; B1-Q003/009 remain open for electrical qualification.
 
@@ -136,6 +139,6 @@ Symbol implementation evidence for B1-R002/005/006/012/023: [three exact-part li
 
 [Complete selected IC/array symbol coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) supports schematic capture for the existing requirements. These library checks do not close B1-Q002/003/004/005/009 or change requirement acceptance/verification.
 
-[ADR-039](../../docs/decisions/039-bom-closeout-selections.md) / USR-33 accepts bias and LED MPNs, four 10 kohm /OE pull-ups B1-B008, one 470 ohm UART_MD pull-up B1-B074, four 1x5 GPIO and four 1x3 debug headers cut from one strip, and PCB pads plus fitted scope-ground pins B1-B075. Final GPIO mux, pad/pin positions, ground-pin MPN/count and electrical qualification remain open. Header acceptance does not accept the proposed GPIO series resistors.
+ADR-041 / USR-35 replaces the separate GPIO/debug headers with four combined 1x8 timing/debug headers. One selected 40-position strip supplies all 32 positions. General ADC, SPI/I2C and GPIO breakouts are deferred. Resistor selections and PCB test pads plus fitted scope-ground access from ADR-039 remain in force. Exact timing MCU pads remain TBD under B1-Q005/010; scope-ground pin count/MPN remain layout work.
 
-Research update (2026-09-07): [first three resolution proposals](research/README.md) records FTDI support/configuration, VCP enables and MCU/CBUS recovery candidates. It identifies narrow VCP input margin and ROM conflicts in the draft PB14/PC6/PC7 allocation. Question, selection and evidence statuses remain unchanged; proposals require coordinated reconciliation before capture.
+Current disposition: ADR-040 settles startup/direct PWREN# enable. [ADR-042](../../docs/decisions/042-header-resistors-recovery-scope.md) records the exact header wiring and defers automated recovery to Rev B. Remaining ordinary reset/boot wiring belongs to B1-Q005; no broad recovery review blocks Rev A capture.

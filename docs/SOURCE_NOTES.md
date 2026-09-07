@@ -160,3 +160,15 @@ Maintainer explicitly instructs: “commit the second SN74LV125APWR for OD UART 
 ## USR-34 — startup/enable resolution and proportional design workflow
 
 2026-09-07: Maintainer states FTDI startup timing is fine and VCP buffers can be enabled by PWREN#, then explicitly requests correction of both settled items and the workflow rules. ADR-040 records the circuit decision. Design workflow now prioritizes conventional bench-prototype circuits, concrete failure evidence and stage-appropriate checks. This does not accept other research proposals or claim bench validation.
+
+## USR-35 — combined timing/debug headers
+
+Maintainer requests one 1x8, 0.1-inch header per MCU: debug UART RX/TX, two grounds, shared SYNC and TRIG inputs routed to interrupt-capable GPIO on each MCU, and private EVENT0/EVENT1 outputs for timing response measurements. General ADC, SPI/I2C and GPIO breakouts can wait for a later revision. ADR-041 records this replacement scope; exact pin order and MCU pad choices were not specified by the maintainer.
+
+## USR-36 — exact header wiring and bounded recovery work
+
+2026-09-07: Maintainer specifies header pins 1 debug RX, 2 debug TX, 3 GND, 4 SYNC, 5 TRIG, 6 GND, 7 EVENT0, 8 EVENT1. SYNC/TRIG are global MCU inputs; EVENT0/1 are private outputs. Each non-ground signal requires 330 ohm in series close to its MCU pin. Maintainer asks to resolve reset/BOOT0 easily or defer it to Rev B. ADR-042 records the exact header requirements and the engineering decision to exercise that conditional recovery deferral after checking ROM pin behavior.
+
+## USR-37 — shared timing input pull-downs
+
+2026-09-07: Maintainer requires pull-down resistors on global SYNC and TRIG and asks whether anything else must be settled before draft schematic capture. One pull-down on each shared net is recorded under B1-R027/B1-B077; the 10 kohm value and existing RMCF0805FT10K0 MPN are routine implementation choices, not separately maintainer-specified values.

@@ -7,7 +7,7 @@ created: 2026-09-06
 accepted_on: 2026-09-06
 accepted_by: Explicit maintainer instruction USR-33
 supersedes: none
-superseded_by: none
+superseded_by: ADR-041 (header/general-breakout clauses only)
 requirements: [B1-R003, B1-R008, B1-R019, B1-R020, B1-R025]
 questions: [B1-Q003, B1-Q004, B1-Q009, B1-Q010, B1-Q014]
 sources: [USR-33]
@@ -24,3 +24,5 @@ Accept the header plan: four 1x5 GPIO headers (four GPIOs plus ground per MCU) a
 Accept ordinary PCB signal/rail test pads B1-B011, with no purchased component for those pads. The maintainer additionally requires fitted pins for scope-probe ground clips, recorded separately as B1-B075. Exact pin MPN, count and positions remain TBD until layout/clip access is resolved. Spare strip posts are a proposal only; do not assume their consumption or silently add a new connector purchase.
 
 [Closeout review](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/bom_closeout.md) supplies part and sourcing references. Retain thermal, bias, reset, timing, GPIO load and debug power-off qualification questions. No ERC/DRC or hardware validation was performed; evidence remains unverified.
+
+Header/general-breakout clauses are partially superseded by [ADR-041](041-timing-debug-headers.md). Other decisions remain in force.

@@ -27,7 +27,7 @@ At 3.3 V the pull-up draws approximately 7 mA when low. Ideal 470 ohm RC 10–90
 
 The SAM UART ring is direct point-to-point signaling, separate from UART_MD; rates and pinmux remain under review. Gateway VCP TX/RX/RTS/CTS and power-off isolation are in [usb_vcp.md](usb_vcp.md).
 
-Each MCU has independent SWD and dedicated 115200-baud TX/RX/GND debug UART. Four 1x3 debug and four 1x5 GPIO sections share one PRPC040SAAN-RC strip (32 positions). Debug off-state protection remains B1-Q014; GPIO loading/mux and proposed 220 ohm series resistors remain B1-Q010. See [GPIO note](gpio_breakouts.md). PCB signal/rail test pads have no purchased components; fitted scope-ground pins B1-B075 still need MPN/count/placement.
+Each MCU has independent SWD and a combined 1x8 timing/debug header under ADR-041. Four sections share one PRPC040SAAN-RC strip (32 positions). See [timing headers](timing_headers.md) for pin order, shared inputs and private outputs. B1-Q005/010 retain timing pad/interrupt and load checks; B1-Q014 retains debug qualification. PCB test pads and fitted scope-ground access remain required; extra ground-pin MPN/count/placement remain layout work.
 
 ## Evidence
 
@@ -44,3 +44,7 @@ UART_MD's 470 ohm resistor at 3.6 V/-1% R draws 7.74 mA before VOL drop, about 2
 SWD target reference is voltage sense, not authorization for probe power. Check all debug signals with 3V3_SYS off, cable orientation and connect-under-reset. Owned J-Link EDU is planned, PICkit 5 available (ADR-011); verify exact-device support and the owned 20-pin-to-Cortex-10-pin adapter ([SEGGER adapters](https://www.segger.com/products/debug-probes/j-link/accessories/adapters/overview/)). The SAM checklist in DS60001479J p.1182 recommends a 33 kohm SWCLK pull-up; account for it in B1-B010 after exact reset/debug circuit review. This is guidance, not an accepted new MPN/count.
 
 The accepted Phoenix 1989803 terminal has eight positions at 2.5 mm pitch. Proposed order remains CAN_A_H, CAN_A_L, GND, CAN_B_H, CAN_B_L, RS485_A, RS485_B, GND; confirm numbering and actual peer polarity under B1-Q004. Ground terminals remain required.
+
+ADR-042 specifies 330 ohm in series near every MCU header signal pin (24 total, B1-B076). SYNC/TRIG share header-side nets with one resistor per MCU input; debug and EVENT nets remain private. Grounds connect directly. Automated CBUS recovery is deferred; independent SWD remains.
+
+USR-37 adds one 10 kohm pull-down to each shared SYNC/TRIG net (B1-B077), before its four MCU-side series branches. See [timing headers](timing_headers.md). No additional MCU pins or repeated per-MCU pull-downs are needed.

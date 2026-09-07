@@ -7,7 +7,7 @@ created: 2026-09-06
 accepted_on: 2026-09-06
 accepted_by: User instructions and scope clarification USR-06
 supersedes: ADR-006
-superseded_by: none
+superseded_by: ADR-041 (header/general-breakout clauses only)
 requirements: [B1-R016, B1-R017, B1-R019, B1-R020, B1-R021, B1-R022]
 questions: [B1-Q002, B1-Q009, B1-Q010]
 sources: [USR-05, USR-06]
@@ -31,3 +31,5 @@ Validate power with all LEDs on, external I/O loads and the required traffic. A 
 ## Rationale addendum — USR-07
 
 The user explicitly reaffirms the single Rev A STM32 RS-485 port to connect an existing Digi ConnectCore 93 development kit alongside FD_CAN_A and FD_CAN_B, forming a dual-gateway lab. Retain all three external interfaces during power optimization. Removing the Rev A RS-485 port was considered but not accepted. This adds rationale without changing the accepted decision. Kit interface details and common operating rates require verification under B1-Q004/009 before wiring.
+
+Header/general-breakout clauses are partially superseded by [ADR-041](041-timing-debug-headers.md). Other decisions remain in force.

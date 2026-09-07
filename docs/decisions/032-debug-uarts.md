@@ -6,7 +6,7 @@ scope: Board 1 all four MCUs
 created: 2026-09-06
 accepted_by: Explicit maintainer instruction USR-26
 supersedes: none
-superseded_by: none
+superseded_by: ADR-041 (header/general-breakout clauses only)
 requirements: [B1-R025]
 questions: [B1-Q014]
 ---
@@ -30,3 +30,5 @@ Eight unused MCU pads become debug signals; existing link and breakout allocatio
 B1-Q014 covers header order/footprint/MPN, input defaults, off-state/back-power behavior, short bench cable assumptions, current limits, clock/baud error, firmware resource use and simultaneous UART/CAN traffic. Confirm exact current datasheets/errata, electrical compatibility and footprint before marking any row verified. No schematic, ERC/DRC or hardware validation is claimed.
 
 Alternatives: multiplexing debug over network/VCP would not provide the requested dedicated per-MCU interface; SWD remains complementary. 8N1 and header ordering are implementation proposals, not separately accepted maintainer requirements.
+
+Header/general-breakout clauses are partially superseded by [ADR-041](041-timing-debug-headers.md). Other decisions remain in force.

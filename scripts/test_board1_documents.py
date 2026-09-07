@@ -55,7 +55,7 @@ class DocumentAuditTests(unittest.TestCase):
     def test_balanced_but_inconsistent_cut_schedule_fails(self):
         def change(data):
             data['header_cut']['cuts'][0]['pieces'] = 3
-            data['header_cut']['spare_positions_unallocated'] = 13
+            data['header_cut']['spare_positions_unallocated'] = 16
         self.change_json('bom_quantity_rules.json', change)
         with self.assertRaisesRegex(AssertionError, 'placement quantity disagrees'):
             self.audit()

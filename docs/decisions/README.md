@@ -15,8 +15,8 @@ Read this map before the chronological register. An accepted ADR may retain only
 | Crystals / clocks | ADR-005 timing targets; ADR-014 MCU crystals; ADR-017 separate FTDI strategy; ADR-030 exact FTDI crystal; ADR-031 initial load caps and REF correction | [Clocks](../../boards/board1/clocking.md), [crystals](../../boards/board1/crystal_networks.md) |
 | CAN / RS-485 | ADR-002 TCAN3413; ADR-034 ST3485/termination; ADR-035 termination MPNs; ADR-036 bias; ADR-037 CAN TVS; ADR-038 restricted RS-485 TVS envelope; ADR-039 bias MPNs | [Interfaces](../../boards/board1/interfaces.md), [termination](../../boards/board1/termination.md), [bias](../../boards/board1/rs485_bias.md) |
 | Onboard UART | ADR-033 second LV125 driver; ADR-039 support resistors; actual rate unqualified | [Interfaces](../../boards/board1/interfaces.md) |
-| Debug / recovery / connectors | ADR-011 SWD; ADR-018 EEPROM; ADR-023 CBUS; [ADR-026 connectors](026-reva-connectors.md); ADR-032 text UART; ADR-039 header cuts/test access | [Pinmap](../../boards/board1/pinmap.md), [remaining work](../../boards/board1/remaining_parts.md) |
-| LEDs / GPIO | ADR-007 scope; ADR-029 LEDs; ADR-039 LED resistors and four GPIOs/MCU; GPIO series resistors still proposed | [BOM](../../boards/board1/BOM.md) |
+| Debug / recovery / connectors | ADR-011 SWD; ADR-018 EEPROM; ADR-042 defers ADR-023 CBUS recovery; [ADR-026 connectors](026-reva-connectors.md); ADR-032 text UART; ADR-039 test access; ADR-041/042 combined timing/debug headers and series resistors; USR-37 shared pull-downs (timing_headers.md) | [Pinmap](../../boards/board1/pinmap.md), [remaining work](../../boards/board1/remaining_parts.md) |
+| LEDs / GPIO | ADR-007 scope; ADR-029 LEDs; ADR-039 LED resistors; ADR-041 timing interface replaces general GPIO breakouts | [BOM](../../boards/board1/BOM.md) |
 | Assembly / sourcing | ADR-009 plus current maintainer package rules; DigiKey-only sourcing policy | [Part policy](../PART_SELECTION_POLICY.md) |
 
 Completion of an earlier proposal (for example ADR-024 pulls by ADR-028/030) is not wholesale supersession. Metadata lists replacements only; implementation links and this map also show completions. New engineering changes still require explicit acceptance and a new ADR where applicable.
@@ -49,7 +49,7 @@ Allocation-note reconciliation (2026-09-07): [pinmap](../../boards/board1/pinmap
 | [ADR-020](020-ftdi-supply-reset.md) | FTDI supply-qualified reset with TLV803E | superseded | Board 1 Rev A; adds supervision to ADR-019 |
 | [ADR-021](021-tps560430-main-buck.md) | TPS560430 main buck and USB-current criterion | accepted | Replaces ADR-010 converter/filter and efficiency floor |
 | [ADR-022](022-fast-input-ramp.md) | Fast TPS22810 ramp without external FTDI supervisor | accepted | Board 1 Rev A |
-| [ADR-023](023-cbus-gateway-recovery.md) | Dedicated CBUS gateway reset and BOOT0 | accepted | Board 1 gateway recovery |
+| [ADR-023](023-cbus-gateway-recovery.md) | Dedicated CBUS gateway reset and BOOT0 | superseded | Rev A recovery deferred by ADR-042 |
 | [ADR-024](024-pwren-inverter.md) | MC74HC1G14DBVT1G PWREN# inverter | accepted | Implements ADR-013; SMF6.0A alone retained |
 | [ADR-025](025-buck-passives.md) | TPS560430 local passive MPNs | accepted | Five components; four unique parts |
 | [ADR-026](026-reva-connectors.md) | Rev A debug, bus and GPIO connector MPNs | accepted | Implements ADR-007/011; B1-B009/022/027 |
@@ -68,6 +68,8 @@ Allocation-note reconciliation (2026-09-07): [pinmap](../../boards/board1/pinmap
 | [ADR-038](038-rs485-tvs.md) | ESDS452DBZR and restricted bench voltage envelope | accepted | B1-B073; B1-R016/017 |
 | [ADR-039](039-bom-closeout-selections.md) | Resistors, UART support, header cuts and test access | accepted | B1-B008/011/026/027/059/071/074/075 |
 | [ADR-040](040-startup-and-vcp-enable.md) | Conventional FTDI startup and direct PWREN# VCP enable | accepted | Supersedes ADR-013 rail-valid /OE prerequisite only |
+| [ADR-041](041-timing-debug-headers.md) | Combined per-MCU timing/debug headers; general breakouts deferred | accepted | B1-R025/027; B1-B027/059 |
+| [ADR-042](042-header-resistors-recovery-scope.md) | Header series resistors and Rev A recovery scope | accepted | Exact pin order, 24 series resistors; automated recovery deferred to Rev B |
 
 Use [template.md](template.md); next ID: ADR-041. Numbering is permanent.
 

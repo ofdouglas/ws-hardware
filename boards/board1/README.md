@@ -1,12 +1,12 @@
 # Board 1 Rev A
 
-Status: draft implementation; selected baseline through ADR-039. Part acceptance does not establish electrical or fabrication readiness.
+Status: draft implementation; selected baseline through ADR-042. Part acceptance does not establish electrical or fabrication readiness.
 
 Board 1 is a four-MCU WireSpaces lab: one STM32G474RBT6 gateway and three ATSAMC21G17A-AUT leaves. Each MCU connects to both shared CAN-FD buses and the onboard multidrop UART; the SAMs also form a private UART ring. The gateway provides USB VCP and one external ST3485EBDR RS-485 port. Both CAN pairs and RS-485 have terminal-block access with ground.
 
 USB-B powers an independent FT232HL bridge through the TPS22810 attachment ramp. FTDI PWREN# enables the TPS560430 main 3.3 V converter through MC74HC1G14DBVT1G. SN74LV125APWR isolates VCP TX/RX/RTS/CTS when main power is off. Rev A requires an active PC and must fit the 500 mA configured USB budget; full-load and startup qualification remain open.
 
-The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have independent selected 12 MHz crystals and initial load capacitors. Other link rates still need qualification. Each MCU has SWD, a dedicated 115200-baud text UART, four spare GPIOs and an LED; a fifth LED indicates board power. GPIO series resistors remain proposed.
+The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have independent selected 12 MHz crystals and initial load capacitors. Other link rates still need qualification. Each MCU has SWD, a dedicated 115200-baud text UART, a combined 1x8 timing/debug header and an LED; a fifth LED indicates board power. General-purpose breakouts are deferred under ADR-041.
 
 ## Current design documents
 
@@ -22,7 +22,7 @@ The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have in
 | PHYs, protection and UART_MD | [Interfaces](interfaces.md) |
 | External bus networks | [Termination](termination.md), [RS-485 bias](rs485_bias.md) |
 | Oscillators and clock trees | [Crystal networks](crystal_networks.md), [clocking](clocking.md) |
-| MCU allocation and breakout details | [Pinmap](pinmap.md), [GPIO breakouts](gpio_breakouts.md) |
+| MCU allocation and breakout details | [Pinmap](pinmap.md), [Timing headers](timing_headers.md) |
 | Existing library artifacts and checks | [Symbol catalog](../../libraries/symbols/README.md), [IC coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) |
 
 Use Host/HostId terminology. Requirements own scope and question status; accepted ADRs own decisions; CSV owns parts and quantities. Topic notes explain the current implementation without accepting new circuitry. Reviewed symbols do not imply a completed, validated board schematic or layout.
@@ -32,3 +32,7 @@ Use Host/HostId terminology. Requirements own scope and question status; accepte
 External 24 V power, additional transceivers (including CAN3 and the second Board 1 point-to-point RS-485), the full bench backbone and FPGA/fault instrumentation are later work. RS_485_MULTIDROP is descoped for Board 1, retained in the overall bench architecture. No future footprint or pin reservation is implied.
 
 Before schematic freeze, resolve pinmux, bridge support/defaults, power-off paths, connector numbering, capacitor corners, oscillator startup and current/transient checks in the requirements register. Obsolete research notes were deleted after extracting current material; Git retains their history. Use the current documents above and the ADR authority map first.
+
+ADR-042 fixes the timing/debug header pin order and adds 330 ohm near each of its six MCU signal pins (24 total). Automated CBUS reset/BOOT0 recovery is deferred to Rev B; Rev A retains ordinary reset, BOOT0-low defaults and independent SWD programming.
+
+Checks for this update: BOM quantities and generated view agree; 40 workbook cell edits preserve other values/formulas/styles and checked sheet features, and changed views render legibly. Full document audit and five of seven existing tests stop at the pre-existing missing ADR-040 research link. Timing GPIO allocation and ordinary reset/boot support remain schematic work. No CAD/ERC or hardware test performed.

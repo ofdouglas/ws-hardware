@@ -1,6 +1,6 @@
 # Board 1 pin/resource allocation
 
-Status: draft · Allocation evidence: unverified · Notes reconciled through ADR-039 on 2026-09-07 · Related: B1-Q005
+Status: draft · Allocation evidence: unverified · Notes reconciled through ADR-042 on 2026-09-07 · Related: B1-Q005
 
 The table below preserves the original parent resource IDs. Draft per-pad assignments for all MCUs, FTDI and EEPROM appear in the linked spreadsheet below. Accepted MCU MPNs and quantities are in requirements (USR-15 / ADR-004); verify their exact datasheets/errata before allocation. `TBD` means unknown; `NA` means not applicable.
 
@@ -51,7 +51,7 @@ Clock requirements: [clocking.md](clocking.md), ADR-005. B1-P006/P012/P018/P024 
 
 Rev A RS-485 resource reservation: B1-L08/B1-R016 requires an additional GW UART TX/RX and DE-/RE control (separate control preferred as a proposal). USART3 and separate /RE GPIO have draft pad/mux assignments below; simultaneous allocation and electrical review remain open. The accepted eight-position terminal block serves FD_CAN_A H/L, FD_CAN_B H/L, RS-485 A/B and ground(s); two grounds and the signal order remain proposed. No added MCU CAN pins or CAN transceivers are required merely for terminal access to the existing buses.
 
-ADR-007/039: one LED control and four spare GPIOs per MCU are included. Pad choices remain draft under B1-Q005/010. LED controls are not counted as spare GPIOs. Reserve ground on headers; no power-export pin implied. Crystal/debug/boot pins remain protected. RS-485 is now a 12 Mbps p2p design; expanded Board 1 has LEFT/RIGHT only, with no multidrop allocation.
+One LED control per MCU remains included. ADR-041 / USR-35 replaces the separate GPIO/debug headers with four combined 1x8 timing/debug headers. One selected 40-position strip supplies all 32 positions. General ADC, SPI/I2C and GPIO breakouts are deferred. Resistor selections and PCB test pads plus fitted scope-ground access from ADR-039 remain in force. Exact timing MCU pads remain TBD under B1-Q005/010; scope-ground pin count/MPN remain layout work.
 
 Current [interface implementation](interfaces.md) and [crystal networks](crystal_networks.md) distinguish selected parts from remaining electrical and mechanical checks under B1-Q004/005/008.
 
@@ -80,7 +80,7 @@ The [allocation workbook](../../outputs/samc21-pin-allocation/samc21_pin_allocat
 | FD_CAN_B | FDCAN2 AF9: PB12 RX pad34, PB13 TX pad35; GPIO PC7 STB pad39 | B1-R002; B1-P002 |
 | Debug / reset | PA13 SWDIO pad49, PA14 SWCLK pad50, PG10-NRST pad7 | B1-R007; B1-P005 |
 | Crystal / boot | PF0 HSE_IN pad5, PF1 HSE_OUT pad6; reserve PB8-BOOT0 pad61 | B1-R001/015; B1-P006 |
-| LED / GPIO | PA5 LED pad22; PC0–PC3 breakouts pads8–11 | B1-R019/020 |
+| LED / timing | PA5 LED pad22; PC0–PC3 pads8–11 are timing candidates only, assignments TBD | B1-R019/027 |
 
 Evidence: [ST DS12288 Rev.6](https://www.st.com/resource/en/datasheet/stm32g474rb.pdf), Figure 7 p.50, package column in Table 12 pp.57–72, AF Table 13 pp.73–75. [ES0430 Rev.9](https://www.st.com/resource/en/errata_sheet/es0430-stm32g471xx473xx474xx483xx484xx-device-errata-stmicroelectronics.pdf) identifies applicable USART/FDCAN review areas (§2.16/2.19); actual silicon revision and workaround review remain open.
 
@@ -105,20 +105,18 @@ Source: [FT_000288 v2.2](https://www.ftdichip.cn/Support/Documents/DataSheets/IC
 EEPROM evidence: DS20006260B pp.3–9 and 31, linked in ADR-018 and the sheet. B1-Q012 retains timing/startup/programming/footprint checks; B1-Q002 retains power-off isolation, support parts, USB current and default-off logic; B1-Q008 retains crystal qualification. UART cross-directions were checked against the STM32 sheet. All 48 FTDI pads and eight EEPROM pads have unique IDs and pad numbers within each device. No CAD exists to compare, and no ERC/DRC or hardware test was performed.
 
 
-## Dedicated gateway recovery controls
+## Gateway reset and deferred recovery
 
-USR-24 / ADR-023 accepts B1-R024: ACBUS5/pad 29 (B1-P261) controls STM32 NRST/pad 7 (B1-P175); ACBUS6/pad 30 (B1-P262) controls PB8/BOOT0/pad 61 (B1-P229). The FTDI and STM32 workbook sheets carry these connections. Per-pad evidence remains unverified. Stable IDs are retained; no additional MCU pad is consumed.
-
-B1-B053 owns the added interfaces. B1-Q013 tracks polarity, open-drain reset sharing, reset-released/BOOT0-low defaults, power-off behavior, option bytes and Linux/ROM tests. Source locators and programming sequence are in [ADR-023](../../docs/decisions/023-cbus-gateway-recovery.md).
+[ADR-042](../../docs/decisions/042-header-resistors-recovery-scope.md) defers automated CBUS recovery to Rev B. ACBUS5/pad29 (B1-P261) and ACBUS6/pad30 (B1-P262) are unconnected in Rev A. Keep STM32 NRST/pad7 (B1-P175) on independent SWD reset and PB8/BOOT0/pad61 (B1-P229) default low. B1-B053 has zero parts/footprints; ordinary reset/boot support remains B1-B010, B1-Q005. Stable physical-pad IDs remain unchanged.
 
 ## Accepted connector selections
 
-USR-25 / [ADR-026](../../docs/decisions/026-reva-connectors.md) selects the connectors in BOM B1-B009/022/027. B1-P005/011/017/023 retain independent SWD/reset ownership through B1-B009. Existing workbook allocations remain unverified; selecting connectors does not change MCU pads or accept a terminal order. B1-Q004/005 retain footprint, numbering, cable position-7 key, adapter and power-off checks. ADR-039 accepts four 1x5 GPIO and four 1x3 debug sections from one strip; B1-Q010 retains signal order, physical cut/mating checks and load/protection review. Exact MPNs and quantities are maintained in [bom.csv](bom.csv).
+ADR-026 retains connector MPN selections. ADR-041 / USR-35 replaces the separate GPIO/debug headers with four combined 1x8 timing/debug headers. One selected 40-position strip supplies all 32 positions. General ADC, SPI/I2C and GPIO breakouts are deferred. Resistor selections and PCB test pads plus fitted scope-ground access from ADR-039 remain in force. Exact timing MCU pads remain TBD under B1-Q005/010; scope-ground pin count/MPN remain layout work. B1-Q004/005 retain terminal numbering, footprints, SWD cable/key and adapter checks. See [timing headers](timing_headers.md).
 
 
 ## Per-MCU debug UARTs — ADR-032
 
-Dedicated 115200-baud debug UARTs implement B1-R025. Proposed header numbering is 1=MCU TX, 2=MCU RX, 3=GND, 2.54 mm pitch; 3.3 V logic, 8N1/no flow control. Ground joins the board ground plane and does not consume a GPIO pad.
+Dedicated 115200-baud debug UARTs implement B1-R025 using pins 1=MCU RX, 2=MCU TX and grounds 3/6 of the [combined timing/debug header](timing_headers.md); 3.3 V logic, 8N1/no flow control. Each RX/TX has its own 330 ohm near the MCU (B1-B076 / ADR-042); each timing signal likewise has its own resistor. Shared SYNC/TRIG fan out on the header side of the four input resistors, not on the MCU side.
 
 | MCU | TX / stable ID | RX / stable ID | Peripheral |
 |---|---|---|---|
@@ -127,7 +125,7 @@ Dedicated 115200-baud debug UARTs implement B1-R025. Proposed header numbering i
 | SAM1 | PA12 pad21 / B1-P093 | PA13 pad22 / B1-P094 | SERCOM2 mux C, PAD0 TX/PAD1 RX |
 | SAM2 | PA12 pad21 / B1-P141 | PA13 pad22 / B1-P142 | SERCOM2 mux C, PAD0 TX/PAD1 RX |
 
-All eight pads were previously unused. Existing network, SWD, boot and GPIO-breakout assignments are preserved. Workbook rows include source locators; [ADR-032](../../docs/decisions/032-debug-uarts.md) records setup and evidence. B1-Q014 retains baud, electrical, adapter/off-state and footprint checks. No row is marked verified.
+All eight pads were previously unused. Existing network, SWD, boot assignments are preserved; previous general-breakout pads are now unassigned timing candidates. Workbook rows include source locators; [ADR-032](../../docs/decisions/032-debug-uarts.md) records setup and evidence. B1-Q014 retains baud, electrical, adapter/off-state and footprint checks. No row is marked verified.
 
 ## BOM reconciliation and selected interfaces
 
@@ -168,6 +166,8 @@ B1-B003/012/013 pin evidence is available in the [TCAN3413DR](../../libraries/sy
 
 The remaining selected IC/array symbols are available for B1-B015/016/018/021/066/072/073; [pin-table checks and coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) are symbol evidence only. MCU mux, board allocations and implemented connectivity remain unverified. RCLAMP0504S pin 5 is VREF, not a no-connect type; an externally unconnected circuit choice is separate.
 
-[ADR-039](../../docs/decisions/039-bom-closeout-selections.md) / USR-33 accepts bias and LED MPNs, four 10 kohm /OE pull-ups B1-B008, one 470 ohm UART_MD pull-up B1-B074, four 1x5 GPIO and four 1x3 debug headers cut from one strip, and PCB pads plus fitted scope-ground pins B1-B075. Final GPIO mux, pad/pin positions, ground-pin MPN/count and electrical qualification remain open. Header acceptance does not accept the proposed GPIO series resistors.
+ADR-041 / USR-35 replaces the separate GPIO/debug headers with four combined 1x8 timing/debug headers. One selected 40-position strip supplies all 32 positions. General ADC, SPI/I2C and GPIO breakouts are deferred. Resistor selections and PCB test pads plus fitted scope-ground access from ADR-039 remain in force. Exact timing MCU pads remain TBD under B1-Q005/010; scope-ground pin count/MPN remain layout work.
 
-Recovery research (2026-09-07): the [ROM conflict review](research/cbus_recovery_proposal.md#rom-entry-policy-and-pin-conflicts) proposes moving draft RS-485 DE PB14 to PD2 and gateway CAN standby PC6/PC7 to PB7/PB9. These changes are not applied to the workbook. CAN RX versus ROM DFU contention and simultaneous allocation remain open under B1-Q003/005/009/013; do not capture the current mapping as verified.
+Recovery disposition: ADR-042 confirms PB14 ROM startup can assert the draft RS-485 DE, then defers automated recovery. Do not apply the old speculative recovery remaps for Rev A. Network mux and reset defaults still require normal schematic review. First programming uses SWD with external bus peers disconnected.
+
+USR-37: global SYNC and TRIG each have one header-side 10 kohm pull-down to GND (B1-B077). The four per-MCU 330 ohm input branches remain separate; no MCU pad allocation changes. See [timing headers](timing_headers.md) for wiring.

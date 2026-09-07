@@ -10,14 +10,14 @@
     },
     "B1-B027": {
       "purchase_quantity": 1,
-      "placement_quantity": 4,
-      "unit": "one 40-position strip; four 1x5 GPIO sections; also supplies B1-B059",
+      "placement_quantity": 0,
+      "unit": "one 40-position source strip; all placements in B1-B059",
       "csv_quantity_basis": "purchase_quantity"
     },
     "B1-B059": {
       "purchase_quantity": 0,
       "placement_quantity": 4,
-      "unit": "four 1x3 debug sections included in B1-B027",
+      "unit": "four 1x8 timing/debug sections included in B1-B027",
       "csv_quantity_basis": "placement_quantity"
     }
   },
@@ -26,17 +26,12 @@
     "positions_per_strip": 40,
     "cuts": [
       {
-        "item": "B1-B027",
-        "pieces": 4,
-        "positions_each": 5
-      },
-      {
         "item": "B1-B059",
         "pieces": 4,
-        "positions_each": 3
+        "positions_each": 8
       }
     ],
     "spare_positions_unallocated": 8
   },
-  "authority": "ADR-039; electrical/physical qualification remains open"
+  "authority": "ADR-041; electrical/physical qualification remains open"
 }
