@@ -23,4 +23,4 @@ Accept the header plan: four 1x5 GPIO headers (four GPIOs plus ground per MCU) a
 
 Accept ordinary PCB signal/rail test pads B1-B011, with no purchased component for those pads. The maintainer additionally requires fitted pins for scope-probe ground clips, recorded separately as B1-B075. Exact pin MPN, count and positions remain TBD until layout/clip access is resolved. Spare strip posts are a proposal only; do not assume their consumption or silently add a new connector purchase.
 
-[Closeout review](../../boards/board1/bom_closeout.md) supplies part and sourcing references. Retain thermal, bias, reset, timing, GPIO load and debug power-off qualification questions. No ERC/DRC or hardware validation was performed; evidence remains unverified.
+[Closeout review](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/bom_closeout.md) supplies part and sourcing references. Retain thermal, bias, reset, timing, GPIO load and debug power-off qualification questions. No ERC/DRC or hardware validation was performed; evidence remains unverified.

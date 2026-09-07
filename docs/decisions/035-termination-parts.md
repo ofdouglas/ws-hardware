@@ -17,6 +17,6 @@ sources: [USR-29]
 
 Accept all three previously recommended MPNs: five TE CRGP0805F120R resistors across B1-B067/068, two Sullins PRPC002SAAN-RC headers B1-B069, and two Sullins SPC02SYAN shunts B1-B070. Counts and topology remain ADR-034. Use the dedicated two-pin headers, without counting additional GPIO strip consumption for these placements.
 
-[Part specifications, manufacturer drawings and dated DigiKey evidence](../../boards/board1/termination_parts.md) remain the supporting record. Selection does not establish thermal, fault, mating or CAD-footprint qualification; evidence remains unverified. No ERC/DRC or hardware validation performed.
+[Part specifications, manufacturer drawings and dated DigiKey evidence](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/termination_parts.md) remain the supporting record. Selection does not establish thermal, fault, mating or CAD-footprint qualification; evidence remains unverified. No ERC/DRC or hardware validation performed.
 
 The accompanying instruction to investigate idle-bus bias authorizes research, not acceptance of new bias resistor MPNs or a change to termination. See [bias investigation](../../boards/board1/rs485_bias.md), B1-Q009.

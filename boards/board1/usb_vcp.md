@@ -36,6 +36,6 @@ ADR-023 allocates CBUS5/6 for gateway reset and BOOT0. B1-B053 components/polari
 
 ## Evidence and completion
 
-[FT232H datasheet](https://ftdichip.com/wp-content/uploads/2024/09/DS_FT232H.pdf), [UM232H bus-power guidance](https://ftdichip.com/wp-content/uploads/2020/07/DS_UM232H.pdf), and [EEPROM ADR/evidence](../../docs/decisions/018-ftdi-eeprom.md) are retained sources. Earlier review used FT_000288 v2.2; current datasheet/errata reconciliation remains open. [Original research](usb_power_vcp.md) preserves provenance, not current circuit authority.
+[FT232H datasheet](https://ftdichip.com/wp-content/uploads/2024/09/DS_FT232H.pdf), [UM232H bus-power guidance](https://ftdichip.com/wp-content/uploads/2020/07/DS_UM232H.pdf), and [EEPROM ADR/evidence](../../docs/decisions/018-ftdi-eeprom.md) are retained sources. Earlier review used FT_000288 v2.2; current datasheet/errata reconciliation remains open. Earlier research is retained in Git history.
 
 Validate current waveforms, EEPROM/reset timing, full-duplex VCP/flow control, off-state leakage and resume/ROM programming. No schematic or bench sign-off is asserted; [requirements](requirements.md) retains B1-Q002/008/012/013.

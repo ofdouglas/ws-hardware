@@ -1,6 +1,6 @@
 # Board 1 Rev A USB input circuit
 
-Status: selected circuit baseline; schematic and bench qualification pending. Updated: 2026-09-06. Authority: ADR-021 (buck/current criterion), ADR-022 (input). Current implementation note. Earlier revisions are in [input history](vbus_input_history_through_adr021.md).
+Status: selected circuit baseline; schematic and bench qualification pending. Updated: 2026-09-06. Authority: ADR-021 (buck/current criterion), ADR-022 (input). Current implementation note. Earlier revisions are retained in Git history.
 
 ## Circuit and placement
 
@@ -63,8 +63,20 @@ Break-even at 500 mA and 4.44 V is 70.71% (the previous 4.45 V approximation gav
 
 ## Sources
 
-[TI TPS22810](https://www.ti.com/lit/ds/symlink/tps22810.pdf), [TI TPS560430](https://www.ti.com/lit/ds/symlink/tps560430.pdf), [FTDI FT232H v2.2](https://www.mouser.com/datasheet/3/35/1/DS_FT232H.pdf). Main-current assumptions: transceivers_and_power.md. Selection is not qualification.
+[TI TPS22810](https://www.ti.com/lit/ds/symlink/tps22810.pdf), [TI TPS560430](https://www.ti.com/lit/ds/symlink/tps560430.pdf), [FTDI FT232H v2.2](https://www.mouser.com/datasheet/3/35/1/DS_FT232H.pdf). Main-current assumptions and primary sources are retained below. Selection is not qualification.
 
 ## Related implementation
 
 [USB bridge and isolation](usb_vcp.md), [buck passives](buck_tps560430.md), [decoupling](decoupling.md), [current BOM](BOM.md). PWREN# pull-up is RMCF0805FT10K0; EN pull-down is ERJ-6GEYJ473V. The bridge capacitor quantities remain TBD in B1-B061–063; charge figures above retain the planning allocation, not a completed schematic count. Reconcile the accepted RS-485 bias and UART_MD pull-up loads with the existing allowances before claiming a worst-case budget. Question status remains in [requirements](requirements.md) (B1-Q002/011).
+
+## Retained load and passive qualification evidence
+
+Planning 3.3 V allowances (nominal/conservative): gateway 45/65 mA; each SAM at an assumed 48 MHz 15/25 mA; miscellaneous logic 15/25 mA; each recessive CAN PHY including VIO 7.05/8.25 mA; each dominant PHY including VIO 42.3/60.3 mA; loaded RS-485 60/75 mA. Five LEDs add 2.5 mA and aggregate breakout reservation adds 20 mA. Neither reservation is a per-pin rating. CAN calculation is N_PHY*I_recessive + N_bus*0.5*(I_dominant-I_recessive), not a simultaneous-all-drivers fault bound.
+
+Sources: [TCAN3413 section 5.6](https://www.ti.com/lit/ds/symlink/tcan3413.pdf) (60-ohm typical/50-ohm maximum-load cases), [ST MCU Table 25](https://www.st.com/resource/en/datasheet/stm32g474rb.pdf), [SAM Table 45-11](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU32/ProductDocuments/DataSheets/SAM-C20-C21-Family-Data-Sheet-DS60001479J.pdf). The RS-485 allowance originated in a [loaded THVD1450 study](https://www.ti.com/lit/ds/symlink/thvd1450.pdf); retaining it for ST3485EBDR is a planning assumption, not an exact-part maximum. No firmware duty-cycle or standby savings are booked.
+
+For the selected SG73P2BTTD1R0J damping branch, a 5.5 V ideal step and 0.95 ohm minimum R give 31.84 W initial pulse power. Upper screened C=4.7*1.10*1.15=5.9455 uF stores 89.93 uJ; nominal-C RC spans 4.465–4.935 us from resistor tolerance alone. [KOA SG73P pp.1–2](https://www.koaspeer.com/pdfs/SG73P.pdf), reviewed 04/16/26, rates 2B at 1 W with applicable temperature derating and a one-pulse curve reaching 1 us. Numerical curve margin and repeated-hotplug drift remain unverified; these ideal RC calculations do not bound cable ringing or ESD. [Samsung B046 evidence](https://product.samsungsem.com/mlcc/CL21A475KBQNNN.do) specifies X5R: retain its -55 to +85 C range and check bias/aging, not just voltage rating.
+
+The five CSL1901DW1 LEDs use accepted RK73H2ATTD3301F 3.3 kohm resistors. At assumed Vf=1.8 V, current is 0.455 mA and resistor power 0.682 mW. [ROHM](https://www.rohm.com/products/led/chip-leds-mono-color-type/standard/csl1901dw-product) specifies typical brightness/Vf at 2 mA; visibility and Vf at this lower current are not guaranteed. Power LED uses 3V3_SYS; MCU LEDs have separate controls from spare GPIOs. Verify all-on current and GPIO drop under B1-Q010.
+
+Expanded Board 1 (future scope only) has nine CAN PHYs and two point-to-point RS-485 PHYs. Legacy expanded sensitivities remain in power_budget.json; this cleanup does not recalculate or designate them as current Rev A limits.

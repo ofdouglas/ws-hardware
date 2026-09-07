@@ -38,3 +38,7 @@ The single Board 1 330 ohm 1% pair is accepted ADR-036; the leakage/loading and 
 B1-Q009 remains open for remote hardware identification, bias ownership, worst-case leakage/temperature, driver loading, cable/common-mode and power-off behavior. Verify idle A-B and RO, both transmit polarities and frame turnaround with both terminations fitted. Exact bias MPNs are accepted ADR-039; no schematic, ERC/DRC or bench validation was performed.
 
 [Current interfaces/protection](interfaces.md) records the selected ESDS452DBZR and restricted operating envelope; [termination](termination.md) records the accepted endpoint parts. Transient compatibility and added bus capacitance remain B1-Q009 checks.
+
+## Selected resistor stress screen
+
+CRGP0805F330R is 1/3 W. At VCC=3.6 V and A=-5.5 V, the ideal pull-up stress is (3.6+5.5)^2/(330*0.99)=0.2535 W. This is below nameplate power but requires thermal derating and does not qualify pulse/fault exposure. [TE exact-part evidence](https://www.te.com/en/product-1-2176327-9.html) is retained; B1-Q009 remains open.

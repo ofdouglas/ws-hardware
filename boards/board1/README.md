@@ -30,4 +30,4 @@ Use Host/HostId terminology. Requirements own scope and question status; accepte
 
 External 24 V power, additional transceivers (including CAN3 and the second Board 1 point-to-point RS-485), the full bench backbone and FPGA/fault instrumentation are later work. RS_485_MULTIDROP is descoped for Board 1, retained in the overall bench architecture. No future footprint or pin reservation is implied.
 
-Before schematic freeze, resolve pinmux, bridge support/defaults, power-off paths, connector numbering, capacitor corners, oscillator startup and current/transient checks in the requirements register. Existing candidate/research files are historical inputs; use the current documents above first.
+Before schematic freeze, resolve pinmux, bridge support/defaults, power-off paths, connector numbering, capacitor corners, oscillator startup and current/transient checks in the requirements register. Obsolete research notes were deleted after extracting current material; Git retains their history. Use the current documents above and the ADR authority map first.

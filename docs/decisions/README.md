@@ -2,6 +2,27 @@
 
 Status: draft index · Authority: individual accepted ADRs
 
+## Current authority map
+
+Read this map before the chronological register. An accepted ADR may retain only some clauses; its historical decision text does not override later accepted decisions. Part selection never closes qualification questions. Retain both ADR-026 IDs and cite their filenames; no renumbering is authorized.
+
+| Topic | Current authority and surviving scope | Implementation |
+|---|---|---|
+| Family terminology / Rev A boundary | ADR-003/004/007; RS_485_MULTIDROP deferred for Board 1, retained for family | [Requirements](../../boards/board1/requirements.md) |
+| USB power / input | ADR-001 domain policy; ADR-013 enable/isolation; ADR-019 ramp topology; ADR-022 47 nF/no supervisor; ADR-024 inverter; ADR-015/016 ESD scope; ADR-027/028/029/030 passives | [Input](../../boards/board1/usb_input.md), [VCP](../../boards/board1/usb_vcp.md) |
+| Main buck | ADR-021 TPS560430 and total 500 mA criterion; ADR-025 exact LC/passives; no 90% floor or SC189 Cout ceiling | [Buck](../../boards/board1/buck_tps560430.md) |
+| Decoupling | ADR-010 MCU/bypass allocation only; [ADR-026 core](026-sam-core-ceramic.md) ceramic; ADR-027 MPNs; ADR-025 local output | [Decoupling](../../boards/board1/decoupling.md) |
+| Crystals / clocks | ADR-005 timing targets; ADR-014 MCU crystals; ADR-017 separate FTDI strategy; ADR-030 exact FTDI crystal; ADR-031 initial load caps and REF correction | [Clocks](../../boards/board1/clocking.md), [crystals](../../boards/board1/crystal_networks.md) |
+| CAN / RS-485 | ADR-002 TCAN3413; ADR-034 ST3485/termination; ADR-035 termination MPNs; ADR-036 bias; ADR-037 CAN TVS; ADR-038 restricted RS-485 TVS envelope; ADR-039 bias MPNs | [Interfaces](../../boards/board1/interfaces.md), [termination](../../boards/board1/termination.md), [bias](../../boards/board1/rs485_bias.md) |
+| Onboard UART | ADR-033 second LV125 driver; ADR-039 support resistors; actual rate unqualified | [Interfaces](../../boards/board1/interfaces.md) |
+| Debug / recovery / connectors | ADR-011 SWD; ADR-018 EEPROM; ADR-023 CBUS; [ADR-026 connectors](026-reva-connectors.md); ADR-032 text UART; ADR-039 header cuts/test access | [Pinmap](../../boards/board1/pinmap.md), [remaining work](../../boards/board1/remaining_parts.md) |
+| LEDs / GPIO | ADR-007 scope; ADR-029 LEDs; ADR-039 LED resistors and four GPIOs/MCU; GPIO series resistors still proposed | [BOM](../../boards/board1/BOM.md) |
+| Assembly / sourcing | ADR-009 plus current maintainer package rules; DigiKey-only sourcing policy | [Part policy](../PART_SELECTION_POLICY.md) |
+
+Completion of an earlier proposal (for example ADR-024 pulls by ADR-028/030) is not wholesale supersession. Metadata lists replacements only; implementation links and this map also show completions. New engineering changes still require explicit acceptance and a new ADR where applicable.
+
+## Chronological register
+
 | ID | Title | Status | Scope |
 |---|---|---|---|
 | [ADR-001](001-usb-power.md) | USB power and independent VCP bring-up (power/isolation architecture) | accepted | Board 1 MVP |
@@ -40,13 +61,9 @@ Status: draft index · Authority: individual accepted ADRs
 | [ADR-033](033-open-drain-uart-buffer.md) | Second SN74LV125APWR for onboard open-drain UART | accepted | B1-B066; implements B1-R003 |
 | [ADR-034](034-rs485-termination.md) | ST3485EBDR and Rev A bus termination | accepted | B1-B021/067–070; B1-R026 |
 | [ADR-035](035-termination-parts.md) | Exact termination resistor and jumper MPNs | accepted | B1-B067–070; B1-R026 |
-
 | [ADR-036](036-rs485-bias.md) | RS-485 330 ohm bias network | accepted | B1-B071; B1-R016/021 |
-
 | [ADR-037](037-can-tvs.md) | ESD2CAN24DBZRQ1 CAN TVS arrays | accepted | B1-B072; B1-R009/017 |
-
 | [ADR-038](038-rs485-tvs.md) | ESDS452DBZR and restricted bench voltage envelope | accepted | B1-B073; B1-R016/017 |
-
 | [ADR-039](039-bom-closeout-selections.md) | Resistors, UART support, header cuts and test access | accepted | B1-B008/011/026/027/059/071/074/075 |
 
 Use [template.md](template.md); next ID: ADR-040. Numbering is permanent.

@@ -116,9 +116,9 @@ ADR-030 finalizes USB-B connector and crystal MPNs. The interim REF tolerance co
 
 ADR-031 resolves the B1-Q002 REF tolerance subissue with RMCF0805FT12K0 and accepts crystal capacitor MPNs; B1-Q002/008 remain open for other qualification. GPIO series-resistor proposal is in gpio_breakouts.md under B1-Q010.
 
-BOM reconciliation exposes accepted ADR-027/028 bridge allocations as B1-B061–065, split from B1-B017 with no added scope. B1-Q002/012 retain count/rail qualification. [Interface candidate review](rs485_uart_candidates.md) informs B1-Q003/009; no proposed transceiver or multidrop driver is accepted by this audit.
+BOM reconciliation exposes accepted ADR-027/028 bridge allocations as B1-B061–065, split from B1-B017 with no added scope. B1-Q002/012 retain count/rail qualification. [Interface candidate review](interfaces.md) informs B1-Q003/009; no proposed transceiver or multidrop driver is accepted by this audit.
 
-USR-27 / [ADR-033](../../docs/decisions/033-open-drain-uart-buffer.md) accepts B1-B066 for B1-R003. B1-B008 retains unselected support values; B1-Q003/005 remain open for timing, reset/power, thresholds and implementation. [Termination proposal](termination_proposal.md) records the CAN jumper and fixed local RS-485 evaluation under B1-Q003/004/009; topology and nominal 120 ohm values subsequently accepted by USR-28 / ADR-034 / B1-R026; exact resistor/jumper MPNs subsequently accepted ADR-035.
+USR-27 / [ADR-033](../../docs/decisions/033-open-drain-uart-buffer.md) accepts B1-B066 for B1-R003. B1-B008 support values are accepted by ADR-039; B1-Q003/005 remain open for timing, reset/power, thresholds and implementation. [Termination proposal](termination.md) records the CAN jumper and fixed local RS-485 evaluation under B1-Q003/004/009; topology and nominal 120 ohm values subsequently accepted by USR-28 / ADR-034 / B1-R026; exact resistor/jumper MPNs subsequently accepted ADR-035.
 
 [ADR-035](../../docs/decisions/035-termination-parts.md) / USR-29 accepts the exact termination MPNs in B1-B067–070. [RS-485 bias investigation](rs485_bias.md) records the accepted network, calculations and remote-kit rate check; B1-Q009 remains open.
 
@@ -126,11 +126,11 @@ Library implementation evidence for B1-R001/006/012: [local symbols](../../libra
 
 Symbol implementation evidence for B1-R002/005/006/012/023: [three exact-part library checks](../../libraries/symbols/symbol_checks.md), implementing ADR-002/018/021. This does not close B1-Q002/003/004/011/012 or change requirement status.
 
-[ADR-036](../../docs/decisions/036-rs485-bias.md) / USR-30 accepts two 330 ohm 1% bias resistors in B1-B071: 3V3_SYS to A (ST3485EBDR pin6), B (pin7) to GND. Exact MPN and implementation remain unverified. [TVS recommendations](tvs_candidates.md) remain proposed under B1-Q004/009.
+[ADR-036](../../docs/decisions/036-rs485-bias.md) / USR-30 accepts two 330 ohm 1% bias resistors in B1-B071: 3V3_SYS to A (ST3485EBDR pin6), B (pin7) to GND. Exact MPN and implementation remain unverified. [TVS selections](interfaces.md) are accepted ADR-037/038; qualification remains open under B1-Q004/009.
 
-[ADR-037](../../docs/decisions/037-can-tvs.md) / USR-31 accepts B1-B072: two ESD2CAN24DBZRQ1 arrays near the CAN terminal pairs, DBZ pins1/2 to CANH/CANL and pin3 to GND, independent of termination jumpers. Exact CAD connectivity/footprint and transient qualification remain B1-Q004. [RS-485 TVS alternative](rs485_tvs_alternatives.md) remains proposed under B1-Q009.
+[ADR-037](../../docs/decisions/037-can-tvs.md) / USR-31 accepts B1-B072: two ESD2CAN24DBZRQ1 arrays near the CAN terminal pairs, DBZ pins1/2 to CANH/CANL and pin3 to GND, independent of termination jumpers. Exact CAD connectivity/footprint and transient qualification remain B1-Q004. [RS-485 TVS selection](interfaces.md) is accepted ADR-038; qualification remains open under B1-Q009.
 
-[ADR-038](../../docs/decisions/038-rs485-tvs.md) / USR-32 accepts ESDS452DBZR B1-B073: DBZ pins1/2 to A/B, pin3 GND. Normal operation requires both RS-485 wires within +/-5.5 V of local Board 1 ground. Actual endpoint/offset and transient qualification remain B1-Q009. See [BOM closeout recommendations](bom_closeout.md).
+[ADR-038](../../docs/decisions/038-rs485-tvs.md) / USR-32 accepts ESDS452DBZR B1-B073: DBZ pins1/2 to A/B, pin3 GND. Normal operation requires both RS-485 wires within +/-5.5 V of local Board 1 ground. Actual endpoint/offset and transient qualification remain B1-Q009. See [BOM closeout recommendations](remaining_parts.md).
 
 [Complete selected IC/array symbol coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) supports schematic capture for the existing requirements. These library checks do not close B1-Q002/003/004/005/009 or change requirement acceptance/verification.
 

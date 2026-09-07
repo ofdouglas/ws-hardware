@@ -32,3 +32,15 @@ Each MCU has independent SWD and dedicated 115200-baud TX/RX/GND debug UART. Fou
 ## Evidence
 
 [TCAN3413](https://www.ti.com/lit/ds/symlink/tcan3413.pdf), [ST3485EB DS2947](https://www.st.com/resource/en/datasheet/st3485eb.pdf), [SN74LV125A SCES124O](https://www.ti.com/lit/ds/symlink/sn74lv125a.pdf), [ESD2CAN24-Q1 SLVSFW5D](https://www.ti.com/lit/ds/symlink/esd2can24-q1.pdf), [ESDS452 SLVSHM5](https://www.ti.com/lit/gpn/esds452), and [local symbol checks](../../libraries/symbols/remaining_ic_symbol_checks.md). These retain the sources used for existing decisions; this consolidation adds no new electrical verification.
+
+## Retained protection and debug checks
+
+ESD2CAN24DBZRQ1 has 3 pF typical channel C and a typical 37 V clamp at 5.7 A, 8/20 us (SLVSFW5D). These typical values do not guarantee clamp margin. Check both TCAN3413 per-pin +/-58 V absolute limits and its 58 V differential limit: opposite-polarity clamps can violate differential stress even if each pin passes. The protected port cannot inherit the bare PHY sustained-fault rating.
+
+ESDS452DBZR has 3 pF typical/5 pF maximum channel C and 50 nA maximum leakage at the stated standoff/table conditions. Its 8/20 us clamp is 7.5 V typical/10 V maximum at 1 A, 11.5 V typical/14 V maximum at 15 A; the 9.6 V TLP figure is a different typical test. Retain actual-temperature leakage, bias margin, waveform and layout coordination checks. Route discharge returns without MCU ground necks or long TVS stubs.
+
+UART_MD's 470 ohm resistor at 3.6 V/-1% R draws 7.74 mA before VOL drop, about 27.9 mW. This approaches the cited LV125 8 mA operating test point: qualify VOL and timing, not just resistor dissipation.
+
+SWD target reference is voltage sense, not authorization for probe power. Check all debug signals with 3V3_SYS off, cable orientation and connect-under-reset. Owned J-Link EDU is planned, PICkit 5 available (ADR-011); verify exact-device support and the owned 20-pin-to-Cortex-10-pin adapter ([SEGGER adapters](https://www.segger.com/products/debug-probes/j-link/accessories/adapters/overview/)). The SAM checklist in DS60001479J p.1182 recommends a 33 kohm SWCLK pull-up; account for it in B1-B010 after exact reset/debug circuit review. This is guidance, not an accepted new MPN/count.
+
+The accepted Phoenix 1989803 terminal has eight positions at 2.5 mm pitch. Proposed order remains CAN_A_H, CAN_A_L, GND, CAN_B_H, CAN_B_L, RS485_A, RS485_B, GND; confirm numbering and actual peer polarity under B1-Q004. Ground terminals remain required.

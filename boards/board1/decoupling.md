@@ -22,10 +22,14 @@ Nominal direct main-rail C = 39*0.1 + 4*1 + 4.7 + 0.01 + 22 = **34.61 uF**. Posi
 
 Each SAM VDDCORE has one CL21B105KAFNFNE 1 uF (B1-B040, three total) and one KGM21NR71E104KT 100 nF (B1-B041, three total). These are separate internal regulator outputs near 1.23 V: never connect them to 3V3_SYS or to each other. They are excluded from direct main-rail capacitance but included in startup-load review.
 
-The ceramic selection is explicit maintainer acceptance, not proof of datasheet equivalence. SAMC21 DS60001479J Table 45-21 (p.1038) lists 0.8/1/1.2 uF with tantalum/electrolytic wording and separate 100 nF X7R. Retain the effective-C check at 1.23 V across tolerance, temperature and aging, the <=0.5 ohm ESR screen, and regulator startup/stability qualification. [Original analysis and source links](sc189_decoupling.md) retain the evidence and rationale.
+The ceramic selection is explicit maintainer acceptance, not proof of datasheet equivalence. SAMC21 DS60001479J Table 45-21 (p.1038) lists 0.8/1/1.2 uF with tantalum/electrolytic wording and separate 100 nF X7R. Retain the effective-C check at 1.23 V across tolerance, temperature and aging, the <=0.5 ohm ESR screen, and regulator startup/stability qualification. The primary references below retain the source evidence; Git retains the earlier analysis.
 
 ## Other domains and layout
 
 USB input capacitors are in [usb_input.md](usb_input.md), bridge allocations in [usb_vcp.md](usb_vcp.md). Buck input and bootstrap capacitors are separate from output C; bootstrap connects CB to SW, not ground. Bridge B1-B061/062/063 counts remain TBD and do not duplicate main or core capacitors.
 
 Place bypass at each supply pin with short return to the ground plane and bulk near its load. No added ferrite or external bulk is implied. Validate actual pin count/rail allocation, effective capacitance, regulator stability, load steps, startup charging and rail noise under B1-Q002/005/011. No hardware validation is claimed.
+
+## Retained primary references
+
+[ST DS12288 Rev6 Figure 16](https://www.st.com/resource/en/datasheet/stm32g474rb.pdf), [Microchip DS60001479J Table 45-21 and Figure/Table 53-1](https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-C20-C21-Family-Data-Sheet-DS60001479J.pdf), and [TCAN341x supply guidance section 8.4](https://www.ti.com/lit/ds/symlink/tcan3413.pdf) support the allocation review. Retain a bypass at every applicable SAM VDDIN/VDDIO/VDDANA supply pair; reconcile exact package counts before capture. Main-rail ramp/load-step checks include internal-core charging. No extra external breakout bulk is authorized.

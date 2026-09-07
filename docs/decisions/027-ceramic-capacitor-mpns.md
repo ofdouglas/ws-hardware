@@ -5,7 +5,7 @@ status: accepted
 scope: Board 1 decoupling and input timing
 created: 2026-09-06
 accepted_by: User instruction "Use CL21B105KAFNFNE for SAM VDDCORE. Commit to all of the capacitor choices."
-supersedes: none; completes category choices and ADR-026 ceramic SAM-core selection
+supersedes: none; completes category choices and ADR-026 (026-sam-core-ceramic.md) ceramic SAM-core selection
 superseded_by: none
 ---
 
@@ -27,4 +27,4 @@ Retain the accepted ADR-025 buck capacitors and inductor. Do not substitute the 
 
 Exact manufacturer links are recorded in bom.csv. Acceptance freezes MPN selection, not effective capacitance, regulator stability, footprints or hardware performance. SAM VDDCORE remains one separate 1 uF plus 100 nF network per MCU; preserve the datasheet interpretation and qualification boundary in 026-sam-core-ceramic.md. No nominal capacitance or USB-current calculation changes. Bridge support quantities still need enumeration; do not duplicate reserved capacitors.
 
-Resistor candidates RMCF0805FT10K0 and RL1632R-1R00-F are evaluated in passive_review.md, not accepted by this capacitor decision.
+Resistor candidates RMCF0805FT10K0 and RL1632R-1R00-F are evaluated in https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/passive_review.md, not accepted by this capacitor decision.

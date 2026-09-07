@@ -23,7 +23,7 @@ Additional RS-485 transceivers, STM32-only CAN3 and further external connectivit
 ## Context / consequences
 This resolves the Rev A networking scope. It narrows the earlier broad statement that external connectors were deferred: these three signal interfaces are now explicitly included. B1-R013 is superseded by B1-R018 to preserve its history. USB-only active-PC power and UART isolation (ADR-001), clock requirements (ADR-005), and the exclusion of the full backbone/test architecture (ADR-003) remain in force.
 
-Exact PHYs are still candidates. Half-duplex non-isolated RS-485, 8-position terminal order and two grounds are implementation proposals. See transceivers_and_power.md for the shortlist, sources and estimates.
+Exact PHYs are still candidates. Half-duplex non-isolated RS-485, 8-position terminal order and two grounds are implementation proposals. See https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/transceivers_and_power.md for the shortlist, sources and estimates.
 
 ## Acceptance and review
 USR-05 supplies feature scope, not approval of specific transceivers, connector pin order, electrical limits or unrestricted future USB power. Verify the complete bus termination and off-board signal/protection geometry before schematic approval.

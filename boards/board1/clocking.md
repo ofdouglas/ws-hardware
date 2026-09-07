@@ -15,7 +15,7 @@ Updated: 2026-09-06 · Physical allocation and bench validation: pending
 | Flow-control wiring | TX, RX, RTS, CTS, all with power-off isolation |
 | Nominal frame for initial validation | 8N1 (implementation proposal) |
 
-ST describes independent USART clock domains, DMA and hardware flow control in [DS12288, §3.29](https://www.st.com/resource/en/datasheet/stm32g474rb.pdf). Confirm the selected instance's clock mux and all four signals in the exact LQFP64 allocation; no STM32 USART instance or physical pad is assigned yet. Do not substitute LPUART without a separate feasibility review.
+ST describes independent USART clock domains, DMA and hardware flow control in [DS12288, §3.29](https://www.st.com/resource/en/datasheet/stm32g474rb.pdf). Confirm the selected instance's clock mux and all four signals in the exact LQFP64 allocation; draft assignments are in pinmap.md, with exact mux/pad verification still open. Do not substitute LPUART without a separate feasibility review.
 
 Calculated from 168 MHz and 12 Mbaud:
 
@@ -43,7 +43,7 @@ Zero divider error does not mean zero oscillator error or a guaranteed applicati
 
 FTDI pin-function directions are documented in [FT232H v2.2 §3.5.1](https://ftdichip.com/wp-content/uploads/2024/09/DS_FT232H.pdf); physical implementation still requires current-datasheet reconciliation. Preserve active-low handshake semantics; do not connect RTS output to RTS output. Use two channels in each direction. Hardware flow control is required wiring capability; enable the corresponding STM32 and PC-driver modes for high-rate tests.
 
-Place the bridge and isolation close to the STM32. Choose non-inverting isolation with specified power-off behavior, propagation delay, pulse-width distortion and loading adequate for the 83 ns bit period. Default CTS to inactive on the powered receiving side while disconnected; default RX to idle high where appropriate. Pulls must be referenced to the appropriate powered domain. Do not let added pulls defeat isolation or suspend-current limits. Exact buffer, OE/power-good logic and resistor values remain B1-Q002.
+Place the bridge and isolation close to the STM32. Choose non-inverting isolation with specified power-off behavior, propagation delay, pulse-width distortion and loading adequate for the 83 ns bit period. Default CTS to inactive on the powered receiving side while disconnected; default RX to idle high where appropriate. Pulls must be referenced to the appropriate powered domain. Do not let added pulls defeat isolation or suspend-current limits. SN74LV125APWR is selected ADR-013; OE/default logic, pulls and timing qualification remain B1-Q002.
 
 Plan DMA and bounded buffering for sustained traffic. Verify RTS/CTS reaction time and bytes already in flight under USB stalls and simultaneous CAN/UART load. Peripheral automatic RTS must not be assumed to protect an arbitrary software DMA ring from overflow.
 
@@ -51,11 +51,11 @@ Plan DMA and bounded buffering for sustained traffic. Verify RTS/CTS reaction ti
 
 | Device | Reference requirement | Unresolved implementation |
 |---|---|---|
-| GW | Dedicated external main crystal -> PLL -> 168 MHz core and VCP kernel | Crystal frequency/MPN, PLL and FDCAN clocks, voltage scaling/boost and flash settings |
-| SAM0 | Dedicated external main crystal -> link clock tree | Crystal frequency/MPN, DPLL/GCLK/SERCOM/CAN settings |
+| GW | Dedicated external main crystal -> PLL -> 168 MHz core and VCP kernel | Selected 12 MHz crystal; PLL and FDCAN clocks, voltage scaling/boost and flash settings |
+| SAM0 | Dedicated external main crystal -> link clock tree | Selected 12 MHz crystal; DPLL/GCLK/SERCOM/CAN settings |
 | SAM1 | Same policy; independent crystal | Same review as SAM0 |
 | SAM2 | Same policy; independent crystal | Same review as SAM0 |
-| FT232HL | Existing independent 12 MHz crystal proposal | Exact crystal and loading |
+| FT232HL | Selected independent 12 MHz crystal | Loading/startup qualification |
 
 SAM C21 includes a 0.4–32 MHz main crystal oscillator and frequency synthesis; consult the exact ordering variant and electrical limits when setting core and peripheral speeds. [Microchip DS60001479J, configuration summary](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU32/ProductDocuments/DataSheets/SAM-C20-C21-Family-Data-Sheet-DS60001479J.pdf)
 
@@ -67,11 +67,7 @@ The SAM ring and shared open-drain UART target several Mbaud, with exact values 
 
 B1-Q008 owns full clock-tree/crystal implementation. Verify exact part and errata, PLL operating limits, high-speed voltage/flash configuration, simultaneous peripheral clocks, oscillator startup/drive margin, component tolerances and load networks. Then test full-duplex 12 Mbaud with flow-control stalls, power transitions and competing traffic. No pinmux, crystal selection or end-to-end timing sign-off is implied by the arithmetic above.
 
-Proposed next-step choices: [oscillator and SWD/debug/flash options](oscillator_debug_options.md). These do not assign pads or accept implementation choices; see B1-Q004/005/008.
-
-USR-16 prefers a common 12 MHz crystal MPN for all five devices. See [candidate research](crystal_candidates.md); exact crystal and load networks remain B1-Q008.
-
-Current selection — USR-19 / [ADR-014](../../docs/decisions/014-smaller-12mhz-crystal.md): smaller common crystal selected for the four MCU oscillators; ADR-017 separately proposes an accurate FT232HL crystal; qualification remains B1-Q008; see BOM B1-B014/019/020. Earlier candidate/unselected statements are historical. Load networks and electrical/pad/footprint qualification remain open under B1-Q008/B1-Q005. Assembly: 0805 preferred, 0603 acceptable, no 0402 or smaller; smaller crystals may be considered if leaded.
+Current crystals and initial load capacitors are accepted ADR-014/030/031; see [crystal networks](crystal_networks.md). Clock-tree and oscillator qualification remain open.
 
 ## Smaller crystal accuracy screen for MCU links
 

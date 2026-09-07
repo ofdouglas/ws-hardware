@@ -25,15 +25,15 @@ Use TPS62902RPJR with XGL4020-222MEC, 1 MHz automatic PFM/PWM, internal 3.3 V se
 TPS6216x offers less efficiency margin; SC189 remains available for comparison. The preferred RPJ package needs reflow and reviewed layout. Neither typical curves nor the 2 A output rating prove USB compliance. Later 24 V input requires its own stage; TPS62902 is rated only to 17 V operating input.
 
 ## Evidence and acceptance criteria
-See [complete circuit proposal](../../boards/board1/buck_converter.md) for primary sources, pin connections, component values, efficiency envelope and validation matrix. Accepting the chip and qualifying performance are separate actions. Exact passives/footprints, input switch, startup and measurements remain open.
+See [complete circuit proposal](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/buck_converter.md) for primary sources, pin connections, component values, efficiency envelope and validation matrix. Accepting the chip and qualifying performance are separate actions. Exact passives/footprints, input switch, startup and measurements remain open.
 
 ## Revisit trigger
 Failure of the specified efficiency or electrical checks, manufacturing constraints, or an explicit changed power requirement.
 
 ## Assembly review update — USR-09
 
-ADR-009 now requires package justification. This proposed QFN design remains unaccepted and is held while leaded alternatives are evaluated in [the shortlist](../../boards/board1/buck_leaded_shortlist.md). Do not implement it as a settled choice or transfer its efficiency estimate to another chip.
+ADR-009 now requires package justification. This proposed QFN design remains unaccepted and is held while leaded alternatives are evaluated in [the shortlist](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/buck_leaded_shortlist.md). Do not implement it as a settled choice or transfer its efficiency estimate to another chip.
 
 ## USR-13 clarification
 
-The maintainer requires efficiency at full networking load on USB; light-load efficiency is not a selection criterion. Earlier discussion of a 90% floor across 100–600 mA is historical and no longer controls selection. See boards/board1/sc189_decoupling.md (repository-relative) for the new candidate allocation. No converter or capacitor MPN is frozen.
+The maintainer requires efficiency at full networking load on USB; light-load efficiency is not a selection criterion. Earlier discussion of a 90% floor across 100–600 mA is historical and no longer controls selection. See https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/sc189_decoupling.md (repository-relative) for the new candidate allocation. No converter or capacitor MPN is frozen.

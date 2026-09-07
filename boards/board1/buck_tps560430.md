@@ -1,6 +1,6 @@
 # TPS560430 Rev A passive design
 
-Status: passive MPNs accepted by ADR-025; electrical qualification pending. Updated 2026-09-06. Authority: ADR-021 buck, ADR-022 input ramp, ADR-024 inverter. This is the current buck implementation note; buck_converter.md retains older converter history.
+Status: passive MPNs accepted by ADR-025; electrical qualification pending. Updated 2026-09-06. Authority: ADR-021 buck, ADR-022 input ramp, ADR-024 inverter. This is the current buck implementation note; Git retains older converter history.
 
 ## Circuit
 

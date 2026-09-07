@@ -17,7 +17,7 @@ sources: [USR-19]
 
 Select ECS-120-20-3X-EN-TR in place of ECS-120-18-5PX-CKM-TR for the existing common-crystal plan. Retain five independent oscillators and separate load networks. Exact entries are BOM B1-B014/019/020. The maintainer explicitly selects this part after the smaller-package comparison. This supersedes ADR-012's MPN selection and preserves its history.
 
-The 7.0 x 4.1 x 2.3 mm leaded package reduces assembly area. It changes CL from 18 to 20 pF, maximum ESR from 50 to 60 ohms, and maximum crystal drive from 500 to 100 uW. Recalculate each load network and oscillator startup/drive margin. Source: [ECS CSM-3X Rev.2017, pp.1–2](https://ecsxtal.com/store/pdf/CSM-3X.pdf) and [dated exact-part evidence](../../boards/board1/crystal_candidates.md).
+The 7.0 x 4.1 x 2.3 mm leaded package reduces assembly area. It changes CL from 18 to 20 pF, maximum ESR from 50 to 60 ohms, and maximum crystal drive from 500 to 100 uW. Recalculate each load network and oscillator startup/drive margin. Source: [ECS CSM-3X Rev.2017, pp.1–2](https://ecsxtal.com/store/pdf/CSM-3X.pdf) and [dated exact-part evidence](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/crystal_candidates.md).
 
 Selection acceptance does not resolve the known accuracy conflict: ±30 ppm initial plus ±50 ppm temperature stability already exceeds the conservative FT232HL ±30 ppm screen, before aging and loading error. B1-Q008 blocks clock implementation sign-off, especially the FTDI oscillator. No waiver of FTDI electrical requirements is inferred. Resolve with evidence and, if necessary, a separately accepted FTDI crystal exception before schematic freeze. MCU compatibility also remains unverified. No alternate footprint is authorized.
 

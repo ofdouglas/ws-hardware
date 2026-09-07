@@ -17,4 +17,4 @@ Nominal CT sizing gives 4.03 ms 10–90% at 5 V and about 5 ms full ramp, not gu
 
 # Authority and checks
 
-[Current circuit and operating points](../../boards/board1/vbus_protection_proposal.md) owns implementation details and remaining questions. Part selection is not hardware qualification. CT timing is typical; input-transient attenuation does not guarantee an FTDI-safe clamp during already-on events. Revisit on measured failures, inadequate margin or changed supply scope, not preference alone.
+[Current circuit and operating points](../../boards/board1/usb_input.md) owns implementation details and remaining questions. Part selection is not hardware qualification. CT timing is typical; input-transient attenuation does not guarantee an FTDI-safe clamp during already-on events. Revisit on measured failures, inadequate margin or changed supply scope, not preference alone.

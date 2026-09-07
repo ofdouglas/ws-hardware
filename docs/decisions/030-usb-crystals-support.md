@@ -6,7 +6,7 @@ scope: Board 1
 created: 2026-09-06
 accepted_by: Explicit user selections and declaration that crystal candidates are finalized
 supersedes: ADR-017 provisional FTDI MPN status; ADR-024 47 kohm tolerance only
-superseded_by: none
+superseded_by: ADR-031 (REF resistor MPN only)
 ---
 
 Accept USB-B1HSB6 (ED2983-ND), RC0805FR-072K2L for EEPROM DO series resistance, and ERJ-6GEYJ473V for the 47 kohm EN pull-down (5% accepted). Finalize ECS-120-18-5PX-CKM-TR for FTDI; retain ECS-120-20-3X-EN-TR for all four MCUs. Crystal loading and electrical qualification remain open.

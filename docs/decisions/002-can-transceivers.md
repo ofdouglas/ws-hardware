@@ -27,4 +27,4 @@ Resolve B1-Q003/004: target arbitration/data rates, geometry/external access, te
 ## Revisit trigger
 A verified electrical mismatch, changed bus requirements, or material sourcing/lifecycle issue.
 
-Shortlist and power evidence: [transceivers_and_power.md](../../boards/board1/transceivers_and_power.md). Rev A terminal scope is retained in ADR-007; TCAN3413DR selection is accepted by USR-06; implementation review remains open.
+Shortlist and power evidence: [https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/transceivers_and_power.md](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/transceivers_and_power.md). Rev A terminal scope is retained in ADR-007; TCAN3413DR selection is accepted by USR-06; implementation review remains open.
