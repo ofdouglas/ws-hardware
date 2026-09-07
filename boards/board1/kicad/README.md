@@ -6,4 +6,4 @@ Create the real `board1.kicad_pro`, `board1.kicad_sch`, and `board1.kicad_pcb` w
 
 Before layout, reconcile the accepted requirements, verified pinmap, schematic and planning BOM. Record actual ERC/DRC findings and reviewed exceptions when tools can run. Keep generated fabrication/assembly outputs tied to a reviewed revision, separate from source CAD.
 
-The portable sym-lib-table registers SAMC21, TPS22810DBVT, TCAN3413DR, TPS560430X3FDBVR, AT93C56B-SSHM-B and historical SC189 libraries. See ../../../libraries/imports/README.md for archived CAD and the STM32G473/STM32G474 conflict.
+The portable sym-lib-table registers 12 local libraries, including historical SC189. See [the catalog](../../../libraries/symbols/README.md) and [selected IC coverage](../../../libraries/symbols/remaining_ic_symbol_checks.md). STM32G474RBTx and FT232H use the standard global KiCad libraries. See ../../../libraries/imports/README.md for archived CAD and the STM32G473/STM32G474 conflict.

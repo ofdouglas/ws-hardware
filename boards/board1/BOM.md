@@ -64,6 +64,8 @@ Current design uses TPS560430, TPS22810 with 47 nF CT, no external FTDI supervis
 | B1-B068 | 1 | Fixed local RS-485 termination resistor | TE Connectivity Passive Product / CRGP0805F120R | 120 ohm +/-1%; 1/3 W; 0805 | ADR-034; ADR-035 |
 | B1-B069 | 2 | CAN termination jumper headers | Sullins Connector Solutions / PRPC002SAAN-RC | 2 positions; gold flash; Through-hole; 1x2; 2.54 mm | ADR-034; ADR-035 |
 | B1-B070 | 2 | CAN termination shunts | Sullins Connector Solutions / SPC02SYAN | Gold flash; 1x2; 2.54 mm; closed-top shunt | ADR-034; ADR-035 |
+| B1-B072 | 2 | External CAN pair TVS arrays | Texas Instruments / ESD2CAN24DBZRQ1 | Two channels; +/-24 V standoff; SOT-23-3 DBZ | ADR-037 |
+| B1-B073 | 1 | External RS-485 pair TVS array | Texas Instruments / ESDS452DBZR | Two channels; +/-5.5 V standoff; SOT-23-3 DBZ | ADR-038 |
 
 ## Decided scope; exact parts remain open
 
@@ -77,12 +79,12 @@ Current design uses TPS560430, TPS22810 with 47 nF CT, no external FTDI supervis
 
 | ID | Qty | Function | Manufacturer / MPN | Value / package | Authority |
 |---|---:|---|---|---|---|
-| B1-B007 | TBD | Remaining CAN interface protection | TBD / TBD | TBD; TBD | ADR-002; ADR-034 |
+| B1-B007 | TBD | Remaining CAN interface protection | TBD / TBD | TBD; TBD | ADR-002; ADR-034; ADR-037 |
 | B1-B008 | TBD | Remaining open-drain UART support network | TBD / TBD | TBD; TBD | ADR-033 |
 | B1-B010 | TBD | Remaining MCU boot/reset support | TBD / TBD | TBD; TBD | ADR-004 |
 | B1-B011 | TBD | Test points | TBD / TBD | TBD; TBD | NA |
 | B1-B017 | TBD | Remaining unenumerated USB/bridge support network | TBD / TBD | TBD; TBD | ADR-001; ADR-018; ADR-024 |
-| B1-B023 | TBD | Remaining RS-485 protection and control network | TBD / TBD | TBD; TBD | ADR-007; ADR-034; ADR-036 |
+| B1-B023 | TBD | Remaining RS-485 protection and control network | TBD / TBD | TBD; TBD | ADR-007; ADR-034; ADR-036; ADR-038 |
 | B1-B026 | 5 | LED resistors | KOA Speer Electronics Inc. / RK73H2ATTD3301F | 3.3 kohm +/-1%; 0.25 W; 0805 | ADR-007 |
 | B1-B060 | TBD | Debug UART support and off-state protection | TBD / TBD | TBD; TBD; 0805 passives preferred | ADR-032 |
 
@@ -115,3 +117,9 @@ ADR-033 / USR-27 decides the second SN74LV125APWR: total two ICs across B1-B016/
 B1-B002 and B1-B044 now have project-local symbol IDs and default-footprint assignments in bom.csv; see [symbol catalog](../../libraries/symbols/README.md). Both remain unverified at the board-allocation level. The imported SC189 symbol is historical and does not add a BOM row.
 
 B1-B003/012/013 now have exact-part local symbols and standard-footprint assignments in bom.csv. See the [symbol checks](../../libraries/symbols/symbol_checks.md); allocation evidence remains unverified.
+
+CAN TVS arrays decided ADR-037; B1-B007 excludes B1-B072. [RS-485 alternatives](rs485_tvs_alternatives.md) remain proposed under B1-B023.
+
+ESDS452DBZR is decided ADR-038 in B1-B073. Current remaining choices and implementation work: [BOM closeout](bom_closeout.md).
+
+[Selected IC symbol coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) now includes all 13 distinct selected ICs/arrays: six new local libraries plus the existing local and default KiCad symbols. B1-B015/016/018/021/066/072/073 receive exact local IDs; B1-B001/004 use default STM32/FTDI IDs. B1-B004 footprint remains TBD. Evidence remains unverified.

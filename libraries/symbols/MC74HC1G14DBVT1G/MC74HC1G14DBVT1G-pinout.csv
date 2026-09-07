@@ -1,0 +1,6 @@
+pin,name,electrical_type
+1,NC,no_connect
+2,A,input
+3,GND,power_in
+4,Y,output
+5,VCC,power_in

@@ -73,3 +73,9 @@ Local KiCad symbol libraries for SAMC21 and TPS22810DBVT are registered in kicad
 TCAN3413DR, TPS560430X3FDBVR and AT93C56B-SSHM-B are now available in the project symbol table, with [pin evidence and export checks](../../libraries/symbols/symbol_checks.md). BOM assignments are updated; no schematic implementation is claimed.
 
 [ADR-036](../../docs/decisions/036-rs485-bias.md) / USR-30 accepts two 330 ohm 1% bias resistors in B1-B071: 3V3_SYS to A (ST3485EBDR pin6), B (pin7) to GND. Exact MPN and implementation remain unverified. [TVS recommendations](tvs_candidates.md) remain proposed under B1-Q004/009.
+
+[ADR-037](../../docs/decisions/037-can-tvs.md) / USR-31 accepts B1-B072: two ESD2CAN24DBZRQ1 arrays near the CAN terminal pairs, DBZ pins1/2 to CANH/CANL and pin3 to GND, independent of termination jumpers. Exact CAD connectivity/footprint and transient qualification remain B1-Q004. [RS-485 TVS alternative](rs485_tvs_alternatives.md) remains proposed under B1-Q009.
+
+[ADR-038](../../docs/decisions/038-rs485-tvs.md) / USR-32 accepts ESDS452DBZR B1-B073: DBZ pins1/2 to A/B, pin3 GND. Normal operation requires both RS-485 wires within +/-5.5 V of local Board 1 ground. Actual endpoint/offset and transient qualification remain B1-Q009. See [BOM closeout recommendations](bom_closeout.md).
+
+All selected ICs and multi-line protection arrays now have [symbol assignments and checks](../../libraries/symbols/remaining_ic_symbol_checks.md). Six additional local symbols cover B1-B015/016/018/021/066/072/073; STM32 and FTDI use installed default symbols. Board qualification remains open.

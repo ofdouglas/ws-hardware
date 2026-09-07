@@ -144,3 +144,11 @@ Maintainer explicitly instructs: “commit the second SN74LV125APWR for OD UART 
 ## USR-30 — RS-485 bias acceptance and TVS research
 
 2026-09-06: Maintainer accepts the recommended 330 ohm RS-485 bias and requests CAN/RS-485 TVS recommendations. ADR-036 accepts network/value, not an unspecified bias MPN or TVS selection.
+
+## USR-31 — CAN TVS acceptance and RS-485 TVS alternatives
+
+2026-09-06: Maintainer selects TI ESD2CAN24DBZRQ1 and asks for another RS-485 part that fits better. In the TVS discussion this authorizes alternative protection research; it does not select a replacement transceiver or restricted common-mode envelope. ADR-037 records CAN acceptance.
+
+## USR-32 — RS-485 TVS acceptance and remaining BOM review
+
+2026-09-06: Maintainer accepts TI ESDS452DBZR following disclosure of its +/-5.5 V working range, then requests suggestions for unresolved BOM items. ADR-038 records selection and its disclosed interface restriction. Additional closeout proposals are not accepted.
