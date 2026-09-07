@@ -14,3 +14,7 @@
 Run `python3 scripts/board1_documents.py` and `python3 boards/board1/vbus_hotplug_model.py --check` from the repository root. See [model maintenance](../boards/board1/models.md) for inputs and generation commands.
 
 Limits: external links/stock, every Markdown fragment, workbook internals, physical footprints, circuit behavior and hardware immunity were not requalified. Library research history is retained as explicitly labeled implementation evidence. Existing B1-Q002–006 and B1-Q008–014 remain open. The power model still needs real load, bias, startup/suspend and efficiency qualification; reproducing its arithmetic does not close those questions.
+
+## Review follow-up — 2026-09-07
+
+Corrected the GPIO follow-up allocation to B1-B027 and the unallocated resistor proposal (B1-Q010), and restored immutable TPS62902 research links for historical B1-B032–035. The pinmap converter overview was already corrected by PR #5. Quantity overrides now validate CSV purchase/placement meaning and header cut counts under ADR-039. Power results explicitly identify scenarios and validate their load/bridge inputs, including the conservative break-even allowance under ADR-021. Added seven regression tests covering rejected inconsistencies and valid data updates. No selected parts, counts, numerical power results, ADR authority or hardware qualification changed.

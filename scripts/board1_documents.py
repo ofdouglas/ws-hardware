@@ -21,6 +21,10 @@ def quantities(row, rules):
         return 0, 0, 'excluded'
     override = rules['overrides'].get(row['item_id'])
     if override:
+        basis = override['csv_quantity_basis']
+        assert basis in {'purchase_quantity', 'placement_quantity'}, row['item_id']
+        assert row['quantity'] == str(override[basis]), (
+            f"{row['item_id']}: CSV quantity disagrees with {basis}")
         return override['purchase_quantity'], override['placement_quantity'], override['unit']
     return row['quantity'], row['quantity'], 'components; planning allocation'
 
@@ -90,6 +94,18 @@ def audit():
     assert set(rules['overrides']) <= set(ids)
     by_id = {r['item_id']: r for r in rows}
     cuts = rules['header_cut']
+    source = by_id[cuts['source_item']]
+    source_buy = quantities(source, rules)[0]
+    cut_ids = [cut['item'] for cut in cuts['cuts']]
+    assert len(cut_ids) == len(set(cut_ids)), 'duplicate header cut items'
+    for cut in cuts['cuts']:
+        row = by_id[cut['item']]
+        buy, place, _ = quantities(row, rules)
+        assert place == cut['pieces'], f"{cut['item']}: placement quantity disagrees with cut schedule"
+        assert row['mpn'] == source['mpn'], cut['item']
+        if cut['item'] != cuts['source_item']:
+            assert buy == 0, f"{cut['item']}: cut pieces must not add purchases"
+    assert source_buy == int(source['quantity']), 'source-strip purchase count disagrees with CSV'
     assert sum(c['pieces']*c['positions_each'] for c in cuts['cuts']) + cuts['spare_positions_unallocated'] == cuts['positions_per_strip']
     assert by_id['B1-B027']['mpn'] == by_id['B1-B059']['mpn'] == 'PRPC040SAAN-RC'
     assert quantities(by_id['B1-B027'], rules)[:2] == (1, 4)
@@ -122,10 +138,15 @@ def audit():
     assert m['switch_mpn'] == by_id['B1-B044']['mpn']
     assert m['ct_nF'] == 47 and m['supervisor_fitted'] is False
     assert math.isclose(main_load(m['load_scenarios']['loaded_conservative'],m['topology']),m['main_load_conservative_mA'],abs_tol=1e-9)
+    assert m['bridge_control_allowance_mA'] == m['load_scenarios']['loaded_conservative']['bridge_5v'], 'conservative bridge allowance disagrees with scenario'
     r = m['input_path_resistance_ohm_provisional']
     for result in m['results']:
-        bridge = result['bridge_control_allowance_mA']
-        calculated = usb_current(result['connector_V'],r,bridge,result['main_load_mA'],result['efficiency_assumption'])
+        scenario = m['load_scenarios'][result['scenario']]
+        load = main_load(scenario, m['topology'])
+        bridge = scenario['bridge_5v']
+        assert math.isclose(load, result['main_load_mA'], abs_tol=1e-9), f"{result['scenario']}: result load disagrees with scenario"
+        assert bridge == result['bridge_control_allowance_mA'], f"{result['scenario']}: result bridge allowance disagrees with scenario"
+        calculated = usb_current(result['connector_V'],r,bridge,load,result['efficiency_assumption'])
         assert abs(calculated-result['usb_mA']) < 0.002, (calculated,result)
         assert abs(result['connector_V']-r*calculated/1000-result['buck_input_V']) < 0.0001
     limit = m['usb_configured_limit_mA'] / 1000

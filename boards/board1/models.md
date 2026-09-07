@@ -16,12 +16,13 @@ From the repository root, using Python 3 (standard library only):
 ```sh
 python3 scripts/board1_documents.py --write
 python3 scripts/board1_documents.py
+python3 -m unittest discover -s scripts -p 'test_*.py'
 python3 boards/board1/vbus_hotplug_model.py --check
 ```
 
-The first command regenerates BOM.md and audits; the second checks without modifying files. Neither generates an order list. Header purchases are one strip total; four GPIO pieces and four debug pieces are placement counts. Fitted ground-pin count/MPN remain unknown, and the eight spare strip positions are unallocated. Superseded parts have zero buy/place counts.
+The first command regenerates BOM.md and audits; the second checks without modifying files. Neither generates an order list. Header purchases are one strip total; four GPIO pieces and four debug pieces are placement counts. Fitted ground-pin count/MPN remain unknown, and the eight spare strip positions are unallocated. Superseded parts have zero buy/place counts. Each quantity override declares whether its CSV quantity counts purchases or placements; the audit compares that quantity with the override and checks placed header pieces against the cut schedule. The unittest command exercises conflicting quantities and stale scenario results in temporary copies.
 
-Current power equation uses amperes: Iusb = Ibridge + (3.3*I3v3)/(eta*(Vconnector-Rpath*Iusb)). The audit checks its low-current root against retained rounded results (0.002 mA tolerance), plus break-even at 500 mA. It also checks original future-scenario arithmetic with zero path resistance. Numerical reproduction does not qualify allowances, converter efficiency, bias currents, inrush or suspend behavior.
+Current power equation uses amperes: Iusb = Ibridge + (3.3*I3v3)/(eta*(Vconnector-Rpath*Iusb)). The audit checks its low-current root against retained rounded results (0.002 mA tolerance), plus break-even at 500 mA. Each result names its load scenario; main-load and bridge-current fields must match that scenario before the current calculation is checked. The conservative bridge allowance must also match the break-even input. It also checks original future-scenario arithmetic with zero path resistance. Numerical reproduction does not qualify allowances, converter efficiency, bias currents, inrush or suspend behavior.
 
 Migration: the former top-level scenarios/results/buck_proposal keys are removed from power_budget.json. In-repository consumers were Markdown references only; no existing code read those keys. Expanded inputs/results are in power_budget_future.json. Obsolete converter/efficiency proposals and old Rev A no-path results are available in Git history. The active current_rev_a_input key and existing numerical operating points are preserved. The hotplug paths and numerical snapshot are unchanged; its script now supports explicit output paths instead of always writing /tmp.
 

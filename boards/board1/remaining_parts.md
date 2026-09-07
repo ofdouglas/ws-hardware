@@ -10,7 +10,7 @@ Status: current index through ADR-039. [Requirements](requirements.md#open-quest
 | RS-485 DE and /RE defaults, residual support and bias backfeed behavior | B1-B023 | B1-Q009 |
 | Determine whether CAN residual protection needs any components beyond accepted TVS arrays | B1-B007 | B1-Q003/004 |
 | Fitted scope-ground pin MPN/count/locations; PCB pad locations | B1-B075/011 | B1-Q004 |
-| GPIO series-resistor proposal, mux and load contract | B1-B026 and pinmap | B1-Q005/010 |
+| GPIO series-resistor proposal, mux and load contract | B1-B027 headers; [resistor proposal](gpio_breakouts.md) has no BOM allocation; pinmap | B1-Q005/010 |
 | USB shield bond, capacitor corners, hotplug/startup/suspend and full-load budget | See USB input and decoupling | B1-Q002/011 |
 | Oscillator gain/drive/frequency, bus rates, remote kit population, connector/footprint checks | Selected parts retained | B1-Q003/004/008/009 |
 
