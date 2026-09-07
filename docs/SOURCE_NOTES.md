@@ -38,7 +38,7 @@ User accepts the power architecture and power-off UART isolation. Requests 12 Mb
 
 ## USR-05 — Rev A external buses and expanded USB estimate (2026-09-06)
 
-User specifies FD_CAN_A, FD_CAN_B, all onboard UARTs, VCP and one external RS-485 in Rev A. Both CANs and RS-485 go to terminal connections with ground(s). Added transceivers and connections belong to later revisions. Requests a transceiver search and 500 mA USB estimate for all planned RS-485 plus STM32-only CAN3. Expanded calculation assumes three total RS-485 PHYs from the full draft and nine CAN PHYs total. Primary-source links, dated sourcing limitations and numerical assumptions are in boards/board1/transceivers_and_power.md. ADR-006 records scope; part choices remain proposed.
+User specifies FD_CAN_A, FD_CAN_B, all onboard UARTs, VCP and one external RS-485 in Rev A. Both CANs and RS-485 go to terminal connections with ground(s). Added transceivers and connections belong to later revisions. Requests a transceiver search and 500 mA USB estimate for all planned RS-485 plus STM32-only CAN3. Expanded calculation assumes three total RS-485 PHYs from the full draft and nine CAN PHYs total. Primary-source links, dated sourcing limitations and numerical assumptions are in https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/transceivers_and_power.md. ADR-006 records scope; part choices remain proposed.
 
 ## USR-06 — Board 1 power reduction and family-scope clarification
 
@@ -50,7 +50,7 @@ User reaffirms one external STM32 RS-485 port in Rev A after considering its rem
 
 ## USR-08 — converter efficiency design target
 
-User requests a concrete buck converter design to meet the new 90% worst-case efficiency target and permits an alternate IC. This accepts the efficiency objective, not the assistant-proposed TPS62902, passive choices, 92% internal qualification margin or temperature/load envelope. Manufacturer sources and USB maximum-voltage correction are recorded in buck_converter.md.
+User requests a concrete buck converter design to meet the new 90% worst-case efficiency target and permits an alternate IC. This accepts the efficiency objective, not the assistant-proposed TPS62902, passive choices, 92% internal qualification margin or temperature/load envelope. Manufacturer sources and USB maximum-voltage correction are recorded in https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/buck_converter.md.
 
 ## USR-09 — assembly constraints and brief converter search
 
@@ -58,7 +58,7 @@ User finds the proposed QFN difficult to solder and requests a brief search for 
 
 ## USR-10 — SC189 evaluation
 
-User supplies typical SC189 efficiency plots and requests further evaluation. The plots are reference data, not instructions or approval. Full SOT23-specific curves and passive/startup constraints are discussed in boards/board1/sc189_evaluation.md. No MPN is newly accepted and the 90% target is not narrowed.
+User supplies typical SC189 efficiency plots and requests further evaluation. The plots are reference data, not instructions or approval. Full SOT23-specific curves and passive/startup constraints are discussed in https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/sc189_evaluation.md. No MPN is newly accepted and the 90% target is not narrowed.
 
 ## USR-11 — SC189 ownership correction and TPS62046 candidate
 
@@ -66,7 +66,7 @@ User explicitly corrects earlier ownership interpretation: SC189 is not on hand 
 
 ## USR-12 — DigiKey sourcing and future two-stage power
 
-User requires all parts to be sourced from DigiKey, proposes TPSM84203EAB for consideration, and clarifies the intended future power chain: 24 V input -> protection -> 5 V buck -> bridge/sequencing and 3.3 V buck -> MCUs/transceivers. This records future direction, not promotion of external power into Rev A or acceptance of the candidate converter. See boards/board1/tpsm84203_evaluation.md.
+User requires all parts to be sourced from DigiKey, proposes TPSM84203EAB for consideration, and clarifies the intended future power chain: 24 V input -> protection -> 5 V buck -> bridge/sequencing and 3.3 V buck -> MCUs/transceivers. This records future direction, not promotion of external power into Rev A or acceptance of the candidate converter. See https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/tpsm84203_evaluation.md.
 
 ## USR-13 — full-load efficiency and SC189 capacitance
 
@@ -119,7 +119,7 @@ Maintainer explicitly instructs: “add dedicated CBUS GPIOs for both reset and 
 
 ## USR-25 — Rev A connector MPN selections (2026-09-06)
 
-In the connector-selection task, the maintainer explicitly requests adding CNC Tech 3220-10-0100-00 (DigiKey 1175-1627-ND), Phoenix Contact 1989803, and Sullins PRPC040SAAN-RC (DigiKey S1011EC-40-ND) to the BOM as “decided.” ADR-026 records these exact MPNs as accepted in the existing debug, bus-terminal and GPIO rows. This does not accept the preceding proposed terminal order or GPIO cut schedule, or assert verified footprints/pin allocations.
+In the connector-selection task, the maintainer explicitly requests adding CNC Tech 3220-10-0100-00 (DigiKey 1175-1627-ND), Phoenix Contact 1989803, and Sullins PRPC040SAAN-RC (DigiKey S1011EC-40-ND) to the BOM as “decided.” ADR-026 (026-reva-connectors.md) records these exact MPNs as accepted in the existing debug, bus-terminal and GPIO rows. This does not accept the preceding proposed terminal order or GPIO cut schedule, or assert verified footprints/pin allocations.
 
 ## USR-26 — per-MCU debug UARTs
 

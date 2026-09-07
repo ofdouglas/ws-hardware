@@ -6,7 +6,7 @@ scope: Board 1 Rev A
 created: 2026-09-06
 accepted_by: Explicit user instruction to commit to MC74HC1G14DBVT1G
 supersedes: none; implements ADR-013 enable inversion
-superseded_by: none
+superseded_by: ADR-030 (47 kohm tolerance only)
 ---
 
 # Decision

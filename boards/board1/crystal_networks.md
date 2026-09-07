@@ -16,6 +16,17 @@ Place each crystal and two capacitors close to its IC; short quiet traces and sh
 
 Check startup across rails/temperature, drive level, and loaded frequency. FTDI's narrow remaining loading-error budget makes fine adjustment important; 1% capacitors alone do not establish frequency accuracy. Prefer measuring a buffered/divided clock output where available; avoid loading a crystal pin with an ordinary oscilloscope probe. No extra DNP trim footprints are implied by this proposal; change the fitted capacitor values if needed.
 
-Sources: [ST AN2867](https://www.st.com/resource/en/application_note/cd00221665.pdf), [FT232H oscillator example, section 6.3](https://ftdichip.com/wp-content/uploads/2020/07/DS_FT232H.pdf), [33 pF exact manufacturer sheet](https://yageogroup.com/download/specsheet/C0805C330F5GACTU), [27 pF exact manufacturer sheet](https://yageogroup.com/download/specsheet/C0805C270F5GACTU). FTDI source is historical v2.0; reconcile latest revision before sign-off. ECS crystal evidence is in crystal_candidates.md.
+Sources: [ST AN2867](https://www.st.com/resource/en/application_note/cd00221665.pdf), [FT232H oscillator example, section 6.3](https://ftdichip.com/wp-content/uploads/2020/07/DS_FT232H.pdf), [33 pF exact manufacturer sheet](https://yageogroup.com/download/specsheet/C0805C330F5GACTU), [27 pF exact manufacturer sheet](https://yageogroup.com/download/specsheet/C0805C270F5GACTU). FTDI source is historical v2.0; reconcile latest revision before sign-off. ECS crystal evidence is retained below.
 
 DigiKey: [33 pF](https://www.digikey.com/en/products/detail/kemet/C0805C330F5GACTU/2212505), [27 pF](https://www.digikey.com/en/products/detail/kemet/C0805C270F5GACTU/2212364). Listing availability is not a live stock guarantee. No hardware measurements performed.
+
+## Selected crystals and retained accuracy evidence
+
+| Allocation | MPN | Reviewed limits |
+|---|---|---|
+| Four MCU oscillators | ECS-120-20-3X-EN-TR | 12 MHz, CL 20 pF, ESR 60 ohm, initial +/-30 ppm, temperature +/-50 ppm (-40 to +85 C), first-year aging +/-5 ppm; maximum drive 100 uW |
+| FTDI oscillator | ECS-120-18-5PX-CKM-TR | 12 MHz, CL 18 pF, initial +/-10 ppm, temperature +/-10 ppm (-20 to +70 C), first-year aging +/-5 ppm; maximum drive 500 uW |
+
+[ECS CSM-3X Rev.2017](https://ecsxtal.com/store/pdf/CSM-3X.pdf) and [CSM-7X Rev.2020](https://ecsxtal.com/store/pdf/csm-7x.pdf) retain the mechanical, ordering and drive evidence. MCU body is 7.0 x 4.1 x 2.3 mm; FTDI body is 11.4 x 4.8 x 4.3 mm. Both are leaded SMT selections, accepted ADR-014/030. Exact land-pattern review remains open.
+
+FTDI first-year arithmetic is 10+10+5=25 ppm before loading, leaving 5 ppm against the reviewed +/-30 ppm recommendation ([FT232H v2.2 section 6.3](https://www.ftdichip.cn/Support/Documents/DataSheets/ICs/DS_FT232H.pdf)). This is not a lifetime or arbitrary-temperature aging guarantee. Reconcile the current FTDI revision and characterize loading/startup; do not apply FT4222H FAQ ESR limits to FT232H. MCU initial-plus-temperature screen is 80 ppm before aging/loading; complete peer and peripheral timing analysis in clocking.md.

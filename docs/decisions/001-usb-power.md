@@ -20,7 +20,7 @@ Use USB 2.0 Standard-B for power and a dedicated FT232HL VCP to STM32, following
 
 Evaluate the on-hand SC189ZSKTRT for 5V_SYS -> 3V3_SYS. Keep the bridge independently USB-powered. A controlled main-board power switch is accepted for enumeration/suspend behavior, consistent with the user-accepted USB-only, active-PC scope in B1-Q007/B1-R013. Power-off isolation between the bridge and STM32 UART is accepted, including TX/RX and RTS/CTS per ADR-005. Exact switch, isolation parts and regulator support circuitry remain implementation work; this acceptance does not freeze SC189 or its passives.
 
-See [USB power/VCP circuit proposal](../../boards/board1/usb_power_vcp.md) for domains, support components, budget equation, sources and checks. Native MCU USB and the 24 V backbone remain deferred; auxiliary output scope remains B1-Q001.
+See [USB power/VCP circuit proposal](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/usb_power_vcp.md) for domains, support components, budget equation, sources and checks. Native MCU USB and the 24 V backbone remain deferred; auxiliary output scope remains B1-Q001.
 
 ## Alternatives / consequences
 USB-B suits bench assembly and the requested simpler connector. USB-C remains technically possible but is no longer the preferred connector. Reusing FT232HL requires its external support components and programming. A main LDO would simplify the regulator circuit but dissipate more heat at substantial current. An independently powered main board would support operation through USB suspend but changes the power contract.

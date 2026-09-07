@@ -6,12 +6,16 @@ scope: Board 1 Rev A
 created: 2026-09-06
 accepted_by: Explicit user approval USR-18
 supersedes: ADR-001 main-switch implementation only
-superseded_by: ADR-019 (direct input-capacitance attachment only)
+superseded_by: ADR-019 (direct attachment); ADR-021 (SC189-specific converter references)
 ---
 
-# Current scope
+## Current authority (editorial reconciliation)
 
-ADR-019 adds an upstream attachment-ramp switch for both domains. The SC189 EN and UART isolation decisions below remain accepted; direct-attachment statements are historical.
+Retain omission of AP22653/separate main switch, independent bridge, PWREN# enable policy, SN74LV125APWR and its existing bypass allocation. [ADR-019](019-simple-vbus-input.md) replaces direct attachment; [ADR-021](021-tps560430-main-buck.md) replaces SC189 with TPS560430. [ADR-024](024-pwren-inverter.md) implements inversion; it does not replace isolation. Use [USB VCP](../../boards/board1/usb_vcp.md); enable/default and timing qualification remain open.
+
+Historical decision text below is retained as the record at acceptance; superseded clauses are not current implementation instructions.
+
+
 
 # Decision
 

@@ -21,7 +21,7 @@ CT follows the datasheet output designation for the timing-capacitor node. QOD i
 
 Assigned default footprint: `Package_TO_SOT_SMD:SOT-23-6` (installed KiCad footprint library). Confirmed pad set 1–6, no exposed pad, and 0.95 mm lead pitch. Final land-pattern dimensions, assembly clearances and thermal/current qualification remain B1-Q002; the allocation remains unverified. Do not substitute `TPS22810DRV`: its VIN/VOUT, GND, EN, CT and QOD numbering differs.
 
-Accepted board connections remain in boards/board1/vbus_protection_proposal.md and ADR-022; this library creation does not implement a circuit.
+Accepted board connections remain in boards/board1/usb_input.md and ADR-022; this library creation does not implement a circuit.
 
 ## Checks performed
 

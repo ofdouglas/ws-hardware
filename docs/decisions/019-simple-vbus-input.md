@@ -6,12 +6,16 @@ scope: Board 1 Rev A
 created: 2026-09-06
 accepted_by: User instruction to simplify and finish the previously accepted TPS22810 design
 supersedes: ADR-013 direct USB attachment of SC189 input capacitance only
-superseded_by: ADR-022 (47 nF CT and no supervisor; replaces interim ADR-020)
+superseded_by: ADR-020 (interim reset supervision, itself superseded by ADR-022); ADR-021 (SC189 references); ADR-022 (CT and reset); ADR-029 (damping dielectric/package/tolerance)
 ---
 
-# Current scope
+## Current authority (editorial reconciliation)
 
-ADR-020 adds a TLV803E supervisor holding FTDI in reset during ramp/qualification. The TPS22810 and its passives remain selected. The 14.9 uF figure below becomes 15.0 uF including the supervisor bypass.
+Retain TPS22810 topology, EN-to-VIN, QOD-to-OUT, SMF6.0A and direct bypass plus shunt RC damping. [ADR-022](022-fast-input-ramp.md) selects 47 nF CT and removes the interim [ADR-020](020-ftdi-supply-reset.md) supervisor. The current planning direct downstream allocation is 14.9 uF, not the interim 15.0 uF. [ADR-021](021-tps560430-main-buck.md) replaces SC189; [ADR-027](027-ceramic-capacitor-mpns.md) selects ceramics; [ADR-029](029-led-vbus-components.md) selects the damping branch and its X5R/5% changes. Use [USB input](../../boards/board1/usb_input.md); historical 100 ms/0.695 mA figures no longer apply.
+
+Historical decision text below is retained as the record at acceptance; superseded clauses are not current implementation instructions.
+
+
 
 # Decision
 
@@ -23,7 +27,7 @@ SC189 PWREN# enable policy and SN74LV125APWR remain ADR-013; data ESD remains AD
 
 # Evidence and consequences
 
-[Complete circuit, capacitor accounting and qualification checks](../../boards/board1/vbus_protection_proposal.md). TI's CT formula gives approximately 0.695 mA for the direct 14.9 uF; actual startup timing/current, internal regulator charging and ESD residual voltage are unverified. Exact passive MPNs are open. Selection is not fabrication or compliance qualification.
+[Complete circuit, capacitor accounting and qualification checks](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/vbus_protection_proposal.md). TI's CT formula gives approximately 0.695 mA for the direct 14.9 uF; actual startup timing/current, internal regulator charging and ESD residual voltage are unverified. Exact passive MPNs are open. Selection is not fabrication or compliance qualification.
 
 # Revisit trigger
 

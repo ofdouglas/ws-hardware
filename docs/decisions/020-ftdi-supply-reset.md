@@ -30,7 +30,7 @@ DigiKey ordering code: 296-TLV803EA42RDBZRCT-ND. Listing accessed 2026-09-06 ind
 - [TI TLV803E Rev J, pinout, electrical characteristics and timing](https://www.ti.com/lit/ds/symlink/tlv803e.pdf).
 - [TI legacy TLV803 Rev E, threshold table](https://www.ti.com/lit/ds/symlink/tlv803.pdf).
 - [DigiKey exact supervisor](https://www.digikey.com/en/products/detail/texas-instruments/TLV803EA42RDBZR/13545339).
-- [Current input circuit](../../boards/board1/vbus_protection_proposal.md).
+- [Current input circuit](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/vbus_protection_proposal.md).
 
 Verify schematic pinout, reset loading/edge behavior with the existing 10 nF, all startup and brownout defaults, USB attach/enumeration, preconfiguration current while in reset, low-voltage full-load stability, ramp completion before enable, suspend and ESD/hotplug performance. These remain unverified. The supervisor does not suppress overvoltage or limit buck startup current.
 

@@ -12,6 +12,6 @@ Calculated screens ignoring output-driver resistance:
 
 For ADC use, include the 220 ohm plus external source impedance in acquisition-time/settling analysis. For open-drain signals, include the resistor drop in VOL and pull-up analysis. GPIO voltage limits remain those of the exact MCU pin; no blanket 5 V tolerance. External drive while the board is off can still back-power through pin structures. A resistor alone is not ESD protection.
 
-Quantity is one per finally allocated spare GPIO signal (16 only if the proposed four signals per MCU is adopted). No additional signal-breakout scope, alternative/DNP footprints or protection ICs are authorized by this proposal. Keep final current, capacitance, off-state and pin-function contracts under B1-Q010.
+Quantity is one per finally allocated spare GPIO signal (16 for the accepted four signals per MCU; resistor selection remains proposed). No additional signal-breakout scope, alternative/DNP footprints or protection ICs are authorized by this proposal. Keep final current, capacitance, off-state and pin-function contracts under B1-Q010.
 
 Primary part source: https://www.te.com.cn/chn-zh/product-1-2176341-7.html ; DigiKey: https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CRGCQ0805F220R/8576343 . Calculations are ideal lumped-circuit estimates, not hardware validation.

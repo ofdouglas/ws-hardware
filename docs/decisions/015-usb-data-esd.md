@@ -6,7 +6,7 @@ scope: Board 1 Rev A USB D+/D-
 created: 2026-09-06
 accepted_by: Explicit user selection USR-20
 supersedes: none
-superseded_by: none
+superseded_by: ADR-016 (polarity/high-voltage protection scope only; data ESD retained)
 ---
 
 # Decision

@@ -5,9 +5,16 @@ status: accepted
 scope: Board 1 Rev A
 created: 2026-09-06
 accepted_by: User explicitly committed to TPS560430X3FDBVR
-supersedes: ADR-010 converter/filter selection and 30 uF restriction; previous 90 percent efficiency floor
-superseded_by: none
+supersedes: ADR-010 converter/filter and 30 uF restriction; ADR-013/019 SC189-specific references; previous 90 percent efficiency floor
+superseded_by: ADR-025 (provisional passive selections only)
 ---
+
+## Current authority (editorial reconciliation)
+
+TPS560430 and the full-load 500 mA USB criterion remain accepted. [ADR-025](025-buck-passives.md) accepts the passive MPNs; [ADR-022](022-fast-input-ramp.md) resolves the input evaluation below with TPS22810/47 nF and no supervisor. Current operating estimates are in [USB input](../../boards/board1/usb_input.md); they remain planning estimates.
+
+Historical decision text below is retained as the record at acceptance; superseded clauses are not current implementation instructions.
+
 
 # Decision
 
@@ -17,7 +24,7 @@ The efficiency acceptance criterion is total USB input <=500 mA at the conservat
 
 # Input design status
 
-The user is considering TPS22919DCKR and removal of the external FTDI reset supervisor. This is under evaluation, not a silently accepted replacement for ADR-019/020. See the input-design review in vbus_protection_proposal.md. TPS22919's 6 V absolute maximum makes it incompatible with treating the existing SMF6.0A as sufficient raw-input clamping. Faster turn-on may remove the motivation for a reset supervisor but does not itself qualify input inrush or ESD/hotplug behavior.
+The user is considering TPS22919DCKR and removal of the external FTDI reset supervisor. This is under evaluation, not a silently accepted replacement for ADR-019/020. See the input-design review in https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/vbus_protection_proposal.md. TPS22919's 6 V absolute maximum makes it incompatible with treating the existing SMF6.0A as sufficient raw-input clamping. Faster turn-on may remove the motivation for a reset supervisor but does not itself qualify input inrush or ESD/hotplug behavior.
 
 # Evidence / remaining work
 

@@ -15,4 +15,4 @@ Accept Bourns SRN6045TA-120M (12 uH) as B028, TDK C3216X7R1V106K160AC (10 uF 35 
 
 Acceptance freezes part choices, not electrical qualification. Retain effective-capacitance, LC stability, transient, hot-inductor, startup, layout and full-load USB-current checks. The output capacitor is +/-20%; do not apply the historical all-capacitors +/-10% upper-bound calculation to it. No SC189 30 uF ceiling applies. Do not reopen these choices for light-load efficiency or BOM consolidation alone.
 
-No additional general-purpose bypass MPNs, resistor values, crystal load values or SAM core-capacitor substitutions are accepted by this decision. See boards/board1/passive_review.md for remaining selections and consolidation candidates.
+No additional general-purpose bypass MPNs, resistor values, crystal load values or SAM core-capacitor substitutions are accepted by this decision. See https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/passive_review.md for remaining selections and consolidation candidates.

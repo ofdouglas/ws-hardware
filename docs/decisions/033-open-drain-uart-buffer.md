@@ -33,4 +33,4 @@ Allocate one existing 100 nF auxiliary bypass in B1-B036 to B1-B066. Together wi
 
 Keep B1-Q003/005 open for reset defaults, MCU VOH/VIH compatibility, leakage, enable/disable timing, aggregate bus capacitance, rise time, low-state current, firmware arbitration and actual baud. Do not infer 12 Mbaud capability from the VCP target. No new nominal bypass capacitance is added; actual driver/pull-up consumption must be reconciled in the power budget. No CAD, ERC/DRC or bench validation was performed.
 
-The accompanying termination question is evaluated separately in [termination proposal](../../boards/board1/termination_proposal.md); it does not decide resistor MPNs, values, jumpers or the RS-485 PHY.
+The accompanying termination question is evaluated separately in [termination proposal](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/termination_proposal.md); it does not decide resistor MPNs, values, jumpers or the RS-485 PHY.
