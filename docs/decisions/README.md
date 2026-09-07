@@ -43,7 +43,11 @@ Status: draft index · Authority: individual accepted ADRs
 
 | [ADR-036](036-rs485-bias.md) | RS-485 330 ohm bias network | accepted | B1-B071; B1-R016/021 |
 
-Use [template.md](template.md); next ID: ADR-037. Numbering is permanent.
+| [ADR-037](037-can-tvs.md) | ESD2CAN24DBZRQ1 CAN TVS arrays | accepted | B1-B072; B1-R009/017 |
+
+| [ADR-038](038-rs485-tvs.md) | ESDS452DBZR and restricted bench voltage envelope | accepted | B1-B073; B1-R016/017 |
+
+Use [template.md](template.md); next ID: ADR-039. Numbering is permanent.
 
 Historical collision: both [connector selection](026-reva-connectors.md) and [ceramic SAM core selection](026-sam-core-ceramic.md) carry ADR-026. Preserve both IDs and histories; use the filename-qualified reference to distinguish them. BOM references now do this explicitly.
 
@@ -54,3 +58,5 @@ Before changing an accepted choice, read the ADR and its evidence. A superseding
 Implementation evidence: [library migration and TPS22810 DBV symbol](../../libraries/symbols/README.md) implements ADR-004/019/022. Archived SC189 remains superseded by ADR-021. No ADR status or numbering changed; board qualification questions remain open.
 
 Additional implementation evidence for ADR-002/018/021: [exact-part symbols and checks](../../libraries/symbols/symbol_checks.md). Existing accepted decisions and open board qualifications are unchanged.
+
+Implementation evidence: [remaining IC symbols and BOM coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) implements the existing selected parts, including ADR-037/038. No decision acceptance or electrical qualification is changed.

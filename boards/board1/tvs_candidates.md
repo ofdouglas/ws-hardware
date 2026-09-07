@@ -1,17 +1,21 @@
+Current decision: both CAN and RS-485 TVS MPNs are now accepted in B1-B072/073 under ADR-037/038. RS-485 uses ESDS452DBZR; the SM712 below is historical and unselected.
+
+Current RS-485 recommendation: [ESDS452DBZR for a restricted bench-link envelope](rs485_tvs_alternatives.md). The SM712 analysis below is retained as research history.
+
 # CAN and RS-485 TVS recommendations
 
-2026-09-06. Proposed only; B1-B007/023, B1-Q004/009. Scope assumption: connector ESD/transient suppression for the existing lab board. No industrial surge level, sustained external-voltage fault rating, new power input or transceiver substitution is accepted. All evidence remains unverified pending circuit/layout qualification.
+2026-09-06. CAN MPN accepted ADR-037; RS-485 research only; B1-B007/023, B1-Q004/009. Scope assumption: connector ESD/transient suppression for the existing lab board. No industrial surge level, sustained external-voltage fault rating, new power input or transceiver substitution is accepted. All evidence remains unverified pending circuit/layout qualification.
 
 | Interface | Qty | Recommendation / candidate | DigiKey cut-tape code | Stock shown |
 |---|---:|---|---|---:|
-| Two external CAN pairs | 2 | [TI ESD2CAN24DBZRQ1](https://www.digikey.com/en/products/detail/texas-instruments/ESD2CAN24DBZRQ1/16982061) — recommended | 296-ESD2CAN24DBZRQ1CT-ND | 255,314 |
+| Two external CAN pairs | 2 | [TI ESD2CAN24DBZRQ1](https://www.digikey.com/en/products/detail/texas-instruments/ESD2CAN24DBZRQ1/16982061) — accepted ADR-037 | 296-ESD2CAN24DBZRQ1CT-ND | 255,314 |
 | External RS-485 pair | 1 | [Bourns CDSOT23-SM712](https://www.digikey.com/en/products/detail/bourns-inc/CDSOT23-SM712/1630592) — conditional candidate, not a qualified standalone surge solution for ST3485EBDR | CDSOT23-SM712CT-ND | 458,323 |
 
-Both are active, leaded SOT-23-3 arrays covering two bus lines per package. Stock is retrieved page evidence, not reserved inventory. CAN part qty-one price shown USD 0.87; refresh all pricing and availability before purchase. Keep the research in residual protection allocations; do not count these arrays twice or mark them accepted.
+Both are active, leaded SOT-23-3 arrays covering two bus lines per package. Stock is retrieved page evidence, not reserved inventory. CAN part qty-one price shown USD 0.87; refresh all pricing and availability before purchase. CAN arrays are now B1-B072, excluded from residual B1-B007. RS-485 candidates remain unselected in B1-B023.
 
 ## CAN
 
-ESD2CAN24DBZRQ1 is a good candidate for one array per connector CAN pair. Its 3 pF typical channel capacitance suits CAN-FD with little added loading. Standoff is +/-24 V; the datasheet gives typical 37 V clamping at 5.7 A, 8/20 us. The TCAN3413 bus absolute limits are +/-58 V. This supports selection screening, not a guaranteed transient margin: check maximum clamping, pulse shape, layout overshoot and differential stress. Opposite-polarity simultaneous clamps could exceed the transceiver's 58 V differential limit even when each pin is below its individual absolute limit.
+ESD2CAN24DBZRQ1 is selected for one array per connector CAN pair. Its 3 pF typical channel capacitance suits CAN-FD with little added loading. Standoff is +/-24 V; the datasheet gives typical 37 V clamping at 5.7 A, 8/20 us. The TCAN3413 bus absolute limits are +/-58 V. This supports selection screening, not a guaranteed transient margin: check maximum clamping, pulse shape, layout overshoot and differential stress. Opposite-polarity simultaneous clamps could exceed the transceiver's 58 V differential limit even when each pin is below its individual absolute limit.
 
 [TI SLVSFW5D, March 2026, pp.3,6,10–12](https://www.ti.com/lit/ds/symlink/esd2can24-q1.pdf) gives pins, characteristics and use guidance. DBZ pins1/2 are protected IOs and pin3 is ground. [TCAN3413 datasheet, RevA, p.4](https://www.ti.com/lit/ds/symlink/tcan3413.pdf) supplies bus absolute limits. A 24 V TVS rating is compatible with this USB-powered board; it does not imply adding 24 V power. It does mean the protected port must not inherit the bare PHY's +/-58 V sustained-fault claim.
 

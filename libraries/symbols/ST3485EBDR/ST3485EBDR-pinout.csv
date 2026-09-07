@@ -1,0 +1,9 @@
+pin,name,electrical_type
+1,RO,tri_state
+2,~{RE},input
+3,DE,input
+4,DI,input
+5,GND,power_in
+6,A,bidirectional
+7,B,bidirectional
+8,VCC,power_in

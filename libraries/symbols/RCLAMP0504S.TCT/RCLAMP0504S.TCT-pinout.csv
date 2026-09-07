@@ -1,0 +1,7 @@
+pin,name,electrical_type
+1,IO1,passive
+2,GND,passive
+3,IO2,passive
+4,IO3,passive
+5,VREF,passive
+6,IO4,passive
