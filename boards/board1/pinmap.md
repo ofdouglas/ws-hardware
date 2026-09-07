@@ -43,8 +43,8 @@ These are auxiliary components, not additional WS Hosts. Details and evidence li
 |---|---|---|---|
 | FT232HL | Independent USB bridge power | USB pair; supplies; crystal; reset/reference/test; EEPROM; UART; ACBUS power control | unverified |
 | EEPROM | Bridge domain | Compatible 16-bit organization and bridge configuration wiring | unverified |
-| Main load switch/control | USB_5V -> 5V_SYS | Default-off control, enable level/polarity and controlled rise | unverified |
-| TPS62902RPJR (proposed) | 5V_SYS -> 3V3_SYS | Proposed pin connections in buck_tps560430.md; SC189 remains alternative; CAD/library review pending | unverified |
+| TPS22810DBVT input ramp | VBUS_RAW -> USB_5V | EN to VIN, CT 47 nF, QOD to OUT; see usb_input.md | unverified |
+| TPS560430X3FDBVR | USB_5V -> 3V3_SYS | Accepted converter ADR-021 and passives ADR-025; pin/circuit qualification in buck_tps560430.md | unverified |
 | UART isolation | Bridge/main boundary | Direction, power-off protection and rail-valid enable | unverified |
 
 Clock requirements: [clocking.md](clocking.md), ADR-005. B1-P006/P012/P018/P024 each reserve the node's two external-main-crystal signals; exact pads remain unassigned. B1-P004 needs four compatible USART pins, a 168 MHz kernel source and DMA resources. Do not allocate those oscillator or handshake resources to future expansion.
@@ -97,7 +97,7 @@ The existing workbook now includes an **FTDI** sheet. FT232HL LQFP48 uses B1-P23
 | 14 / ADBUS1 RXD | STM32 PA2, pad 14, USART2_TX through isolation |
 | 15 / ADBUS2 RTS# | STM32 PA0, pad 12, USART2_CTS through isolation |
 | 16 / ADBUS3 CTS# | STM32 PA1, pad 13, USART2_RTS through isolation |
-| 21 / ACBUS0 | EEPROM-configured PWREN# to default-off SC189 EN polarity interface |
+| 21 / ACBUS0 | EEPROM-configured PWREN# to MC74HC1G14DBVT1G default-off TPS560430 EN polarity interface |
 | 43 / EEDATA; 44 / EECLK; 45 / EECS | EEPROM data network; SK pad 2; CS pad 1 |
 
 Source: [FT_000288 v2.2](https://www.ftdichip.cn/Support/Documents/DataSheets/ICs/DS_FT232H.pdf), Tables 3.1–3.5, pp.11–13, and §7 p.49. The FTDI current index lists v2.3; reconcile it and TN_130 with actual silicon before verification. The new sheet also accounts for every supply/ground, crystal, REF, TEST, RESET# and unused pin. VCCA/VCORE each receive only their own bypass; EEPROM and VCCIO use independent VCCD power. No native USB, extra GPIO connector or debug header is added.

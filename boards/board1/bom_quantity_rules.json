@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "default": "CSV quantity is a planning fitted-component count and purchase allocation; TBD stays unknown. This is not an order list.",
+  "overrides": {
+    "B1-B011": {
+      "purchase_quantity": 0,
+      "placement_quantity": "TBD",
+      "unit": "PCB pads; no purchased part"
+    },
+    "B1-B027": {
+      "purchase_quantity": 1,
+      "placement_quantity": 4,
+      "unit": "one 40-position strip; four 1x5 GPIO sections; also supplies B1-B059"
+    },
+    "B1-B059": {
+      "purchase_quantity": 0,
+      "placement_quantity": 4,
+      "unit": "four 1x3 debug sections included in B1-B027"
+    }
+  },
+  "header_cut": {
+    "source_item": "B1-B027",
+    "positions_per_strip": 40,
+    "cuts": [
+      {
+        "item": "B1-B027",
+        "pieces": 4,
+        "positions_each": 5
+      },
+      {
+        "item": "B1-B059",
+        "pieces": 4,
+        "positions_each": 3
+      }
+    ],
+    "spare_positions_unallocated": 8
+  },
+  "authority": "ADR-039; electrical/physical qualification remains open"
+}
