@@ -1,0 +1,1591 @@
+                                                                                                                             SN74LV125A
+                                                                                           SCES124O – DECEMBER 1997 – REVISED MAY 2022
+
+                SN74LV125A Quadruple Bus Buffer Gates With 3-State Outputs
+
+1 Features                                                             2 Applications
+•   2-V to 5.5-V VCC Operation                                         •     Flow Meters
+•   Max tpd of 6 ns at 5 V                                             •     Solid State Drives (SSDs): Enterprise
+•   Typical VOLP (Output Ground Bounce)                                •     Power Over Ethernet (PoE)
+    < 0.8 V at VCC = 3.3 V, TA = 25°C                                  •     Programmable Logic Controllers
+•   Typical VOHV (Output VOH Undershoot)                               •     Motor Drives and Controls
+    > 2.3 V at VCC = 3.3 V, TA = 25°C                                  •     Electronic Points of Sale
+•   Support Mixed-Mode Voltage Operation on
+    All Ports
+                                                                       3 Description
+•   Ioff Supports Partial-Power-Down Mode Operation                    The SN74LV125A quadruple bus buffer gate is
+•   Latch-Up Performance Exceeds 250 mA Per                            designed for 2-V to 5.5-V VCC operation.
+    JESD 17
+                                                                                            Device Information
+•   ESD Protection Exceeds JESD 22
+                                                                           PART NUMBER(1)          PACKAGE           BODY SIZE (NOM)
+    – 4000-V Human-Body Model
+                                                                                              DGV (TVSOP, 14)       3.60 mm x 4.40 mm
+    – 200-V Machine Model
+    – 2000-V Charged-Device Model                                                             D (SOIC, 14)          8.65 mm × 3.90 mm
+                                                                       SN74LV125A             NS (SO, 14)           10.20 mm x 5.30 mm
+                                                                                              DB (SSOP, 14)         6.20 mm x 5.30 mm
+                                                                                              PW (TSSOP, 14)        5.00 mm x 4.40 mm
+
+                                                                       (1)    For all available packages, see the orderable addendum at
+                                                                              the end of the data sheet.
+
+
+
+             1OE                                                           3OE
+
+
+               1A                                           1Y               3A                                         3Y
+
+
+             2OE                                                           4OE
+
+
+               2A                                           2Y               4A                                         4Y
+
+
+                                                      Simplified Schematic
+
+
+
+
+     An IMPORTANT NOTICE at the end of this data sheet addresses availability, warranty, changes, use in safety-critical applications,
+     intellectual property matters and other important disclaimers. PRODUCTION DATA.
+SN74LV125A
+SCES124O – DECEMBER 1997 – REVISED MAY 2022                                                                                                                      www.ti.com
+
+
+                                                                        Table of Contents
+1 Features............................................................................1   8 Detailed Description........................................................9
+2 Applications..................................................................... 1       8.1 Overview..................................................................... 9
+3 Description.......................................................................1       8.2 Functional Block Diagram........................................... 9
+4 Revision History.............................................................. 2          8.3 Feature Description.....................................................9
+5 Pin Configuration and Functions...................................3                       8.4 Device Functional Modes............................................9
+  Pin Functions.................................................................... 3     9 Application and Implementation.................................. 10
+6 Specifications.................................................................. 4        9.1 Application Information............................................. 10
+  6.1 Absolute Maximum Ratings........................................ 4                    9.2 Typical Application.................................................... 10
+  6.2 ESD Ratings............................................................... 4        10 Power Supply Recommendations..............................11
+  6.3 Recommended Operating Conditions.........................5                          11 Layout........................................................................... 12
+  6.4 Thermal Information....................................................5              11.1 Layout Guidelines................................................... 12
+  6.5 Electrical Characteristics.............................................6              11.2 Layout Example...................................................... 12
+  6.6 Switching Characteristics, VCC = 2.5 V ± 0.2 V...........6                          12 Device and Documentation Support..........................12
+  6.7 Switching Characteristics, VCC = 3.3 V ± 0.3 V...........6                            12.1 Related Links.......................................................... 12
+  6.8 Switching Characteristics, VCC = 5 V ± 0.5 V..............7                           12.2 Trademarks............................................................. 12
+  6.9 Noise Characteristics.................................................. 7             12.3 Electrostatic Discharge Caution..............................12
+  6.10 Operating Characteristics......................................... 7                 12.4 Glossary..................................................................12
+  6.11 Typical Characteristics.............................................. 7            13 Mechanical, Packaging, and Orderable
+7 Parameter Measurement Information............................ 8                           Information.................................................................... 12
+
+
+
+4 Revision History
+Changes from Revision N (January 2015) to Revision O (May 2022)                                                                                     Page
+• Updated the numbering, formatting, tables, figures, and cross-references throughout the document to reflect
+  modern data sheet standards............................................................................................................................. 4
+
+Changes from Revision M (December 2014) to Revision N (January 2015)                                                                                Page
+• Added Tj spec to Absolute Maximum Ratings table........................................................................................... 4
+• Added text to Overview section ......................................................................................................................... 9
+
+Changes from Revision L (April 2005) to Revision M (December 2014)                                                                                Page
+• Added Applications, Device Information table, Pin Functions table, ESD Ratings table, Thermal Information
+  table, Typical Characteristics, Feature Description section, Device Functional Modes, Application and
+  Implementation section, Power Supply Recommendations section, Layout section, Device and
+  Documentation Support section, and Mechanical, Packaging, and Orderable Information section................... 1
+• Deleted Ordering Information table.....................................................................................................................1
+• Changed MAX operating temperature to 125°C in Recommended Operating Conditions table. ...................... 5
+
+
+
+
+2       Submit Document Feedback                                                                                            Copyright © 2022 Texas Instruments Incorporated
+
+                                                                   Product Folder Links: SN74LV125A
+                                                                                                                                 SN74LV125A
+www.ti.com                                                                                        SCES124O – DECEMBER 1997 – REVISED MAY 2022
+
+
+5 Pin Configuration and Functions
+                              SN74LV125A . . . D, DB, DGV, N, NS,              SN74LV125A . . . RGY PACKAGE
+                                     OR PW PACKAGE                                     (TOP VIEW)
+                                        (TOP VIEW)
+
+
+
+
+                                                                                            1OE
+
+
+
+                                                                                                       VCC
+                                    1OE      1     14      VCC
+                                                                                            1          14
+                                     1A      2     13      4OE
+                                                                              1A     2                       13 4OE
+                                     1Y      3     12      4A
+                                                                              1Y     3                       12 4A
+                                    2OE      4     11      4Y
+                                                                             2OE     4                       11   4Y
+                                     2A      5     10      3OE                2A     5                       10 3OE
+                                     2Y      6       9     3A                 2Y     6                        9 3A
+                                    GND      7       8     3Y                               7           8
+
+
+
+
+                                                                                                       3Y
+                                                                                         GND
+Pin Functions
+                       PIN
+                                                         TYPE(1)                                      DESCRIPTION
+ NO.                            NAME
+ 1                               1OE                        I           Output Enable 1, Active Low
+ 2                                1A                        I           1A Input
+ 3                                1Y                        O           1Y Output
+ 4                               2OE                        I           Output Enable 2, Active Low
+ 5                                2A                        I           2A Input
+ 6                                2Y                        O           2Y Output
+ 7                               GND                       —            Ground Pin
+ 8                                3Y                        O           3Y Output
+ 9                                3A                        I           3A Input
+ 10                              3OE                        I           Output Enable 3, Active Low
+ 11                               4Y                        O           4Y Output
+ 12                               4A                        I           4A Input
+ 13                              4OE                        I           Output Enable 4, Active Low
+ 14                               VCC                      —            Power Pin
+
+(1)    Signal Types: I = Input, O = Output, I/O = Input or Output.
+
+
+
+
+Copyright © 2022 Texas Instruments Incorporated                                                                   Submit Document Feedback      3
+                                                         Product Folder Links: SN74LV125A
+SN74LV125A
+SCES124O – DECEMBER 1997 – REVISED MAY 2022                                                                                            www.ti.com
+
+
+6 Specifications
+6.1 Absolute Maximum Ratings
+over operating free-air temperature range (unless otherwise noted)
+                                                                                                                  MIN(1)           MAX     UNIT
+    VCC         Supply voltage                                                                                      –0.5              7      V
+    VI          Input voltage range(2)                                                                              –0.5              7      V
+    VO          Voltage range applied to any output in the high-impedance or power-off state(2)                     –0.5              7      V
+    VO          Output voltage range(2) (3)                                                                         –0.5     VCC + 0.5       V
+    IIK         Input clamp current                                                VI < 0                                           –20     mA
+    IOK         Output clamp current                                               VO < 0                                           –50     mA
+    IO          Continuous output current                                          VO = 0 to VCC                                    ±35     mA
+                Continuous current through VCC or GND                                                                               ±70     mA
+    Tj          Junction temperature                                                                                                150      °C
+    Tstg        Storage temperature                                                                                  –65            150      °C
+
+(1)        Stresses beyond those listed under Absolute Maximum Ratings may cause permanent damage to the device. These are stress ratings
+           only, and functional operation of the device at these or any other conditions beyond those indicated under Section 6.3 is not implied.
+           Exposure to absolute-maximum-rated conditions for extended periods may affect device reliability.
+(2)        The input and output negative-voltage ratings may be exceeded if the input and output current ratings are observed.
+(3)        This value is limited to 5.5-V maximum.
+
+6.2 ESD Ratings
+                                                                                                                           MAX            UNIT
+                                              Human body model (HBM), per ANSI/ESDA/JEDEC JS-001, all pins(1)              ±4000
+                                              Charged device model (CDM), per JEDEC specification JESD22-C101,
+    V(ESD)      Electrostatic discharge                                                                                    ±2000            V
+                                              all pins(2)
+                                              Machine Model (MM)                                                           ±200
+
+(1)        JEDEC document JEP155 states that 500-V HBM allows safe manufacturing with a standard ESD control process.
+(2)        JEDEC document JEP157 states that 250-V CDM allows safe manufacturing with a standard ESD control process.
+
+
+
+
+4          Submit Document Feedback                                                                     Copyright © 2022 Texas Instruments Incorporated
+
+                                                         Product Folder Links: SN74LV125A
+                                                                                                                                   SN74LV125A
+www.ti.com                                                                                       SCES124O – DECEMBER 1997 – REVISED MAY 2022
+
+
+6.3 Recommended Operating Conditions
+over operating free-air temperature range (unless otherwise noted)(1)
+                                                                                                      SN74LV125A
+                                                                                                                                      UNIT
+                                                                                                         MIN                MAX
+ VCC         Supply voltage                                                                                   2              5.5       V
+                                                         VCC = 2 V                                        1.5
+                                                         VCC = 2.3 V to 2.7 V                       VCC × 0.7
+ VIH         High-level input voltage                                                                                                  V
+                                                         VCC = 3 V to 3.6 V                         VCC × 0.7
+                                                         VCC = 4.5 V to 5.5 V                       VCC × 0.7
+                                                         VCC = 2 V                                                           0.5
+                                                         VCC = 2.3 V to 2.7 V                                          VCC × 0.3
+ VIL         Low-level input voltage                                                                                                   V
+                                                         VCC = 3 V to 3.6 V                                            VCC × 0.3
+                                                         VCC = 4.5 V to 5.5 V                                          VCC × 0.3
+ VI          Input voltage                                                                                    0              5.5       V
+                                                         High or low state                                    0             VCC
+ VO          Output voltage                                                                                                            V
+                                                         3-state                                              0              5.5
+                                                         VCC = 2 V                                                          –50       µA
+                                                         VCC = 2.3 V to 2.7 V                                                –2
+ IOH         High-level output current
+                                                         VCC = 3 V to 3.6 V                                                  –8       mA
+                                                         VCC = 4.5 V to 5.5 V                                               –16
+                                                         VCC = 2 V                                                           50       µA
+                                                         VCC = 2.3 V to 2.7 V                                                 2
+ IOL         Low-level output current
+                                                         VCC = 3 V to 3.6 V                                                   8       mA
+                                                         VCC = 4.5 V to 5.5 V                                                16
+                                                         VCC = 2.3 V to 2.7 V                                               200
+ ∆t/∆v       Input transition rise or fall rate          VCC = 3 V to 3.6 V                                                 100       ns/V
+                                                         VCC = 4.5 V to 5.5 V                                                20
+ TA          Operating free-air temperature                                                              –40                125        °C
+
+(1)      All unused inputs of the device must be held at VCC or GND to ensure proper device operation. Refer to the TI application report,
+         Implications of Slow or Floating CMOS Inputs (SCBA004).
+
+6.4 Thermal Information
+                                                                                        SN74LV125A
+                 THERMAL METRIC(1)                        D           DB        DGV          N          NS           PW       RGY       UNIT
+                                                                                          14 PINS
+              Junction-to-ambient thermal
+ RθJA                                                    92.7        105.0      127.6       89.2       89.6         119.8      55.0
+              resistance
+              Junction-to-case (top) thermal
+ RθJC(top)                                               54.1        57.5       50.7        47.0       47.2          48.6      67.4
+              resistance
+ RθJB         Junction-to-board thermal resistance       47.0        52.3       60.5        47.9       48.4          61.5      31.0
+              Junction-to-top characterization                                                                                          °C/W
+ ψJT                                                     18.9        19.1        6.1        14.1       14.0          5.7       2.6
+              parameter
+              Junction-to-board characterization
+ ψJB                                                     46.7        51.8       59.8        47.5       48.1          61.0      31.1
+              parameter
+              Junction-to-case (bottom) thermal
+ RθJC(bot)                                               N/A         N/A        N/A         N/A         N/A          N/A       11.6
+              resistance
+
+(1)      For more information about traditional and new thermal metrics, see the IC Package Thermal Metrics application report (SPRA953).
+
+
+
+
+Copyright © 2022 Texas Instruments Incorporated                                                                   Submit Document Feedback      5
+                                                       Product Folder Links: SN74LV125A
+SN74LV125A
+SCES124O – DECEMBER 1997 – REVISED MAY 2022                                                                                                  www.ti.com
+
+6.5 Electrical Characteristics
+over recommended operating free-air temperature range (unless otherwise noted)
+                                                                        TA = 25°C                      –40°C to 85°C          –40°C to 125°C
+      PARAMETER           TEST CONDITIONS                VCC                                                                                       UNIT
+                                                                      MIN      TYP        MAX              MIN     MAX            MIN      MAX
+                                                        2 V to   VCC – 0.1                            VCC – 0.1              VCC – 0.1
+                     IOH = –50 µA
+                                                        5.5 V
+
+         VOH         IOH = –2 mA                         2.3 V          2                                     2                        2            V
+                     IOH = –8 mA                         3V          2.48                                  2.48                   2.48
+                     IOH = –16 mA                        4.5 V         3.8                                  3.8                    3.8
+                                                        2 V to
+                     IOL = 50 µA                                                            0.1                      0.1                     0.1
+                                                        5.5 V
+
+         VOL         IOL = 2 mA                          2.3 V                              0.4                      0.4                     0.4    V
+                     IOL = 8 mA                          3V                               0.44                      0.44                    0.44
+                     IOL = 16 mA                         4.5 V                            0.55                      0.55                    0.55
+                                                          0 to
+           II        VI = 5.5 V or GND                                                      ±1                         ±1                     ±1    µA
+                                                         5.5 V
+          IOZ        VO = VCC or GND                     5.5 V                              ±5                         ±5                     ±5    µA
+          ICC        VI = VCC or GND,        IO = 0      5.5 V                              20                         20                     20    µA
+          Ioff       VI or VO = 0 to 5.5 V                0                                   5                          5                     5    µA
+                                                         3.3 V                  1.6
+          Ci         VI = VCC or GND                                                                                                                pF
+                                                         5V                     1.6
+
+
+6.6 Switching Characteristics, VCC = 2.5 V ± 0.2 V
+over recommended operating free-air temperature range (unless otherwise noted) (see Figure 7-1)
+                      FROM             TO                LOAD                 TA = 25°C                 –40°C to 85°C        –40°C to 125°C
+    PARAMETER                                                                                                                                      UNIT
+                     (INPUT)        (OUTPUT)          CAPACITANCE       MIN      TYP       MAX            MIN      MAX          MIN        MAX
+         tpd            A                Y                                      6.8(1)      13(1)            1      15.5           1        17
+         ten            OE               Y             CL = 15 pF                 7(1)      13(1)            1      15.5           1        17      ns
+         tdis           OE               Y                                      5.1(1)    14.7(1)            1         17          1        18
+         tpd            A                Y                                        8.7       16.5             1      18.5           1        20
+         ten            OE               Y                                        8.8       16.5             1      18.5           1        20
+                                                       CL = 50 pF                                                                                   ns
+         tdis           OE               Y                                        7.3       18.2             1      20.5           1       21.5
+        tsk(o)                                                                                    2                      2                    2
+
+(1)    On products compliant to MIL-PRF-38535, this parameter is not production tested.
+
+6.7 Switching Characteristics, VCC = 3.3 V ± 0.3 V
+over recommended operating free-air temperature range(unless otherwise noted) (see Figure 7-1)
+                      FROM             TO                LOAD                 TA = 25°C                  –40°C to 85°C        –40°C to 125°C
+    PARAMETER                                                                                                                                      UNIT
+                     (INPUT)        (OUTPUT)          CAPACITANCE        MIN      TYP       MAX            MIN      MAX          MIN       MAX
+         tpd            A               Y                                        4.8(1)       8(1)            1       9.5          1         11
+         ten           OE               Y              CL = 15 pF                4.8(1)       8(1)            1       9.5          1       10.5     ns
+         tdis          OE               Y                                        4.1(1)     9.7(1)            1      11.5          1       12.5
+         tpd            A               Y                                          6.1       11.5             1        13          1       14.5
+         ten           OE               Y                                          6.2       11.5             1        13          1         14
+                                                       CL = 50 pF                                                                                   ns
+         tdis          OE               Y                                          5.5       13.2             1        15          1         16
+        tsk(o)                                                                                1.5                     1.5                   1.5
+
+(1)    On products compliant to MIL-PRF-38535, this parameter is not production tested.
+
+
+
+6       Submit Document Feedback                                                                             Copyright © 2022 Texas Instruments Incorporated
+
+                                                        Product Folder Links: SN74LV125A
+                                                                                                                                                                      SN74LV125A
+www.ti.com                                                                                                                 SCES124O – DECEMBER 1997 – REVISED MAY 2022
+
+
+6.8 Switching Characteristics, VCC = 5 V ± 0.5 V
+over recommended operating free-air temperature range (unless otherwise noted) (see Figure 7-1)
+                                     FROM            TO            LOAD                 TA = 25°C                            –40°C to 85°C          –40°C to 125°C
+  PARAMETER                                                                                                                                                                    UNIT
+                                    (INPUT)       (OUTPUT)      CAPACITANCE           MIN          TYP           MAX           MIN        MAX             MIN         MAX
+                   tpd                  A              Y                                           3.4(1)        5.5(1)            1       6.5              1           7.5
+                   ten                  OE             Y         CL = 15 pF                        3.4(1)        5.1(1)            1           6            1            7        ns
+                   tdis                 OE             Y                                           3.2(1)        6.8(1)            1           8            1            9
+                   tpd                  A              Y                                               4.3         7.5             1       8.5              1           9.5
+                   ten                  OE             Y                                               4.4         7.1             1           8            1            9
+                                                                 CL = 50 pF                                                                                                       ns
+                   tdis                 OE             Y                                                   4       8.8             1          10            1           11
+                  tsk(o)                                                                                               1                       1                         1
+
+(1)          On products compliant to MIL-PRF-38535, this parameter is not production tested.
+
+6.9 Noise Characteristics
+VCC = 3.3 V, CL = 50 pF, TA = 25°C
+                                                                                                                                       SN74LV125A
+                                                      PARAMETER(1)                                                                                                        UNIT
+                                                                                                                                MIN            TYP          MAX
+ VOL(P)                    Quiet output, maximum dynamic VOL                                                                                       0.4           0.8          V
+ VOL(V)                    Quiet output, minimum dynamic VOL                                                                                   –0.3             –0.8          V
+ VOH(V)                    Quiet output, minimum dynamic VOH                                                                                        3                         V
+ VIH(D)                    High-level dynamic input voltage                                                                     2.31                                          V
+ VIL(D)                    Low-level dynamic input voltage                                                                                                      0.99          V
+
+(1)          Characteristics are for surface-mount packages only.
+
+6.10 Operating Characteristics
+TA = 25°C
+                                              PARAMETER                                                        TEST CONDITIONS                       VCC         TYP          UNIT
+                                                                                                                                                    3.3 V        15.5
+ Cpd                   Power dissipation capacitance              Outputs enabled            CL = 50 pF,                     f = 10 MHz                                       pF
+                                                                                                                                                     5V          17.6
+
+
+6.11 Typical Characteristics
+
+                   7                                                                               8
+
+                   6                                                                               7
+
+                                                                                                   6
+                   5
+                                                                                                   5
+       TPD (ns)
+
+
+
+
+                                                                                        TPD (ns)
+
+
+
+
+                   4
+                                                                                                   4
+                   3
+                                                                                                   3
+                   2
+                                                                                                   2
+
+                   1                                                                               1
+                                                                   TPD in ns                                                                                      TPD in ns
+                   0                                                                               0
+                   -100           -50          0         50      100       150                         0           1           2         3            4           5           6
+                                             Temperature (qC)                  D001
+                                                                                                                                        VCC                                   D002
+
+                             Figure 6-1. TPD vs Temperature                                                     Figure 6-2. TPD vs VCC at 25°C
+
+
+
+
+Copyright © 2022 Texas Instruments Incorporated                                                                                           Submit Document Feedback                     7
+                                                                  Product Folder Links: SN74LV125A
+SN74LV125A
+SCES124O – DECEMBER 1997 – REVISED MAY 2022                                                                                            www.ti.com
+
+
+7 Parameter Measurement Information
+7.1
+                                                                                              VCC
+                                                                       RL = 1 kΩ     S1         Open
+       From Output            Test           From Output
+         Under Test           Point            Under Test                                     GND                    TEST                S1
+                     CL                                    CL                                                    tPLH/tPHL              Open
+            (see Note A)                          (see Note A)                                                   tPLZ/tPZL              VCC
+                                                                                                                 tPHZ/tPZH              GND
+                                                                                                                 Open Drain             VCC
+
+           LOAD CIRCUIT FOR                                  LOAD CIRCUIT FOR
+         TOTEM-POLE OUTPUTS                          3-STATE AND OPEN-DRAIN OUTPUTS
+
+
+                                                                                                                                              VCC
+                                                                             Timing Input                      50% VCC
+                                   tw                                                                                                         0V
+                                                                                                                          th
+                                                              VCC                             tsu
+                                                                                                                                              VCC
+            Input          50% VCC                 50% VCC
+                                                                               Data Input             50% VCC          50% VCC
+                                                              0V                                                                              0V
+                       VOLTAGE WAVEFORMS                                                             VOLTAGE WAVEFORMS
+                         PULSE DURATION                                                             SETUP AND HOLD TIMES
+
+
+                                                              VCC                                                                             VCC
+                                                                                   Output
+            Input            50% VCC          50% VCC                                                  50% VCC           50% VCC
+                                                                                   Control
+                                                              0V                                                                              0V
+
+                    tPLH                               tPHL                                  tPZL                                tPLZ
+                                                            VOH                   Output                                                      ≈VCC
+        In-Phase                        50% VCC       50% VCC                 Waveform 1                    50% VCC
+          Output                                                               S1 at VCC                                       VOL + 0.3 V
+                                                            VOL                                                                            VOL
+                                                                             (see Note B)
+                    tPHL                               tPLH                                  tPZH                               tPHZ
+                                                            VOH                   Output
+                                                                                                                                              VOH
+    Out-of-Phase                                                              Waveform 2                                       VOH − 0.3 V
+                                        50% VCC       50% VCC                                                50% VCC
+          Output                                                               S1 at GND
+                                                            VOL                                                                               ≈0 V
+                                                                             (see Note B)
+                     VOLTAGE WAVEFORMS                                                           VOLTAGE WAVEFORMS
+                  PROPAGATION DELAY TIMES                                                      ENABLE AND DISABLE TIMES
+             INVERTING AND NONINVERTING OUTPUTS                                              LOW- AND HIGH-LEVEL ENABLING
+
+    NOTES: A. CL includes probe and jig capacitance.
+           B. Waveform 1 is for an output with internal conditions such that the output is low, except when disabled by the output control.
+              Waveform 2 is for an output with internal conditions such that the output is high, except when disabled by the output control.
+           C. All input pulses are supplied by generators having the following characteristics: PRR ≤ 1 MHz, ZO = 50 Ω, tr ≤ 3 ns, tf ≤ 3 ns.
+           D. The outputs are measured one at a time, with one input transition per measurement.
+           E. tPLZ and tPHZ are the same as tdis.
+           F. t PZL and tPZH are the same as ten.
+           G. tPHL and tPLH are the same as tpd.
+           H. All parameters and waveforms are not applicable to all devices.
+
+                                          Figure 7-1. Load Circuit And Voltage Waveforms
+
+
+
+
+8        Submit Document Feedback                                                                     Copyright © 2022 Texas Instruments Incorporated
+
+                                                       Product Folder Links: SN74LV125A
+                                                                                                                              SN74LV125A
+www.ti.com                                                                                     SCES124O – DECEMBER 1997 – REVISED MAY 2022
+
+
+8 Detailed Description
+8.1 Overview
+The SN74LV125A quadruple bus buffer gate is designed for 2-V to 5.5-V VCC operation.
+These devices feature independent line drivers with 3-state outputs. Each output is disabled when the
+associated output-enable (OE) input is high.
+To ensure the high-impedance state during power up or power down, tie OE to VCC through a pullup resistor; the
+minimum value of the resistor is determined by the current-sinking capability of the driver.
+8.2 Functional Block Diagram
+
+                 1OE                                                           3OE
+
+
+                  1A                                              1Y             3A                                      3Y
+
+
+                 2OE                                                           4OE
+
+
+                  2A                                              2Y             4A                                      4Y
+
+
+                                              Figure 8-1. Logic Diagram (Positive Logic)
+
+8.3 Feature Description
+•    Wide operating voltage range
+     – Operates from 2 V to 5.5 V
+•    Allows down-voltage translation
+     – Inputs accept voltages to 5.5 V
+•    Ioff Feature
+     – Supports Live Insertion, Partial Power-Down Mode, and Back-Drive Protection
+8.4 Device Functional Modes
+                                                      Table 8-1. Function Table
+                                                            (Each Buffer)
+                                                           INPUTS(1)           OUTPUT(2)
+                                                           OE          A          Y
+
+                                                           L           H           H
+                                                           L           L            L
+                                                           H           X            Z
+
+                                                     (1)       H = High Voltage Level, L =
+                                                               Low Voltage Level, X = Don’t
+                                                               Care
+                                                     (2)       H = Driving High, L = Driving
+                                                               Low, Z = High Impedance
+                                                               State
+
+
+
+
+Copyright © 2022 Texas Instruments Incorporated                                                             Submit Document Feedback         9
+                                                     Product Folder Links: SN74LV125A
+SN74LV125A
+SCES124O – DECEMBER 1997 – REVISED MAY 2022                                                                               www.ti.com
+
+
+9 Application and Implementation
+                                                           Note
+      Information in the following applications sections is not part of the TI component specification, and
+      TI does not warrant its accuracy or completeness. TI’s customers are responsible for determining
+      suitability of components for their purposes. Customers should validate and test their design
+      implementation to confirm system functionality.
+
+9.1 Application Information
+The SN74LV125A is a low-drive CMOS device that can be used for a multitude of bus interface type applications
+where output ringing is a concern. The low drive and slow edge rates minimize overshoot and undershoot on the
+outputs. The inputs are 5.5-V tolerant at any valid VCC, making it ideal for translating down to VCC.
+9.2 Typical Application
+                             5-V system                                 Regulated 3.3 V or 5 V
+
+
+
+
+                                                                      VCC
+                                                                      1OE
+
+                                                                      4OE
+                                                             1A       1Y
+                               µC or                                                           µC
+                            System Logic                                                  System Logic
+                                                                                             LEDs
+                                                            4A        4Y
+
+                                                                     GND
+
+
+
+
+                                       Figure 9-1. Typical Application Schematic
+
+9.2.1 Design Requirements
+This device uses CMOS technology and has balanced output drive. Care should be taken to avoid bus
+contention because it can drive currents that would exceed maximum limits. The high drive will also create
+fast edges into light loads, so routing and load conditions should be considered to prevent ringing.
+9.2.2 Detailed Design Procedure
+1. Recommended Input Conditions
+   • For rise time and fall time specifications, see Δt/ΔV in the Section 6.3 table.
+   • For specified High and low levels, see VIH and VIL in the Section 6.3 table.
+2. Recommend Output Conditions
+   • Load currents should not exceed 35 mA per output and 70 mA total for the part.
+   • Outputs should not be pulled above VCC.
+
+
+
+
+10    Submit Document Feedback                                                             Copyright © 2022 Texas Instruments Incorporated
+
+                                              Product Folder Links: SN74LV125A
+                                                                                                                   SN74LV125A
+www.ti.com                                                                            SCES124O – DECEMBER 1997 – REVISED MAY 2022
+
+
+9.2.3 Application Curves
+
+
+
+
+                                        Figure 9-2. Switching Characteristics Comparison
+
+
+10 Power Supply Recommendations
+The power supply can be any voltage between the MIN and MAX supply voltage rating located in the Section 6.3
+table.
+Each VCC pin should have a good bypass capacitor to prevent power disturbance. For devices with a single
+supply, 0.1 μF is recommended. If there are multiple VCC pins, 0.01 μF or 0.022 μF is recommended for each
+power pin. It is acceptable to parallel multiple bypass caps to reject different frequencies of noise. A 0.1 μF and
+1 μF are commonly used in parallel. The bypass capacitor should be installed as close to the power pin as
+possible for best results.
+
+
+
+
+Copyright © 2022 Texas Instruments Incorporated                                                    Submit Document Feedback     11
+                                                   Product Folder Links: SN74LV125A
+SN74LV125A
+SCES124O – DECEMBER 1997 – REVISED MAY 2022                                                                                    www.ti.com
+
+
+11 Layout
+11.1 Layout Guidelines
+When using multiple bit logic devices, inputs should not float. In many cases, functions or parts of functions of
+digital logic devices are unused. Some examples are when only two inputs of a triple-input AND gate are used,
+or when only 3 of the 4-buffer gates are used. Such input pins should not be left unconnected because the
+undefined voltages at the outside connections result in undefined operational states.
+Specified in Figure 11-1 are rules that must be observed under all circumstances. All unused inputs of digital
+logic devices must be connected to a high or low bias to prevent them from floating. The logic level that should
+be applied to any particular unused input depends on the function of the device. Generally they will be tied to
+GND or VCC, whichever makes more sense or is more convenient. It is acceptable to float outputs unless the
+part is a transceiver. If the transceiver has an output enable pin, it will disable the outputs section of the part
+when asserted. This will not disable the input section of the I/Os so they also cannot float when disabled.
+11.2 Layout Example
+                Vcc
+                                                                          Input
+
+             Unused Input                              Output                                                       Output
+                                                                          Unused Input
+
+
+               Input
+
+
+
+                                                 Figure 11-1. Layout Diagram
+
+12 Device and Documentation Support
+12.1 Related Links
+The table below lists quick access links. Categories include technical documents, support and community
+resources, tools and software, and quick access to sample or buy.
+                                                   Table 12-1. Related Links
+                                                                        TECHNICAL                TOOLS &                SUPPORT &
+       PARTS            PRODUCT FOLDER          SAMPLE & BUY
+                                                                        DOCUMENTS               SOFTWARE                COMMUNITY
+     SN74LV125A             Click here             Click here             Click here             Click here               Click here
+
+
+12.2 Trademarks
+All trademarks are the property of their respective owners.
+12.3 Electrostatic Discharge Caution
+                 This integrated circuit can be damaged by ESD. Texas Instruments recommends that all integrated circuits be handled
+                 with appropriate precautions. Failure to observe proper handling and installation procedures can cause damage.
+                 ESD damage can range from subtle performance degradation to complete device failure. Precision integrated circuits may
+                 be more susceptible to damage because very small parametric changes could cause the device not to meet its published
+                 specifications.
+
+
+12.4 Glossary
+ TI Glossary           This glossary lists and explains terms, acronyms, and definitions.
+
+13 Mechanical, Packaging, and Orderable Information
+The following pages include mechanical, packaging, and orderable information. This information is the most
+current data available for the designated devices. This data is subject to change without notice and revision of
+this document. For browser-based versions of this data sheet, refer to the left-hand navigation.
+
+
+
+
+12    Submit Document Feedback                                                                  Copyright © 2022 Texas Instruments Incorporated
+
+                                                  Product Folder Links: SN74LV125A
+                                                                                                                                                       PACKAGE OPTION ADDENDUM
+
+       www.ti.com                                                                                                                                                                     26-Jul-2026
+
+
+
+
+PACKAGING INFORMATION
+
+       Orderable part number          Status     Material type      Package | Pins      Package qty | Carrier      RoHS      Lead finish/       MSL rating/        Op temp (°C)   Part marking
+                                        (1)            (2)                                                          (3)      Ball material      Peak reflow                            (6)
+                                                                                                                                  (4)                 (5)
+
+           SN74LV125AD               Obsolete     Production            SOIC (D) | 14             -                  -          Call TI            Call TI          -40 to 125      LV125A
+          SN74LV125ADBR               Active      Production        SSOP (DB) | 14       2000 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+         SN74LV125ADBR.A              Active      Production        SSOP (DB) | 14       2000 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+         SN74LV125ADGVR               Active      Production      TVSOP (DGV) | 14       2000 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+        SN74LV125ADGVR.A              Active      Production      TVSOP (DGV) | 14       2000 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+          SN74LV125ADR                Active      Production            SOIC (D) | 14    2500 | LARGE T&R           Yes      NIPDAU | SN     Level-1-260C-UNLIM     -40 to 125      LV125A
+         SN74LV125ADR.A               Active      Production            SOIC (D) | 14    2500 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+           SN74LV125AN                Active      Production            PDIP (N) | 14        25 | TUBE              Yes        NIPDAU          N/A for Pkg Type     -40 to 125    SN74LV125AN
+          SN74LV125AN.A               Active      Production            PDIP (N) | 14        25 | TUBE              Yes        NIPDAU          N/A for Pkg Type     -40 to 125    SN74LV125AN
+          SN74LV125ANSR               NRND        Production            SOP (NS) | 14    2000 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125     74LV125A
+         SN74LV125ANSR.A              NRND        Production            SOP (NS) | 14    2000 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125     74LV125A
+          SN74LV125APW               Obsolete     Production       TSSOP (PW) | 14                -                  -          Call TI            Call TI          -40 to 125      LV125A
+         SN74LV125APWR                Active      Production       TSSOP (PW) | 14       2000 | LARGE T&R           Yes      NIPDAU | SN     Level-1-260C-UNLIM     -40 to 125      LV125A
+        SN74LV125APWR.A               Active      Production       TSSOP (PW) | 14       2000 | LARGE T&R           Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+        SN74LV125APWRE4               Active      Production       TSSOP (PW) | 14           2000 | null            No         NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+        SN74LV125APWRE4               Active      Production       TSSOP (PW) | 14           2000 | null            Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+       SN74LV125APWRE4.A              Active      Production       TSSOP (PW) | 14           2000 | null            No         NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+       SN74LV125APWRE4.A              Active      Production       TSSOP (PW) | 14           2000 | null            Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+        SN74LV125APWRG4               Active      Production       TSSOP (PW) | 14           2000 | null            Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+        SN74LV125APWRG4               Active      Production       TSSOP (PW) | 14           2000 | null            No         NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+       SN74LV125APWRG4.A              Active      Production       TSSOP (PW) | 14           2000 | null            Yes        NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+       SN74LV125APWRG4.A              Active      Production       TSSOP (PW) | 14           2000 | null            No         NIPDAU        Level-1-260C-UNLIM     -40 to 125      LV125A
+          SN74LV125APWT              Obsolete     Production       TSSOP (PW) | 14                -                  -          Call TI            Call TI          -40 to 125      LV125A
+         SN74LV125ARGYR               NRND        Production       VQFN (RGY) | 14       3000 | LARGE T&R           Yes        NIPDAU        Level-2-260C-1 YEAR    -40 to 125      LV125A
+        SN74LV125ARGYR.A              NRND        Production       VQFN (RGY) | 14       3000 | LARGE T&R           Yes        NIPDAU        Level-2-260C-1 YEAR    -40 to 125      LV125A
+       SN74LV125ARGYRG4               NRND        Production       VQFN (RGY) | 14       3000 | LARGE T&R           Yes        NIPDAU        Level-2-260C-1 YEAR    -40 to 125      LV125A
+
+(1)
+      Status: For more details on status, see our product life cycle.
+
+
+
+
+                                                                                                           Addendum-Page 1
+                                                                                                                                                                      PACKAGE OPTION ADDENDUM
+
+       www.ti.com                                                                                                                                                                                                    26-Jul-2026
+
+
+
+
+(2)
+   Material type: When designated, preproduction parts are prototypes/experimental devices, and are not yet approved or released for full production. Testing and final process, including without limitation quality assurance,
+reliability performance testing, and/or process qualification, may not yet be complete, and this item is subject to further changes or possible discontinuation. If available for ordering, purchases will be subject to an additional
+waiver at checkout, and are intended for early internal evaluation purposes only. These items are sold without warranties of any kind.
+
+(3)
+      RoHS values: Yes, No, RoHS Exempt. See the TI RoHS Statement for additional information and value definition.
+
+(4)
+   Lead finish/Ball material: Parts may have multiple material finish options. Finish options are separated by a vertical ruled line. Lead finish/Ball material values may wrap to two lines if the finish value exceeds the maximum
+column width.
+
+(5)
+  MSL rating/Peak reflow: The moisture sensitivity level ratings and peak solder (reflow) temperatures. In the event that a part has multiple moisture sensitivity ratings, only the lowest level per JEDEC standards is shown.
+Refer to the shipping label for the actual reflow temperature that will be used to mount the part to the printed circuit board.
+
+(6)
+      Part marking: There may be an additional marking, which relates to the logo, the lot trace code information, or the environmental category of the part.
+
+Multiple part markings will be inside parentheses. Only one part marking contained in parentheses and separated by a "~" will appear on a part. If a line is indented then it is a continuation of the previous line and the two
+combined represent the entire part marking for that device.
+
+Important Information and Disclaimer:The information provided on this page represents TI's knowledge and belief as of the date that it is provided. TI bases its knowledge and belief on information provided by third parties, and
+makes no representation or warranty as to the accuracy of such information. Efforts are underway to better integrate information from third parties. TI has taken and continues to take reasonable steps to provide representative
+and accurate information but may not have conducted destructive testing or chemical analysis on incoming materials and chemicals. TI and TI suppliers consider certain information to be proprietary, and thus CAS numbers
+and other limited information may not be available for release.
+
+In no event shall TI's liability arising out of such information exceed the total purchase price of the TI part(s) at issue in this document sold by TI to Customer on an annual basis.
+
+
+OTHER QUALIFIED VERSIONS OF SN74LV125A :
+
+• Automotive : SN74LV125A-Q1
+
+NOTE: Qualified Version Definitions:
+
+           • Automotive - Q100 devices qualified for high-reliability automotive applications targeting zero defects
+
+
+
+
+                                                                                                            Addendum-Page 2
+                                                                               PACKAGE MATERIALS INFORMATION
+
+www.ti.com                                                                                                                                     10-Aug-2026
+
+
+
+TAPE AND REEL INFORMATION
+
+       REEL DIMENSIONS                                                                      TAPE DIMENSIONS
+                                                                                       K0       P1
+
+
+
+                                                                                                                       B0 W
+                                        Reel
+                                      Diameter
+                                                                                    Cavity           A0
+                                                                A0   Dimension designed to accommodate the component width
+                                                                B0   Dimension designed to accommodate the component length
+                                                                K0   Dimension designed to accommodate the component thickness
+                                                                W    Overall width of the carrier tape
+                                                                P1   Pitch between successive cavity centers
+
+
+                                       Reel Width (W1)
+                              QUADRANT ASSIGNMENTS FOR PIN 1 ORIENTATION IN TAPE
+
+                                                                                                      Sprocket Holes
+
+
+                                                 Q1        Q2          Q1    Q2
+
+                                                 Q3        Q4          Q3    Q4                  User Direction of Feed
+
+
+
+                                                            Pocket Quadrants
+
+
+*All dimensions are nominal
+             Device           Package Package Pins              SPQ       Reel   Reel   A0                   B0         K0     P1     W     Pin1
+                               Type Drawing                             Diameter Width (mm)                 (mm)       (mm)   (mm)   (mm) Quadrant
+                                                                          (mm) W1 (mm)
+    SN74LV125ADBR              SSOP      DB           14        2000        330.0        16.4        8.35    6.6       2.4    12.0   16.0    Q1
+   SN74LV125ADGVR             TVSOP     DGV           14        2000        330.0        12.4        6.8     4.0       1.6    8.0    12.0    Q1
+     SN74LV125ADR              SOIC       D           14        2500        330.0        16.4        6.5     9.0       2.1    8.0    16.0    Q1
+    SN74LV125ANSR              SOP       NS           14        2000        330.0        16.4        8.1    10.4       2.5    12.0   16.0    Q1
+    SN74LV125APWR             TSSOP      PW           14        2000        330.0        12.4        6.9     5.6       1.6    8.0    12.0    Q1
+   SN74LV125ARGYR              VQFN     RGY           14        3000        330.0        12.4        3.75   3.75       1.15   8.0    12.0    Q1
+
+
+
+
+                                                                      Pack Materials-Page 1
+                                                                PACKAGE MATERIALS INFORMATION
+
+www.ti.com                                                                                                              10-Aug-2026
+
+
+
+ TAPE AND REEL BOX DIMENSIONS
+
+
+
+
+                                                               Width (mm)
+                                                                              H
+                      W
+
+
+
+
+                                                          L
+
+
+
+
+*All dimensions are nominal
+             Device           Package Type   Package Drawing   Pins         SPQ    Length (mm)   Width (mm)   Height (mm)
+     SN74LV125ADBR               SSOP              DB           14          2000      353.0        353.0         32.0
+    SN74LV125ADGVR              TVSOP             DGV           14          2000      353.0        353.0         32.0
+     SN74LV125ADR                SOIC              D            14          2500      353.0        353.0         32.0
+     SN74LV125ANSR                SOP              NS           14          2000      353.0        353.0         32.0
+    SN74LV125APWR               TSSOP              PW           14          2000      353.0        353.0         32.0
+    SN74LV125ARGYR               VQFN             RGY           14          3000      353.0        353.0         32.0
+
+
+
+
+                                                        Pack Materials-Page 2
+                                                               PACKAGE MATERIALS INFORMATION
+
+www.ti.com                                                                                                   10-Aug-2026
+
+
+
+TUBE
+
+       T - Tube
+        height                                                     L - Tube length
+
+
+                      W - Tube
+                       width
+
+
+         B - Alignment groove width
+
+*All dimensions are nominal
+             Device           Package Name   Package Type   Pins       SPQ     L (mm)   W (mm)   T (µm)   B (mm)
+      SN74LV125AN                  N            PDIP         14         25      506     13.97    11230     4.32
+     SN74LV125AN.A                 N            PDIP         14         25      506     13.97    11230     4.32
+
+
+
+
+                                                       Pack Materials-Page 3
+                                                                                                                 MECHANICAL DATA
+
+                                                                                            MPDS006C – FEBRUARY 1996 – REVISED AUGUST 2000
+
+DGV (R-PDSO-G**)                                                                                             PLASTIC SMALL-OUTLINE
+ 24 PINS SHOWN
+
+
+                                             0,23
+            0,40                                          0,07 M
+                                             0,13
+             24                                 13
+
+
+
+
+                                                                                                   0,16 NOM
+                                                          4,50       6,60
+                                                          4,30       6,20
+
+
+                                                                                                           Gage Plane
+
+
+
+                                                                                                                           0,25
+
+                                                                                                  0°–8°
+                                                                                                                         0,75
+              1                                 12
+                                                                                                                         0,50
+                               A
+
+
+
+
+                                                               Seating Plane
+
+                                                 0,15
+            1,20 MAX                                                      0,08
+                                                 0,05
+
+
+                                   PINS **
+                                              14        16          20           24        38        48        56
+                           DIM
+
+                              A MAX          3,70       3,70       5,10          5,10     7,90      9,80      11,40
+
+
+                              A MIN          3,50       3,50       4,90          4,90     7,70      9,60      11,20
+
+
+                                                                                                                        4073251/E 08/00
+
+NOTES: A.    All linear dimensions are in millimeters.
+       B.    This drawing is subject to change without notice.
+       C.    Body dimensions do not include mold flash or protrusion, not to exceed 0,15 per side.
+       D.    Falls within JEDEC: 24/48 Pins – MO-153
+                                   14/16/20/56 Pins – MO-194
+
+
+
+
+                                                POST OFFICE BOX 655303    • DALLAS, TEXAS 75265
+                                                                                                            PACKAGE OUTLINE
+DB0014A                                                        SCALE 2.000
+                                                                                                            SSOP - 2 mm max height
+                                                                                                                   SMALL OUTLINE PACKAGE
+
+
+
+
+                                                                                                                          C
+                                     8.2
+                                         TYP
+         A                           7.4
+                                                                                                                 0.1 C
+                                        PIN 1 INDEX AREA                                                                            SEATING
+                                                                                                                                    PLANE
+                                                                                      12X 0.65
+                                                                             14
+               1
+
+
+
+                                                                                       2X
+       6.5
+                                                                                       3.9
+       5.9
+      NOTE 3
+
+
+               7
+                                                                             8               0.38
+                                                                                      14X
+                                                                                             0.22
+                                                                                             0.15   C A B
+                                      5.6
+                   B
+                                      5.0
+                                     NOTE 4
+
+
+
+
+                                                                                    0.25
+                                                                                    0.09
+
+
+
+                                 SEE DETAIL A
+                                                                                                                                 2 MAX
+                                                                                         0.25
+                                                                                  GAGE PLANE
+
+
+
+
+                                                                                                       0.95                       0.05 MIN
+                                                                                     0 -8              0.55
+
+                                                                                                                DETAIL A
+                                                                                                                   A 15
+
+
+
+
+                                                                                                                 TYPICAL
+
+
+
+
+                                                                                                                              4220762/A 05/2024
+
+NOTES:
+
+1. All linear dimensions are in millimeters. Any dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+   per ASME Y14.5M.
+2. This drawing is subject to change without notice.
+3. This dimension does not include mold flash, protrusions, or gate burrs. Mold flash, protrusions, or gate burrs shall not
+   exceed 0.15 mm per side.
+4. Reference JEDEC registration MO-150.
+
+
+
+
+                                                                             www.ti.com
+                                                                                      EXAMPLE BOARD LAYOUT
+DB0014A                                                                                        SSOP - 2 mm max height
+                                                                                                          SMALL OUTLINE PACKAGE
+
+
+
+
+                                       14X (1.85)                        SYMM
+
+                                  1                                                                        (R0.05) TYP
+
+                      14X (0.45)                                                                     14
+
+
+
+
+                                                                                                         SYMM
+
+
+
+                     12X (0.65)
+
+
+                                  7                                                                  8
+
+
+                                                                          (7)
+
+
+                                                      LAND PATTERN EXAMPLE
+                                                            EXPOSED METAL SHOWN
+                                                                 SCALE: 10X
+
+
+
+
+              SOLDER MASK                                                       METAL UNDER                SOLDER MASK
+                                                    METAL
+                  OPENING                                                       SOLDER MASK                OPENING
+
+
+      EXPOSED METAL                                                                                              EXPOSED METAL
+
+                                      0.05 MAX                                                0.05 MIN
+                                      ALL AROUND                                              ALL AROUND
+
+                           NON-SOLDER MASK                                                    SOLDER MASK
+                               DEFINED                                                          DEFINED
+                             (PREFERRED)
+                                                       SOLDER MASK DETAILS
+                                                                15.000
+
+
+
+
+                                                                                                                 4220762/A 05/2024
+NOTES: (continued)
+
+5. Publication IPC-7351 may have alternate designs.
+6. Solder mask tolerances between and around signal pads can vary based on board fabrication site.
+
+
+
+
+                                                                         www.ti.com
+                                                                               EXAMPLE STENCIL DESIGN
+DB0014A                                                                                      SSOP - 2 mm max height
+                                                                                                           SMALL OUTLINE PACKAGE
+
+
+
+
+                                       14X (1.85)               SYMM
+                                                                                                            (R0.05) TYP
+                                  1
+                      14X (0.45)                                                                      14
+
+
+
+
+                                                                                                          SYMM
+
+
+
+                     12X (0.65)
+
+
+                                   7                                                                  8
+
+
+
+                                                                  (7)
+
+
+
+                                                     SOLDER PASTE EXAMPLE
+                                                    BASED ON 0.125 mm THICK STENCIL
+                                                              SCALE: 10X
+
+
+
+
+                                                                                                                  4220762/A 05/2024
+NOTES: (continued)
+
+7. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+   design recommendations.
+8. Board assembly site may have different recommendations for stencil design.
+
+
+
+
+                                                                 www.ti.com
+                                                                                                           PACKAGE OUTLINE
+PW0014A                                                        SCALE 2.500
+                                                                                                    TSSOP - 1.2 mm max height
+                                                                                                                         SMALL OUTLINE PACKAGE
+
+
+
+
+                                                                                                                                        SEATING
+                                                                                                                                        PLANE
+                                       6.6                                                                                C
+                                           TYP
+          A                            6.2
+                                                                                                                                          0.1 C
+                                          PIN 1 INDEX AREA
+                                                                                      12X 0.65
+                                                                              14
+                1
+
+
+
+
+                                                                                      2X
+        5.1                                                                           3.9
+        4.9
+       NOTE 3
+
+
+                                                                                                           4X (0 -12 )
+                7
+                                                                              8
+                                                                                            0.30
+                                                                                      14X
+                                                                                            0.17
+                                        4.5                                                                              1.2 MAX
+                    B                                                                     0.1      C A B
+                                        4.3
+                                       NOTE 4
+
+
+
+
+                                                          (0.15) TYP
+                                     SEE DETAIL A
+
+                                                                                    0.25
+                                                                             GAGE PLANE
+                                                                                                                                          0.15
+                                                                                                                                          0.05
+
+
+
+                                                                                                      0.75
+                                                                                                      0.50
+                                                                                      0 -8
+                                                                                                                    DETAIL A
+                                                                                                                          A 20
+
+
+
+
+                                                                                                                     TYPICAL
+
+                                                                                                                                   4220202/B 12/2023
+
+NOTES:
+
+1. All linear dimensions are in millimeters. Any dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+   per ASME Y14.5M.
+2. This drawing is subject to change without notice.
+3. This dimension does not include mold flash, protrusions, or gate burrs. Mold flash, protrusions, or gate burrs shall not
+   exceed 0.15 mm per side.
+4. This dimension does not include interlead flash. Interlead flash shall not exceed 0.25 mm per side.
+5. Reference JEDEC registration MO-153.
+
+
+
+
+                                                                             www.ti.com
+                                                                                    EXAMPLE BOARD LAYOUT
+PW0014A                                                                                 TSSOP - 1.2 mm max height
+                                                                                                        SMALL OUTLINE PACKAGE
+
+
+
+
+                                            14X (1.5)                  SYMM
+                                                                                                     (R0.05) TYP
+                                       1
+                           14X (0.45)                                                          14
+
+
+
+
+                                                                                                     SYMM
+
+
+
+                          12X (0.65)
+
+
+                                        7                                                      8
+
+
+
+                                                                       (5.8)
+
+
+                                                        LAND PATTERN EXAMPLE
+                                                          EXPOSED METAL SHOWN
+                                                               SCALE: 10X
+
+
+
+
+             SOLDER MASK                                                       METAL UNDER                  SOLDER MASK
+                                METAL                                          SOLDER MASK                  OPENING
+                 OPENING
+
+
+
+     EXPOSED METAL                                                                                                 EXPOSED METAL
+
+                                0.05 MAX                                                       0.05 MIN
+                                ALL AROUND                                                     ALL AROUND
+
+                          NON-SOLDER MASK                                                    SOLDER MASK
+                              DEFINED                                                          DEFINED
+                            (PREFERRED)                  SOLDER MASK DETAILS
+                                                              15.000
+
+
+
+
+                                                                                                                   4220202/B 12/2023
+NOTES: (continued)
+
+6. Publication IPC-7351 may have alternate designs.
+7. Solder mask tolerances between and around signal pads can vary based on board fabrication site.
+
+
+
+
+                                                                       www.ti.com
+                                                                               EXAMPLE STENCIL DESIGN
+PW0014A                                                                                 TSSOP - 1.2 mm max height
+                                                                                                           SMALL OUTLINE PACKAGE
+
+
+
+
+                                            14X (1.5)           SYMM
+                                                                                                      (R0.05) TYP
+                                       1
+                           14X (0.45)                                                           14
+
+
+
+
+                                                                                                    SYMM
+
+
+
+                          12X (0.65)
+
+
+                                        7                                                       8
+
+
+
+                                                                 (5.8)
+
+
+
+                                                        SOLDER PASTE EXAMPLE
+                                                    BASED ON 0.125 mm THICK STENCIL
+                                                              SCALE: 10X
+
+
+
+
+                                                                                                                    4220202/B 12/2023
+NOTES: (continued)
+
+8. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+   design recommendations.
+9. Board assembly site may have different recommendations for stencil design.
+
+
+
+
+                                                                 www.ti.com
+                                                                  GENERIC PACKAGE VIEW
+RGY 14                                                                     VQFN - 1 mm max height
+3.5 x 3.5, 0.5 mm pitch                                                     PLASTIC QUAD FLATPACK - NO LEAD
+
+
+
+
+               This image is a representation of the package family, actual package may vary.
+                             Refer to the product data sheet for package details.
+
+
+
+
+                                                                                                   4231541/A
+
+
+
+
+                                                    www.ti.com
+                                                                                                        PACKAGE OUTLINE
+D0014A                                                          SCALE 1.800
+                                                                                                      SOIC - 1.75 mm max height
+                                                                                                       SMALL OUTLINE INTEGRATED CIRCUIT
+
+
+
+                                                                                                                        C
+                                      6.2
+                                          TYP                                                           SEATING PLANE
+                                      5.8
+
+               A                                PIN 1 ID                                                           0.1 C
+                                                AREA
+                                                                                 12X 1.27
+                                                               14
+                     1
+
+
+
+
+             8.75                                                                2X
+             8.55                                                               7.62
+            NOTE 3
+
+
+
+
+                     7
+                                                           8
+                                                                                     0.51
+                                                                               14X
+                                       4.0                                           0.31
+                         B                                                                                          1.75 MAX
+                                       3.8                                            0.25   C A B
+                                      NOTE 4
+
+
+
+
+                                                                              0.25
+                                                                                   TYP
+                                                                              0.13
+                                       SEE DETAIL A
+                                                                                               0.25
+                                                                                        GAGE PLANE
+
+
+
+                                                                                                                                       0.25
+                                                                                             0 -8                   1.27               0.10
+                                                                                                                    0.40
+
+                                                                                                                    DETAIL A
+                                                                                                                     TYPICAL
+
+
+                                                                                                                            4220718/A 09/2016
+
+NOTES:
+
+1. All linear dimensions are in millimeters. Dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+   per ASME Y14.5M.
+2. This drawing is subject to change without notice.
+3. This dimension does not include mold flash, protrusions, or gate burrs. Mold flash, protrusions, or gate burrs shall not
+   exceed 0.15 mm, per side.
+4. This dimension does not include interlead flash. Interlead flash shall not exceed 0.43 mm, per side.
+5. Reference JEDEC registration MS-012, variation AB.
+
+
+
+
+                                                                              www.ti.com
+                                                                               EXAMPLE BOARD LAYOUT
+D0014A                                                                                  SOIC - 1.75 mm max height
+                                                                                             SMALL OUTLINE INTEGRATED CIRCUIT
+
+
+
+
+                                 14X (1.55)                      SYMM
+                                              1
+                                                                                         14
+
+                                14X (0.6)
+
+
+
+
+                                 12X (1.27)
+                                                                                              SYMM
+
+
+
+
+                                              7                                          8
+
+                                 (R0.05)
+                                 TYP
+                                                                  (5.4)
+
+                                                    LAND PATTERN EXAMPLE
+                                                               SCALE:8X
+
+
+
+
+                SOLDER MASK                                           METAL UNDER                      SOLDER MASK
+                                                  METAL                                                OPENING
+                OPENING                                               SOLDER MASK
+
+
+
+
+                                    0.07 MAX                                                 0.07 MIN
+                                    ALL AROUND                                               ALL AROUND
+
+                             NON SOLDER MASK                                            SOLDER MASK
+                                 DEFINED                                                  DEFINED
+
+                                                     SOLDER MASK DETAILS
+
+
+                                                                                                              4220718/A 09/2016
+NOTES: (continued)
+
+6. Publication IPC-7351 may have alternate designs.
+7. Solder mask tolerances between and around signal pads can vary based on board fabrication site.
+
+
+
+
+                                                                www.ti.com
+                                                                               EXAMPLE STENCIL DESIGN
+D0014A                                                                                    SOIC - 1.75 mm max height
+                                                                                               SMALL OUTLINE INTEGRATED CIRCUIT
+
+
+
+
+                                  14X (1.55)                      SYMM
+
+                                               1
+                                                                                           14
+
+                                14X (0.6)
+
+
+
+
+                                  12X (1.27)
+                                                                                                SYMM
+
+
+
+
+                                               7                                           8
+
+
+                                                                   (5.4)
+
+
+                                                     SOLDER PASTE EXAMPLE
+                                                   BASED ON 0.125 mm THICK STENCIL
+                                                              SCALE:8X
+
+
+
+
+                                                                                                                  4220718/A 09/2016
+NOTES: (continued)
+
+8. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+   design recommendations.
+9. Board assembly site may have different recommendations for stencil design.
+
+
+
+
+                                                                 www.ti.com
+                                         IMPORTANT NOTICE AND DISCLAIMER
+TI PROVIDES TECHNICAL AND RELIABILITY DATA (INCLUDING DATASHEETS), DESIGN RESOURCES (INCLUDING REFERENCE
+DESIGNS), APPLICATION OR OTHER DESIGN ADVICE, WEB TOOLS, SAFETY INFORMATION, AND OTHER RESOURCES “AS IS”
+AND WITH ALL FAULTS, AND DISCLAIMS ALL WARRANTIES, EXPRESS AND IMPLIED, INCLUDING WITHOUT LIMITATION ANY
+IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD
+PARTY INTELLECTUAL PROPERTY RIGHTS.
+These resources are intended for skilled developers designing with TI products. You are solely responsible for (1) selecting the appropriate
+TI products for your application, (2) designing, validating and testing your application, and (3) ensuring your application meets applicable
+standards, and any other safety, security, regulatory or other requirements.
+These resources are subject to change without notice. TI grants you permission to use these resources only for development of an
+application that uses the TI products described in the resource. Other reproduction and display of these resources is prohibited. No license
+is granted to any other TI intellectual property right or to any third party intellectual property right. TI disclaims responsibility for, and you fully
+indemnify TI and its representatives against any claims, damages, costs, losses, and liabilities arising out of your use of these resources.
+TI’s products are provided subject to TI’s Terms of Sale, TI’s General Quality Guidelines, or other applicable terms available either on
+ti.com or provided in conjunction with such TI products. TI’s provision of these resources does not expand or otherwise alter TI’s applicable
+warranties or warranty disclaimers for TI products. Unless TI explicitly designates a product as custom or customer-specified, TI products
+are standard, catalog, general purpose devices.
+TI objects to and rejects any additional or different terms you may propose.
+IMPORTANT NOTICE
+
+                                                Copyright © 2026, Texas Instruments Incorporated
+                                                                Last updated 10/2025
+

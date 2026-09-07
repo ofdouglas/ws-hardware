@@ -1,0 +1,1674 @@
+2/4‑Kbit Microwire Serial EEPROM, Industrial Grade
+AT93C56B/AT93C66B
+
+
+
+
+Features
+•   Low-Voltage Operation:
+     – VCC = 1.7V to 5.5V
+•   User-Selectable Internal Organization:
+     – 2 Kbits: 256 x 8 or 128 x 16
+     – 4 Kbits: 512 x 8 or 256 x 16
+•   Industrial Temperature Range: -40°C to +85°C
+•   Three-Wire Serial Interface
+•   Sequential Read Operation
+•   2 MHz Clock Rate (5V)
+•   Self-Timed Write Cycle within 5 ms Maximum
+•   High Reliability:
+     – Endurance: 1,000,000 write cycles
+     – Data retention: 100 years
+•   RoHS compliant
+•   Die Sale Options: Wafer Form
+
+Packages
+•   8-Lead SOIC, 8-Lead TSSOP, 8-Pad UDFN and 8-Ball VFBGA
+
+
+
+
+                                                        Data Sheet                     DS20006260B - 1
+                                       © 2019-2024 Microchip Technology Inc. and its
+                                                       subsidiaries
+                                                                                                                                                             AT93C56B/AT93C66B
+
+
+
+
+Table of Contents
+Features................................................................................................................................................................................. 1
+
+Packages................................................................................................................................................................................ 1
+
+1.     Package Types (not to scale)........................................................................................................................................ 3
+
+2.     Pin Descriptions.............................................................................................................................................................4
+       2.1.       Chip Select (CS)................................................................................................................................................... 4
+       2.2.       Serial Data Clock (SK)......................................................................................................................................... 4
+       2.3.       Serial Data Input (DI)..........................................................................................................................................4
+       2.4.       Serial Data Output (DO).................................................................................................................................... 4
+       2.5.       Ground (GND).....................................................................................................................................................4
+       2.6.       Internal Organization (ORG)............................................................................................................................. 4
+       2.7.       Device Power Supply (VCC)................................................................................................................................ 5
+
+3.     Description..................................................................................................................................................................... 6
+       3.1.       Block Diagram.................................................................................................................................................... 6
+
+4.     Electrical Characteristics............................................................................................................................................... 7
+       4.1.       Absolute Maximum Ratings..............................................................................................................................7
+       4.2.       DC and AC Operating Range............................................................................................................................. 7
+       4.3.       DC Characteristics.............................................................................................................................................. 7
+       4.4.       AC Characteristics.............................................................................................................................................. 8
+       4.5.       Synchronous Data Timing................................................................................................................................. 9
+       4.6.       Electrical Specifications..................................................................................................................................... 9
+
+5.     Device Commands and Addressing.......................................................................................................................... 11
+       5.1.       READ.................................................................................................................................................................. 11
+       5.2.       Erase/Write Enable (EWEN).............................................................................................................................12
+       5.3.       Erase/Write Disable (EWDS)............................................................................................................................12
+       5.4.       Erase Operation (ERASE)................................................................................................................................. 13
+       5.5.       Write Operation (WRITE)................................................................................................................................. 13
+       5.6.       Write All (WRAL)................................................................................................................................................14
+       5.7.       Erase All (ERAL)................................................................................................................................................. 14
+
+6.     Packaging Information............................................................................................................................................... 16
+
+7.     Revision History........................................................................................................................................................... 29
+
+Microchip Information....................................................................................................................................................... 30
+       The Microchip Website............................................................................................................................................... 30
+       Product Change Notification Service........................................................................................................................ 30
+       Customer Support.......................................................................................................................................................30
+       Product Identification System....................................................................................................................................31
+       Microchip Devices Code Protection Feature............................................................................................................ 31
+       Legal Notice..................................................................................................................................................................32
+       Trademarks.................................................................................................................................................................. 32
+       Quality Management System.....................................................................................................................................33
+       Worldwide Sales and Service..................................................................................................................................... 34
+
+
+
+
+                                                                                    Data Sheet                                                                          DS20006260B - 2
+                                                         © 2019-2024 Microchip Technology Inc. and its
+                                                                                  subsidiaries
+                                                                                       AT93C56B/AT93C66B
+                                                                                 Package Types (not to scale)
+
+
+
+1.   Package Types (not to scale)
+              8-lead SOIC/TSSOP                                           8-pad UDFN
+                   (Top View)                                              (Top View)
+
+         CS     1          8         Vcc                      CS     1                  8   Vcc
+
+         SK     2          7         NC                       SK     2                  7   NC
+
+                                                              DI     3                  6   ORG
+         DI     3          6         ORG
+                                                          DO         4                  5   GND
+         DO     4          5         GND
+
+
+
+
+                                       8-ball VFBGA
+                                         (Top View)
+
+                                CS       1                8        Vcc
+
+                                SK       2                7        NC
+
+                                DI       3                6        ORG
+
+                               DO        4                5        GND
+
+
+
+
+                                             Data Sheet                                        DS20006260B - 3
+                          © 2019-2024 Microchip Technology Inc. and its
+                                           subsidiaries
+                                                                                                     AT93C56B/AT93C66B
+                                                                                                         Pin Descriptions
+
+
+
+2.    Pin Descriptions
+      The descriptions of the pins are listed below in the Table 2-1.
+
+      Table 2-1. Pin Function Table
+           Name          8‑Lead SOIC   8‑Lead TSSOP      8‑Pad UDFN(1)      8-Ball VFBGA             Function
+            CS                1              1                 1                  1        Chip Select
+            SK                2              2                 2                  2        Serial Data Clock
+            DI                3              3                 3                  3        Serial Data Input
+            DO                4              4                 4                  4        Serial Data Output
+           GND                5              5                 5                  5        Ground
+           ORG                6              6                 6                  6        Internal Organization
+            NC                7              7                 7                  7        No Connect
+            VCC               8              8                 8                  8        Device Power Supply
+
+      Note:
+      1. The exposed pad on this package can be connected to GND or left floating.
+
+2.1   Chip Select (CS)
+      The Chip Select (CS) pin is used to control device selection. The AT93C56B/AT93C66B is selected
+      when the CS pin is high. When the device is not selected, data will not be accepted via the Serial Data
+      Input (DI) pin, and the Serial Output (DO) pin will remain in a high-impedance state.
+
+2.2   Serial Data Clock (SK)
+      The Serial Data Clock (SK) pin is used to synchronize the communication between a host and the
+      AT93C56B/AT93C66B. Instructions, addresses or data present on the Serial Data Input (DI) pin are
+      latched in on the rising edge of SK, while output on the Serial Data Output (DO) pin is clocked out on
+      the rising edge of SK.
+
+2.3   Serial Data Input (DI)
+      The Serial Data Input (DI) pin is used to transfer data into the device. It receives instructions,
+      addresses and data. Data are latched on the rising edge of the Serial Data Clock (SK).
+
+2.4   Serial Data Output (DO)
+      The Serial Data Output (DO) pin is used to transfer data out of the AT93C56B/AT93C66B. During a
+      read sequence, data are shifted out on this pin after the rising edge of the Serial Data Clock (SK).
+      This pin also outputs the Ready/Busy status of the part if CS is brought high after being low for a
+      minimum of tcs and an erase or write operation has been initiated.
+
+2.5   Ground (GND)
+      The ground reference for the power supply. The Ground (GND) pin should be connected to the
+      system ground.
+
+2.6   Internal Organization (ORG)
+      The Internal Organization (ORG) pin is used to select between the x16 or x8 memory organizations
+      of the device. When the ORG pin is tied to VCC, the x16 memory organization is selected. When the
+      ORG pin is tied to GND, the x8 memory organization is selected.
+      If the ORG pin is left unconnected and the application does not load the input beyond the capability
+      of the internal 1 MΩ pull-up resistor, then the x16 organization is selected.
+
+
+
+
+                                                        Data Sheet                                          DS20006260B - 4
+                                       © 2019-2024 Microchip Technology Inc. and its
+                                                       subsidiaries
+                                                                                          AT93C56B/AT93C66B
+                                                                                              Pin Descriptions
+
+2.7   Device Power Supply (VCC)
+      The Device Power Supply (VCC) pin is used to supply the source voltage to the device. Operations at
+      invalid VCC voltages may produce spurious results and should not be attempted.
+
+
+
+
+                                                     Data Sheet                                  DS20006260B - 5
+                                    © 2019-2024 Microchip Technology Inc. and its
+                                                    subsidiaries
+                                                                                                           AT93C56B/AT93C66B
+                                                                                                                   Description
+
+
+
+3.    Description
+      The AT93C56B/AT93C66B provides 2,048/4,096 bits of Serial Electrically Erasable and Programmable
+      Read-Only Memory (EEPROM) organized as 128/256 words of 16 bits each (when the ORG pin is
+      connected to VCC) and 256/512 words of 8 bits each (when the ORG pin is tied to ground). The
+      device is optimized for use in many industrial and commercial applications where low‑power and
+      low‑voltage operations are essential. The AT93C56B/AT93C66B is available in space-saving 8-lead
+      SOIC, 8-lead TSSOP, 8-pad UDFN and 8-ball VFBGA packages. All packages operate from 1.7V to 5.5V.
+      The AT93C56B/AT93C66B is enabled through the Chip Select (CS) pin and accessed via a three-wire
+      serial interface consisting of Data Input (DI), Data Output (DO), and Serial Data Clock (SK). Upon
+      receiving a READ instruction at DI, the address is decoded, and the data are clocked out serially on
+      the DO pin. The write cycle is completely self-timed, and no separate erase cycle is required before
+      write. The write cycle is only enabled when the part is in the Erase/Write Enable state. When CS is
+      brought high following the initiation of a write cycle, the DO pin outputs the Ready/Busy status of
+      the part.
+
+3.1   Block Diagram
+
+            CS                                                            Memory               Power-on
+                                                                       System Control           Reset            VCC
+                          High Voltage                                    Module               Generator
+                           Generation
+                             Circuit
+
+
+
+
+            SK
+                                                                Row Decoder
+
+
+
+
+                                     EEPROM Array
+                                            256/512 x 8
+                                                or
+                                                                                        Address Register
+                                           128/256 x 16
+                                                                                          and Counter
+
+
+                                         Column Decoder
+             DI                                                                                                 ORG
+                                          Data Register
+
+
+                                    Clock
+                                   Generator
+
+
+
+            DO                       Output                                                                     GND
+                                     Buffer
+
+
+
+
+      Note: When the ORG pin is connected to VCC, the x16 organization is selected. When it is connected
+      to ground, the x8 organization is selected. If the ORG pin is left unconnected, and the application
+      does not load the input beyond the capability of the internal 10 MΩ pull-up resistor, then the x16
+      organization is selected.
+
+
+
+
+                                                           Data Sheet                                             DS20006260B - 6
+                                          © 2019-2024 Microchip Technology Inc. and its
+                                                          subsidiaries
+                                                                                                                     AT93C56B/AT93C66B
+                                                                                                                  Electrical Characteristics
+
+
+
+4.    Electrical Characteristics
+4.1   Absolute Maximum Ratings
+      Temperature under bias                                                                         -55°C to +125°C
+      Storage temperature                                                                            -65°C to +150°C
+      VCC                                                                                            6.25V
+      Voltage on any pin with respect to ground                                                      -1.0V to +7.0V
+      DC output current                                                                              5.0 mA
+
+      Note: Stresses above those listed under “Absolute Maximum Ratings” may cause permanent
+      damage to the device. This is a stress rating only, and functional operation of the device at these
+      or any other conditions above those indicated in the operation listings of this specification is not
+      implied. Exposure to absolute maximum rating conditions for extended periods may affect device
+      reliability.
+
+4.2   DC and AC Operating Range
+      Table 4-1. DC and AC Operating Range
+                    AT93C56B/AT93C66B
+      Operating Temperature (Case)                          Industrial Temperature Range                         -40°C to +85°C
+      VCC Power Supply                                      Low-Voltage Grade                                    1.7V to 5.5V
+
+
+4.3   DC Characteristics
+      Table 4-2. DC Characteristics(1)
+              Parameter              Symbol            Minimum           Maximum      Units                  Test Conditions
+      Supply Voltage                     VCC1             1.7                5.5       V
+      Supply Voltage                     VCC2             2.5                5.5       V
+      Supply Voltage                     VCC3             4.5                5.5       V
+      Supply Current                     ICC1              —                 2.0      mA        VCC = 5.0V, Read at 1 MHz
+      Supply Current                     ICC2              —                 2.0      mA        VCC = 5.0V, Write at 1 MHz
+      Standby Current
+                                         ISB1              —                 1.0       μA       VCC = 1.7V, CS = 0V
+      (1.7V Option)
+
+      Standby Current
+                                         ISB2              —                10.0       μA       VCC = 2.5V, CS = 0V
+      (2.5V Option)
+
+      Standby Current
+                                         ISB3              —                15.0       μA       VCC = 5.0V, CS = 0V
+      (5.0V Option)
+
+      Input Leakage Current               IIL              —                 3.0       μA       VIN = 0 to VCC
+      Output Leakage Current             ILO               —                 3.0       μA       VIN = 0 to VCC
+      Input Low‑Voltage                  VIL1             -0.6               0.8       V        2.5V ≤ VCC ≤ 5.5V (Note 2)
+      Input High‑Voltage                 VIH1             2.0              VCC + 1     V        2.5V ≤ VCC ≤ 5.5V (Note 2)
+      Input Low‑Voltage                  VIL2             -0.6            VCC x 0.3    V        1.7V ≤ VCC ≤ 2.5V (Note 2)
+      Input High‑Voltage                 VIH2           VCC x 0.7          VCC + 1     V        1.7V ≤ VCC ≤ 2.5V (Note 2)
+      Output Low‑Voltage                 VOL1              —                 0.4       V        2.5V ≤ VCC ≤ 5.5V, IOL = 2.1 mA
+      Output High‑Voltage                VOH1             2.4                —         V        2.5V ≤ VCC ≤ 5.5V, IOH = -0.4 mA
+      Output Low‑Voltage                 VOL2              —                 0.2       V        1.7V ≤ VCC ≤ 2.5V, IOL = 0.15 mA
+      Output High‑Voltage                VOH2           VCC - 0.2            —         V        1.7V ≤ VCC ≤ 2.5V, IOH = -100 µA
+
+
+
+
+                                                                    Data Sheet                                                  DS20006260B - 7
+                                                © 2019-2024 Microchip Technology Inc. and its
+                                                                    subsidiaries
+                                                                                                                  AT93C56B/AT93C66B
+                                                                                                               Electrical Characteristics
+
+      Notes:
+      1. Applicable over recommended operating range from TA = -40°C to +85°C, VCC = 1.7V to 5.5V
+         (unless otherwise noted).
+      2. VIL min and VIH max are reference only and are not tested.
+
+4.4   AC Characteristics
+      Table 4-3. AC Characteristics(1)
+               Parameter            Symbol          Minimum       Maximum        Units                  Test Conditions
+                                                         0             2          MHz     4.5V ≤ VCC ≤ 5.5V
+      Clock Frequency, SK                fSK             0             1          MHz     2.5V ≤ VCC ≤ 5.5V
+                                                         0            250         kHz     1.7V ≤ VCC ≤ 5.5V
+                                                       250            —            ns     2.5V ≤ VCC ≤ 5.5V
+      High Time, SK                      tSKH
+                                                       1000           —            ns     1.7V ≤ VCC ≤ 5.5V
+                                                       250            —            ns     2.5V ≤ VCC ≤ 5.5V
+      Low Time, SK                       tSKL
+                                                       1000           —            ns     1.7V ≤ VCC ≤ 5.5V
+                                                       250            —            ns     2.5V ≤ VCC ≤ 5.5V
+      Minimum CS Low Time                tCS
+                                                       1000           —            ns     1.7V ≤ VCC ≤ 5.5V
+                                                        50            —            ns     2.5V ≤ VCC ≤ 5.5V, Relative to SK
+      CS Setup Time                      tCSS
+                                                       200            —            ns     1.7V ≤ VCC ≤ 5.5V, Relative to SK
+                                                       100            —            ns     2.5V ≤ VCC ≤ 5.5V, Relative to SK
+      DI Setup Time                      tDIS
+                                                       400            —            ns     1.7V ≤ VCC ≤ 5.5V, Relative to SK
+      CS Hold Time                       tCSH            0            —            ns     Relative to SK
+                                                       100            —            ns     2.5V ≤ VCC ≤ 5.5V, Relative to SK
+      DI Hold Time                       tDIH
+                                                       400            —            ns     1.7V ≤ VCC ≤ 5.5V, Relative to SK
+                                                        —             250          ns     2.5V ≤ VCC ≤ 5.5V
+      Output Delay to 1                  tPD1
+                                                        —            1000          ns     1.7V ≤ VCC ≤ 5.5V
+                                                        —             250          ns     2.5V ≤ VCC ≤ 5.5V
+      Output Delay to 0                  tPD0
+                                                        —            1000          ns     1.7V ≤ VCC ≤ 5.5V
+                                                        —             250          ns     2.5V ≤ VCC ≤ 5.5V
+      CS to Status Valid                 tSV
+                                                        —            1000          ns     1.7V ≤ VCC ≤ 5.5V,
+
+      CS to DO in                                       —             150          ns     2.5V ≤ VCC ≤ 5.5V, CS = VIL
+                                         tDF
+      High‑impedance                                    —             400          ns     1.7V ≤ VCC ≤ 5.5V, CS = VIL
+      Write Cycle Time                   tWP            0.1            5           ms     1.7V ≤ VCC ≤ 5.5V
+
+      Note:
+      1. Applicable over recommended operating range from TA = -40°C to +85°C, VCC = As Specified,
+         CL = 1 TTL Gate and 100 pF (unless otherwise noted).
+
+
+
+
+                                                                 Data Sheet                                               DS20006260B - 8
+                                                © 2019-2024 Microchip Technology Inc. and its
+                                                                subsidiaries
+                                                                                                               AT93C56B/AT93C66B
+                                                                                                            Electrical Characteristics
+
+4.5     Synchronous Data Timing
+        Figure 4-1. Synchronous Data Timing
+
+
+                          VIH                                            1µs
+                                                                               (1)
+                    CS
+                           VIL               tCSS             tSKH                   tSKL                          tCSH
+
+                          VIH
+                    SK
+                           VIL
+
+                                            tDIS       tDIH
+                          VIH
+                     DI
+                           VIL
+                                                      tPD0                                                                tDF
+                                                                                                     tPD1
+                          VOH
+             DO (Read)
+                          VOL
+                                                                                                                          tDF
+                                             tSV
+                          VOH
+          DO (Program)                                                                Status Valid
+                          VOL
+
+        Note:
+        1. This is the minimum SK period.
+
+4.6     Electrical Specifications
+4.6.1   Power-Up Requirements and Reset Behavior
+        During a power-up sequence, the VCC supplied to the AT93C56B/AT93C66B should monotonically
+        rise from GND to the minimum VCC level (as specified in Table 4-1), with a slew rate no faster than
+        0.1 V/µs.
+4.6.1.1 Device Reset
+        To prevent inadvertent write operations or any other spurious events from occurring during a
+        power-up sequence, the AT93C56B/AT93C66B includes a Power-on Reset (POR) circuit. Upon power-
+        up, the device will not respond to any commands until the VCC level crosses the internal voltage
+        threshold (VPOR) that brings the device out of Reset and into Standby mode.
+        The system designer must ensure the instructions are not sent to the device until the VCC supply has
+        reached a stable value greater than or equal to the minimum VCC level. Additionally, once the VCC is
+        greater than or equal to the minimum VCC level, the bus host must wait at least tPUP before sending
+        the first command to the device. See Table 4-4 for the values associated with these power-up
+        parameters.
+
+        Table 4-4. Power-up Conditions(1)
+         Symbol                                               Parameter                                       Min.    Max.      Units
+           tPUP    Time required after VCC is stable before the device can accept commands                    100         －      µs
+           VPOR    Power-on Reset Threshold Voltage                                                            －          1.5    V
+           tPOFF   Minimum time at VCC = 0V between power cycles                                              500         －      ms
+
+        Note:
+        1. These parameters are characterized but are not 100% tested in production.
+        If an event occurs in the system where the VCC level supplied to the AT93C56B/AT93C66B drops
+        below the maximum VPOR level specified, it is recommended that a full power cycle sequence be
+        performed. First, drive the VCC pin to GND, waiting at least the minimum tPOFF time, and then
+        perform a new power-up sequence in compliance with the requirements defined in this section.
+
+
+
+                                                                     Data Sheet                                            DS20006260B - 9
+                                            © 2019-2024 Microchip Technology Inc. and its
+                                                                 subsidiaries
+                                                                                                            AT93C56B/AT93C66B
+                                                                                                         Electrical Characteristics
+
+4.6.2   Pin Capacitance
+        Table 4-5. Pin Capacitance(1)
+            Symbol                              Test Condition                          Max.     Units          Conditions
+             COUT       Output Capacitance (DO)                                              5    pF       VOUT = 0V
+              CIN       Input Capacitance (CS, SK, DI, ORG)                                  5    pF       VIN = 0V
+
+        Note:
+        1. This parameter is characterized but is not 100% tested in production.
+
+4.6.3   EEPROM Cell Performance Characteristics
+        Table 4-6. EEPROM Cell Performance Characteristics
+                     Operation                        Test Condition                Min.         Max.             Units
+        Write Endurance(1)                TA = 25°C, VCC = 5.0V                   1,000,000       —            Write Cycles
+        Data Retention(1)                 TA = 55°C                                  100          —               Years
+
+        Note:
+        1. Performance is determined through characterization and the qualification process.
+
+
+
+
+                                                                  Data Sheet                                       DS20006260B - 10
+                                             © 2019-2024 Microchip Technology Inc. and its
+                                                              subsidiaries
+                                                                                                                   AT93C56B/AT93C66B
+                                                                                                        Device Commands and Addressing
+
+
+
+5.    Device Commands and Addressing
+      The AT93C56B/AT93C66B is accessed via a simple and versatile three-wire serial communication
+      interface. Device operation is controlled by seven instructions issued by the Host processor. A valid
+      instruction starts with a rising edge of CS and consists of a Start bit (SB), followed by the appropriate
+      opcode and the desired memory address location.
+
+      Table 5-1. AT93C56B/AT93C66B Instruction Set
+                                                    Address                          Data
+      Instruction     SB   Opcode                                                                                 Comments
+                                            X8(1)             X16(1)          X8            X16
+                                                                                                       Reads data stored in memory at
+      READ            1      10          A8‑A0                A7‑A0
+                                                                                                       specified address.
+                                                                                                       Write Enable must precede all
+      EWEN            1      00       11XXXXXXX           11XXXXXX
+                                                                                                       programming modes.
+      ERASE           1      11          A8‑A0                A7‑A0                                    Erases memory location AN‑A0.
+      WRITE           1      01          A8‑A0                A7‑A0          D7‑D0      D15‑D0         Writes memory location AN‑A0.
+                                                                                                       Erases all memory locations. Valid
+      ERAL            1      00       10XXXXXXX           10XXXXXX
+                                                                                                       only at VCC3. See Table 4-2.
+                                                                                                       Writes all memory locations. Valid
+      WRAL            1      00       01XXXXXXX           01XXXXXX           D7‑D0      D15‑D0
+                                                                                                       only at VCC3. See Table 4-2.
+                                                                                                       Disables all programming
+      EWDS            1      00       00XXXXXXX           00XXXXXX
+                                                                                                       instructions.
+
+      Note:
+      1. The ‘X’ in the address field represents a “don’t care” bit and must be sent to the device.
+
+      Table 5-2. Organization Key for Timing Diagrams
+                                              AT93C56B (2 Kbits)                                       AT93C66B (4 Kbits)
+                I/O
+                                       x8                          x16                            x8                        x16
+      AN                              A8(1)                        A7(2)                          A8                        A7
+      DN                               D7                          D15                            D7                        D15
+
+      Notes:
+      1. A8 is a “don’t care” value, but the extra clock is required.
+      2. A7 is a “don’t care” value, but the extra clock is required.
+
+5.1   READ
+      The READ instruction contains the address code for the memory location to be read. After the
+      instruction and address are decoded, data from the selected memory location are available at the
+      DO pin. Output data changes are synchronized with the rising edges of the SK pin. The AT93C56B/
+      AT93C66B supports sequential read operations. The device will automatically increment the internal
+      Address Pointer and clock out the next memory location as long as Chip Select (CS) is held high. In
+      this case, the dummy bit (Logic ‘0’) will not be clocked out between memory locations, thus allowing
+      for a continuous stream of data to be read.
+      Note: A dummy bit (logic ‘0’) precedes the initial 8-bit or 16-bit data output string.
+
+
+
+
+                                                              Data Sheet                                                    DS20006260B - 11
+                                        © 2019-2024 Microchip Technology Inc. and its
+                                                              subsidiaries
+                                                                                                      AT93C56B/AT93C66B
+                                                                                           Device Commands and Addressing
+
+      Figure 5-1. READ Timing
+                                                                                                                tCS
+
+       CS
+
+
+
+       SK
+
+
+
+        DI              1   1          0     AN           A0
+
+
+
+                      High-Impedance
+       DO                                                       0     DN                                   D0
+
+
+
+5.2   Erase/Write Enable (EWEN)
+      To ensure data integrity, the part automatically goes into the Erase/Write Disable (EWDS) state when
+      power is first applied. An Erase/Write Enable (EWEN) instruction must be executed first before any
+      programming instructions can be carried out.
+      Note: Once in the write-enabled state, programming remains enabled until an EWDS instruction is
+      executed or VCC power is removed from the part.
+
+      Figure 5-2. EWEN Timing
+                                                                                 tCS
+
+      CS
+
+
+
+      SK
+
+
+
+       DI              1        0      0    1     1                 ...
+
+
+
+5.3   Erase/Write Disable (EWDS)
+      To protect against accidental data disturbance, the Erase/Write Disable (EWDS) instruction disables
+      all programming modes and should be executed after all programming operations. The operation of
+      the READ instruction is independent of both the EWEN and EWDS instructions and can be executed at
+      any time.
+
+
+
+
+                                                               Data Sheet                                   DS20006260B - 12
+                                           © 2019-2024 Microchip Technology Inc. and its
+                                                           subsidiaries
+                                                                                                         AT93C56B/AT93C66B
+                                                                                              Device Commands and Addressing
+
+      Figure 5-3. EWDS Timing
+                                                                                tCS
+
+       CS
+
+
+
+       SK
+
+
+
+        DI             1         0     0    0     0               ...
+
+
+
+5.4   Erase Operation (ERASE)
+      The ERASE instruction programs all bits in the specified memory location to the logic ‘1’ state. The
+      self-timed erase cycle starts once the ERASE instruction and address are decoded. The DO pin
+      outputs the Ready/Busy status of the part if CS is brought high after being kept low for a minimum
+      of tCS. A logic ‘1’ at the DO pin indicates that the selected memory location has been erased and the
+      part is ready for another instruction.
+
+      Figure 5-4. ERASE Timing
+                                                                                  tCS
+
+
+       CS                                                                                   Check            Standby
+                                                                                            Status
+
+
+
+       SK
+
+
+
+        DI                 1     1   1       AN    AN-1   AN-2   ...    A0
+
+
+                                                                                             tSV               tDF
+                      High-Impedance                                                                           High-Impedance
+       DO                                                                                   Busy
+                                                                                                     Ready
+
+                                                                                      tWP
+
+
+
+5.5   Write Operation (WRITE)
+      The WRITE instruction contains the 8 bits or 16 bits of data to be written into the specified memory
+      location. The self-timed programming cycle, tWP, starts after the last bit of data is received at DI pin.
+      The DO pin outputs the Ready/Busy status of the part if CS is brought high after being kept low for
+      a minimum of tCS. A logic ‘0’ at DO indicates that programming is still in progress. A logic ‘1’ indicates
+      that the memory location at the specified address has been written with the data pattern contained
+      in the instruction and the part is ready for further instructions. A Ready/Busy status cannot be
+      obtained if CS is brought high after the end of the self-timed programming cycle, tWP.
+
+
+
+
+                                                             Data Sheet                                          DS20006260B - 13
+                                           © 2019-2024 Microchip Technology Inc. and its
+                                                            subsidiaries
+                                                                                                                           AT93C56B/AT93C66B
+                                                                                                                Device Commands and Addressing
+
+      Figure 5-5. WRITE Timing
+                                                                                              tCS
+
+       CS                                                                                                   Check Status               Standby
+
+
+
+
+       SK
+
+
+
+       DI              1         0       1       AN       ...       A0      DN          D0
+
+
+                                                                                                        tSV                             tDF
+                     High-Impedance
+      DO                                                                                                      Busy       Ready
+
+                                                                                                      tWP
+
+
+
+5.6   Write All (WRAL)
+      The Write All (WRAL) instruction programs all memory locations with the data patterns specified in
+      the instruction. The DO pin outputs the Ready/Busy status of the part if CS is brought high after
+      being kept low for a minimum of tCS.
+      Note: The WRAL instruction is valid only at VCC3 (see Table 4-2).
+
+      Figure 5-6. WRAL Timing
+
+
+                                                                                                               tCS
+                                                                                                                              Check
+                                                                                                                                              Standby
+            CS                                                                                                                Status
+
+
+
+
+            SK
+
+
+
+            DI               1       0       0        0         1                ...     DN     ...     D0
+
+
+                                                                                                                           tSV                   tDF
+                           High-Impedance
+            DO                                                                                                         Busy       Ready
+
+
+                                                                                                                 tWP
+
+
+
+
+5.7   Erase All (ERAL)
+      The Erase All (ERAL) instruction programs every bit in the memory array to the logic ‘1’ state and is
+      primarily used for testing purposes. The DO pin outputs the Ready/Busy status of the part if CS is
+      brought high after being kept low for a minimum of tCS.
+      Note: The ERAL instruction is valid only at VCC3 (see Table 4-2).
+
+
+
+
+                                                                         Data Sheet                                                      DS20006260B - 14
+                                             © 2019-2024 Microchip Technology Inc. and its
+                                                                         subsidiaries
+                                                                                                  AT93C56B/AT93C66B
+                                                                                       Device Commands and Addressing
+
+Figure 5-7. ERAL Timing
+                                                                              tCS
+
+
+  CS                                                                                  Check            Standby
+                                                                                      Status
+
+
+
+  SK
+
+
+
+   DI             1       0      0     1     0
+
+
+                                                                                      tSV                tDF
+                High-Impedance                                                                         High-Impedance
+  DO                                                                                  Busy
+                                                                                               Ready
+
+                                                                                tWP
+
+
+
+
+                                                      Data Sheet                                          DS20006260B - 15
+                                     © 2019-2024 Microchip Technology Inc. and its
+                                                     subsidiaries
+                                                                                                                              AT93C56B/AT93C66B
+                                                                                                                             Packaging Information
+
+
+
+6.    Packaging Information
+6.1   Package Marking Information
+
+           AT93C56B and AT93C66B: Package Marking Information
+
+                                           8-lead SOIC                                8-lead TSSOP
+
+
+
+
+                                                      ATMLHYWW                                  ATHYWW
+                                                      ###% CO                                   ###%CO
+                                                      YYWWNNN                                  YYWWNNN
+
+
+
+                                           8-pad UDFN                                 8-ball VFBGA
+                                           2.0 x 3.0 mm Body                          1.5 x 2.0 mm Body
+
+
+                                                            ###
+                                                            H%                                   ###U
+                                                                                                 WNNN
+                                                            NNN
+
+
+                                       Note 1:    designates pin 1
+                                       Note 2: Package drawings are not to scale
+
+
+
+
+         Catalog Number Truncation
+         AT93C56B                                            Truncation Code ###: 56B
+         AT93C66B                                            Truncation Code ###: 66B
+
+         Date Codes                                                                                       Voltages
+         Y  = Year code (last digit of calendar year)                                                         % = Minimum Voltage
+         YY = Year code (last 2 digits of calendar year)                                                      M: 1.7V min
+         WW = Week code (week of January 1 is week '01')
+
+
+
+         Country of Origin                              Device Grade                                      Atmel Truncation
+         CO = Country of Origin                         H or U: Industrial Grade                             AT: Atmel
+                                                                                                           ATM: Atmel
+                                                                                                          ATML: Atmel
+
+         Lot Number or Trace Code
+         NNN = Alphanumeric Trace Code
+
+
+
+
+                                                                              Data Sheet                                            DS20006260B - 16
+                                           © 2019-2024 Microchip Technology Inc. and its
+                                                                             subsidiaries
+                                                                                                                 AT93C56B/AT93C66B
+                                                                                                                Packaging Information
+
+8-Lead Plastic Small Outline (SN) - Narrow, 3.90 mm (.150 In.) Body [SOIC]
+
+ Note:      For the most current package drawings, please see the Microchip Packaging Specification located at
+            http://www.microchip.com/packaging
+
+                                                                            2X
+                                                                                   0.10 C A–B
+                                                               D
+                                                       A                                     D
+                                                                   NOTE 5
+                                                   N
+
+
+
+                                                                                     E
+                                                                                     2
+                                    E1
+                                    2
+
+                           E1                                                                E
+
+       2X
+              0.10 C A–B
+                                                                                                 2X
+                                                                                                       0.10 C A–B
+                           NOTE 1              1           2
+
+                                                       e                         NX b
+                                                       B                             0.25         C A–B D
+                                                                        NOTE 5
+                                                       TOP VIEW
+                                                                                   0.10 C
+
+                           C    A A2
+                 SEATING
+                  PLANE                                                       8X
+                                                                                    0.10 C
+                                   A1                  SIDE VIEW
+                                                                                             4X θ1
+                                                                                                      θ2
+                                    h
+                                                                                                           R1
+                    h
+                                                                                                           R
+            H                                                                                                          c
+
+
+
+
+                                                                                         L                         θ
+                               SEE VIEW C
+                                                                                    (L1)
+                                VIEW A–A                        4X θ1
+
+                                                                                    VIEW C
+                                                           Microchip Technology Drawing No. C04-057-SN Rev K Sheet 1 of 2
+
+
+© 2022 Microchip Technology Inc.
+
+
+
+
+                                                           Data Sheet                                                      DS20006260B - 17
+                                    © 2019-2024 Microchip Technology Inc. and its
+                                                       subsidiaries
+                                                                                                      AT93C56B/AT93C66B
+                                                                                                     Packaging Information
+
+8-Lead Plastic Small Outline (SN) - Narrow, 3.90 mm (.150 In.) Body [SOIC]
+
+ Note:    For the most current package drawings, please see the Microchip Packaging Specification located at
+          http://www.microchip.com/packaging
+
+
+
+
+                                                  Units                MILLIMETERS
+                                        Dimension Limits        MIN        NOM          MAX
+                   Number of Pins                   N                        8
+                   Pitch                             e                   1.27 BSC
+                   Overall Height                   A            –           –          1.75
+                   Molded Package Thickness         A2          1.25         –            -
+                   Standoff           §             A1          0.10         –          0.25
+                   Overall Width                    E                    6.00 BSC
+                   Molded Package Width             E1                   3.90 BSC
+                   Overall Length                   D                    4.90 BSC
+                   Chamfer (Optional)                h          0.25         –          0.50
+                   Foot Length                       L          0.40         –          1.27
+                   Footprint                        L1                   1.04 REF
+                   Lead Thickness                    c          0.17         –          0.25
+                   Lead Width                        b          0.31         –          0.51
+                   Lead Bend Radius                 R           0.07         –           –
+                   Lead Bend Radius                 R1          0.07         –           –
+                   Foot Angle                       θ            0°          –           8°
+                   Mold Draft Angle                 θ1           5°          –          15°
+                   Lead Angle                       θ2           0°          –           –
+    Notes:
+    1. Pin 1 visual index feature may vary, but must be located within the hatched area.
+    2. § Significant Characteristic
+    3. Dimensions D and E1 do not include mold flash or protrusions. Mold flash or
+        protrusions shall not exceed 0.15mm per side.
+    4. Dimensioning and tolerancing per ASME Y14.5M
+            BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+            REF: Reference Dimension, usually without tolerance, for information purposes only.
+    5. Datums A & B to be determined at Datum H.
+
+                                                        Microchip Technology Drawing No. C04-057-SN Rev K Sheet 2 of 2
+
+
+© 2022 Microchip Technology Inc.
+
+
+
+
+                                                       Data Sheet                                           DS20006260B - 18
+                                    © 2019-2024 Microchip Technology Inc. and its
+                                                      subsidiaries
+                                                                                                      AT93C56B/AT93C66B
+                                                                                                     Packaging Information
+
+8-Lead Plastic Small Outline (SN) - Narrow, 3.90 mm (.150 In.) Body [SOIC]
+
+ Note:    For the most current package drawings, please see the Microchip Packaging Specification located at
+          http://www.microchip.com/packaging
+
+
+
+
+                                                                                       SILK SCREEN
+
+
+                                   C
+
+
+
+
+                                                                                  Y1
+
+
+
+
+                                                                                X1
+                                                    E
+
+
+
+
+                                        RECOMMENDED LAND PATTERN
+
+
+
+
+                                                         Units               MILLIMETERS
+                                              Dimension Limits         MIN       NOM       MAX
+                      Contact Pitch                       E                    1.27 BSC
+                      Contact Pad Spacing                 C                       5.40
+                      Contact Pad Width (X8)              X1                                0.60
+                      Contact Pad Length (X8)             Y1                                1.55
+
+     Notes:
+     1. Dimensioning and tolerancing per ASME Y14.5M
+           BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+
+                                                                   Microchip Technology Drawing C04-2057-SN Rev K
+
+
+© 2022 Microchip Technology Inc.
+
+
+
+
+                                                        Data Sheet                                          DS20006260B - 19
+                                       © 2019-2024 Microchip Technology Inc. and its
+                                                        subsidiaries
+                                                                                                          AT93C56B/AT93C66B
+                                                                                                         Packaging Information
+
+8-Lead Plastic Thin Shrink Small Outline (ST) - 4.4 mm Body [TSSOP]
+
+ Note:    For the most current package drawings, please see the Microchip Packaging Specification located at
+          http://www.microchip.com/packaging
+
+
+                                                            D               A      B
+                                                    N
+
+
+
+
+                   (DATUM A)
+                   (DATUM B)
+
+                                                                            E1 E
+
+
+
+
+                                                    1       2                              0.20 C B A
+                                                                           8X b
+                                                e                                 0.10     C B A
+
+                                                    TOP VIEW
+                                                                                                     A
+                                                                                  0.05 C
+                                                                                              A1
+                               C           A2
+                                   A
+                   SEATING
+                    PLANE                                        8X
+                                                                       0.10 C                        A
+                                                    SIDE VIEW
+
+
+
+
+                           H
+
+
+
+
+                                       c                                          L
+                                                                                (L1)
+                                                        VIEW A-A
+
+                                                                Microchip Technology Drawing C04-086 Rev C Sheet 1 of 2
+
+
+© 2017 Microchip Technology Inc.
+
+
+
+
+                                                        Data Sheet                                              DS20006260B - 20
+                                   © 2019-2024 Microchip Technology Inc. and its
+                                                    subsidiaries
+                                                                                                     AT93C56B/AT93C66B
+                                                                                                    Packaging Information
+
+8-Lead Plastic Thin Shrink Small Outline (ST) - 4.4 mm Body [TSSOP]
+
+ Note:     For the most current package drawings, please see the Microchip Packaging Specification located at
+           http://www.microchip.com/packaging
+
+
+
+
+                                                      Units                MILLIMETERS
+                                           Dimension Limits         MIN        NOM          MAX
+                      Number of Pins                   N                          8
+                      Pitch                             e                    0.65 BSC
+                      Overall Height                   A              -           -          1.20
+                      Molded Package Thickness         A2           0.80        1.00         1.05
+                      Standoff                         A1           0.05          -            -
+                      Overall Width                    E                     6.40 BSC
+                      Molded Package Width             E1           4.30        4.40         4.50
+                      Overall Length                   D            2.90        3.00         3.10
+                      Foot Length                       L           0.45        0.60         0.75
+                      Footprint                        L1                    1.00 REF
+                      Lead Thickness                    c           0.09          -          0.25
+                      Foot Angle                                     0°          4°           8°
+                      Lead Width                        b           0.19          -          0.30
+  Notes:
+  1. Pin 1 visual index feature may vary, but must be located within the hatched area.
+  2. Dimensions D and E1 do not include mold flash or protrusions. Mold flash or
+      protrusions shall not exceed 0.20mm per side.
+  3. Dimensioning and tolerancing per ASME Y14.5M
+          BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+          REF: Reference Dimension, usually without tolerance, for information purposes only.
+
+                                                           Microchip Technology Drawing C04-086 Rev C Sheet 2 of 2
+
+
+© 2017 Microchip Technology Inc.
+
+
+
+
+                                                    Data Sheet                                             DS20006260B - 21
+                                   © 2019-2024 Microchip Technology Inc. and its
+                                                   subsidiaries
+                                                                                                                     AT93C56B/AT93C66B
+                                                                                                                    Packaging Information
+
+8-Lead Plastic Thin Shrink Small Outline (ST) - 4.4 mm Body [TSSOP]
+
+ Note:        For the most current package drawings, please see the Microchip Packaging Specification located at
+              http://www.microchip.com/packaging
+
+
+
+                                                                               G1
+
+                                                          8
+
+
+
+
+                                                                                          SILK SCREEN
+                                             C
+
+
+
+
+                                                                                         Y1
+
+                                                         1        2
+                                                                                   X1
+
+
+                                                   E
+
+                                        RECOMMENDED LAND PATTERN
+                                                           Units                   MILLIMETERS
+                                                Dimension Limits            MIN        NOM          MAX
+                        Contact Pitch                       E                        0.65 BSC
+                        Contact Pad Spacing                 C                           5.80
+                        Contact Pad Width (X8)              X1                                      0.45
+                        Contact Pad Length (X8)             Y1                                      1.50
+                        Contact Pad to Center Pad (X6)      G1              0.20
+
+
+
+
+     Notes:
+     1. Dimensioning and tolerancing per ASME Y14.5M
+             BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+     2. For best soldering results, thermal vias, if used, should be filled or tented to avoid solder loss during
+        reflow process
+
+                                                                             Microchip Technology Drawing C04-2086 Rev B
+
+
+© 2017 Microchip Technology Inc.
+
+
+
+
+                                                             Data Sheet                                                    DS20006260B - 22
+                                       © 2019-2024 Microchip Technology Inc. and its
+                                                             subsidiaries
+                                                 AT93C56B/AT93C66B
+                                                Packaging Information
+
+
+
+
+                 Data Sheet                            DS20006260B - 23
+© 2019-2024 Microchip Technology Inc. and its
+                subsidiaries
+                                                 AT93C56B/AT93C66B
+                                                Packaging Information
+
+
+
+
+                 Data Sheet                            DS20006260B - 24
+© 2019-2024 Microchip Technology Inc. and its
+                subsidiaries
+                                                 AT93C56B/AT93C66B
+                                                Packaging Information
+
+
+
+
+                 Data Sheet                            DS20006260B - 25
+© 2019-2024 Microchip Technology Inc. and its
+                subsidiaries
+                                                                                                             AT93C56B/AT93C66B
+                                                                                                            Packaging Information
+
+8-Ball Very Thin Fine-Pitch Ball Grid Array Package (E8B) - 1.50x2.00x0.85 mm Body
+[VFBGA] ; Atmel Global Package Code GXU
+ Note:   For the most current package drawings, please see the Microchip Packaging Specification located at
+         http://www.microchip.com/packaging
+
+
+
+                                                                                             8X
+                                                                                                   0.08 C
+                                                  D                       A
+                                                                                            0.10 C
+                                                                              B
+                             8            7            6       5
+
+
+
+
+                                                                              E
+
+
+         2X
+              0.10 C
+                             1            2            3       4
+              2X
+                                                                                                                        A1
+                   0.10 C
+                                         TOP VIEW                                                      A2
+                                                                                                         A
+                                                                                                  SEATING
+                                                                                                           C
+                                                                                                    PLANE
+                                                                                                     SIDE VIEW
+                                                  D1
+
+
+                                 1        2            3           4
+
+
+
+
+                                                                              E1
+
+
+
+
+                                                                          8X Øb
+                                 8            7        6       5
+                                                                                  0.15   C A B
+                                                                                  0.08   C
+                                              e
+                                              2
+
+                                     e
+
+                                 BOTTOM VIEW
+
+
+                                                                   Microchip Technology Drawing C04-21198 Rev A Sheet 1 of 2
+
+
+
+
+                                                           Data Sheet                                              DS20006260B - 26
+                                     © 2019-2024 Microchip Technology Inc. and its
+                                                           subsidiaries
+                                                                                                    AT93C56B/AT93C66B
+                                                                                                   Packaging Information
+
+8-Ball Very Thin Fine-Pitch Ball Grid Array Package (E8B) - 1.50x2.00x0.85 mm Body
+[VFBGA] ; Atmel Global Package Code GXU
+ Note:   For the most current package drawings, please see the Microchip Packaging Specification located at
+         http://www.microchip.com/packaging
+
+
+
+
+                                                     Units                 MILLIMETERS
+                                          Dimension Limits          MIN        NOM        MAX
+                      Number of Terminals             N                          8
+                      Pitch                           e                         0.50
+                      Overall Height                  A             0.73        0.79      0.85
+                      Ball Height                     A1            0.09        0.14      0.19
+                      Mold Thickness                  A2            0.40        0.45      0.50
+                      Overall Length                  D                      2.00 BSC
+                      Ball Array Length               D1                     1.50 BSC
+                      Overall Width                   E                      1.50 BSC
+                      Ball Array Width                E1                     1.00 BSC
+                      Ball Diameter                   b             0.20        0.25      0.30
+
+
+
+
+   Notes:
+   1. Pin 1 visual index feature may vary, but must be located within the hatched area.
+   2. Dimensioning and tolerancing per ASME Y14.5M
+          BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+          REF: Reference Dimension, usually without tolerance, for information purposes only.
+
+
+                                                           Microchip Technology Drawing C04-21198 Rev A Sheet 2 of 2
+
+
+
+
+                                                      Data Sheet                                          DS20006260B - 27
+                                   © 2019-2024 Microchip Technology Inc. and its
+                                                     subsidiaries
+                                                                                                   AT93C56B/AT93C66B
+                                                                                                  Packaging Information
+
+
+8-Ball Very Thin Fine-Pitch Ball Grid Array Package (E8B) - 1.50x2.00x0.85 mm Body
+[VFBGA] ; Atmel Global Package Code GXU
+ Note:   For the most current package drawings, please see the Microchip Packaging Specification located at
+         http://www.microchip.com/packaging
+
+
+
+
+                                                         C1
+
+                                         8
+
+
+
+
+                        C2
+
+
+
+
+             SILK SCREEN
+                                            1      2
+                                                                                      ØX
+                                        E
+
+
+
+
+                                   RECOMMENDED LAND PATTERN
+                                                       Units             MILLIMETERS
+                                            Dimension Limits      MIN        NOM         MAX
+                     Contact Pitch                      E                  0.40 BSC
+                     Contact Pad Spacing                C1                 1.50 BSC
+                     Contact Pad Spacing                C2                 1.00 BSC
+                     Contact Pad Width (X8)             X                                0.20
+
+
+
+
+    Notes:
+    1. Dimensioning and tolerancing per ASME Y14.5M
+          BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+
+
+
+
+                                                                        Microchip Technology Drawing C04-23198 Rev A
+
+
+
+
+                                                    Data Sheet                                            DS20006260B - 28
+                                  © 2019-2024 Microchip Technology Inc. and its
+                                                   subsidiaries
+                                                                                       AT93C56B/AT93C66B
+                                                                                           Revision History
+
+
+
+7.   Revision History
+     Revision B (February 2024)
+     Removed 8-pad XDFN product offering. Replaced "Master" terminology with "Host".
+     Revision A (October 2019)
+     Updated to the Microchip template. Microchip DS20006260 replaces Atmel document 8735.
+     Updated Package Marking Information. Removed lead finish designation. Updated trace code
+     format in package markings. Updated section content throughout for clarification. Updated 8U3-1
+     VFBGA package drawing. Updated the SOIC, TSSOP, UDFN package drawings to Microchip format
+     Atmel 8735 Revision C (January 2015)
+     Added the UDFN extended quantity option and update package outline drawings. Update the 8MA2
+     package drawing.
+     Atmel 8735 Revision B (April 2013)
+     Corrected Synchronous Data Timing figure and removed note. Updated TSSOP package option from
+     8A2 to 8X. Updated UDFN package option from 8Y6 to 8MA2. Updated template and Atmel logos.
+     Atmel 8735 Revision A (January 2011)
+     Initial document release.
+
+
+
+
+                                                   Data Sheet                                DS20006260B - 29
+                                  © 2019-2024 Microchip Technology Inc. and its
+                                                  subsidiaries
+                                                                                       AT93C56B/AT93C66B
+
+
+
+
+Microchip Information
+The Microchip Website
+Microchip provides online support via our website at www.microchip.com/. This website is used to
+make files and information easily available to customers. Some of the content available includes:
+•   Product Support – Data sheets and errata, application notes and sample programs, design
+    resources, user’s guides and hardware support documents, latest software releases and archived
+    software
+•   General Technical Support – Frequently Asked Questions (FAQs), technical support requests,
+    online discussion groups, Microchip design partner program member listing
+•   Business of Microchip – Product selector and ordering guides, latest Microchip press releases,
+    listing of seminars and events, listings of Microchip sales offices, distributors and factory
+    representatives
+
+Product Change Notification Service
+Microchip’s product change notification service helps keep customers current on Microchip
+products. Subscribers will receive email notification whenever there are changes, updates, revisions
+or errata related to a specified product family or development tool of interest.
+To register, go to www.microchip.com/pcn and follow the registration instructions.
+
+Customer Support
+Users of Microchip products can receive assistance through several channels:
+•   Distributor or Representative
+•   Local Sales Office
+•   Embedded Solutions Engineer (ESE)
+•   Technical Support
+Customers should contact their distributor, representative or ESE for support. Local sales offices are
+also available to help customers. A listing of sales offices and locations is included in this document.
+Technical support is available through the website at: www.microchip.com/support
+
+
+
+
+                                                Data Sheet                                   DS20006260B - 30
+                               © 2019-2024 Microchip Technology Inc. and its
+                                               subsidiaries
+                                                                                                           AT93C56B/AT93C66B
+
+
+Product Identification System
+To order or obtain information, e.g., on pricing or delivery, refer to the factory or the listed sales
+office.
+
+                                   AT 9 3 C 5 6 B - S S H M - B
+
+                                                                                Shipping Carrier Option
+                                                                                B = Bulk
+                                                                                T = Tape and Reel, Standard Quantity Option
+            Product Family                                                      E = Tape and Reel, Extended Quantity Option
+    93C = Microwire-compatible
+    Three-Wire Serial EEPROM
+                                                                                Operating Voltage
+                                                                                M = 1.7V to 5.5V
+            Device Density
+                 56 = 2-Kilobit
+                 66 = 4-Kilobit                                                 Package Device Grade or
+                                                                                Wafer/Die Thickness
+                                                                                H or U = Industrial Temperature Range
+           Device Revision                                                               (-40°C to +85°C)
+                                                                                11     = 11mil Wafer Thickness
+
+
+                                                                                Package Option
+                                                                                SS = SOIC
+                                                                                X   = TSSOP
+                                                                                MA = 2.0mm x 3.0mm UDFN
+                                                                                C   = VFBGA
+                                                                                WWU = Wafer Unsawn
+
+
+Note: Refer to the automotive data sheet for automotive grade ordering information.
+Examples
+                                                Package               Package       Shipping Carrier
+Device                            Package                                                                   Device Grade
+                                              Drawing Code             Option           Option
+AT93C56B‑SSHM‑B                    SOIC             SN                  SS             Bulk (Tubes)
+AT93C66B‑SSHM‑T                    SOIC             SN                  SS            Tape and Reel
+AT93C66B‑XHM‑B                    TSSOP             ST                  X              Bulk (Tubes)
+AT93C56B‑XHM‑T                    TSSOP             ST                  X             Tape and Reel    Industrial Temperature
+                                                                                                           (-40°C to 85°C)
+AT93C66B‑MAHM‑T                    UDFN            Q4B                  MA            Tape and Reel
+                                                                                     Extended Qty.,
+AT93C56B‑MAHM‑E                    UDFN            Q4B                  MA
+                                                                                     Tape and Reel
+AT93C56B‑CUM‑T                    VFBGA            E8B                  C             Tape and Reel
+
+
+
+Microchip Devices Code Protection Feature
+Note the following details of the code protection feature on Microchip products:
+•     Microchip products meet the specifications contained in their particular Microchip Data Sheet.
+•     Microchip believes that its family of products is secure when used in the intended manner, within
+      operating specifications, and under normal conditions.
+•     Microchip values and aggressively protects its intellectual property rights. Attempts to breach the
+      code protection features of Microchip product is strictly prohibited and may violate the Digital
+      Millennium Copyright Act.
+•     Neither Microchip nor any other semiconductor manufacturer can guarantee the security of its
+      code. Code protection does not mean that we are guaranteeing the product is “unbreakable”.
+
+
+
+
+                                                         Data Sheet                                              DS20006260B - 31
+                                      © 2019-2024 Microchip Technology Inc. and its
+                                                         subsidiaries
+                                                                                      AT93C56B/AT93C66B
+
+
+   Code protection is constantly evolving. Microchip is committed to continuously improving the
+   code protection features of our products.
+
+Legal Notice
+This publication and the information herein may be used only with Microchip products, including
+to design, test, and integrate Microchip products with your application. Use of this information
+in any other manner violates these terms. Information regarding device applications is provided
+only for your convenience and may be superseded by updates. It is your responsibility to ensure
+that your application meets with your specifications. Contact your local Microchip sales office for
+additional support or, obtain additional support at www.microchip.com/en-us/support/design-help/
+client-support-services.
+THIS INFORMATION IS PROVIDED BY MICROCHIP "AS IS". MICROCHIP MAKES NO REPRESENTATIONS
+OR WARRANTIES OF ANY KIND WHETHER EXPRESS OR IMPLIED, WRITTEN OR ORAL, STATUTORY
+OR OTHERWISE, RELATED TO THE INFORMATION INCLUDING BUT NOT LIMITED TO ANY IMPLIED
+WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR
+PURPOSE, OR WARRANTIES RELATED TO ITS CONDITION, QUALITY, OR PERFORMANCE.
+IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL, OR
+CONSEQUENTIAL LOSS, DAMAGE, COST, OR EXPENSE OF ANY KIND WHATSOEVER RELATED TO THE
+INFORMATION OR ITS USE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS BEEN ADVISED OF THE
+POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE FULLEST EXTENT ALLOWED BY LAW,
+MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN ANY WAY RELATED TO THE INFORMATION OR
+ITS USE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO
+MICROCHIP FOR THE INFORMATION.
+Use of Microchip devices in life support and/or safety applications is entirely at the buyer's risk,
+and the buyer agrees to defend, indemnify and hold harmless Microchip from any and all damages,
+claims, suits, or expenses resulting from such use. No licenses are conveyed, implicitly or otherwise,
+under any Microchip intellectual property rights unless otherwise stated.
+
+Trademarks
+The Microchip name and logo, the Microchip logo, Adaptec, AVR, AVR logo, AVR Freaks, BesTime,
+BitCloud, CryptoMemory, CryptoRF, dsPIC, flexPWR, HELDO, IGLOO, JukeBlox, KeeLoq, Kleer,
+LANCheck, LinkMD, maXStylus, maXTouch, MediaLB, megaAVR, Microsemi, Microsemi logo, MOST,
+MOST logo, MPLAB, OptoLyzer, PIC, picoPower, PICSTART, PIC32 logo, PolarFire, Prochip Designer,
+QTouch, SAM-BA, SenGenuity, SpyNIC, SST, SST Logo, SuperFlash, Symmetricom, SyncServer,
+Tachyon, TimeSource, tinyAVR, UNI/O, Vectron, and XMEGA are registered trademarks of Microchip
+Technology Incorporated in the U.S.A. and other countries.
+AgileSwitch, ClockWorks, The Embedded Control Solutions Company, EtherSynch, Flashtec, Hyper
+Speed Control, HyperLight Load, Libero, motorBench, mTouch, Powermite 3, Precision Edge,
+ProASIC, ProASIC Plus, ProASIC Plus logo, Quiet-Wire, SmartFusion, SyncWorld, TimeCesium,
+TimeHub, TimePictra, TimeProvider, and ZL are registered trademarks of Microchip Technology
+Incorporated in the U.S.A.
+Adjacent Key Suppression, AKS, Analog-for-the-Digital Age, Any Capacitor, AnyIn, AnyOut,
+Augmented Switching, BlueSky, BodyCom, Clockstudio, CodeGuard, CryptoAuthentication,
+CryptoAutomotive, CryptoCompanion, CryptoController, dsPICDEM, dsPICDEM.net, Dynamic
+Average Matching, DAM, ECAN, Espresso T1S, EtherGREEN, EyeOpen, GridTime, IdealBridge,
+IGaT, In-Circuit Serial Programming, ICSP, INICnet, Intelligent Paralleling, IntelliMOS, Inter-Chip
+Connectivity, JitterBlocker, Knob-on-Display, MarginLink, maxCrypto, maxView, memBrain, Mindi,
+MiWi, MPASM, MPF, MPLAB Certified logo, MPLIB, MPLINK, mSiC, MultiTRAK, NetDetach, Omniscient
+Code Generation, PICDEM, PICDEM.net, PICkit, PICtail, Power MOS IV, Power MOS 7, PowerSmart,
+PureSilicon, QMatrix, REAL ICE, Ripple Blocker, RTAX, RTG4, SAM-ICE, Serial Quad I/O, simpleMAP,
+SimpliPHY, SmartBuffer, SmartHLS, SMART-I.S., storClad, SQI, SuperSwitcher, SuperSwitcher II,
+Switchtec, SynchroPHY, Total Endurance, Trusted Time, TSHARC, Turing, USBCheck, VariSense,
+
+
+
+                                                Data Sheet                                 DS20006260B - 32
+                               © 2019-2024 Microchip Technology Inc. and its
+                                               subsidiaries
+                                                                                    AT93C56B/AT93C66B
+
+
+VectorBlox, VeriPHY, ViewSpan, WiperLock, XpressConnect, and ZENA are trademarks of Microchip
+Technology Incorporated in the U.S.A. and other countries.
+SQTP is a service mark of Microchip Technology Incorporated in the U.S.A.
+The Adaptec logo, Frequency on Demand, Silicon Storage Technology, and Symmcom are registered
+trademarks of Microchip Technology Inc. in other countries.
+GestIC is a registered trademark of Microchip Technology Germany II GmbH & Co. KG, a subsidiary
+of Microchip Technology Inc., in other countries.
+All other trademarks mentioned herein are property of their respective companies.
+© 2019-2024, Microchip Technology Incorporated and its subsidiaries. All Rights Reserved.
+
+ISBN: 978-1-6683-4016-5
+AMBA, Arm, Arm7, Arm7TDMI, Arm9, Arm11, Artisan, big.LITTLE, Cordio, CoreLink, CoreSight, Cortex,
+DesignStart, DynamIQ, Jazelle, Keil, Mali, Mbed, Mbed Enabled, NEON, POP, RealView, SecurCore,
+Socrates, Thumb, TrustZone, ULINK, ULINK2, ULINK-ME, ULINK-PLUS, ULINKpro, µVision, Versatile
+are trademarks or registered trademarks of Arm Limited (or its subsidiaries) in the US and/or
+elsewhere.
+
+Quality Management System
+For information regarding Microchip’s Quality Management Systems, please visit
+www.microchip.com/quality.
+
+
+
+
+                                               Data Sheet                                   DS20006260B - 33
+                              © 2019-2024 Microchip Technology Inc. and its
+                                              subsidiaries
+Worldwide Sales and Service
+AMERICAS                    ASIA/PACIFIC                   ASIA/PACIFIC              EUROPE
+
+Corporate Office            Australia - Sydney             India - Bangalore         Austria - Wels
+2355 West Chandler Blvd.    Tel: 61-2-9868-6733            Tel: 91-80-3090-4444      Tel: 43-7242-2244-39
+Chandler, AZ 85224-6199     China - Beijing                India - New Delhi         Fax: 43-7242-2244-393
+Tel: 480-792-7200           Tel: 86-10-8569-7000           Tel: 91-11-4160-8631      Denmark - Copenhagen
+Fax: 480-792-7277           China - Chengdu                India - Pune              Tel: 45-4485-5910
+Technical Support:          Tel: 86-28-8665-5511           Tel: 91-20-4121-0141      Fax: 45-4485-2829
+www.microchip.com/support   China - Chongqing              Japan - Osaka             Finland - Espoo
+Web Address:                Tel: 86-23-8980-9588           Tel: 81-6-6152-7160       Tel: 358-9-4520-820
+www.microchip.com           China - Dongguan               Japan - Tokyo             France - Paris
+Atlanta                     Tel: 86-769-8702-9880          Tel: 81-3-6880- 3770      Tel: 33-1-69-53-63-20
+Duluth, GA                  China - Guangzhou              Korea - Daegu             Fax: 33-1-69-30-90-79
+Tel: 678-957-9614           Tel: 86-20-8755-8029           Tel: 82-53-744-4301       Germany - Garching
+Fax: 678-957-1455           China - Hangzhou               Korea - Seoul             Tel: 49-8931-9700
+Austin, TX                  Tel: 86-571-8792-8115          Tel: 82-2-554-7200        Germany - Haan
+Tel: 512-257-3370           China - Hong Kong SAR          Malaysia - Kuala Lumpur   Tel: 49-2129-3766400
+Boston                      Tel: 852-2943-5100             Tel: 60-3-7651-7906       Germany - Heilbronn
+Westborough, MA             China - Nanjing                Malaysia - Penang         Tel: 49-7131-72400
+Tel: 774-760-0087           Tel: 86-25-8473-2460           Tel: 60-4-227-8870        Germany - Karlsruhe
+Fax: 774-760-0088           China - Qingdao                Philippines - Manila      Tel: 49-721-625370
+Chicago                     Tel: 86-532-8502-7355          Tel: 63-2-634-9065        Germany - Munich
+Itasca, IL                  China - Shanghai               Singapore                 Tel: 49-89-627-144-0
+Tel: 630-285-0071           Tel: 86-21-3326-8000           Tel: 65-6334-8870         Fax: 49-89-627-144-44
+Fax: 630-285-0075           China - Shenyang               Taiwan - Hsin Chu         Germany - Rosenheim
+Dallas                      Tel: 86-24-2334-2829           Tel: 886-3-577-8366       Tel: 49-8031-354-560
+Addison, TX                 China - Shenzhen               Taiwan - Kaohsiung        Israel - Ra’anana
+Tel: 972-818-7423           Tel: 86-755-8864-2200          Tel: 886-7-213-7830       Tel: 972-9-744-7705
+Fax: 972-818-2924           China - Suzhou                 Taiwan - Taipei           Italy - Milan
+Detroit                     Tel: 86-186-6233-1526          Tel: 886-2-2508-8600      Tel: 39-0331-742611
+Novi, MI                    China - Wuhan                  Thailand - Bangkok        Fax: 39-0331-466781
+Tel: 248-848-4000           Tel: 86-27-5980-5300           Tel: 66-2-694-1351        Italy - Padova
+Houston, TX                 China - Xian                   Vietnam - Ho Chi Minh     Tel: 39-049-7625286
+Tel: 281-894-5983           Tel: 86-29-8833-7252           Tel: 84-28-5448-2100      Netherlands - Drunen
+Indianapolis                China - Xiamen                                           Tel: 31-416-690399
+Noblesville, IN             Tel: 86-592-2388138                                      Fax: 31-416-690340
+Tel: 317-773-8323           China - Zhuhai                                           Norway - Trondheim
+Fax: 317-773-5453           Tel: 86-756-3210040                                      Tel: 47-72884388
+Tel: 317-536-2380                                                                    Poland - Warsaw
+Los Angeles                                                                          Tel: 48-22-3325737
+Mission Viejo, CA                                                                    Romania - Bucharest
+Tel: 949-462-9523                                                                    Tel: 40-21-407-87-50
+Fax: 949-462-9608                                                                    Spain - Madrid
+Tel: 951-273-7800                                                                    Tel: 34-91-708-08-90
+Raleigh, NC                                                                          Fax: 34-91-708-08-91
+Tel: 919-844-7510                                                                    Sweden - Gothenberg
+New York, NY                                                                         Tel: 46-31-704-60-40
+Tel: 631-435-6000                                                                    Sweden - Stockholm
+San Jose, CA                                                                         Tel: 46-8-5090-4654
+Tel: 408-735-9110                                                                    UK - Wokingham
+Tel: 408-436-4270                                                                    Tel: 44-118-921-5800
+Canada - Toronto                                                                     Fax: 44-118-921-5820
+Tel: 905-695-1980
+Fax: 905-695-2078
+
+
+
+
+                                                    Data Sheet                                              DS20006260B - 34
+                                   © 2019-2024 Microchip Technology Inc. and its
+                                                    subsidiaries
+

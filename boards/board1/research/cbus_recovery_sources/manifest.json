@@ -1,0 +1,25 @@
+{
+  "retrieved_on": "2026-09-07",
+  "files": {
+    "ftdi_sio.c": {
+      "bytes": 98925,
+      "sha256": "da0f938c1f1bf89b566ed519a30d52159e7459f71bf414c572b87aae62896f0f"
+    },
+    "sn74lvc2g06.pdf": {
+      "bytes": 1853733,
+      "sha256": "b5533064ff102afca29c87df4ce5b6b1771dd5eb5f869ed787c07ef66ece5910"
+    },
+    "samc21.pdf": {
+      "bytes": 12315552,
+      "sha256": "d17dacfba981d1755a00ead9452f2247b26e079f3601ec6194a947ea9cd84f40"
+    },
+    "samc21.txt": {
+      "bytes": 3942241,
+      "sha256": "b066b77be834d27171321f0ee80f756745f739d2b61a75d0f121be43a60ab040"
+    },
+    "ftdi_sio.h": {
+      "bytes": 18062,
+      "sha256": "5631c9cae5614f3b00eef2d159b6b9a22075f4ffd3a8d77b2672a5472f6400ac"
+    }
+  }
+}

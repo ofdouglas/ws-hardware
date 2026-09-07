@@ -1,0 +1,648 @@
+          TN_130 FT232H Errata Technical Note
+
+                               Document Reference No.: FT_000405
+                                                Version 1.2
+                                       Issue Date: 2013-03-15
+
+
+
+
+The intention of this errata technical note is to give a detailed description of known functional or electrical
+                                    issues with the FTDI FT232H devices.
+                The current revision of the FT232H is revision C, launched March 2013.
+
+
+
+
+Use of FTDI devices in life support and/or safety applications is entirely at the user’s risk, and the
+user agrees to defend, indemnify and hold harmless FTDI from any and all damages, claims, suits
+or expense resulting from such use.
+
+
+                      Future Technology Devices International Limited (FTDI)
+               Unit1, 2 Seaward Place, Centurion Business Park, Glasgow G41 1HH United Kingdom
+                            Tel.: +44 (0) 141 429 2777 Fax: + 44 (0) 141 429 2758
+                   E-Mail (Support): support1@ftdichip.com Web: http://www.ftdichip.com
+
+                    Copyright © 2013 Future Technology Devices International Limited
+                                                                                                    Document Reference No.: FT_000405
+                                                                                                   TN_130 FT232H Errata Technical Note
+                                                                                                                            Version 1.2
+                                                                                                             Clearance No.: FTDI# 201
+
+
+
+                                                    TABLE OF CONTENTS
+
+
+1     FT232H Revision .................................................................................... 2
+2     Errata History Table – Functional Issues ............................................. 3
+    2.1       Errata History Table – Electrical and Timing Specification Deviations. ......... 3
+3     Functional Issues of FT232H ................................................................ 4
+    3.1       Revision A ............................................................................................................ 4
+      3.1.1         Error switching from 245 FIFO mode to MPSSE mode........................................................... 4
+      3.1.2         Incorrect status reported on FT1248 MISO line when SS_n is inactive .................................. 4
+    3.2       Revision B ............................................................................................................ 6
+      3.2.1         Incorrect status reported on FT1248 MISO line when SS_n is inactive .................................. 6
+    3.3       Revision C ............................................................................................................ 7
+      3.3.1         Incorrect status reported on FT1248 MISO line when SS_n is inactive .................................. 7
+
+4     Electrical and Timing specification deviations of FT232H ................. 8
+    4.1       Revision A ............................................................................................................ 8
+      4.1.1         Suspend Timer Failure ............................................................................................................ 8
+      4.1.2         Internal 3V3 Regulator ............................................................................................................. 9
+    4.2       Revision B .......................................................................................................... 10
+      4.2.1         Internal 3V3 Regulator ........................................................................................................... 10
+    4.3       Revision C .......................................................................................................... 10
+5     FT232H Package Markings.................................................................. 11
+6     Contact Information............................................................................. 12
+Appendix C – Revision History ................................................................. 13
+
+
+
+
+                         Copyright © 2013 Future Technology Devices International Limited                                                               1
+                                                                       Document Reference No.: FT_000405
+                                                                      TN_130 FT232H Errata Technical Note
+                                                                                               Version 1.2
+                                                                                Clearance No.: FTDI# 201
+
+
+
+1    FT232H Revision
+
+FT232H part numbers are listed in Table 1. The letter at the end of date code on the device markings
+identifies the device revision.
+
+The current revision of the FT232H is revision C, launched March 2013. At the time of releasing this
+Technical Note there is one known minor issue with this silicon revision. A workaround is provided for this
+issue
+
+
+    Part Number                                         Package
+
+    FT232HL                                             48 Pin LQFP
+
+    FT232HQ                                             48 Pin QFN
+
+Table 1 FT232H Part Numbers
+
+
+
+
+This errata technical note covers the revisions of FT232H listed in Table 2.
+
+
+     Revision                                              Notes
+
+        A                                   First device revision (not released)
+
+        B                             Second device revision (Released March 2011)
+
+        C                              Third device revision (Released March 2013)
+Table 2 FT232H Revisions
+
+
+
+
+                   Copyright © 2013 Future Technology Devices International Limited                       2
+                                                                         Document Reference No.: FT_000405
+                                                                        TN_130 FT232H Errata Technical Note
+                                                                                                 Version 1.2
+                                                                                  Clearance No.: FTDI# 201
+
+
+
+2    Errata History Table – Functional Issues
+
+     Functional                                                                           Errata occurs in
+                                            Short description
+      Problem                                                                             device revision
+
+      FT232H                Error switching from 245 FIFO mode to MPSSE mode                     A,B
+
+                      Incorrect status reported on FT1248 MISO line when SS_n is
+      FT232H                                                                                      B
+                                                 inactive
+
+                      Incorrect status reported on FT1248 MISO line when SS_n is
+      FT232H                                                                                      C
+                                                 inactive
+
+
+
+
+    2.1 Errata History Table – Electrical and Timing Specification
+         Deviations.
+
+               Deviations                     Short description             Errata occurs in device revision
+
+                                       The USB specification requires a
+     Suspend timer failure (USB         maximum time to suspend of
+                                                                                           A
+       Chapter 9 Compliance)            3.125ms. The device takes up
+                                             to 4ms to suspend.
+
+                                          Device VCC is designed to
+                                        operate between 3V3 and 5V
+       Fault with internal 3V3
+                                         however with this errata the                     A,B
+               regulator.
+                                        supply should not be set below
+                                          4.3V for correct operation.
+
+
+
+
+                   Copyright © 2013 Future Technology Devices International Limited                          3
+                                                                        Document Reference No.: FT_000405
+                                                                       TN_130 FT232H Errata Technical Note
+                                                                                                Version 1.2
+                                                                                 Clearance No.: FTDI# 201
+
+
+
+3    Functional Issues of FT232H
+
+    3.1 Revision A
+
+3.1.1 Error switching from 245 FIFO mode to MPSSE mode
+Introduction:
+
+The FT232H may switch from one of the EEPROM configurable modes to MPSSE mode during runtime by
+calling the FT_SetBitMode call in the software application.
+
+
+Issue:
+
+If the device is configured to be in 245 FIFO mode (external EEPROM) and the application switches the
+mode to MPSSE, spurious accesses to the RD# or WR lines can cause the MPSSE protocol to corrupt. This
+only affects the device if 245 FIFO mode is the operational state define in the external EEPROM.
+
+
+Workaround:
+
+Assuming 245 FIFO mode was not required prior to accessing MPSSE then selecting UART mode in the
+external EEPROM would prevent the problem.
+
+This issue is corrected at silicon revision B.
+
+
+Package specific:
+
+The effected packages are listed in Table 3.
+
+
+                Package                          Applicable (Yes/No)
+
+                FT232HL                                  Y
+
+                FT232HQ                                  Y
+
+Table 3
+
+
+
+3.1.2 Incorrect status reported on FT1248 MISO line when SS_n is inactive
+
+Introduction:
+
+The FT232H has an FT1248 mode. This mode uses a MISO line to indicate the status of the device (e.g
+buffers full / empty)
+
+Issue:
+
+The bug is minor and system will not lose data but the status while SS_n is inactive can indicate that
+data can be written or read. However when starting a command the status on the MISO line on the clock
+cycle after the command is not correct.
+
+
+Workaround:
+
+Ignore the status on the MISO line on the cycle after the command and only look at the ACK status on
+the data phase of the FT1248. This will correctly reflect the status which was present while SS_n was
+inactive.
+
+
+
+
+                    Copyright © 2013 Future Technology Devices International Limited                     4
+                                                                      Document Reference No.: FT_000405
+                                                                     TN_130 FT232H Errata Technical Note
+                                                                                              Version 1.2
+                                                                               Clearance No.: FTDI# 201
+
+
+Package specific:
+
+The effected packages are listed in Table 4.
+
+
+               Package                         Applicable (Yes/No)
+
+               FT232HL                                 Y
+
+               FT232HQ                                 Y
+
+Table 4
+
+
+
+
+                    Copyright © 2013 Future Technology Devices International Limited                   5
+                                                                      Document Reference No.: FT_000405
+                                                                     TN_130 FT232H Errata Technical Note
+                                                                                              Version 1.2
+                                                                               Clearance No.: FTDI# 201
+
+
+
+   3.2 Revision B
+
+3.2.1 Incorrect status reported on FT1248 MISO line when SS_n is inactive
+
+Introduction:
+
+The FT232H has an FT1248 mode. This mode uses a MISO line to indicate the status of the device (e.g
+buffers full / empty)
+
+Issue:
+
+The bug is minor and system will not lose data but the status while SS_n is inactive can indicate that
+data can be written or read. However when starting a command the status on the MISO line on the clock
+cycle after the command is not correct.
+
+
+Workaround:
+
+Ignore the status on the MISO line on the cycle after the command and only look at the ACK status on
+the data phase of the FT1248. This will correctly reflect the status which was present while SS_n was
+inactive.
+
+
+
+Package specific:
+
+The effected packages are listed in Table 4.
+
+
+                Package                        Applicable (Yes/No)
+
+                FT232HL                                Y
+
+                FT232HQ                                Y
+
+Table 5
+
+
+
+
+                    Copyright © 2013 Future Technology Devices International Limited                    6
+                                                                      Document Reference No.: FT_000405
+                                                                     TN_130 FT232H Errata Technical Note
+                                                                                              Version 1.2
+                                                                               Clearance No.: FTDI# 201
+
+
+
+   3.3 Revision C
+
+3.3.1 Incorrect status reported on FT1248 MISO line when SS_n is inactive
+
+Introduction:
+
+The FT232H has an FT1248 mode. This mode uses a MISO line to indicate the status of the device (e.g
+buffers full / empty)
+
+Issue:
+
+The bug is minor and system will not lose data but the status while SS_n is inactive can indicate that
+data can be written or read. However when starting a command the status on the MISO line on the clock
+cycle after the command is not correct.
+
+
+Workaround:
+
+Ignore the status on the MISO line on the cycle after the command and only look at the ACK status on
+the data phase of the FT1248. This will correctly reflect the status which was present while SS_n was
+inactive.
+
+
+
+Package specific:
+
+The effected packages are listed in Table 4.
+
+
+                Package                        Applicable (Yes/No)
+
+                FT232HL                                Y
+
+                FT232HQ                                Y
+
+Table 6
+
+
+
+
+                    Copyright © 2013 Future Technology Devices International Limited                    7
+                                                                        Document Reference No.: FT_000405
+                                                                       TN_130 FT232H Errata Technical Note
+                                                                                                Version 1.2
+                                                                                 Clearance No.: FTDI# 201
+
+
+
+4    Electrical and Timing specification deviations of FT232H
+
+    4.1 Revision A
+
+4.1.1 Suspend Timer Failure
+
+Introduction:
+
+The FT232H has the ability to be put into suspend by the host to conserve power usage.
+
+
+Issue:
+
+The USB specification chapter 9 compliance tests require the device to go into suspend within 3.125ms.
+The device is taking up to 4ms to enter suspend state.
+
+
+Workaround:
+
+This issue is corrected at silicon revision B.
+
+
+Package specific:
+
+The effected packages are listed in Table 5.
+
+
+                Package                          Applicable (Yes/No)
+
+                FT232HL                                  Y
+
+                FT232HQ                                  Y
+
+Table 7
+
+
+
+
+                    Copyright © 2013 Future Technology Devices International Limited                     8
+                                                                      Document Reference No.: FT_000405
+                                                                     TN_130 FT232H Errata Technical Note
+                                                                                              Version 1.2
+                                                                               Clearance No.: FTDI# 201
+
+
+
+
+4.1.2 Internal 3V3 Regulator
+Introduction:
+
+The FT232H uses an internal regulator to generate 3V3 from a 5V source (VREGIN). The source should be
+variable from 3V3 to 5V.
+
+Issue:
+
+The supply to the regulator must not drop below 4.3V for the correct 3V3 regulated output to be
+produced. This only affects self-powered designs where the only board supply is 3V3.
+
+
+Workaround:
+
+VREGIN must not be supplied below 4.3V. VREGIN can be powered via the USB bus supply with VCCIO,
+VPLL and VPHY powered with 3.3 volts.
+
+
+Package specific:
+
+The effected packages are listed in Table 6.
+
+
+                Package                        Applicable (Yes/No)
+
+                FT232HL                                Y
+
+                FT232HQ                                Y
+
+Table 8
+
+
+
+
+                    Copyright © 2013 Future Technology Devices International Limited                   9
+                                                                      Document Reference No.: FT_000405
+                                                                     TN_130 FT232H Errata Technical Note
+                                                                                              Version 1.2
+                                                                               Clearance No.: FTDI# 201
+
+
+
+
+   4.2 Revision B
+
+4.2.1 Internal 3V3 Regulator
+
+Introduction:
+
+The FT232H uses an internal regulator to generate 3V3 from a 5V source (VREGIN). The source should be
+variable from 3V3 to 5V.
+
+Issue:
+
+The supply to the regulator must not drop below 4.3V for the correct 3V3 regulated output to be
+produced. This only affects self-powered designs where the only board supply is 3V3.
+
+
+Workaround:
+
+VREGIN must not be supplied below 4.3V. VREGIN can be powered via the USB bus supply with VCCIO,
+VPLL and VPHY powered with 3.3 volts.
+
+
+Package specific:
+
+The effected packages are listed in Table 7.
+
+
+                Package                        Applicable (Yes/No)
+
+                FT232HL                                Y
+
+                FT232HQ                                Y
+
+Table 9
+
+
+
+
+   4.3 Revision C
+
+No known issues at revision C.
+
+
+
+
+                    Copyright © 2013 Future Technology Devices International Limited                 10
+                                                                 Document Reference No.: FT_000405
+                                                                TN_130 FT232H Errata Technical Note
+                                                                                         Version 1.2
+                                                                          Clearance No.: FTDI# 201
+
+
+
+5   FT232H Package Markings
+FT232H is available in a RoHS Compliant package, 48 pin LQFP and 48 pin QFN. An example of the
+markings on the package is shown in Figure 3-1.
+
+
+
+
+                                                            Line 1 – FTDI LOGO
+
+
+
+                                                            Line 2 – Date code and revision
+
+
+                                                            Line 3 – FTDI Part Number
+
+
+
+
+                                                            Dimensions are in mm
+
+
+
+
+Figure 5-1 Package Markings – FT232HQ
+
+
+
+
+                                                             Line 1 – FTDI LOGO
+
+
+
+                                                             Line 2 – Date code and revision
+
+
+                                                             Line 3 – FTDI Part Number
+
+
+
+
+                                                             Dimensions are in mm
+
+
+
+
+Figure 5-2 Package Markings – FT232HL
+
+
+
+
+                 Copyright © 2013 Future Technology Devices International Limited               11
+                                                                                        Document Reference No.: FT_000405
+                                                                                       TN_130 FT232H Errata Technical Note
+                                                                                                                Version 1.2
+                                                                                                 Clearance No.: FTDI# 201
+
+
+
+6   Contact Information
+
+                                                              Branch Office – Hillsboro, Oregon, USA
+Head Office – Glasgow, UK
+                                                              Future Technology Devices International Limited
+Future Technology Devices International Limited               (USA)
+Unit 1, 2 Seaward Place, Centurion Business Park              7130 SW Fir Loop
+Glasgow G41 1HH                                               Tigard, OR 97223
+United Kingdom                                                USA
+Tel: +44 (0) 141 429 2777                                     Tel: +1 (503) 547 0988
+Fax: +44 (0) 141 429 2758                                     Fax: +1 (503) 547 0987
+E-mail (Sales)                   sales1@ftdichip.com          E-Mail (Sales)                      us.sales@ftdichip.com
+E-mail (Support)                 support1@ftdichip.com        E-Mail (Support)                    us.support@ftdichip.com
+E-mail (General Enquiries)       admin1@ftdichip.com          E-Mail (General Enquiries)          us.admin@ftdichip.com
+
+
+
+                                                              Branch Office – Shanghai, China
+Branch Office – Taipei, Taiwan
+                                                              Future Technology Devices International Limited
+Future Technology Devices International Limited               (China)
+(Taiwan)                                                      Room 1103, No.666 West Huaihai Road,
+2F, No. 516, Sec. 1, NeiHu Road                               Shanghai, 200052
+Taipei 114                                                    China
+Taiwan , R.O.C.                                               Tel: +86 21 62351596
+Tel: +886 (0) 2 8791 3570                                     Fax: +86 21 62351595
+Fax: +886 (0) 2 8791 3576
+                                                         E-mail (Sales)                           cn.sales@ftdichip.com
+E-mail (Sales)                   tw.sales1@ftdichip.com E-mail (Support)                          cn.support@ftdichip.com
+E-mail (Support)                 tw.support1@ftdichip.comE-mail (General Enquiries)               cn.admin@ftdichip.com
+E-mail (General Enquiries)       tw.admin1@ftdichip.com
+
+
+
+
+Branch Office – Singapore
+
+Future Technology Devices International Limited (Singapore)
+178 Paya Lebar Road
+#07-03/04/05
+Singapore 409030
+Tel: +65 6841 1174
+Fax: +65 6841 6071
+
+
+E-mail (Support)                 support1@ftdichip.com
+E-mail (General Enquiries)       admin1@ftdichip.com
+
+
+
+Web Site
+
+http://ftdichip.com
+
+
+System and equipment manufacturers and designers are responsible to ensure that their systems, and any Future
+Technology Devices International Ltd (FTDI) devices incorporated in their systems, meet all applicable safety, regulatory
+and system-level performance requirements. All application-related information in this document (including application
+descriptions, suggested FTDI devices and other materials) is provided for reference only. While FTDI has taken care to
+assure it is accurate, this information is subject to customer confirmation, and FTDI disclaims all liability for system
+designs and for any applications assistance provided by FTDI. Use of FTDI devices in life support and/or safety
+applications is entirely at the user’s risk, and the user agrees to defend, indemnify and hold harmless FTDI from any and
+all damages, claims, suits or expense resulting from such use. This document is subject to change without notice. No
+freedom to use patents or other intellectual property rights is implied by the publication of this document. Neither the
+whole nor any part of the information contained in, or the product described in this document, may be adapted or
+reproduced in any material or electronic form without the prior written consent of the copyright holder. Future
+Technology Devices International Ltd, Unit 1, 2 Seaward Place, Centurion Business Park, Glasgow G41 1HH, United
+Kingdom. Scotland Registered Company Number: SC136640
+
+
+
+
+                       Copyright © 2013 Future Technology Devices International Limited                                     12
+                                                                 Document Reference No.: FT_000405
+                                                                TN_130 FT232H Errata Technical Note
+                                                                                         Version 1.2
+                                                                          Clearance No.: FTDI# 201
+
+
+
+Appendix C – Revision History
+Version 1.0   First Release                                              16/02/2011
+
+Version 1.1   Update to include 3V3 regulator                            28/01/2013
+
+Version 1.2   Update Device to Revision C                                15/03/2013
+
+
+
+
+                 Copyright © 2013 Future Technology Devices International Limited               13
+
