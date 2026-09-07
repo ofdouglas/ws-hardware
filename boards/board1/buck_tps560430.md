@@ -1,13 +1,13 @@
 # TPS560430 Rev A passive design
 
-Status: passive MPNs accepted by ADR-025; electrical qualification pending. Updated 2026-09-06. Authority: ADR-021 buck, ADR-022 input ramp, ADR-024 inverter. This is the current buck proposal; buck_converter.md retains older converter history.
+Status: passive MPNs accepted by ADR-025; electrical qualification pending. Updated 2026-09-06. Authority: ADR-021 buck, ADR-022 input ramp, ADR-024 inverter. This is the current buck implementation note; buck_converter.md retains older converter history.
 
 ## Circuit
 
 USB_5V -> VIN5; VIN5 -> 10 uF || 100 nF -> GND2.
 SW6 -> 12 uH -> 3V3_SYS; 3V3_SYS -> local 22 uF -> ground.
 CB1 -> 100 nF -> SW6. FB3 -> quiet sense at local output-capacitor positive terminal.
-EN4 <- MC74HC1G14DBVT1G, with proposed 47 kohm to ground.
+EN4 <- MC74HC1G14DBVT1G, with accepted ERJ-6GEYJ473V 47 kohm to ground (ADR-030).
 No external feedback divider for fixed X3F. No catch diode or external soft-start/compensation network.
 
 ## Accepted parts
@@ -19,7 +19,7 @@ No external feedback divider for fixed X3F. No catch diode or external soft-star
 | B030 | 1 | TDK C3225X7R1C226M250AC | 22 uF +/-20%, 16 V X7R, 1210 | 445-3955-1-ND |
 | B031/B052 | 2 | KEMET C0805C104K5RACTU | 100 nF +/-10%, 50 V X7R, 0805 | 399-C0805C104K5RACTUCT-ND |
 
-DigiKey listings accessed 2026-09-06; web-index inventory is not a live purchase guarantee. B029 35 V is a stock/derating choice for the 5 V rail, not approval to connect this branch directly to 24 V. B052 rating corrects the old >=10 V placeholder: TI recommends >=16 V. Standard 100 nF part can also serve the inverter bypass without increasing the reserved count.
+DigiKey listings accessed 2026-09-06; web-index inventory is not a live purchase guarantee. B029 35 V is a stock/derating choice for the 5 V rail, not approval to connect this branch directly to 24 V. B052 rating corrects the old >=10 V placeholder: TI recommends >=16 V. Inverter bypass uses the accepted bridge-domain KGM21NR71E104KT allocation B1-B061; do not add it to these buck rows.
 
 ## Sizing calculations
 
@@ -47,3 +47,5 @@ Place input bypass at VIN/GND, bootstrap directly at CB/SW, and output capacitor
 - [TDK input characterization](https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1v106k160ac.pdf); [DigiKey](https://www.digikey.com/en/products/detail/tdk-corporation/C3216X7R1V106K160AC/3952035).
 - [TDK output characterization](https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3225x7r1c226m250ac.pdf); [DigiKey](https://www.digikey.com/en/products/detail/tdk-corporation/C3225X7R1C226M250AC/1587497).
 - [KEMET DigiKey listing](https://www.digikey.com/en/products/detail/kemet/C0805C104K5RACTU/411169).
+
+Related current notes: [USB input](usb_input.md) and [distributed decoupling](decoupling.md).

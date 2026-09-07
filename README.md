@@ -2,14 +2,14 @@
 
 Status: draft · Owner: project maintainer · Updated: 2026-09-06
 
-Hardware experiments for WireSpaces (WS), starting with a small four-MCU bench board. This repository is a design scaffold, not a fabrication release. No schematic, PCB, validated pin allocation, or orderable BOM exists yet.
+Hardware experiments for WireSpaces (WS), starting with a small four-MCU bench board. This repository is a design scaffold, not a fabrication release. Selected parts and project-local symbol libraries exist; pin allocation, board circuitry and procurement counts still have open qualification work. This is not a validated fabrication or ordering package.
 
 ## Start here
 
 1. Read [agent instructions](AGENTS.md) and [document/decision conventions](docs/DESIGN_PRINCIPLES.md).
 2. Read [system context](docs/WIRESPACES_SYSTEM_CONTEXT.md) and [family architecture](docs/HARDWARE_ARCHITECTURE.md).
 3. Check the [ADR index](docs/decisions/README.md) before changing a decision.
-4. Work from [Board 1 requirements](boards/board1/requirements.md), then its [pinmap](boards/board1/pinmap.md) and [BOM](boards/board1/bom.csv).
+4. Work from [Board 1 requirements](boards/board1/requirements.md), then its [current design overview](boards/board1/README.md), [pinmap](boards/board1/pinmap.md) and [BOM](boards/board1/bom.csv).
 
 ```text
 ws-hardware/
@@ -27,7 +27,7 @@ ws-hardware/
 │   ├── requirements.md
 │   ├── pinmap.md
 │   ├── bom.csv
-│   └── kicad/                    # placeholder; no CAD files yet
+│   └── kicad/                    # board CAD workspace; see board status
 └── libraries/
     ├── symbols/
     └── footprints/

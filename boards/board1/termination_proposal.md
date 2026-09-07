@@ -1,3 +1,5 @@
+> Historical reference retained for provenance. Current implementation: [termination.md](termination.md). Earlier selections and open-selection statements below may be superseded; use the current note and accepted ADRs.
+
 # Board 1 bus termination
 
 Status: accepted topology and nominal 120 ohm values, 2026-09-06, USR-28 / [ADR-034](../../docs/decisions/034-rs485-termination.md) / B1-R026. Exact resistor/jumper MPNs accepted ADR-035. This file retains the original proposal path for stable links.

@@ -1,3 +1,5 @@
+> Historical reference retained for provenance. Current implementation: [usb_vcp.md](usb_vcp.md). Earlier selections and open-selection statements below may be superseded; use the current note and accepted ADRs.
+
 # USB power and VCP — circuit proposal
 
 Current input authority: ADR-022. TPS22810 CT is 47 nF; TLV803E B1-B049 and bypass B1-B050 are omitted (quantity zero). B1-B051 10 kohm RESET# pull-up and existing 10 nF remain. Direct ramped capacitance is 14.9 uF pending final buck CIN review. [Current circuit and operating points](vbus_protection_proposal.md) supersedes earlier input descriptions below.
