@@ -2,10 +2,12 @@
 
 Status: current index through ADR-039. [Requirements](requirements.md#open-questions--authoritative-register) owns question status; [bom.csv](bom.csv) owns selection and evidence status. Accepted MPNs should not be reselected as routine cleanup.
 
+Use the [unfinished decision checklist](unfinished_decisions.md) for choices to complete before capture; the table below also includes qualification of already selected parts.
+
 | Remaining work | BOM allocation | Question references |
 |---|---|---|
 | MCU reset/boot support; power-off-safe CBUS reset and BOOT0 interfaces | B1-B010/053 | B1-Q005/013 |
-| Enumerate bridge support; settle VCP enables/defaults and rail-by-rail capacitor counts | B1-B016/017/061/062/063 | B1-Q002/012 |
+| Enumerate bridge support; implement accepted PWREN# enable and complete receiver defaults and rail-by-rail capacitor counts | B1-B016/017/061/062/063 | B1-Q002/012 |
 | Debug adapter input defaults and unpowered-interface support | B1-B060 | B1-Q014 |
 | RS-485 DE and /RE defaults, residual support and bias backfeed behavior | B1-B023 | B1-Q009 |
 | Determine whether CAN residual protection needs any components beyond accepted TVS arrays | B1-B007 | B1-Q003/004 |
@@ -30,3 +32,5 @@ These are unfinished implementation proposals, not new accepted quantities or MP
 - Residual CAN: retire the aggregate only after confirming no parts remain beyond the selected networks. No implicit choke, DNP or extra series parts.
 
 Resolve power-off interfaces and bridge rail enumeration first; those determine the outstanding procurement counts.
+
+Research update: [current dispositions](research/README.md) records accepted startup/direct PWREN# enable (ADR-040), remaining support details and separate MCU/CBUS recovery proposals. ROM pin conflicts remain for targeted review; startup measurements are bring-up work.

@@ -11,7 +11,7 @@ superseded_by: ADR-019 (direct attachment); ADR-021 (SC189-specific converter re
 
 ## Current authority (editorial reconciliation)
 
-Retain omission of AP22653/separate main switch, independent bridge, PWREN# enable policy, SN74LV125APWR and its existing bypass allocation. [ADR-019](019-simple-vbus-input.md) replaces direct attachment; [ADR-021](021-tps560430-main-buck.md) replaces SC189 with TPS560430. [ADR-024](024-pwren-inverter.md) implements inversion; it does not replace isolation. Use [USB VCP](../../boards/board1/usb_vcp.md); enable/default and timing qualification remain open.
+Retain omission of AP22653/separate main switch, independent bridge, PWREN# enable policy, SN74LV125APWR and its existing bypass allocation. [ADR-019](019-simple-vbus-input.md) replaces direct attachment; [ADR-021](021-tps560430-main-buck.md) replaces SC189 with TPS560430. [ADR-024](024-pwren-inverter.md) implements inversion; it does not replace isolation. [ADR-040](040-startup-and-vcp-enable.md) supersedes the historical rail-valid /OE prerequisite with direct PWREN# control. Use [USB VCP](../../boards/board1/usb_vcp.md); enable/default and timing qualification remain open.
 
 Historical decision text below is retained as the record at acceptance; superseded clauses are not current implementation instructions.
 

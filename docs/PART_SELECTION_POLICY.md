@@ -4,6 +4,8 @@ Status: draft policy · Authority: selection/review workflow
 
 Prefer readily sourced parts, inspectable/reworkable packages, documented electrical behavior, and a small set of reusable library components. Existing MCU choices are accepted selections (USR-15 / ADR-004), not an invitation to re-optimize the architecture every session. Check ADR-004 before revisiting them.
 
+Collect the following evidence at the relevant review stage in DESIGN_PRINCIPLES.md. Do not make procurement, layout or bench evidence a prerequisite for proposing or capturing a conventional circuit. Reuse existing checked evidence; investigate only limits relevant to the intended use.
+
 For each selected part, record in the BOM or linked evidence:
 
 - Exact manufacturer and orderable MPN, package, quantity, assembly variant, symbol and footprint.

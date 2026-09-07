@@ -156,3 +156,7 @@ Maintainer explicitly instructs: “commit the second SN74LV125APWR for OD UART 
 ## USR-33 — closeout selections and scope ground pins
 
 2026-09-06: Maintainer accepts TE CRGP0805F330R, RK73H2ATTD3301F, the multidrop plan and header plan. Regular PCB test pads are accepted with an explicit addition: pins for clipping scope-probe ground leads. ADR-039 records selections; ground-pin MPN/count remain open.
+
+## USR-34 — startup/enable resolution and proportional design workflow
+
+2026-09-07: Maintainer states FTDI startup timing is fine and VCP buffers can be enabled by PWREN#, then explicitly requests correction of both settled items and the workflow rules. ADR-040 records the circuit decision. Design workflow now prioritizes conventional bench-prototype circuits, concrete failure evidence and stage-appropriate checks. This does not accept other research proposals or claim bench validation.

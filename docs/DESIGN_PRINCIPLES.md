@@ -32,11 +32,33 @@ Check `docs/decisions/README.md` before proposing a choice. Accepted decisions s
 
 Proposals may guide reversible planning but do not authorize fabrication. Routine edits within accepted scope need no fresh decision. Keep one change focused; include requirement/ADR IDs and update derived files in the same change.
 
-## Review gates
+## Proportionate design and stopping rules
 
-- Scope: explicit acceptance of the MVP requirements and resolution of scope blockers.
-- Schematic: exact package pin/mux review; power/startup/current budget; clocks/reset/debug; PHY behavior and termination; connector pin numbering; reviewed symbols/footprints; ERC findings resolved or documented.
-- Layout: placement/routing review for selected bus rates and geometry; clear test/debug access and silkscreen; DRC findings resolved or documented; schematic/pinmap/BOM agreement.
-- Release: approved assembly variant, complete BOM, fabrication/assembly outputs tied to a revision, and a bring-up checklist. Record actual measurements after assembly separately from design expectations.
+Rev A is a manually operated bench prototype. Use conventional manufacturer application circuits and the accepted operating scope. Distinguish behavior needed during normal operation from later bring-up observations and hypothetical faults. Do not silently strengthen requirements into guaranteed operation across arbitrary brownouts, corrupt configuration, abnormal external drive or every supply-collapse order. Actual absolute-maximum violations, incompatible logic levels and output contention in intended use remain material concerns.
 
-These are future gates, not checks already passed by this scaffold.
+A missing guarantee is uncertainty, not automatically a failure. Identify a plausible mechanism and material consequence before expanding research or proposing mitigation. Use existing engineering allowances for negligible contributions; refine a calculation when it can change a component, connection or budget decision. Do not repeatedly recheck settled evidence without a relevant change.
+
+Routine reversible implementation choices can be made within accepted scope and documented in the circuit/BOM notes. Reserve ADRs for meaningful scope, architecture or durable policy decisions, and for changes to accepted ADRs. Maintainer acceptance and engineering evidence are separate; passing a pin check need not wait for bench tests, and an accepted circuit need not be called electrically verified.
+
+Classify remaining work in the existing question's resolution text or working checklist without creating another authority register:
+
+| Disposition | Treatment |
+|---|---|
+| Implementation detail | Resolve while capturing; record chosen wiring/value and rationale |
+| Schematic check | Verify relevant pins, mux, limits and connectivity before schematic approval |
+| Bring-up check | Measure on assembled hardware; does not block draft capture |
+| Deferred / no change | Outside scope or insufficient reason to alter the conventional circuit |
+
+For a blocker, state trigger, mechanism, consequence, evidence and affected gate. Block only the dependent work. A broad open question may contain a settled decision and pending measurements: record the settled subitem explicitly rather than repeatedly reopening it. No need to close the whole question prematurely.
+
+Stop when the evidence supports an implementation and further research is unlikely to change it. If uncertainty is material, define one bounded next check. Reviews should prioritize concrete errors and can conclude “no change needed.” Extra complexity needs a demonstrated benefit against an accepted requirement.
+
+## Review stages
+
+- Draft capture: draw settled circuitry and resolve routine details; label unresolved connections/proposals. Do not require future measurements or complete layout qualification to start.
+- Schematic approval: check exact package pins/mux, supply and logic compatibility, clocks/reset/debug, PHY behavior, connector numbering and symbol mappings; reconcile BOM and resolve or document actual ERC findings. Review relevant current/startup calculations. Mechanical footprint qualification must finish before layout commitment.
+- Layout approval: review land patterns, placement/routing for intended rates, test access and silkscreen; reconcile CAD/pinmap/BOM and actual DRC findings.
+- Prototype release: review assembly BOM and fabrication outputs tied to a revision, plus a finite bring-up checklist. Unperformed bring-up measurements are expected at this stage and must not be represented as passed.
+- Bring-up: measure startup, power, clocks, programming and link performance under intended conditions. Investigate faults revealed by results. Broader production/compliance qualification is a separate scope decision.
+
+These stages define when work is needed, not claims that checks have passed. Active summaries must show current decisions; remove withdrawn recommendations and their derived parts/calculations. Historical accepted ADR text remains with an explicit supersession notice.

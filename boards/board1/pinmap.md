@@ -1,63 +1,63 @@
 # Board 1 pin/resource allocation
 
-Status: draft · Allocation evidence: unverified · Related: B1-Q005
+Status: draft · Allocation evidence: unverified · Notes reconciled through ADR-039 on 2026-09-07 · Related: B1-Q005
 
-The table below preserves the original resource checklist. Draft per-pad SAM0/SAM1/SAM2 and STM32 gateway assignments appear in the linked spreadsheet below. Accepted MCU MPNs and quantities are in requirements (USR-15 / ADR-004); verify their exact datasheets/errata before allocation. `TBD` means unknown; `NA` means not applicable.
+The table below preserves the original parent resource IDs. Draft per-pad assignments for all MCUs, FTDI and EEPROM appear in the linked spreadsheet below. Accepted MCU MPNs and quantities are in requirements (USR-15 / ADR-004); verify their exact datasheets/errata before allocation. `TBD` means unknown; `NA` means not applicable.
 
-Rows initially group signals to keep the checklist concise. Before schematic freeze, split every group into one row per physical pad/signal, preserving the original ID as a parent reference. Columns `pad`, `port`, `peripheral`, and `mux` must then hold exact values. Evidence must include manufacturer document revision/page/table and conflict-review result. Mark `verified` only after those checks.
+The workbook already contains 264 physical-pad rows B1-P025–288. Parent groups B1-P001–024 are a resource checklist, not additional physical pads or an instruction to allocate the devices again. The workbook owns the draft pad/port/peripheral/mux detail; evidence must include manufacturer document revision/page/table and conflict review before any row becomes verified. See [unfinished decisions](unfinished_decisions.md) for the remaining implementation choices.
 
-| ID | Node | Required signals | Link/requirement | Pad | Port | Peripheral | Mux | Allocation | Evidence status | Reason / reservation | Evidence |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| B1-P001 | GW | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 | TBD | TBD | TBD | TBD | unassigned | unverified | Independent CAN controller path; PHY control pins after selection | TBD |
-| B1-P002 | GW | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 | TBD | TBD | TBD | TBD | unassigned | unverified | Second independent CAN controller path | TBD |
-| B1-P003 | GW | UART_MD drive/sense | B1-L03 | TBD | TBD | TBD | TBD | unassigned | unverified | Physical pin count and open-drain implementation TBD | TBD |
-| B1-P004 | GW | VCP_TX; VCP_RX; VCP_RTS; VCP_CTS | B1-L07 | TBD | TBD | TBD | TBD | unassigned | unverified | 12 Mbaud FT232HL path; all four signals require power-off isolation; reserve a compatible USART | TBD |
-| B1-P005 | GW | SWDIO; SWCLK; RESET | B1-R007 | TBD | TBD | TBD | TBD | unassigned | unverified | Protect debug/reset allocation before general I/O | TBD |
-| B1-P006 | GW | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 | TBD | TBD | TBD | TBD | unassigned | unverified | Reserve external main-crystal pair; account for mandatory power/boot pins; ADR-005 | TBD |
-| B1-P007 | SAM0 | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 | TBD | TBD | TBD | TBD | unassigned | unverified | Independent CAN controller path; PHY control pins after selection | TBD |
-| B1-P008 | SAM0 | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 | TBD | TBD | TBD | TBD | unassigned | unverified | Second independent CAN controller path | TBD |
-| B1-P009 | SAM0 | UART_MD drive/sense | B1-L03 | TBD | TBD | TBD | TBD | unassigned | unverified | Physical pin count and open-drain implementation TBD | TBD |
-| B1-P010 | SAM0 | RING_TX; RING_RX | B1-R004 | TBD | TBD | TBD | TBD | unassigned | unverified | One UART per leaf; directed adjacency defined in requirements | TBD |
-| B1-P011 | SAM0 | SWDIO; SWCLK; RESET | B1-R007 | TBD | TBD | TBD | TBD | unassigned | unverified | Protect debug/reset allocation before general I/O | TBD |
-| B1-P012 | SAM0 | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 | TBD | TBD | TBD | TBD | unassigned | unverified | Reserve external main-crystal pair; account for mandatory power/boot pins; ADR-005 | TBD |
-| B1-P013 | SAM1 | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 | TBD | TBD | TBD | TBD | unassigned | unverified | Independent CAN controller path; PHY control pins after selection | TBD |
-| B1-P014 | SAM1 | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 | TBD | TBD | TBD | TBD | unassigned | unverified | Second independent CAN controller path | TBD |
-| B1-P015 | SAM1 | UART_MD drive/sense | B1-L03 | TBD | TBD | TBD | TBD | unassigned | unverified | Physical pin count and open-drain implementation TBD | TBD |
-| B1-P016 | SAM1 | RING_TX; RING_RX | B1-R004 | TBD | TBD | TBD | TBD | unassigned | unverified | One UART per leaf; directed adjacency defined in requirements | TBD |
-| B1-P017 | SAM1 | SWDIO; SWCLK; RESET | B1-R007 | TBD | TBD | TBD | TBD | unassigned | unverified | Protect debug/reset allocation before general I/O | TBD |
-| B1-P018 | SAM1 | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 | TBD | TBD | TBD | TBD | unassigned | unverified | Reserve external main-crystal pair; account for mandatory power/boot pins; ADR-005 | TBD |
-| B1-P019 | SAM2 | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 | TBD | TBD | TBD | TBD | unassigned | unverified | Independent CAN controller path; PHY control pins after selection | TBD |
-| B1-P020 | SAM2 | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 | TBD | TBD | TBD | TBD | unassigned | unverified | Second independent CAN controller path | TBD |
-| B1-P021 | SAM2 | UART_MD drive/sense | B1-L03 | TBD | TBD | TBD | TBD | unassigned | unverified | Physical pin count and open-drain implementation TBD | TBD |
-| B1-P022 | SAM2 | RING_TX; RING_RX | B1-R004 | TBD | TBD | TBD | TBD | unassigned | unverified | One UART per leaf; directed adjacency defined in requirements | TBD |
-| B1-P023 | SAM2 | SWDIO; SWCLK; RESET | B1-R007 | TBD | TBD | TBD | TBD | unassigned | unverified | Protect debug/reset allocation before general I/O | TBD |
-| B1-P024 | SAM2 | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 | TBD | TBD | TBD | TBD | unassigned | unverified | Reserve external main-crystal pair; account for mandatory power/boot pins; ADR-005 | TBD |
+| ID | Node | Required signals | Link/requirement |
+|---|---|---|---|
+| B1-P001 | GW | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 |
+| B1-P002 | GW | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 |
+| B1-P003 | GW | UART_MD drive/sense | B1-L03 |
+| B1-P004 | GW | VCP_TX; VCP_RX; VCP_RTS; VCP_CTS | B1-L07 |
+| B1-P005 | GW | SWDIO; SWCLK; RESET | B1-R007 |
+| B1-P006 | GW | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 |
+| B1-P007 | SAM0 | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 |
+| B1-P008 | SAM0 | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 |
+| B1-P009 | SAM0 | UART_MD drive/sense | B1-L03 |
+| B1-P010 | SAM0 | RING_TX; RING_RX | B1-R004 |
+| B1-P011 | SAM0 | SWDIO; SWCLK; RESET | B1-R007 |
+| B1-P012 | SAM0 | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 |
+| B1-P013 | SAM1 | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 |
+| B1-P014 | SAM1 | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 |
+| B1-P015 | SAM1 | UART_MD drive/sense | B1-L03 |
+| B1-P016 | SAM1 | RING_TX; RING_RX | B1-R004 |
+| B1-P017 | SAM1 | SWDIO; SWCLK; RESET | B1-R007 |
+| B1-P018 | SAM1 | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 |
+| B1-P019 | SAM2 | FD_CAN_A_TX; FD_CAN_A_RX | B1-L01 |
+| B1-P020 | SAM2 | FD_CAN_B_TX; FD_CAN_B_RX | B1-L02 |
+| B1-P021 | SAM2 | UART_MD drive/sense | B1-L03 |
+| B1-P022 | SAM2 | RING_TX; RING_RX | B1-R004 |
+| B1-P023 | SAM2 | SWDIO; SWCLK; RESET | B1-R007 |
+| B1-P024 | SAM2 | Power; ground; clocks; boot/configuration | B1-R001; B1-Q005 |
 
 Future CAN3, native USB, additional RS-485 and backbone/test signals have no physical reservations. Add rows only when scope warrants them. Review shared pins, voltage domains, debug ownership, oscillator needs, boot straps, reset defaults and PHY control pins across the complete package before marking allocation verified.
 
-## USB/power resources — proposal, physical pads unassigned
+## USB/power resources — selected parts, implementation unverified
 
-These are auxiliary components, not additional WS Hosts. Details and evidence limits: [USB proposal](usb_vcp.md). Allocate exact pins only after full datasheet and silicon-revision review.
+These are auxiliary components, not additional WS Hosts. Details and evidence limits: [USB VCP](usb_vcp.md). FTDI/EEPROM pad rows exist in the workbook; auxiliary IC pin evidence is in the local libraries. Complete board connectivity and current-document review before verification.
 
 | Resource | Domain | Allocation needed | Status |
 |---|---|---|---|
 | FT232HL | Independent USB bridge power | USB pair; supplies; crystal; reset/reference/test; EEPROM; UART; ACBUS power control | unverified |
-| EEPROM | Bridge domain | Compatible 16-bit organization and bridge configuration wiring | unverified |
+| AT93C56B-SSHM-B | Bridge domain | Accepted x16 organization; qualify draft wiring and configuration timing | unverified |
 | TPS22810DBVT input ramp | VBUS_RAW -> USB_5V | EN to VIN, CT 47 nF, QOD to OUT; see usb_input.md | unverified |
 | TPS560430X3FDBVR | USB_5V -> 3V3_SYS | Accepted converter ADR-021 and passives ADR-025; pin/circuit qualification in buck_tps560430.md | unverified |
-| UART isolation | Bridge/main boundary | Direction, power-off protection and rail-valid enable | unverified |
+| UART isolation | Bridge/main boundary | Direct PWREN# to B016 /OE pins 1/4/10/13 accepted ADR-040; check channel wiring and receiver defaults | unverified |
 
-Clock requirements: [clocking.md](clocking.md), ADR-005. B1-P006/P012/P018/P024 each reserve the node's two external-main-crystal signals; exact pads remain unassigned. B1-P004 needs four compatible USART pins, a 168 MHz kernel source and DMA resources. Do not allocate those oscillator or handshake resources to future expansion.
+Clock requirements: [clocking.md](clocking.md), ADR-005. B1-P006/P012/P018/P024 each cover the node's external-main-crystal signals; draft physical pads are recorded in the workbook. B1-P004 needs four compatible USART pins, a 168 MHz kernel source and DMA resources. Do not allocate those oscillator or handshake resources to future expansion.
 
-Rev A RS-485 resource reservation: B1-L08/B1-R016 requires an additional GW UART TX/RX and DE-/RE control (separate control preferred as a proposal). Exact peripheral, pads and mux remain TBD. Terminal block requires FD_CAN_A H/L, FD_CAN_B H/L, RS-485 A/B and ground(s); proposed two grounds and eight positions. No added MCU CAN pins or CAN transceivers are required merely for terminal access to the existing buses.
+Rev A RS-485 resource reservation: B1-L08/B1-R016 requires an additional GW UART TX/RX and DE-/RE control (separate control preferred as a proposal). USART3 and separate /RE GPIO have draft pad/mux assignments below; simultaneous allocation and electrical review remain open. The accepted eight-position terminal block serves FD_CAN_A H/L, FD_CAN_B H/L, RS-485 A/B and ground(s); two grounds and the signal order remain proposed. No added MCU CAN pins or CAN transceivers are required merely for terminal access to the existing buses.
 
-ADR-007 additions: reserve one LED control and a few additional spare GPIOs per MCU (propose four spare GPIOs each, count pending B1-Q010). LED controls are not counted as spare GPIOs. Reserve ground on headers; no power-export pin implied. Crystal/debug/boot pins remain protected. RS-485 is now a 12 Mbps p2p design; expanded Board 1 has LEFT/RIGHT only, with no multidrop allocation.
+ADR-007/039: one LED control and four spare GPIOs per MCU are included. Pad choices remain draft under B1-Q005/010. LED controls are not counted as spare GPIOs. Reserve ground on headers; no power-export pin implied. Crystal/debug/boot pins remain protected. RS-485 is now a 12 Mbps p2p design; expanded Board 1 has LEFT/RIGHT only, with no multidrop allocation.
 
-Proposed next-step choices: [oscillator and SWD/debug/flash options](interfaces.md). These do not assign pads or accept implementation choices; see B1-Q004/005/008.
+Current [interface implementation](interfaces.md) and [crystal networks](crystal_networks.md) distinguish selected parts from remaining electrical and mechanical checks under B1-Q004/005/008.
 
-USR-16 / ADR-011 accepts four independent Cortex SWD headers. Use the owned J-Link EDU as planned; PICkit 5 is available if needed. Header pads/MPN and probe/cable qualification remain B1-Q004/005. Common crystal candidate research: [crystal_networks.md](crystal_networks.md); no exact MPN selected.
+USR-16 / ADR-011 accepts four independent Cortex SWD headers. Use the owned J-Link EDU as planned; PICkit 5 is available if needed. The exact header MPN is accepted by ADR-026 (026-reva-connectors.md); numbering/footprint and probe/cable qualification remain B1-Q004/005. Crystal MPNs and initial capacitors are accepted; see [crystal networks](crystal_networks.md).
 
-Current selection — USR-19 / [ADR-014](../../docs/decisions/014-smaller-12mhz-crystal.md): smaller common crystal selected for the four MCU oscillators; ADR-017 separately proposes an accurate FT232HL crystal; qualification remains B1-Q008; see BOM B1-B014/019/020. Earlier candidate/unselected statements are historical. Load networks and electrical/pad/footprint qualification remain open under B1-Q008/B1-Q005. Assembly: 0805 preferred, 0603 acceptable, no 0402 or smaller; smaller crystals may be considered if leaded.
+Current selection — USR-19 / [ADR-014](../../docs/decisions/014-smaller-12mhz-crystal.md): smaller common crystal selected for the four MCU oscillators; ADR-017 separates the FT232HL crystal strategy, with its exact MPN finalized by ADR-030; qualification remains B1-Q008; see BOM B1-B014/019/020. ADR-031 accepts the initial load capacitors. Electrical/pad/footprint and oscillator qualification remain open under B1-Q008/B1-Q005. Assembly: 0805 preferred, 0603 acceptable, no 0402 or smaller; smaller crystals may be considered if leaded.
 
 ## Draft SAMC21 allocation — USR-19
 
@@ -69,7 +69,7 @@ Evidence: Microchip DS60001479J section 4.2.1 p.22, Table 6-2 pp.29–30, Tables
 
 ## Draft STM32 gateway allocation
 
-The same [allocation workbook](../../outputs/samc21-pin-allocation/samc21_pin_allocation.xlsx) now includes an **STM32** sheet for STM32G474RBT6, with 64 physical pad rows, IDs B1-P169–B1-P232. Original groups B1-P001–006 remain parent references. RS-485, LED and breakout rows reference their requirement IDs directly. Existing SAM allocations are unchanged.
+The [allocation workbook](../../outputs/samc21-pin-allocation/samc21_pin_allocation.xlsx) includes an **STM32** sheet for STM32G474RBT6, with 64 physical pad rows, IDs B1-P169–B1-P232. Original groups B1-P001–006 remain parent references. RS-485, LED and breakout rows reference their requirement IDs directly.
 
 | Function | Proposed peripheral / pads | Requirements |
 |---|---|---|
@@ -89,7 +89,7 @@ All assignments are proposed/unverified. Pad uniqueness and chosen peripheral/mu
 
 ## Draft FTDI and EEPROM allocation
 
-The existing workbook now includes an **FTDI** sheet. FT232HL LQFP48 uses B1-P233–280; selected AT93C56B-SSHM-B SOIC-8 uses B1-P281–288. All 56 rows are unverified draft connections. B1-B004 and B1-B013 remain the component records, with EEPROM selection accepted by USR-23 / ADR-018.
+The workbook includes an **FTDI** sheet. FT232HL LQFP48 uses B1-P233–280; selected AT93C56B-SSHM-B SOIC-8 uses B1-P281–288. All 56 rows are unverified draft connections. B1-B004 and B1-B013 remain the component records, with EEPROM selection accepted by USR-23 / ADR-018.
 
 | FT232HL pad / function | Proposed destination |
 |---|---|
@@ -113,7 +113,7 @@ B1-B053 owns the added interfaces. B1-Q013 tracks polarity, open-drain reset sha
 
 ## Accepted connector selections
 
-USR-25 / [ADR-026](../../docs/decisions/026-reva-connectors.md) selects the connectors in BOM B1-B009/022/027. B1-P005/011/017/023 retain independent SWD/reset ownership through B1-B009. Existing workbook allocations remain unverified; selecting connectors does not change MCU pads or accept a terminal order. B1-Q004/005 retain footprint, numbering, cable position-7 key, adapter and power-off checks. B1-Q010 retains GPIO count/order, cut schedule and load/protection review. Exact MPNs and quantities are maintained in [bom.csv](bom.csv).
+USR-25 / [ADR-026](../../docs/decisions/026-reva-connectors.md) selects the connectors in BOM B1-B009/022/027. B1-P005/011/017/023 retain independent SWD/reset ownership through B1-B009. Existing workbook allocations remain unverified; selecting connectors does not change MCU pads or accept a terminal order. B1-Q004/005 retain footprint, numbering, cable position-7 key, adapter and power-off checks. ADR-039 accepts four 1x5 GPIO and four 1x3 debug sections from one strip; B1-Q010 retains signal order, physical cut/mating checks and load/protection review. Exact MPNs and quantities are maintained in [bom.csv](bom.csv).
 
 
 ## Per-MCU debug UARTs — ADR-032
@@ -129,9 +129,9 @@ Dedicated 115200-baud debug UARTs implement B1-R025. Proposed header numbering i
 
 All eight pads were previously unused. Existing network, SWD, boot and GPIO-breakout assignments are preserved. Workbook rows include source locators; [ADR-032](../../docs/decisions/032-debug-uarts.md) records setup and evidence. B1-Q014 retains baud, electrical, adapter/off-state and footprint checks. No row is marked verified.
 
-## BOM reconciliation and interface candidates
+## BOM reconciliation and selected interfaces
 
-The [BOM audit](remaining_parts.md) splits already accepted bridge passives from B1-B017 into B1-B061–065 without changing pad allocations. [RS-485 and UART multidrop candidates](interfaces.md) remain proposals under B1-Q003/009. No new verified MCU mux, driver pin allocation or source-CAD connectivity is asserted.
+The [BOM audit](remaining_parts.md) splits already accepted bridge passives from B1-B017 into B1-B061–065 without changing pad allocations. [RS-485 and UART multidrop parts](interfaces.md) are accepted under ADR-034/033/039; electrical qualification remains B1-Q003/009. No new verified MCU mux, driver pin allocation or source-CAD connectivity is asserted.
 
 ## Accepted UART_MD driver — ADR-033
 
@@ -144,7 +144,7 @@ B1-B066 is the second SN74LV125APWR, separate from B1-B016. Existing MCU UART_MD
 | SAM1 | 10 | 9 | 8 |
 | SAM2 | 13 | 12 | 11 |
 
-PW package pin 14 to 3V3_SYS, pin 7 to GND; one local 100 nF from existing B1-B036 auxiliary reserve. All four UART_MD_RX inputs observe the shared bus. [TI SCES124O Rev.O p.3](https://www.ti.com/lit/ds/symlink/sn74lv125a.pdf) supplies pin functions; [ADR-033](../../docs/decisions/033-open-drain-uart-buffer.md) records selection. B1-Q003/005 retain exact MCU mux/footprint, supply-ramp and rate checks. Support resistors remain B1-B008. No workbook MCU pad changes or source-CAD connections are claimed.
+PW package pin 14 to 3V3_SYS, pin 7 to GND; one local 100 nF from existing B1-B036 auxiliary reserve. All four UART_MD_RX inputs observe the shared bus. [TI SCES124O Rev.O p.3](https://www.ti.com/lit/ds/symlink/sn74lv125a.pdf) supplies pin functions; [ADR-033](../../docs/decisions/033-open-drain-uart-buffer.md) records selection. B1-Q003/005 retain exact MCU mux/footprint, supply-ramp and rate checks. The four accepted /OE pull-ups are B1-B008; the accepted shared bus pull-up is B1-B074 (ADR-039). No workbook MCU pad changes or source-CAD connections are claimed.
 
 ## RS-485 and termination — ADR-034
 
@@ -160,12 +160,14 @@ B1-B002 uses the [imported SAMC21 symbol](../../libraries/symbols/ATSAMC21G17A-A
 
 B1-B003/012/013 pin evidence is available in the [TCAN3413DR](../../libraries/symbols/TCAN3413DR/README.md), [TPS560430X3FDBVR](../../libraries/symbols/TPS560430X3FDBVR/README.md) and [AT93C56B-SSHM-B](../../libraries/symbols/AT93C56B-SSHM-B/README.md) libraries. No board net or MCU mux allocation changed; B1-Q002/003/004/011/012 remain open.
 
-[ADR-036](../../docs/decisions/036-rs485-bias.md) / USR-30 accepts two 330 ohm 1% bias resistors in B1-B071: 3V3_SYS to A (ST3485EBDR pin6), B (pin7) to GND. Exact MPN and implementation remain unverified. [TVS recommendations](interfaces.md) remain proposed under B1-Q004/009.
+[ADR-036](../../docs/decisions/036-rs485-bias.md) / USR-30 accepts two 330 ohm 1% bias resistors in B1-B071: 3V3_SYS to A (ST3485EBDR pin6), B (pin7) to GND. Exact MPN and implementation remain unverified. [TVS selections](interfaces.md) are accepted under ADR-037/038; qualification remains B1-Q004/009.
 
-[ADR-037](../../docs/decisions/037-can-tvs.md) / USR-31 accepts B1-B072: two ESD2CAN24DBZRQ1 arrays near the CAN terminal pairs, DBZ pins1/2 to CANH/CANL and pin3 to GND, independent of termination jumpers. Exact CAD connectivity/footprint and transient qualification remain B1-Q004. [RS-485 TVS alternative](interfaces.md) remains proposed under B1-Q009.
+[ADR-037](../../docs/decisions/037-can-tvs.md) / USR-31 accepts B1-B072: two ESD2CAN24DBZRQ1 arrays near the CAN terminal pairs, DBZ pins1/2 to CANH/CANL and pin3 to GND, independent of termination jumpers. Exact CAD connectivity/footprint and transient qualification remain B1-Q004. [RS-485 TVS selection](interfaces.md) is accepted under ADR-038; qualification remains B1-Q009.
 
-[ADR-038](../../docs/decisions/038-rs485-tvs.md) / USR-32 accepts ESDS452DBZR B1-B073: DBZ pins1/2 to A/B, pin3 GND. Normal operation requires both RS-485 wires within +/-5.5 V of local Board 1 ground. Actual endpoint/offset and transient qualification remain B1-Q009. See [BOM closeout recommendations](remaining_parts.md).
+[ADR-038](../../docs/decisions/038-rs485-tvs.md) / USR-32 accepts ESDS452DBZR B1-B073: DBZ pins1/2 to A/B, pin3 GND. Normal operation requires both RS-485 wires within +/-5.5 V of local Board 1 ground. Actual endpoint/offset and transient qualification remain B1-Q009. See [remaining selections and qualification](remaining_parts.md).
 
 The remaining selected IC/array symbols are available for B1-B015/016/018/021/066/072/073; [pin-table checks and coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) are symbol evidence only. MCU mux, board allocations and implemented connectivity remain unverified. RCLAMP0504S pin 5 is VREF, not a no-connect type; an externally unconnected circuit choice is separate.
 
 [ADR-039](../../docs/decisions/039-bom-closeout-selections.md) / USR-33 accepts bias and LED MPNs, four 10 kohm /OE pull-ups B1-B008, one 470 ohm UART_MD pull-up B1-B074, four 1x5 GPIO and four 1x3 debug headers cut from one strip, and PCB pads plus fitted scope-ground pins B1-B075. Final GPIO mux, pad/pin positions, ground-pin MPN/count and electrical qualification remain open. Header acceptance does not accept the proposed GPIO series resistors.
+
+Recovery research (2026-09-07): the [ROM conflict review](research/cbus_recovery_proposal.md#rom-entry-policy-and-pin-conflicts) proposes moving draft RS-485 DE PB14 to PD2 and gateway CAN standby PC6/PC7 to PB7/PB9. These changes are not applied to the workbook. CAN RX versus ROM DFU contention and simultaneous allocation remain open under B1-Q003/005/009/013; do not capture the current mapping as verified.

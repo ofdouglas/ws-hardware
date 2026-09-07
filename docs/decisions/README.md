@@ -9,7 +9,7 @@ Read this map before the chronological register. An accepted ADR may retain only
 | Topic | Current authority and surviving scope | Implementation |
 |---|---|---|
 | Family terminology / Rev A boundary | ADR-003/004/007; RS_485_MULTIDROP deferred for Board 1, retained for family | [Requirements](../../boards/board1/requirements.md) |
-| USB power / input | ADR-001 domain policy; ADR-013 enable/isolation; ADR-019 ramp topology; ADR-022 47 nF/no supervisor; ADR-024 inverter; ADR-015/016 ESD scope; ADR-027/028/029/030 passives | [Input](../../boards/board1/usb_input.md), [VCP](../../boards/board1/usb_vcp.md) |
+| USB power / input | ADR-001 domain policy; ADR-013 isolation; ADR-040 direct PWREN# enable/startup; ADR-019 ramp topology; ADR-022 47 nF/no supervisor; ADR-024 inverter; ADR-015/016 ESD scope; ADR-027/028/029/030 passives | [Input](../../boards/board1/usb_input.md), [VCP](../../boards/board1/usb_vcp.md) |
 | Main buck | ADR-021 TPS560430 and total 500 mA criterion; ADR-025 exact LC/passives; no 90% floor or SC189 Cout ceiling | [Buck](../../boards/board1/buck_tps560430.md) |
 | Decoupling | ADR-010 MCU/bypass allocation only; [ADR-026 core](026-sam-core-ceramic.md) ceramic; ADR-027 MPNs; ADR-025 local output | [Decoupling](../../boards/board1/decoupling.md) |
 | Crystals / clocks | ADR-005 timing targets; ADR-014 MCU crystals; ADR-017 separate FTDI strategy; ADR-030 exact FTDI crystal; ADR-031 initial load caps and REF correction | [Clocks](../../boards/board1/clocking.md), [crystals](../../boards/board1/crystal_networks.md) |
@@ -20,6 +20,8 @@ Read this map before the chronological register. An accepted ADR may retain only
 | Assembly / sourcing | ADR-009 plus current maintainer package rules; DigiKey-only sourcing policy | [Part policy](../PART_SELECTION_POLICY.md) |
 
 Completion of an earlier proposal (for example ADR-024 pulls by ADR-028/030) is not wholesale supersession. Metadata lists replacements only; implementation links and this map also show completions. New engineering changes still require explicit acceptance and a new ADR where applicable.
+
+Allocation-note reconciliation (2026-09-07): [pinmap](../../boards/board1/pinmap.md) and its workbook now distinguish current selections from unfinished implementation. [Unfinished decisions](../../boards/board1/unfinished_decisions.md) references the existing board questions; this editorial cleanup adds no accepted decisions or verified allocations.
 
 ## Chronological register
 
@@ -65,8 +67,9 @@ Completion of an earlier proposal (for example ADR-024 pulls by ADR-028/030) is 
 | [ADR-037](037-can-tvs.md) | ESD2CAN24DBZRQ1 CAN TVS arrays | accepted | B1-B072; B1-R009/017 |
 | [ADR-038](038-rs485-tvs.md) | ESDS452DBZR and restricted bench voltage envelope | accepted | B1-B073; B1-R016/017 |
 | [ADR-039](039-bom-closeout-selections.md) | Resistors, UART support, header cuts and test access | accepted | B1-B008/011/026/027/059/071/074/075 |
+| [ADR-040](040-startup-and-vcp-enable.md) | Conventional FTDI startup and direct PWREN# VCP enable | accepted | Supersedes ADR-013 rail-valid /OE prerequisite only |
 
-Use [template.md](template.md); next ID: ADR-040. Numbering is permanent.
+Use [template.md](template.md); next ID: ADR-041. Numbering is permanent.
 
 Historical collision: both [connector selection](026-reva-connectors.md) and [ceramic SAM core selection](026-sam-core-ceramic.md) carry ADR-026. Preserve both IDs and histories; use the filename-qualified reference to distinguish them. BOM references now do this explicitly.
 

@@ -15,6 +15,7 @@ The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have in
 | Scope and authoritative question status | [Requirements](requirements.md) |
 | Accepted decisions; do not routinely reopen | [ADR register](../../docs/decisions/README.md) |
 | Parts, quantities, evidence | [BOM view](BOM.md), [CSV](bom.csv), [remaining selections](remaining_parts.md) |
+| Unfinished implementation choices | [Decision checklist](unfinished_decisions.md); [first three resolution proposals](research/README.md) |
 | USB input, sequencing and current estimates | [USB input](usb_input.md), [model maintenance](models.md) |
 | Bridge, EEPROM, VCP isolation and recovery | [USB VCP](usb_vcp.md) |
 | Main converter and distributed capacitors | [Buck](buck_tps560430.md), [decoupling](decoupling.md) |
