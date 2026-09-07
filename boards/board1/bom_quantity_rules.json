@@ -5,17 +5,20 @@
     "B1-B011": {
       "purchase_quantity": 0,
       "placement_quantity": "TBD",
-      "unit": "PCB pads; no purchased part"
+      "unit": "PCB pads; no purchased part",
+      "csv_quantity_basis": "purchase_quantity"
     },
     "B1-B027": {
       "purchase_quantity": 1,
       "placement_quantity": 4,
-      "unit": "one 40-position strip; four 1x5 GPIO sections; also supplies B1-B059"
+      "unit": "one 40-position strip; four 1x5 GPIO sections; also supplies B1-B059",
+      "csv_quantity_basis": "purchase_quantity"
     },
     "B1-B059": {
       "purchase_quantity": 0,
       "placement_quantity": 4,
-      "unit": "four 1x3 debug sections included in B1-B027"
+      "unit": "four 1x3 debug sections included in B1-B027",
+      "csv_quantity_basis": "placement_quantity"
     }
   },
   "header_cut": {
