@@ -152,3 +152,7 @@ Maintainer explicitly instructs: “commit the second SN74LV125APWR for OD UART 
 ## USR-32 — RS-485 TVS acceptance and remaining BOM review
 
 2026-09-06: Maintainer accepts TI ESDS452DBZR following disclosure of its +/-5.5 V working range, then requests suggestions for unresolved BOM items. ADR-038 records selection and its disclosed interface restriction. Additional closeout proposals are not accepted.
+
+## USR-33 — closeout selections and scope ground pins
+
+2026-09-06: Maintainer accepts TE CRGP0805F330R, RK73H2ATTD3301F, the multidrop plan and header plan. Regular PCB test pads are accepted with an explicit addition: pins for clipping scope-probe ground leads. ADR-039 records selections; ground-pin MPN/count remain open.

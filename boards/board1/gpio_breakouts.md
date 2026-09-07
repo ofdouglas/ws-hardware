@@ -1,6 +1,6 @@
 # GPIO breakout series resistors
 
-Status: proposed, 2026-09-06. B1-R020 / B1-Q010. Applies to spare GPIO breakout signals, not ground, power, dedicated SWD, crystal pins or differential bus terminals. No final header pin count assumed.
+Status: proposed, 2026-09-06. B1-R020 / B1-Q010. Applies to spare GPIO breakout signals, not ground, power, dedicated SWD, crystal pins or differential bus terminals. ADR-039 now accepts four GPIO signals plus GND per MCU (16 GPIO signals total). This series-resistor proposal remains unaccepted.
 
 Recommend one TE CRGCQ0805F220R (220 ohm +/-1%, 0805, 0.125 W) per spare GPIO signal as the default for low-current digital experimentation. Place close to MCU, MCU GPIO -> resistor -> header. This gives a removable isolation point and reduces short/contention current and edge speed. It is not a matched transmission-line termination, guaranteed MCU fault protection, level shifting or power-off isolation.
 

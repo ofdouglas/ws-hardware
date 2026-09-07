@@ -1,3 +1,5 @@
+Current acceptance: [ADR-039](../../docs/decisions/039-bom-closeout-selections.md) closes bias/LED MPNs, multidrop support, header cuts and PCB-pad test access. Fitted scope ground pins are required in B1-B075; exact MPN/count remain open. The recommendation tables below are retained as review history, not new requests to select these again. GPIO series resistors remain proposed.
+
 # Board 1 BOM closeout recommendations
 
 Reviewed 2026-09-06 after ADR-038. ESDS452DBZR is now accepted in B1-B073, with the disclosed +/-5.5 V bench operating envelope. All other recommendations below remain proposed. The audit covers all proposed rows and accepted rows with unknown MPN/count, plus support hidden behind selected IC rows. Component acceptance and implementation qualification remain separate.

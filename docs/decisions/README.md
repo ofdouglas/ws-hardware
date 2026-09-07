@@ -47,7 +47,9 @@ Status: draft index · Authority: individual accepted ADRs
 
 | [ADR-038](038-rs485-tvs.md) | ESDS452DBZR and restricted bench voltage envelope | accepted | B1-B073; B1-R016/017 |
 
-Use [template.md](template.md); next ID: ADR-039. Numbering is permanent.
+| [ADR-039](039-bom-closeout-selections.md) | Resistors, UART support, header cuts and test access | accepted | B1-B008/011/026/027/059/071/074/075 |
+
+Use [template.md](template.md); next ID: ADR-040. Numbering is permanent.
 
 Historical collision: both [connector selection](026-reva-connectors.md) and [ceramic SAM core selection](026-sam-core-ceramic.md) carry ADR-026. Preserve both IDs and histories; use the filename-qualified reference to distinguish them. BOM references now do this explicitly.
 

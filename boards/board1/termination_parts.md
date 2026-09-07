@@ -1,3 +1,5 @@
+> Historical reference retained for provenance. Current implementation: [termination.md](termination.md). Earlier selections and open-selection statements below may be superseded; use the current note and accepted ADRs.
+
 # Selected termination resistor and jumper parts
 
 Research 2026-09-06. Topology/counts/120 ohm nominal values are accepted by USR-28 / [ADR-034](../../docs/decisions/034-rs485-termination.md). The exact parts below are accepted by USR-29 / ADR-035, with evidence unverified pending circuit/footprint qualification. Stock and prices are retrieved page snapshots, not reserved inventory; refresh before purchase.

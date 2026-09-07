@@ -1,3 +1,5 @@
+> Historical reference retained for provenance. Current implementation: [decoupling.md](decoupling.md). Earlier selections and open-selection statements below may be superseded; use the current note and accepted ADRs.
+
 Current SAM-core update: ADR-026 selects ceramic X7R for B040; the tantalum-only restriction is removed. ADR-027 accepts CL21B105KAFNFNE; effective-C and regulator qualification remain pending.
 
 # SC189 Rev A decoupling proposal

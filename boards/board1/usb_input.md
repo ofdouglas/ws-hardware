@@ -1,8 +1,6 @@
-> Historical reference retained for provenance. Current implementation: [usb_input.md](usb_input.md). Earlier selections and open-selection statements below may be superseded; use the current note and accepted ADRs.
-
 # Board 1 Rev A USB input circuit
 
-Status: selected circuit baseline; schematic and bench qualification pending. Updated: 2026-09-06. Authority: ADR-021 (buck/current criterion), ADR-022 (input). Earlier revisions are in vbus_input_history_through_adr021.md.
+Status: selected circuit baseline; schematic and bench qualification pending. Updated: 2026-09-06. Authority: ADR-021 (buck/current criterion), ADR-022 (input). Current implementation note. Earlier revisions are in [input history](vbus_input_history_through_adr021.md).
 
 ## Circuit and placement
 
@@ -20,7 +18,7 @@ TPS22810: GND2 -> GND; EN3 -> VIN1; CT4 -> 47 nF -> GND;
           QOD5 -> OUT6.
 FTDI RESET#34 -> 10 kohm -> FTDI 3.3 V; RESET#34 -> 10 nF -> GND.
 FTDI PWREN# -> MC74HC1G14DBVT1G (FTDI_3V3 supply) -> TPS560430 EN4.
-Proposed pulls: PWREN# 10 kohm to FTDI_3V3; EN 47 kohm to GND.
+Accepted pulls (ADR-028/030): PWREN# 10 kohm to FTDI_3V3; EN 47 kohm to GND.
 Inverter local 100 nF is from existing FTDI-domain control allocation (ADR-024).
 USB D+/D- -> RCLAMP0504S.TCT -> FTDI D+/D- (ADR-015).
 ```
@@ -53,16 +51,20 @@ Using the 0.12 ohm path and solving Iusb=Ibridge+P3v3/[eta*(Vconnector-0.12*Iusb
 | Conservative loaded | 4.5 V | 80% | 453 mA | 47 mA |
 | Conservative loaded | 4.5 V | 75% | 477 mA | 23 mA |
 
-Break-even at 500 mA and 4.44 V is 70.71% (the previous 4.45 V approximation gave 70.55%). There is no fixed 90% criterion. Current model is in power_budget.json under current_rev_a_input. True worst-case board current and minimum converter efficiency remain unverified.
+Break-even at 500 mA and 4.44 V is 70.71% (the previous 4.45 V approximation gave 70.55%). There is no fixed 90% criterion. Current model is in [power_budget.json](power_budget.json) under `current_rev_a_input`. True worst-case board current and minimum converter efficiency remain unverified.
 
 ## Unresolved questions / acceptance checks
 
-1. Exact input-passive MPNs: ceramic bias/tolerance, damping resistor pulse curve, layout, shield connection and TVS behavior. SMF6.0A has a 6 V standoff, not a 6 V clamp. Measure FTDI rail peaks for plug-in, brief interruption/replug and already-powered ESD; switch on-state does not block overvoltage. No sustained high-voltage or polarity protection is in scope.
+1. Qualify selected input passives: ceramic bias/tolerance, damping resistor pulse curve, layout, shield connection and TVS behavior. SMF6.0A has a 6 V standoff, not a 6 V clamp. Measure FTDI rail peaks for plug-in, brief interruption/replug and already-powered ESD; switch on-state does not block overvoltage. No sustained high-voltage or polarity protection is in scope.
 2. Prove preconfiguration input waveform <=applicable USB inrush/current limits with FTDI startup, and configured startup/resume <=500 mA requirements. The 100 mA bridge allowance alone cannot be used as a startup maximum while adding capacitor current on top.
-3. MC74HC1G14DBVT1G is selected (ADR-024); finalize support pulls and verify FTDI reset/high-impedance, suspend and brownout behavior. Keep UART isolation receivers safe during all main-rail transitions. External supervisor is removed; abnormal slow input ramps are not claimed supervised.
+3. MC74HC1G14DBVT1G is selected (ADR-024); verify accepted support pulls and FTDI reset/high-impedance, suspend and brownout behavior. Keep UART isolation receivers safe during all main-rail transitions. External supervisor is removed; abnormal slow input ramps are not claimed supervised.
 4. Validate selected buck LC network, output transient response and efficiency at actual full network load; validate the provisional current, DC-path and ambient envelopes. No bench measurements, current-limit guarantee or final worst-case budget exist yet.
 5. Whole-board suspend-current accounting including FTDI, TVS leakage, switch IQ and disabled buck; EEPROM configuration must match bus-power behavior.
 
 ## Sources
 
 [TI TPS22810](https://www.ti.com/lit/ds/symlink/tps22810.pdf), [TI TPS560430](https://www.ti.com/lit/ds/symlink/tps560430.pdf), [FTDI FT232H v2.2](https://www.mouser.com/datasheet/3/35/1/DS_FT232H.pdf). Main-current assumptions: transceivers_and_power.md. Selection is not qualification.
+
+## Related implementation
+
+[USB bridge and isolation](usb_vcp.md), [buck passives](buck_tps560430.md), [decoupling](decoupling.md), [current BOM](BOM.md). PWREN# pull-up is RMCF0805FT10K0; EN pull-down is ERJ-6GEYJ473V. The bridge capacitor quantities remain TBD in B1-B061–063; charge figures above retain the planning allocation, not a completed schematic count. Reconcile the accepted RS-485 bias and UART_MD pull-up loads with the existing allowances before claiming a worst-case budget. Question status remains in [requirements](requirements.md) (B1-Q002/011).
