@@ -1,0 +1,9 @@
+pin,name,electrical_type
+1,CS,input
+2,SK,input
+3,DI,input
+4,DO,tri_state
+5,GND,power_in
+6,ORG,input
+7,NC,no_connect
+8,VCC,power_in

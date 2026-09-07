@@ -1,0 +1,9 @@
+# KiCad transient files
+*.lck
+~*.lck
+*-backups/
+*.kicad_prl
+_autosave-*
+# Local OS noise
+.DS_Store
+Thumbs.db

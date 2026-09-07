@@ -1,0 +1,9 @@
+pin,name,electrical_type
+1,TXD,input
+2,GND,power_in
+3,VCC,power_in
+4,RXD,tri_state
+5,VIO,power_in
+6,CANL,bidirectional
+7,CANH,bidirectional
+8,STB,input

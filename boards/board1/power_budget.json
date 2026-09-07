@@ -1,0 +1,229 @@
+{
+  "status": "planning estimate, not validated maxima",
+  "units": "mA except voltage V and efficiency fraction",
+  "variants": {
+    "rev_a": {
+      "can_phys": 8,
+      "can_buses": 2,
+      "rs485_phys": 1
+    },
+    "expanded": {
+      "can_phys": 9,
+      "can_buses": 3,
+      "rs485_phys": 2
+    }
+  },
+  "scenarios": {
+    "listening": {
+      "vusb": 5.0,
+      "efficiency": 0.9,
+      "bridge_5v": 80,
+      "gw_3v3": 45,
+      "sam_each_3v3": 15,
+      "misc_3v3": 15,
+      "can_idle": 7.05,
+      "can_dominant": 42.3,
+      "dominant_duty": 0,
+      "rs_each": 0.7,
+      "led_count": 5,
+      "led_each_3v3": 0.5,
+      "breakout_load_3v3": 20
+    },
+    "loaded_nominal": {
+      "vusb": 5.0,
+      "efficiency": 0.9,
+      "bridge_5v": 80,
+      "gw_3v3": 45,
+      "sam_each_3v3": 15,
+      "misc_3v3": 15,
+      "can_idle": 7.05,
+      "can_dominant": 42.3,
+      "dominant_duty": 0.5,
+      "rs_each": 60,
+      "led_count": 5,
+      "led_each_3v3": 0.5,
+      "breakout_load_3v3": 20
+    },
+    "loaded_conservative": {
+      "vusb": 4.4,
+      "efficiency": 0.85,
+      "bridge_5v": 100,
+      "gw_3v3": 65,
+      "sam_each_3v3": 25,
+      "misc_3v3": 25,
+      "can_idle": 8.25,
+      "can_dominant": 60.3,
+      "dominant_duty": 0.5,
+      "rs_each": 75,
+      "led_count": 5,
+      "led_each_3v3": 0.5,
+      "breakout_load_3v3": 20
+    }
+  },
+  "results": {
+    "listening": {
+      "rev_a": {
+        "can_3v3": 56.4,
+        "rs485_3v3": 0.7,
+        "base_3v3": 105,
+        "led_3v3": 2.5,
+        "board_only_3v3": 164.6,
+        "total_3v3": 184.6,
+        "board_only_usb": 200.70666666666665,
+        "usb_input": 215.3733333333333,
+        "margin_to_500": 284.62666666666667
+      },
+      "expanded": {
+        "can_3v3": 63.449999999999996,
+        "rs485_3v3": 1.4,
+        "base_3v3": 105,
+        "led_3v3": 2.5,
+        "board_only_3v3": 172.35,
+        "total_3v3": 192.35,
+        "board_only_usb": 206.39,
+        "usb_input": 221.05666666666664,
+        "margin_to_500": 278.9433333333334
+      }
+    },
+    "loaded_nominal": {
+      "rev_a": {
+        "can_3v3": 91.65,
+        "rs485_3v3": 60,
+        "base_3v3": 105,
+        "led_3v3": 2.5,
+        "board_only_3v3": 259.15,
+        "total_3v3": 279.15,
+        "board_only_usb": 270.0433333333333,
+        "usb_input": 284.71,
+        "margin_to_500": 215.29000000000002
+      },
+      "expanded": {
+        "can_3v3": 116.32499999999999,
+        "rs485_3v3": 120,
+        "base_3v3": 105,
+        "led_3v3": 2.5,
+        "board_only_3v3": 343.825,
+        "total_3v3": 363.825,
+        "board_only_usb": 332.1383333333333,
+        "usb_input": 346.80499999999995,
+        "margin_to_500": 153.19500000000005
+      }
+    },
+    "loaded_conservative": {
+      "rev_a": {
+        "can_3v3": 118.05,
+        "rs485_3v3": 75,
+        "base_3v3": 165,
+        "led_3v3": 2.5,
+        "board_only_3v3": 360.55,
+        "total_3v3": 380.55,
+        "board_only_usb": 418.1323529411764,
+        "usb_input": 435.77941176470586,
+        "margin_to_500": 64.22058823529414
+      },
+      "expanded": {
+        "can_3v3": 152.325,
+        "rs485_3v3": 150,
+        "base_3v3": 165,
+        "led_3v3": 2.5,
+        "board_only_3v3": 469.825,
+        "total_3v3": 489.825,
+        "board_only_usb": 514.5514705882352,
+        "usb_input": 532.1985294117646,
+        "margin_to_500": -32.19852941176464
+      }
+    }
+  },
+  "notes": [
+    "Board 1 only: expanded LEFT/RIGHT point-to-point ports; bench MULTIDROP remains in architecture.",
+    "60/75 mA loaded RS allowances retained for THVD1420 pending measurement; no unverified saving credited for lower speed.",
+    "Misc allowance retained numerically but now excludes separately itemized LEDs and breakout loads; deliberately no credit taken for LEDs previously implicit in misc.",
+    "Five LEDs at 0.5 mA each proposed; 20 mA aggregate breakout load is a planning reservation, not a per-pin or external supply rating."
+  ],
+  "buck_proposal": {
+    "status": "historical and superseded; use current_rev_a_input; no 90% efficiency requirement",
+    "mpn": "TPS62902RPJR",
+    "converter_efficiency_requirement": 0.9,
+    "converter_qualification_goal": 0.92,
+    "main_branch_efficiency_goal": 0.9,
+    "qualification_vin": [
+      4.35,
+      5.5
+    ],
+    "qualification_iout_mA": [
+      100,
+      600
+    ],
+    "qualification_ambient_C": [
+      0,
+      70
+    ],
+    "input_path_resistance_max_ohm": 0.1,
+    "connector_min_v": 4.5,
+    "input_path_drop_bound_v": 0.05,
+    "scenarios": {
+      "converter_90_percent": {
+        "rev_a": 413.561797752809,
+        "expanded": 503.6011235955056
+      },
+      "converter_92_percent": {
+        "rev_a": 406.74523693209574,
+        "expanded": 494.82718612603804
+      }
+    }
+  },
+  "current_rev_a_input": {
+    "authority": "ADR-021; ADR-022",
+    "status": "planning estimates, not validated maxima",
+    "buck_mpn": "TPS560430X3FDBVR",
+    "switch_mpn": "TPS22810DBVT",
+    "ct_nF": 47,
+    "supervisor_fitted": false,
+    "input_path_resistance_ohm_provisional": 0.12,
+    "connector_V": [
+      4.5,
+      5.5
+    ],
+    "usb_configured_limit_mA": 500,
+    "main_load_conservative_mA": 380.55,
+    "bridge_control_allowance_mA": 100,
+    "efficiency_break_even": 0.7071030405405404,
+    "results": [
+      {
+        "connector_V": 5,
+        "main_load_mA": 279.15000000000003,
+        "efficiency_assumption": 0.9,
+        "usb_mA": 286.125,
+        "buck_input_V": 4.9657
+      },
+      {
+        "connector_V": 4.5,
+        "main_load_mA": 380.55,
+        "efficiency_assumption": 0.9,
+        "usb_mA": 413.535,
+        "buck_input_V": 4.4504
+      },
+      {
+        "connector_V": 4.5,
+        "main_load_mA": 380.55,
+        "efficiency_assumption": 0.85,
+        "usb_mA": 432.145,
+        "buck_input_V": 4.4481
+      },
+      {
+        "connector_V": 4.5,
+        "main_load_mA": 380.55,
+        "efficiency_assumption": 0.8,
+        "usb_mA": 453.104,
+        "buck_input_V": 4.4456
+      },
+      {
+        "connector_V": 4.5,
+        "main_load_mA": 380.55,
+        "efficiency_assumption": 0.75,
+        "usb_mA": 476.886,
+        "buck_input_V": 4.4428
+      }
+    ]
+  }
+}

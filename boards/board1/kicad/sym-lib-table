@@ -1,0 +1,9 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ATSAMC21G17A-AUT")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/ATSAMC21G17A-AUT/ATSAMC21G17A-AUT.kicad_sym")(options "")(descr "Project-local symbol; see library README for evidence"))
+  (lib (name "TPS22810DBVT")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/TPS22810DBVT/TPS22810DBVT.kicad_sym")(options "")(descr "Project-local symbol; see library README for evidence"))
+  (lib (name "SC189ZSKTRT")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/SC189ZSKTRT/SC189ZSKTRT.kicad_sym")(options "")(descr "Historical component, superseded by ADR-021; not for Board 1"))
+  (lib (name "TCAN3413DR")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/TCAN3413DR/TCAN3413DR.kicad_sym")(options "")(descr "Exact-part symbol; see library README for evidence"))
+  (lib (name "TPS560430X3FDBVR")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/TPS560430X3FDBVR/TPS560430X3FDBVR.kicad_sym")(options "")(descr "Exact-part symbol; see library README for evidence"))
+  (lib (name "AT93C56B-SSHM-B")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/AT93C56B-SSHM-B/AT93C56B-SSHM-B.kicad_sym")(options "")(descr "Exact-part symbol; see library README for evidence"))
+)

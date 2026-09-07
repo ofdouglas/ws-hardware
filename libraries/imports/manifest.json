@@ -1,0 +1,176 @@
+{
+  "sources": [
+    "/home/ofdouglas/Design/Boards",
+    "/home/ofdouglas/Design/WireSpaces/hardware"
+  ],
+  "files": [
+    {
+      "source": "/home/ofdouglas/Design/Boards/kicad/ATSAMC21G17A-AUT-pinout.csv",
+      "archive_path": "Boards/kicad/ATSAMC21G17A-AUT-pinout.csv",
+      "size": 1085,
+      "sha256": "33e89d5fd6fa6f0db6a9d6c95a9a528bd1eea1743274df673ef7648be43dfa43"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/kicad/ATSAMC21G17A-AUT.kicad_sym",
+      "archive_path": "Boards/kicad/ATSAMC21G17A-AUT.kicad_sym",
+      "size": 9071,
+      "sha256": "8cea025e0f04ae37441f2baafd58261471de77eaf0ac12b1a59978ba4a9de1e6"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/kicad/README.md",
+      "archive_path": "Boards/kicad/README.md",
+      "size": 2067,
+      "sha256": "cfadf0362c3ace360173f8bba4c323758bb1f3b551a2136360b30bbb3073c399"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/kicad/preview/atsamc21g17a-aut.png",
+      "archive_path": "Boards/kicad/preview/atsamc21g17a-aut.png",
+      "size": 93862,
+      "sha256": "df0cfc7b1b5c133bdbef34d7b2e389ee894a6308d9c2cc68ee206e85b3280bd3"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/kicad/preview/atsamc21g17a-aut.svg",
+      "archive_path": "Boards/kicad/preview/atsamc21g17a-aut.svg",
+      "size": 194483,
+      "sha256": "6aee87e89d63d2168b6f5d487feb553effb75dfd6e0277a736392d41a6914d52"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/#auto_saved_files#",
+      "archive_path": "Boards/ws_bench_1/#auto_saved_files#",
+      "size": 72,
+      "sha256": "385da5e4f605b11a9e100f2c752c7ced038117352eec85efdd9fd3ab3bf4143d"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/_autosave-ws_bench_1.kicad_pcb",
+      "archive_path": "Boards/ws_bench_1/_autosave-ws_bench_1.kicad_pcb",
+      "size": 49862,
+      "sha256": "97947665a27cc33ff53f6c47e629b63aa96bad53d68023c52efc8bd0e03f5c8c"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/_autosave-ws_bench_1.kicad_sch",
+      "archive_path": "Boards/ws_bench_1/_autosave-ws_bench_1.kicad_sch",
+      "size": 93705,
+      "sha256": "ece2c0e6370cc196cb84e635c70f09b8e499ffbfb77cdc0ce06664223ab277cb"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/gateway.kicad_sch",
+      "archive_path": "Boards/ws_bench_1/gateway.kicad_sch",
+      "size": 137,
+      "sha256": "722f6ed15b4c7405f30acc4bfa7e65ba48b4372920f8cddf744a294cf1529e65"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/leaf.kicad_sch",
+      "archive_path": "Boards/ws_bench_1/leaf.kicad_sch",
+      "size": 137,
+      "sha256": "e805781baa97ce7c71287b82e4b44b0574dec06b095681a39e02aa91af4316de"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/sym-lib-table",
+      "archive_path": "Boards/ws_bench_1/sym-lib-table",
+      "size": 171,
+      "sha256": "167199f6ac5881368d63c0bc63e4c626a1ebff7ea9dd024f4ef73b51f4f7e381"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-04_214932.zip",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-04_214932.zip",
+      "size": 12045,
+      "sha256": "968664e43c15050c4f7f6ce0cfecade6ad5536d2e398a0f156cfc954cf553cdd"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-04_223518.zip",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-04_223518.zip",
+      "size": 14980,
+      "sha256": "25492fcbcc5de3650994ca17a5546c7508ba49cef55e03d67410f1c29ee19647"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-06_223445.zip",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-06_223445.zip",
+      "size": 15177,
+      "sha256": "51567964ed5b68527b29f706058625b4bbccc78e7ae7d5263efe4725f7652133"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-06_224534.zip",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1-backups/ws_bench_1-2026-09-06_224534.zip",
+      "size": 25458,
+      "sha256": "11803789f5b0a7f73f2595c5ef16f1e245b501aa026bb62a1e25a3c80d71e7a4"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1.kicad_pcb",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1.kicad_pcb",
+      "size": 50,
+      "sha256": "28c72a30910585e163b02394133ae3b1227dc5884b43aa9391bedb595921aa46"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1.kicad_prl",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1.kicad_prl",
+      "size": 1173,
+      "sha256": "d64324f6a9369b0d9d0775f4015e1e2589cb832d42dd4bc7ca5b1ebc983b3429"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1.kicad_pro",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1.kicad_pro",
+      "size": 5923,
+      "sha256": "6519a97ab4aaecec84b50764bf63c5d316dd1332fb9904770f4b584dec59675c"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/ws_bench_1.kicad_sch",
+      "archive_path": "Boards/ws_bench_1/ws_bench_1.kicad_sch",
+      "size": 87473,
+      "sha256": "b610096e152d3a355c43011788e42184b42897ff9f5c0089c9612b3eb9adaa1f"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/~_autosave-ws_bench_1.kicad_pcb.lck",
+      "archive_path": "Boards/ws_bench_1/~_autosave-ws_bench_1.kicad_pcb.lck",
+      "size": 43,
+      "sha256": "286bd2e972763e50cb6b089cbf09a91cbe9b8d155480a952bb8ac4b69f1acc99"
+    },
+    {
+      "source": "/home/ofdouglas/Design/Boards/ws_bench_1/~ws_bench_1.kicad_sch.lck",
+      "archive_path": "Boards/ws_bench_1/~ws_bench_1.kicad_sch.lck",
+      "size": 43,
+      "sha256": "286bd2e972763e50cb6b089cbf09a91cbe9b8d155480a952bb8ac4b69f1acc99"
+    },
+    {
+      "source": "/home/ofdouglas/Design/WireSpaces/hardware/bench/README.md",
+      "archive_path": "WireSpaces-hardware/bench/README.md",
+      "size": 710,
+      "sha256": "e6582956e9adee2f253853e8d9a2305e8d3856d7370953243a2d0bb08c788a84"
+    },
+    {
+      "source": "/home/ofdouglas/Design/WireSpaces/hardware/bench/topology.yaml",
+      "archive_path": "WireSpaces-hardware/bench/topology.yaml",
+      "size": 1754,
+      "sha256": "3cac6612c06d7c95c2e54ebe8901b35597764515edf287cd28aade1a9839567b"
+    },
+    {
+      "source": "/home/ofdouglas/Design/WireSpaces/hardware/kicad/SC189ZSKTRT-README.md",
+      "archive_path": "WireSpaces-hardware/kicad/SC189ZSKTRT-README.md",
+      "size": 1427,
+      "sha256": "7c8ad231a93604dabad25188779ce6a2ad48d59af24365450926f925b3f6da72"
+    },
+    {
+      "source": "/home/ofdouglas/Design/WireSpaces/hardware/kicad/SC189ZSKTRT-pinout.csv",
+      "archive_path": "WireSpaces-hardware/kicad/SC189ZSKTRT-pinout.csv",
+      "size": 108,
+      "sha256": "4fa806d77bd9464615561df590bee6faf4a784975b724661070e85d35dd3bab5"
+    },
+    {
+      "source": "/home/ofdouglas/Design/WireSpaces/hardware/kicad/SC189ZSKTRT.kicad_sym",
+      "archive_path": "WireSpaces-hardware/kicad/SC189ZSKTRT.kicad_sym",
+      "size": 2046,
+      "sha256": "5b9df87fea7ef004137a8d6b52dc33b52fb1bd6b0037a5f534e48ee655f906e1"
+    },
+    {
+      "source": "/home/ofdouglas/Design/WireSpaces/hardware/kicad/preview/sc189zsktrt.png",
+      "archive_path": "WireSpaces-hardware/kicad/preview/sc189zsktrt.png",
+      "size": 21149,
+      "sha256": "3effcede467a0a0ce597c114de6976556dea94b8a1a3216e3826b9023e641f60"
+    },
+    {
+      "source": "/home/ofdouglas/Design/WireSpaces/hardware/kicad/preview/sc189zsktrt.svg",
+      "archive_path": "WireSpaces-hardware/kicad/preview/sc189zsktrt.svg",
+      "size": 20150,
+      "sha256": "33fb3dc4575eab0fced12718844f0c43274b2c250fb422be8786d873b783c3b3"
+    }
+  ]
+}

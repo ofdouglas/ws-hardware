@@ -1,0 +1,7 @@
+pin,name,electrical_type
+1,CB,passive
+2,GND,power_in
+3,FB,input
+4,EN,input
+5,VIN,power_in
+6,SW,power_out
