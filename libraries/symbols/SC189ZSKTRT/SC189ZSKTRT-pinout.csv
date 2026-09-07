@@ -1,0 +1,6 @@
+Pin,Signal,KiCad electrical type
+1,VIN,power_in
+2,GND,power_in
+3,EN,input
+4,VOUT,input
+5,LX,power_out

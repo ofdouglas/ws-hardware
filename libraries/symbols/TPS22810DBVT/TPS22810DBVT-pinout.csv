@@ -1,0 +1,7 @@
+pin,name,electrical_type
+1,VIN,power_in
+2,GND,power_in
+3,EN/UVLO,input
+4,CT,output
+5,QOD,passive
+6,VOUT,power_out
