@@ -29,16 +29,52 @@
   },
   "sheets": [
     [
-      "18a418e1-516b-57d3-991f-028a9cd827bc",
+      "ab028fb1-c655-584d-9b32-a6ba9517f8a2",
+      "System overview"
+    ],
+    [
+      "c1d3b525-2366-51d4-9121-408fc99290aa",
       "USB input and power"
     ],
     [
-      "7eafc378-ee75-56fc-8fea-49f00eddea74",
+      "8950ae98-9416-5722-b4c1-1f7c4b496376",
       "USB bridge and VCP"
+    ],
+    [
+      "14f78068-67a6-5a51-92ec-629f028ff951",
+      "Gateway STM32G474"
+    ],
+    [
+      "080727c3-b66b-5b6f-8a75-93fa3577f285",
+      "SAM0"
+    ],
+    [
+      "f9a75962-f919-5cdf-8c01-3821a3e54d90",
+      "SAM1"
+    ],
+    [
+      "5e3d3f16-3c62-5850-8f38-617df9108d7a",
+      "SAM2"
+    ],
+    [
+      "782c4bf5-d494-54b7-a662-c332868dc66f",
+      "CAN A"
+    ],
+    [
+      "30ec810b-8dde-5e4f-91cb-caa38766a74b",
+      "CAN B"
+    ],
+    [
+      "68e9d225-737c-59fe-ae23-ba4db93a3585",
+      "UART and external terminals"
+    ],
+    [
+      "325aed7c-bfa4-5b54-a4b9-43bab113f6a3",
+      "Test access"
     ]
   ],
   "text_variables": {
     "ASSEMBLY_REV": "A-draft",
-    "CAPTURE_SCOPE": "Power and USB only"
+    "CAPTURE_SCOPE": "Complete Rev A schematic draft"
   }
 }

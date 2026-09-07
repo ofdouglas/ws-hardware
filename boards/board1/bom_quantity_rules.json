@@ -4,7 +4,7 @@
   "overrides": {
     "B1-B011": {
       "purchase_quantity": 0,
-      "placement_quantity": "TBD",
+      "placement_quantity": 19,
       "unit": "PCB pads; no purchased part",
       "csv_quantity_basis": "purchase_quantity"
     },

@@ -22,4 +22,4 @@ Complete bridge supply/support counts and receiver defaults as ordinary implemen
 
 # Evidence and revisit trigger
 
-USR-34: maintainer states FTDI startup timing is fine and VCP buffers can be enabled by PWREN#, then directs correction of the records and workflow rules. Engineering rationale and primary references are in [the reassessment](../../boards/board1/research/enable_startup_reassessment.md). No hardware measurements are claimed. Revisit for a concrete incompatible limit, observed failure in intended use, or changed requirement.
+USR-34: maintainer states FTDI startup timing is fine and VCP buffers can be enabled by PWREN#, then directs correction of the records and workflow rules. Engineering rationale and primary references are in [the reassessment](https://github.com/ofdouglas/ws-hardware/blob/60b7d9173682d060f6f9a2d47fc1587a68000353/boards/board1/research/enable_startup_reassessment.md). No hardware measurements are claimed. Revisit for a concrete incompatible limit, observed failure in intended use, or changed requirement.

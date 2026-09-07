@@ -1,0 +1,17 @@
+{
+  "B1-B011": {
+    "cad_count": 19,
+    "bom_quantity": 0,
+    "reason": "PCB copper test pads, no purchased components"
+  },
+  "B1-B027": {
+    "cad_count": 0,
+    "bom_quantity": 1,
+    "reason": "Purchased40position source strip; fourplaced8positionpieces countedB059"
+  },
+  "B1-B070": {
+    "cad_count": 0,
+    "bom_quantity": 2,
+    "reason": "Loose removableshunts assembled on J CANterminationheaders; no additional PCBfootprints"
+  }
+}

@@ -6,7 +6,7 @@ Status: accepted parts/allocation; capacitor corners and implementation unverifi
 
 | BOM | Qty | Allocation | Selected capacitor |
 |---|---:|---|---|
-| B1-B036 | 39 | 100 nF bypass: STM32 6, SAMs 12, CAN VCC/VIO 16, RS-485 1, auxiliary 4 | KGM21NR71E104KT, 25 V X7R, 0805 |
+| B1-B036 | 37 | 100 nF bypass: STM32 6, SAMs 12, CAN VCC/VIO 16, RS-485 1, VCP/UART_MD 2 | KGM21NR71E104KT, 25 V X7R, 0805 |
 | B1-B037 | 4 | 1 uF: shared STM32 VDDA/VREF+ bulk and one per SAM | CL21B105KAFNFNE, 25 V X7R, 0805 |
 | B1-B038 | 1 | STM32 digital bulk, 4.7 uF | GRM21BR71C475KE51L, 16 V X7R, 0805 |
 | B1-B039 | 1 | STM32 VDDA 10 nF | CL21B103KBANNNC, 50 V X7R, 0805 |
@@ -14,9 +14,9 @@ Status: accepted parts/allocation; capacitor corners and implementation unverifi
 
 STM32 six bypass positions cover four VDD, VREF+ and VBAT. VDDA/VREF+ share the selected 1 uF with direct rail connection; disable VREFBUF/high impedance. This is an accepted allocation departure from separate analog bulk examples and requires placement/analog-supply validation. Each SAM's 1 uF local bulk also departs from the manufacturer's typical 10 uF example (Figure 53-1/Table 53-1); qualify load steps rather than claiming the example mandates this allocation.
 
-Of the four auxiliary bypass positions, one serves VCP buffer B1-B016 and one serves UART_MD buffer B1-B066, leaving two. Do not add another pair to the 39 total. Counts are planning allocations to reconcile against actual supply pins, not final CAD reference designators.
+Capture assigns one bypass to each VCP/UART_MD buffer. The two unused auxiliary planning reserves were removed, yielding37 actual placements, with no unneeded footprints. Reset filter capacitors B081/B082 are separate from main supply bypass.
 
-Nominal direct main-rail C = 39*0.1 + 4*1 + 4.7 + 0.01 + 22 = **34.61 uF**. Positive tolerance/temperature screen = 22*1.20*1.15 + 12.61*1.10*1.15 = **46.31165 uF**. These are not measured effective-capacitance bounds. The superseded SC189 30 uF limit does not apply to TPS560430; qualify its combined local/distributed network instead.
+Nominal direct main-rail C = 37*0.1 + 4*1 + 4.7 + 0.01 + 22 = **34.41 uF**. Positive tolerance/temperature screen = 22*1.20*1.15 + 12.41*1.10*1.15 = **46.05865 uF**. These are not measured effective-capacitance bounds. The superseded SC189 30 uF limit does not apply to TPS560430; qualify its combined local/distributed network instead.
 
 ## Separate SAM core rails
 
@@ -26,7 +26,7 @@ The ceramic selection is explicit maintainer acceptance, not proof of datasheet 
 
 ## Other domains and layout
 
-USB input capacitors are in [usb_input.md](usb_input.md), bridge allocations in [usb_vcp.md](usb_vcp.md). Buck input and bootstrap capacitors are separate from output C; bootstrap connects CB to SW, not ground. Bridge B1-B061/062/063 counts remain TBD and do not duplicate main or core capacitors.
+USB input capacitors are in [usb_input.md](usb_input.md), bridge allocations in [usb_vcp.md](usb_vcp.md). Buck input and bootstrap capacitors are separate from output C; bootstrap connects CB to SW, not ground. Bridge B1-B061/062/063 counts are11/0/2 and do not duplicate main or core capacitors.
 
 Place bypass at each supply pin with short return to the ground plane and bulk near its load. No added ferrite or external bulk is implied. Validate actual pin count/rail allocation, effective capacitance, regulator stability, load steps, startup charging and rail noise under B1-Q002/005/011. No hardware validation is claimed.
 

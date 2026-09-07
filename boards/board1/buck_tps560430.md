@@ -31,9 +31,9 @@ Bourns lists DCR 65 milliohm +/-20% (78 milliohm upper at 25 C), Irms 3 A typica
 
 The 10 uF input retains the 14.9 uF direct USB_5V capacitance budget and existing attachment-ramp estimate. Approximate input capacitor ripple current at 600 mA output and 5.5 V input is 294 mA RMS. Require >=2.2 uF effective local input C; retain the 100 nF at VIN/GND.
 
-22 uF local + 12.61 uF distributed = 34.61 uF nominal main-rail C. The SC189 30 uF ceiling is obsolete. Require at least 10 uF effective local output C after bias, tolerance, temperature and aging. Exact DC-bias curve readout and combined corner bounds remain pending; do not treat the nominal 22 uF as guaranteed effective C. With 10 uF effective C and the 147 mA ripple screen, capacitive ripple is about 2 mV p-p before ESR/layout effects.
+22 uF local + 12.41 uF distributed = 34.41 uF nominal main-rail C. The SC189 30 uF ceiling is obsolete. Require at least 10 uF effective local output C after bias, tolerance, temperature and aging. Exact DC-bias curve readout and combined corner bounds remain pending; do not treat the nominal 22 uF as guaranteed effective C. With 10 uF effective C and the 147 mA ripple screen, capacitive ripple is about 2 mV p-p before ESR/layout effects.
 
-For a 0.2 A load step, TI's eight-cycle triangular-charge estimate gives about 86 mV deviation at 0.935 MHz and 10 uF effective C. This is a first-order estimate, not the total rail-error guarantee. Validate actual simultaneous MCU/PHY load steps and release. Nominal capacitor charging during a linear 10–90% rise in 1.8 ms is about 51 mA output (34.61 uF * 2.64 V / 1.8 ms), plus active loads and internal-core startup. Soft-start minimum is unspecified; do not call this a maximum.
+For a 0.2 A load step, TI's eight-cycle triangular-charge estimate gives about 86 mV deviation at 0.935 MHz and 10 uF effective C. This is a first-order estimate, not the total rail-error guarantee. Validate actual simultaneous MCU/PHY load steps and release. Nominal capacitor charging during a linear 10–90% rise in 1.8 ms is about 50.5 mA output (34.41 uF * 2.64 V / 1.8 ms), plus active loads and internal-core startup. Soft-start minimum is unspecified; do not call this a maximum.
 
 ## Layout / completion
 

@@ -16,7 +16,7 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 | B1-B006 | 1 | 1 | VBUS TVS | SMF6.0A | TBD; SOD-123F | components; planning allocation | unverified | ADR-019; ADR-022; ADR-024 |
 | B1-B008 | 4 | 4 | UART_MD driver /OE pull-up resistors | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-033; ADR-039 |
 | B1-B009 | 4 | 4 | Independent Cortex SWD/reset headers | 3220-10-0100-00 | 10 positions; Through-hole; 2 x 5; 1.27 mm; shrouded keyed header; footprint TBD | components; planning allocation | unverified | ADR-011; ADR-026 (026-reva-connectors.md) |
-| B1-B011 | 0 | TBD | PCB test pads; no purchased components | NA | Pad count/locations TBD; PCB copper pads | PCB pads; no purchased part | unverified | ADR-039 |
+| B1-B011 | 0 | 19 | PCB test pads; no purchased components | NA | 2 mm exposed copper test pad; 19 placements; PCB copper pads | PCB pads; no purchased part | unverified | ADR-039 |
 | B1-B012 | 1 | 1 | 3.3 V buck regulator | TPS560430X3FDBVR | 3.3 V fixed; 600 mA; 1.1 MHz FPWM; SOT-23-6 | components; planning allocation | unverified | ADR-021 |
 | B1-B013 | 1 | 1 | FTDI configuration EEPROM | AT93C56B-SSHM-B | 2 Kbit; 128 x 16; 3.3 V; SOIC-8; 3.9 mm body; 1.27 mm pitch; footprint TBD | components; planning allocation | unverified | ADR-001; ADR-018 |
 | B1-B014 | 1 | 1 | FTDI crystal | ECS-120-18-5PX-CKM-TR | 12 MHz; CL 18 pF; HC-49/US leaded SMT; 11.4 x 4.8 x 4.3 mm; footprint TBD | components; planning allocation | unverified | ADR-001; ADR-017; ADR-030 |
@@ -34,8 +34,8 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 | B1-B028 | 1 | 1 | Buck inductor | SRN6045TA-120M | 12 uH +/-20%; 6 x 6 mm semi-shielded SMT | components; planning allocation | unverified | ADR-021; ADR-025 |
 | B1-B029 | 1 | 1 | Buck input capacitor | C3216X7R1V106K160AC | 10 uF 35 V X7R +/-10%; 1206 | components; planning allocation | unverified | ADR-021; ADR-025 |
 | B1-B030 | 1 | 1 | Buck output capacitor | C3225X7R1C226M250AC | 22 uF 16 V X7R +/-20%; 1210 | components; planning allocation | unverified | ADR-021; ADR-025 |
-| B1-B031 | 1 | 1 | Buck input HF bypass | C0805C104K5RACTU | 100 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-021; ADR-025 |
-| B1-B036 | 39 | 39 | Main 3.3 V pin bypass capacitors | KGM21NR71E104KT | 100 nF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-010; ADR-027 |
+| B1-B031 | 1 | 1 | TPS560430 bootstrap capacitor | C0805C104K5RACTU | 100 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-021; ADR-025 |
+| B1-B036 | 37 | 37 | Main 3.3 V pin bypass capacitors | KGM21NR71E104KT | 100 nF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-010; ADR-027 |
 | B1-B037 | 4 | 4 | Shared STM32 analog bulk and SAM local bulk | CL21B105KAFNFNE | 1 uF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-010; ADR-027 |
 | B1-B038 | 1 | 1 | STM32 digital bulk | GRM21BR71C475KE51L | 4.7 uF 16 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-010; ADR-027 |
 | B1-B039 | 1 | 1 | STM32 VDDA HF bypass | CL21B103KBANNNC | 10 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-010; ADR-027 |
@@ -49,7 +49,7 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 | B1-B047 | 1 | 1 | Raw VBUS damping resistor | SG73P2BTTD1R0J | 1 ohm +/-5%; anti-surge pulse resistor; 1206 | components; planning allocation | unverified | ADR-019; ADR-029 |
 | B1-B048 | 1 | 1 | Input switch slew capacitor | CL21B473KBCNNNC | 47 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-022; ADR-027 |
 | B1-B051 | 1 | 1 | FTDI reset pull-up | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-022; ADR-028 |
-| B1-B052 | 1 | 1 | TPS560430 bootstrap capacitor | C0805C104K5RACTU | 100 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-021; ADR-025 |
+| B1-B052 | 1 | 1 | Buck input HF bypass | C0805C104K5RACTU | 100 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-021; ADR-025 |
 | B1-B054 | 1 | 1 | PWREN# inverter input pull-up | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-024; ADR-028 |
 | B1-B055 | 1 | 1 | Main buck EN pull-down | ERJ-6GEYJ473V | 47 kohm +/-5%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-024; ADR-030 |
 | B1-B056 | 1 | 1 | EEPROM DO series resistor | RC0805FR-072K2L | 2.2 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-030 |
@@ -70,21 +70,25 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 | B1-B072 | 2 | 2 | External CAN pair TVS arrays | ESD2CAN24DBZRQ1 | Two channels; +/-24 V standoff; SOT-23-3 DBZ; footprint review pending | components; planning allocation | unverified | ADR-037 |
 | B1-B073 | 1 | 1 | External RS-485 pair TVS array | ESDS452DBZR | Two channels; +/-5.5 V standoff; SOT-23-3 DBZ; footprint review pending | components; planning allocation | unverified | ADR-038 |
 | B1-B074 | 1 | 1 | UART_MD shared bus pull-up resistor | RMCF0805FT470R | 470 ohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-039 |
-| B1-B075 | TBD | TBD | Fitted scope-probe ground clip pins | TBD | TBD; TBD | components; planning allocation | unverified | ADR-039 |
+| B1-B075 | 6 | 6 | Fitted scope-probe ground clip pins | PRPC002SAAN-RC | 2 positions; gold flash; Through-hole; 1x2; 2.54 mm | components; planning allocation | unverified | ADR-039 |
 | B1-B076 | 24 | 24 | Per-MCU timing/debug signal series resistors | CRGP0805F330R | 330 ohm +/-1%; 1/3 W; 0805 | components; planning allocation | unverified | ADR-042 |
 | B1-B077 | 2 | 2 | Shared SYNC and TRIG pull-down resistors | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-041; ADR-042 |
 
-## Proposed residual networks
+## Draft engineering selections and residual records
 
 | ID | Buy qty | Place qty | Function | MPN | Value / package | Quantity basis | Evidence | Authority |
 |---|---:|---:|---|---|---|---|---|---|
-| B1-B007 | TBD | TBD | Remaining CAN interface protection | TBD | TBD; TBD | components; planning allocation | unverified | ADR-002; ADR-034; ADR-037 |
-| B1-B010 | TBD | TBD | Remaining MCU boot/reset support | TBD | TBD; TBD | components; planning allocation | unverified | ADR-004 |
+| B1-B007 | 0 | 0 | Remaining CAN interface protection | TBD | TBD; TBD | components; planning allocation | unverified | ADR-002; ADR-034; ADR-037 |
+| B1-B010 | 0 | 0 | Remaining MCU boot/reset support | TBD | TBD; TBD | components; planning allocation | unverified | ADR-004 |
 | B1-B017 | 0 | 0 | Remaining unenumerated USB/bridge support network | TBD | TBD; TBD | components; planning allocation | unverified | ADR-001; ADR-018; ADR-024 |
-| B1-B023 | TBD | TBD | Remaining RS-485 protection and control network | TBD | TBD; TBD | components; planning allocation | unverified | ADR-007; ADR-034; ADR-036; ADR-038 |
-| B1-B060 | TBD | TBD | Debug UART support and off-state protection | TBD | TBD; TBD; 0805 passives preferred | components; planning allocation | unverified | ADR-032 |
+| B1-B023 | 4 | 4 | RS-485 logic default resistors | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-007; ADR-034; ADR-036; ADR-038 |
+| B1-B060 | 4 | 4 | Debug RX idle pull-up resistors | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-032 |
 | B1-B078 | 2 | 2 | FTDI VPHY/VPLL supply ferrites | BLM21AG601SN1D | 600 ohm at 100 MHz; 0805 | components; planning allocation | unverified | ADR-001 |
 | B1-B079 | 6 | 6 | VCP receiving-domain idle/default pull-ups | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-024; ADR-040 |
+| B1-B080 | 8 | 8 | MCU reset/boot and SAM SWCLK defaults | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-004; ADR-011; ADR-042 |
+| B1-B081 | 1 | 1 | Gateway NRST filter capacitor | KGM21NR71E104KT | 100 nF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-004; ADR-011; ADR-042 |
+| B1-B082 | 3 | 3 | SAM reset filter capacitors | CL21B103KBANNNC | 10 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-004; ADR-011; ADR-042 |
+| B1-B083 | 8 | 8 | CAN standby default pull-ups | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-002 |
 
 ## Superseded; excluded from assembly and procurement
 
@@ -101,14 +105,14 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 ## Allocation and sourcing notes
 
 - B1-B027 buys one 40-position PRPC040SAAN-RC strip; B1-B059 counts four included 1x8 timing/debug placement pieces (32 positions). Eight positions remain unallocated. Dedicated CAN jumper headers B1-B069 are separate.
-- B1-B011 represents PCB test pads and has zero purchased components. B1-B075 fitted scope-ground pins are accepted scope with MPN/count/locations TBD; spare strip posts are not yet allocated.
+- B1-B011 represents PCB test pads and has zero purchased components. B1-B011 has19 CAD pads. B1-B075 is six dedicated two-post PRPC002SAAN-RC ground headers; spare strip posts remain unallocated.
 - B1-B061–065 expose existing bridge allocations formerly in B1-B017. Power/USB capture settles B1-B061=11, B1-B062=0 and B1-B063=2; B1-B017 has zero residual parts after adding ferrites B1-B078 and VCP defaults B1-B079. B1-B053 is excluded from Rev A by ADR-042 (zero components/footprints).
-- B1-B036 contains 39 main-rail 100 nF positions, including four auxiliary reserves: VCP and UART_MD buffers consume two, leaving two. [Decoupling](decoupling.md) owns the allocation explanation and 34.61 uF nominal main-rail calculation. Core, bridge, buck-input and bootstrap capacitance are separate.
+- B1-B036 contains37 actual main-rail100nF positions, including one each at VCP/UART_MD. Two unused auxiliary reserves were removed. [Decoupling](decoupling.md) owns the allocation explanation and 34.41 uF nominal main-rail calculation. Core, bridge, buck-input and bootstrap capacitance are separate.
 - Two SN74LV125APWR ICs serve VCP and UART_MD separately. B1-B008 is exactly four accepted 10 kohm /OE pull-ups; B1-B074 is the accepted shared 470 ohm pull-up.
-- [Termination](termination.md), [bias](rs485_bias.md) and [interfaces](interfaces.md) describe accepted bus networks. Residual B1-B007/023 exclude their separately listed resistors, jumpers and TVS arrays.
+- [Termination](termination.md), [bias](rs485_bias.md) and [interfaces](interfaces.md) describe accepted bus networks. B1-B007 has zero residual parts; B1-B023 is four RS-485 logic-default10k resistors. B1-B010 has zero residual parts after split into B080/B081/B082; B083 holds eight CAN STB pull-ups.
 - Superseded rows preserve stable IDs with zero quantities. Their assembly=tbd field does not authorize fitted or DNP footprints.
 - [Symbol catalog](../../libraries/symbols/README.md), [exact-part checks](../../libraries/symbols/symbol_checks.md) and [remaining IC coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) describe real library artifacts. Library checks do not verify board allocation or complete schematic/layout sign-off.
-- [Remaining selections](remaining_parts.md) indexes unresolved work; [requirements](requirements.md) owns question status. The generated view reflects the CSV; capture details and partial whole-board references are in [KiCad notes](kicad/README.md).
+- [Remaining selections](remaining_parts.md) indexes unresolved work; [requirements](requirements.md) owns question status. The generated view reflects the CSV; capture details and complete references are in [KiCad notes](kicad/README.md).
 
 - B1-B076 adds 24 CRGP0805F330R series resistors: six per MCU beside its signal pins. B1-B071 retains two separate RS-485 bias resistors, giving 26 of this MPN total. B1-B060 excludes the eight debug series resistors already in B1-B076. No static pull-up load is added by a series resistor alone; retain the existing provisional external-load allowance until actual loads are specified.
 

@@ -1,6 +1,6 @@
 # Board 1 Rev A
 
-Status: power/USB schematic captured in KiCad 7.0.11, A-draft; selected baseline through ADR-042. Part acceptance does not establish electrical or fabrication readiness.
+Status: complete Rev A schematic captured in KiCad 7.0.11, A-draft; selected baseline through ADR-042. Part acceptance does not establish electrical or fabrication readiness.
 
 Board 1 is a four-MCU WireSpaces lab: one STM32G474RBT6 gateway and three ATSAMC21G17A-AUT leaves. Each MCU connects to both shared CAN-FD buses and the onboard multidrop UART; the SAMs also form a private UART ring. The gateway provides USB VCP and one external ST3485EBDR RS-485 port. Both CAN pairs and RS-485 have terminal-block access with ground.
 
@@ -12,7 +12,7 @@ The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have in
 
 | Topic | Working document |
 |---|---|
-| Editable power/USB CAD and review PDF | [KiCad project](kicad/README.md) |
+| Complete editable CAD and review PDF | [KiCad project](kicad/README.md) |
 | Scope and authoritative question status | [Requirements](requirements.md) |
 | Accepted decisions; do not routinely reopen | [ADR register](../../docs/decisions/README.md) |
 | Parts, quantities, evidence | [BOM view](BOM.md), [CSV](bom.csv), [remaining selections](remaining_parts.md) |
@@ -32,8 +32,8 @@ Use Host/HostId terminology. Requirements own scope and question status; accepte
 
 External 24 V power, additional transceivers (including CAN3 and the second Board 1 point-to-point RS-485), the full bench backbone and FPGA/fault instrumentation are later work. RS_485_MULTIDROP is descoped for Board 1, retained in the overall bench architecture. No future footprint or pin reservation is implied.
 
-Power/USB support and receiver defaults are captured. Before schematic approval, review the remaining pinmux, power-off paths, connector numbering and component limits in the requirements register. Validate startup and current/transient behavior at bring-up. Obsolete research notes were deleted after extracting current material; Git retains their history. Use the current documents above and the ADR authority map first.
+All MCU, network and connector sections are captured. The review corrected STM32 physical-pad errors and finalized timing interrupts, ordinary reset/boot, interface defaults and probe access. Remaining work is schematic approval/ERC, layout and bring-up, as staged in the requirements register.
 
 ADR-042 fixes the timing/debug header pin order and adds 330 ohm near each of its six MCU signal pins (24 total). Automated CBUS reset/BOOT0 recovery is deferred to Rev B; Rev A retains ordinary reset, BOOT0-low defaults and independent SWD programming.
 
-Checks for this capture: KiCad exported both sheets; 52 physical parts and all 186 pins match capture intent, BOM fields/counts and numbered footprint pads. The PDF was rendered and visually checked. ERC has not run (KiCad 7 CLI lacks it); no DRC or hardware validation. See [capture notes](kicad/README.md). Work stops at power/USB; other sections are not captured.
+Checks: native KiCad export and full-board checker pass for239schematic objects/872pins; all208 MCU pads independently agree with the corrected workbook. ElevenPDF pages were rendered and reviewed. ERC has not run (KiCad7CLI lacks it); no PCB/DRC or hardware validation. See [complete capture notes](kicad/README.md).

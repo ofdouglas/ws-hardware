@@ -1,6 +1,6 @@
 # Board 1 interfaces and protection
 
-Status: current selected implementation through ADR-039; pinmux, rates and electrical qualification remain open in [requirements](requirements.md). [BOM](BOM.md) owns exact counts; [pinmap](pinmap.md) owns allocation evidence.
+Status: current selected implementation through ADR-039; complete draft capture; rates and electrical qualification remain open in [requirements](requirements.md). [BOM](BOM.md) owns exact counts; [pinmap](pinmap.md) owns allocation evidence.
 
 ## External buses
 
@@ -27,7 +27,7 @@ At 3.3 V the pull-up draws approximately 7 mA when low. Ideal 470 ohm RC 10–90
 
 The SAM UART ring is direct point-to-point signaling, separate from UART_MD; rates and pinmux remain under review. Gateway VCP TX/RX/RTS/CTS and power-off isolation are in [usb_vcp.md](usb_vcp.md).
 
-Each MCU has independent SWD and a combined 1x8 timing/debug header under ADR-041. Four sections share one PRPC040SAAN-RC strip (32 positions). See [timing headers](timing_headers.md) for pin order, shared inputs and private outputs. B1-Q005/010 retain timing pad/interrupt and load checks; B1-Q014 retains debug qualification. PCB test pads and fitted scope-ground access remain required; extra ground-pin MPN/count/placement remain layout work.
+Each MCU has independent SWD and a combined 1x8 timing/debug header under ADR-041. Four sections share one PRPC040SAAN-RC strip (32 positions). See [timing headers](timing_headers.md) for pin order, shared inputs and private outputs. B1-Q005/010 retain timing pad/interrupt and load checks; B1-Q014 retains debug qualification. PCB test pads and fitted scope-ground access remain required; six dedicated two-post ground headers are captured; exact placement/clip clearance remains layout work.
 
 ## Evidence
 
@@ -41,10 +41,12 @@ ESDS452DBZR has 3 pF typical/5 pF maximum channel C and 50 nA maximum leakage at
 
 UART_MD's 470 ohm resistor at 3.6 V/-1% R draws 7.74 mA before VOL drop, about 27.9 mW. This approaches the cited LV125 8 mA operating test point: qualify VOL and timing, not just resistor dissipation.
 
-SWD target reference is voltage sense, not authorization for probe power. Check all debug signals with 3V3_SYS off, cable orientation and connect-under-reset. Owned J-Link EDU is planned, PICkit 5 available (ADR-011); verify exact-device support and the owned 20-pin-to-Cortex-10-pin adapter ([SEGGER adapters](https://www.segger.com/products/debug-probes/j-link/accessories/adapters/overview/)). The SAM checklist in DS60001479J p.1182 recommends a 33 kohm SWCLK pull-up; account for it in B1-B010 after exact reset/debug circuit review. This is guidance, not an accepted new MPN/count.
+SWD target reference is voltage sense, not authorization for probe power. Check all debug signals with 3V3_SYS off, cable orientation and connect-under-reset. Owned J-Link EDU is planned, PICkit 5 available (ADR-011); verify exact-device support and the owned 20-pin-to-Cortex-10-pin adapter ([SEGGER adapters](https://www.segger.com/products/debug-probes/j-link/accessories/adapters/overview/)). The SAM checklist Table53-7 p.1182 permits10–50kohm SWCLK pull-up (33kohm recommended). Capture uses the already selected10kohm MPN in B080; no new resistor value is needed.
 
-The accepted Phoenix 1989803 terminal has eight positions at 2.5 mm pitch. Proposed order remains CAN_A_H, CAN_A_L, GND, CAN_B_H, CAN_B_L, RS485_A, RS485_B, GND; confirm numbering and actual peer polarity under B1-Q004. Ground terminals remain required.
+The accepted Phoenix 1989803 terminal has eight positions at 2.5 mm pitch. Captured order is CAN_A_H, CAN_A_L, GND, CAN_B_H, CAN_B_L, RS485_A, RS485_B, GND; confirm numbering and actual peer polarity under B1-Q004. Ground terminals remain required.
 
 ADR-042 specifies 330 ohm in series near every MCU header signal pin (24 total, B1-B076). SYNC/TRIG share header-side nets with one resistor per MCU input; debug and EVENT nets remain private. Grounds connect directly. Automated CBUS recovery is deferred; independent SWD remains.
 
 USR-37 adds one 10 kohm pull-down to each shared SYNC/TRIG net (B1-B077), before its four MCU-side series branches. See [timing headers](timing_headers.md). No additional MCU pins or repeated per-MCU pull-downs are needed.
+
+Complete capture: each TCAN3413 STB has10k to3V3_SYS (B083), following TI§7.3.8 guidance against relying solely on internal failsafe bias. RS-485 DE has10k toGND; /RE, DI and RO each have10k toSYS (B023). Firmware sets TX idle before enabling PHYs. PC11 FT_f input supports the ST3485 RO guaranteed high level per DS12288Rev6 Table54; see CAD notes for the static margin. Disable/disconnect powered RS-485 peers before local power-off/suspend because the accepted bias resistor otherwise feeds SYS.

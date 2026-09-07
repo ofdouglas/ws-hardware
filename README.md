@@ -2,7 +2,7 @@
 
 Status: draft · Owner: project maintainer · Updated: 2026-09-06
 
-Hardware experiments for WireSpaces (WS), starting with a small four-MCU bench board. This repository is a design scaffold, not a fabrication release. Selected parts and project-local symbol libraries exist; pin allocation, board circuitry and procurement counts still have open qualification work. This is not a validated fabrication or ordering package.
+Hardware experiments for WireSpaces (WS), starting with a small four-MCU bench board. This repository is a design scaffold, not a fabrication release. Selected parts and project-local symbol libraries exist; Board1 now has a complete draft KiCad schematic and reconciled counts; schematic approval, layout and hardware qualification remain. This is not a validated fabrication or ordering package.
 
 ## Start here
 

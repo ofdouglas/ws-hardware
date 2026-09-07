@@ -70,4 +70,9 @@ def check():
 
 
 if __name__ == '__main__':
-    check()
+    if (CAD / 'complete_manifest.json').exists():
+        # Full-board checker preserves the original 52-part contract too.
+        from check_board1_complete import main
+        main()
+    else:
+        check()

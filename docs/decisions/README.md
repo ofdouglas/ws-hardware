@@ -71,7 +71,7 @@ Allocation-note reconciliation (2026-09-07): [pinmap](../../boards/board1/pinmap
 | [ADR-041](041-timing-debug-headers.md) | Combined per-MCU timing/debug headers; general breakouts deferred | accepted | B1-R025/027; B1-B027/059 |
 | [ADR-042](042-header-resistors-recovery-scope.md) | Header series resistors and Rev A recovery scope | accepted | Exact pin order, 24 series resistors; automated recovery deferred to Rev B |
 
-Use [template.md](template.md); next ID: ADR-041. Numbering is permanent.
+Use [template.md](template.md); next ID: ADR-043. Numbering is permanent.
 
 Historical collision: both [connector selection](026-reva-connectors.md) and [ceramic SAM core selection](026-sam-core-ceramic.md) carry ADR-026. Preserve both IDs and histories; use the filename-qualified reference to distinguish them. BOM references now do this explicitly.
 
@@ -84,3 +84,5 @@ Implementation evidence: [library migration and TPS22810 DBV symbol](../../libra
 Additional implementation evidence for ADR-002/018/021: [exact-part symbols and checks](../../libraries/symbols/symbol_checks.md). Existing accepted decisions and open board qualifications are unchanged.
 
 Implementation evidence: [remaining IC symbols and BOM coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) implements the existing selected parts, including ADR-037/038. No decision acceptance or electrical qualification is changed.
+
+Full Rev A schematic implementation (2026-09-07): [complete native CAD](../../boards/board1/kicad/README.md) and corrected pinmap/BOM implement the existing accepted scope. Routine defaults and connector footprints are recorded as engineering choices. No ADR acceptance or scope changed.
