@@ -12,7 +12,7 @@ The September 1 bench draft describes a larger system than Board 1 MVP. Its “f
 | CAN | Two independent shared CAN-FD buses, all four nodes on each | B1-R002; ADR-002 |
 | UART | Shared open-drain medium plus private directed leaf ring | B1-R003, B1-R004 |
 | Bring-up | USB 2.0 Standard-B power and dedicated FT232HL VCP; no dependency on native USB | B1-R005; ADR-001 |
-| Power | Accepted independent bridge domain and controlled main-board power; SC189 selected under ADR-010; EN-only main-rail control and SN74LV125APWR selected under ADR-013; enable circuit open | B1-R006; B1-Q002 |
+| Power | Accepted independent bridge domain and controlled main-board power; TPS560430 selected ADR-021; TPS22810/47 nF input ramp ADR-022; SN74LV125APWR isolation ADR-013 and MC74HC1G14DBVT1G enable inverter ADR-024; qualification open | B1-R006; B1-Q002 |
 | Debug | Independent SWD access to each MCU; accessible reset and rail measurements | B1-R007, B1-R008 |
 | Connectors | Pinouts, polarity, voltage, and termination state documented at each interface | B1-Q004 |
 
@@ -44,10 +44,10 @@ Board 1 clock/VCP requirements (ADR-005): 168 MHz gateway, 12 Mbaud VCP with RTS
 
 Rev A interface scope: ADR-007 includes both CANs and one RS-485 with ground, plus GPIO breakouts; additional transceivers and external power remain deferred. Canonical CAN names are FD_CAN_A/FD_CAN_B (historical CAN1/CAN2).
 
-ADR-007 is Board 1-specific. Its omission of RS_485_MULTIDROP does not remove that function from the family architecture. Board 1 also requires five LEDs total and spare GPIO breakouts; implementation values remain open.
+ADR-007 is Board 1-specific. Its omission of RS_485_MULTIDROP does not remove that function from the family architecture. Board 1 also requires five LEDs total and spare GPIO breakouts; parts and four GPIOs/MCU are selected under ADR-029/039; electrical qualification remains open.
 
 ## Future Board 1 power clarification — USR-12
 
 The intended external-power chain is protected 24 V -> regulated 5 V -> FTDI supply branch and sequenced 3.3 V converter -> MCUs/transceivers. Thus the downstream 3.3 V converter need not accept 24 V. External power remains deferred from Rev A.
 
-Implementation proposal for that later revision: select between USB VBUS and the locally generated 5 V with reverse-current blocking before feeding the system domains; never directly tie the two sources together. Revisit bridge USB-presence sensing, self-powered configuration and main-board enable policy for externally powered operation. Existing Rev A active-PC/suspend behavior stays authoritative until that revision adopts a new power contract. Two-stage efficiency is the product of stage efficiencies; the current 90% target applies to the main converter, not automatically to the entire 24 V path. See [TPSM84203 evaluation](../boards/board1/buck_tps560430.md).
+Implementation proposal for that later revision: select between USB VBUS and the locally generated 5 V with reverse-current blocking before feeding the system domains; never directly tie the two sources together. Revisit bridge USB-presence sensing, self-powered configuration and main-board enable policy for externally powered operation. Existing Rev A active-PC/suspend behavior stays authoritative until that revision adopts a new power contract. Two-stage efficiency is the product of stage efficiencies; Rev A efficiency is governed by the full-load 500 mA USB criterion in ADR-021, with no fixed 90% floor. The later 24 V path has no accepted converter efficiency target. See [current power model](../boards/board1/models.md).

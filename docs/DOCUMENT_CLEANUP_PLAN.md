@@ -1,6 +1,6 @@
 # Proposed documentation cleanup
 
-Status: steps 1–4 implemented through ADR-039. Maintainer instructed deletion instead of archiving for step 3; Git retains history. Steps 5–6 remain proposed. No ADR renumbering, hardware changes or qualification sign-off.
+Status: steps 1–6 implemented through ADR-039. Maintainer instructed deletion instead of archiving for step 3; Git retains history. Data separation, reproducible BOM generation and cleanup audit complete; electrical qualification remains open. No ADR renumbering, hardware changes or qualification sign-off.
 
 ## Findings from the pre-cleanup review
 
@@ -23,9 +23,9 @@ Status: steps 1–4 implemented through ADR-039. Maintainer instructed deletion 
 
 4. **Completed — clarify decision authority without rewriting history.** Keep ADR files and stable IDs in place. Add a topic-based current-authority map to the ADR index: power, decoupling, clocks, buses, debug, assembly and sourcing. Record clause-level successors for partly superseded ADR-010/013/019; preserve still-active decisions. Add reciprocal supersedes/superseded_by metadata only where existing decisions provide evidence. Use filename-qualified ADR-026 references consistently; avoid silently renumbering previously referenced decisions. Later engineering changes still require new ADRs; editorial consolidation does not invent new acceptance.
 
-5. **Separate live data from historical scenarios.** Audit consumers of power_budget.json and vbus_hotplug_model.py before moving or renaming data keys. Give current Rev A calculations an explicit active entry; retain future expanded-board scenarios separately from obsolete converter assumptions. Keep machine-readable BOM status accepted/proposed and evidence unverified/verified independent. Make readable BOM generation reproducible and distinguish purchase quantity from placement quantity for B027/B059 and zero-purchase PCB pads. Do not infer unknown bridge counts or close qualification questions in this cleanup.
+5. **Completed — separate live data from historical scenarios.** Audit consumers of power_budget.json and vbus_hotplug_model.py before moving or renaming data keys. Give current Rev A calculations an explicit active entry; retain future expanded-board scenarios separately from obsolete converter assumptions. Keep machine-readable BOM status accepted/proposed and evidence unverified/verified independent. Make readable BOM generation reproducible and distinguish purchase quantity from placement quantity for B027/B059 and zero-purchase PCB pads. Do not infer unknown bridge counts or close qualification questions in this cleanup.
 
-6. **Check the result.** Validate internal links, unique IDs, BOM/view coverage, accepted MPN preservation, supersession references, symbol/footprint links and quantity exclusions. Search current documents for SC189/90%/30 uF/TLV803 and old candidate parts: retain only clearly labeled historical references. Confirm Board 1 RS_485_MULTIDROP stays deferred while remaining in family architecture. Run existing model checks if paths change. Preserve all source files, accepted design choices and open qualification requirements.
+6. **Completed — check the result.** Validate internal links, unique IDs, BOM/view coverage, accepted MPN preservation, supersession references, symbol/footprint links and quantity exclusions. Search current documents for SC189/90%/30 uF/TLV803 and old candidate parts: retain only clearly labeled historical references. Confirm Board 1 RS_485_MULTIDROP stays deferred while remaining in family architecture. Run existing model checks if paths change. Preserve all source files, accepted design choices and open qualification requirements.
 
 ## Scope and completion criteria
 
@@ -38,3 +38,7 @@ Steps 1–2 add current usb_input.md, usb_vcp.md, decoupling.md, termination.md 
 ## Steps 3–4 record
 
 Deleted research is recoverable at Git revision `dbcaba10831ade0516dba825d2c97d3f0017e0f5`. Added a topic authority map and partial-supersession metadata/current-scope notes, preserving historical ADR decision bodies and both filename-qualified ADR-026 identities. Retained current electrical checks and repaired document citations. BOM selections, quantities, evidence status, question status and power model data are unchanged.
+
+## Steps 5–6 record
+
+Current Rev A power data is explicit schema v2; deferred expanded scenarios are separate and obsolete converter goals removed. Numerical assumptions/operating points remain unchanged. BOM CSV is unchanged; the generated view makes purchase/placement exceptions explicit. Standard-library generator/audit and model commands are documented in boards/board1/models.md. The exploratory hotplug snapshot is reproduced independently of current-board qualification. See [audit report](CLEANUP_AUDIT.md) for coverage and remaining limitations.

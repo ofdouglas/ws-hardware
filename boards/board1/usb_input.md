@@ -79,4 +79,4 @@ For the selected SG73P2BTTD1R0J damping branch, a 5.5 V ideal step and 0.95 ohm 
 
 The five CSL1901DW1 LEDs use accepted RK73H2ATTD3301F 3.3 kohm resistors. At assumed Vf=1.8 V, current is 0.455 mA and resistor power 0.682 mW. [ROHM](https://www.rohm.com/products/led/chip-leds-mono-color-type/standard/csl1901dw-product) specifies typical brightness/Vf at 2 mA; visibility and Vf at this lower current are not guaranteed. Power LED uses 3V3_SYS; MCU LEDs have separate controls from spare GPIOs. Verify all-on current and GPIO drop under B1-Q010.
 
-Expanded Board 1 (future scope only) has nine CAN PHYs and two point-to-point RS-485 PHYs. Legacy expanded sensitivities remain in power_budget.json; this cleanup does not recalculate or designate them as current Rev A limits.
+Expanded Board 1 (future scope only) has nine CAN PHYs and two point-to-point RS-485 PHYs. Legacy expanded sensitivities are isolated in [power_budget_future.json](power_budget_future.json); they are not current Rev A limits. See [model conventions](models.md).
