@@ -1,0 +1,44 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {},
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {},
+      "track_widths": [],
+      "via_dimensions": []
+    }
+  },
+  "boards": [],
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "board1.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [],
+    "meta": {
+      "version": 0
+    }
+  },
+  "pcbnew": {
+    "page_layout_descr_file": ""
+  },
+  "sheets": [
+    [
+      "18a418e1-516b-57d3-991f-028a9cd827bc",
+      "USB input and power"
+    ],
+    [
+      "7eafc378-ee75-56fc-8fea-49f00eddea74",
+      "USB bridge and VCP"
+    ]
+  ],
+  "text_variables": {
+    "ASSEMBLY_REV": "A-draft",
+    "CAPTURE_SCOPE": "Power and USB only"
+  }
+}

@@ -37,7 +37,7 @@ Future CAN3, native USB, additional RS-485 and backbone/test signals have no phy
 
 ## USB/power resources — selected parts, implementation unverified
 
-These are auxiliary components, not additional WS Hosts. Details and evidence limits: [USB VCP](usb_vcp.md). FTDI/EEPROM pad rows exist in the workbook; auxiliary IC pin evidence is in the local libraries. Complete board connectivity and current-document review before verification.
+These are auxiliary components, not additional WS Hosts. Implemented USB/power connectivity: [native CAD and checked manifest](kicad/README.md). Details and evidence limits: [USB VCP](usb_vcp.md). FTDI/EEPROM pad rows exist in the workbook; auxiliary IC pin evidence is in the local libraries. Complete board connectivity and current-document review before verification.
 
 | Resource | Domain | Allocation needed | Status |
 |---|---|---|---|
@@ -45,7 +45,7 @@ These are auxiliary components, not additional WS Hosts. Details and evidence li
 | AT93C56B-SSHM-B | Bridge domain | Accepted x16 organization; qualify draft wiring and configuration timing | unverified |
 | TPS22810DBVT input ramp | VBUS_RAW -> USB_5V | EN to VIN, CT 47 nF, QOD to OUT; see usb_input.md | unverified |
 | TPS560430X3FDBVR | USB_5V -> 3V3_SYS | Accepted converter ADR-021 and passives ADR-025; pin/circuit qualification in buck_tps560430.md | unverified |
-| UART isolation | Bridge/main boundary | Direct PWREN# to B016 /OE pins 1/4/10/13 accepted ADR-040; check channel wiring and receiver defaults | unverified |
+| UART isolation | Bridge/main boundary | Direct PWREN# to B016 /OE pins 1/4/10/13 accepted ADR-040; channel wiring and receiver defaults captured; electrical qualification pending | unverified |
 
 Clock requirements: [clocking.md](clocking.md), ADR-005. B1-P006/P012/P018/P024 each cover the node's external-main-crystal signals; draft physical pads are recorded in the workbook. B1-P004 needs four compatible USART pins, a 168 MHz kernel source and DMA resources. Do not allocate those oscillator or handshake resources to future expansion.
 
@@ -171,3 +171,8 @@ ADR-041 / USR-35 replaces the separate GPIO/debug headers with four combined 1x8
 Recovery disposition: ADR-042 confirms PB14 ROM startup can assert the draft RS-485 DE, then defers automated recovery. Do not apply the old speculative recovery remaps for Rev A. Network mux and reset defaults still require normal schematic review. First programming uses SWD with external bus peers disconnected.
 
 USR-37: global SYNC and TRIG each have one header-side 10 kohm pull-down to GND (B1-B077). The four per-MCU 330 ohm input branches remain separate; no MCU pad allocation changes. See [timing headers](timing_headers.md) for wiring.
+
+
+Power/USB capture, 2026-09-07: U4 FTDI and U5 EEPROM retain workbook physical pads B1-P233–288; exact CAD nets/pins are in [capture_manifest.json](kicad/capture_manifest.json). No MCU mux assignments were changed or verified. U4 pin21/ACBUS0 carries PWREN_N; pins29/30 (ACBUS5/6) are unconnected under ADR-042. CAD FTDI_VCORE is the workbook's VCORE/VCCCORE supply output; FTDI_VCCA is separate. GW_VCP_TX/RX/RTS_N/CTS_N correspond to the four existing B1-P004 gateway VCP reservations; the MCU ends are not yet captured. The buffer channels, bypass and receiver-default networks are implemented in CAD; previous statements about absent CAD apply to the other sections only.
+
+Workbook net aliases retained for comparison: `3V3_FTDI` → `FTDI_3V3`; `USB_5V_PROTECTED` → `USB_5V`; `3V3_FTDI_PHY/PLL` → `FTDI_VPHY/VPLL`; `FTDI_VCCA_1V8`/`FTDI_VCORE_1V8` → `FTDI_VCCA`/`FTDI_VCORE`; `USB_D_MINUS/PLUS` → `USB_DM/DP`; `FTDI_TXD/RXD` → `FTDI_TX/RX`; `XTAL_IN/OUT` → `XTIN/XTOUT`; `REF_R` → `FTDI_REF`; `EEPROM_CS/CLK/DATA/DO` → `EECS/EECLK/EEDATA/EE_DO`. The workbook's unresolved bridge-support prose predates capture; use CAD/BOM for the now-enumerated support networks. All pad-allocation evidence statuses remain unverified.

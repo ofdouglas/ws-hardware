@@ -7,13 +7,13 @@ Use the [unfinished decision checklist](unfinished_decisions.md) for choices to 
 | Remaining work | BOM allocation | Question references |
 |---|---|---|
 | Ordinary MCU reset/boot and SWD support; automated CBUS recovery deferred ADR-042 | B1-B010; B1-B053 excluded | B1-Q005 |
-| Enumerate bridge support; implement accepted PWREN# enable and complete receiver defaults and rail-by-rail capacitor counts | B1-B016/017/061/062/063 | B1-Q002/012 |
+| Review captured bridge support, defaults and filters; program/read back EEPROM at bring-up | B1-B016/061/063/078/079; B1-B017/062 zero | B1-Q002/012 |
 | Debug adapter input defaults and unpowered-interface support | B1-B060 | B1-Q014 |
 | RS-485 DE and /RE defaults, residual support and bias backfeed behavior | B1-B023 | B1-Q009 |
 | Determine whether CAN residual protection needs any components beyond accepted TVS arrays | B1-B007 | B1-Q003/004 |
 | Fitted scope-ground pin MPN/count/locations; PCB pad locations | B1-B075/011 | B1-Q004 |
 | Timing header pad/interrupt allocation and load contract | B1-B059; [timing headers](timing_headers.md) | B1-Q005/010 |
-| USB shield bond, capacitor corners, hotplug/startup/suspend and full-load budget | See USB input and decoupling | B1-Q002/011 |
+| Review captured direct USB shield bond, capacitor corners, hotplug/startup/suspend and full-load budget | See USB input and decoupling | B1-Q002/011 |
 | Oscillator gain/drive/frequency, bus rates, remote kit population, connector/footprint checks | Selected parts retained | B1-Q003/004/008/009 |
 
 The bias, LED and UART_MD resistor selections remain decided. ADR-041 / USR-35 replaces the separate GPIO/debug headers with four combined 1x8 timing/debug headers. One selected 40-position strip supplies all 32 positions. General ADC, SPI/I2C and GPIO breakouts are deferred. Resistor selections and PCB test pads plus fitted scope-ground access from ADR-039 remain in force. Exact timing MCU pads remain TBD under B1-Q005/010; scope-ground pin count/MPN remain layout work.
@@ -26,11 +26,11 @@ These are unfinished implementation proposals, not new accepted quantities or MP
 
 - RS-485 controls: consider 10 kohm DE pull-down, /RE pull-up for reset shutdown and MCU RX pull-up while RO floats; reuse the selected resistor MPN only after leakage/sequence review (B1-B023).
 - MCU reset/boot: retain independent SWD reset and gateway BOOT0-low defaults under B1-B010. Automated CBUS circuitry is deferred to Rev B (ADR-042).
-- VCP/debug: complete receiver defaults and hardware off-state isolation in both directions, including an unpowered external adapter. The accepted 24 series resistors are B1-B076 and excluded from residual B1-B060. Series resistors alone do not establish isolation. Rev A uses SWD for programming/reset (B1-B016/017/060).
-- Bridge: enumerate the reference circuit pin by pin before assigning capacitor/filter counts. Do not guess additions to B1-B061–063.
-- USB shield: direct local ground bonding is a starting proposal for layout/EMC review; no RC or bead is automatically authorized.
+- VCP defaults and power-off isolation are captured. Debug still needs receiver defaults and review of an unpowered external adapter. The accepted 24 series resistors are B1-B076 and excluded from residual B1-B060. Series resistors alone do not establish isolation. Rev A uses SWD for programming/reset (B1-B016/017/060).
+- Bridge: reference-circuit enumeration is complete in the power/USB CAD. No residual B1-B017 parts remain; electrical/footprint checks and EEPROM bring-up remain.
+- USB shield: direct local ground bonding is captured; review placement at layout. No shield RC or bead is fitted.
 - Residual CAN: retire the aggregate only after confirming no parts remain beyond the selected networks. No implicit choke, DNP or extra series parts.
 
-Resolve power-off interfaces and bridge rail enumeration first; those determine the outstanding procurement counts.
+Bridge rail enumeration and quantities are complete; resolve the remaining MCU/network/debug sections in subsequent capture work.
 
 Current disposition: ADR-040 settles startup/direct PWREN# enable; ADR-042 specifies header order/series resistors and defers automated recovery. Startup measurements remain bring-up work.

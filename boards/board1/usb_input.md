@@ -1,6 +1,6 @@
 # Board 1 Rev A USB input circuit
 
-Status: selected circuit baseline; schematic and bench qualification pending. Updated: 2026-09-06. Authority: ADR-021 (buck/current criterion), ADR-022 (input). Current implementation note. Earlier revisions are retained in Git history.
+Status: power/USB schematic captured; approval and bench qualification pending. Updated: 2026-09-07. Authority: ADR-021 (buck/current criterion), ADR-022 (input). Current implementation note. Earlier revisions are retained in Git history.
 
 ## Circuit and placement
 
@@ -23,7 +23,7 @@ Inverter local 100 nF is from existing FTDI-domain control allocation (ADR-024).
 USB D+/D- -> RCLAMP0504S.TCT -> FTDI D+/D- (ADR-015).
 ```
 
-No TLV803E or parallel precharge path. The 1 ohm resistor carries damping-capacitor current, not board DC current. TVS cathode to VBUS_RAW, anode to ground; place beside connector with short ground return. Put the direct bypass and damping branch beside switch VIN/GND, and each load's input bypass at its own pins. Use a common ground plane. Connector shield bonding remains a layout/EMC decision.
+No TLV803E or parallel precharge path. The 1 ohm resistor carries damping-capacitor current, not board DC current. TVS cathode to VBUS_RAW, anode to ground; place beside connector with short ground return. Put the direct bypass and damping branch beside switch VIN/GND, and each load's input bypass at its own pins. Use a common ground plane. The draft bonds connector shield directly to GND at entry, a conventional bench implementation; review the physical bond at layout.
 
 Raw input selections: B045 CL21B105KAFNFNE (1 uF 25 V X7R), B046 CL21A475KBQNNNE (4.7 uF 50 V X5R), B047 SG73P2BTTD1R0J (1 ohm +/-5%, 1206 pulse resistor), and CT B048 CL21B473KBCNNNC (47 nF 50 V X7R). ADR-029 accepts the X5R and 5% changes. Effective capacitance and hot-plug qualification remain open. See bom.csv for current exact MPNs; all sourcing through DigiKey.
 
@@ -67,7 +67,7 @@ Break-even at 500 mA and 4.44 V is 70.71% (the previous 4.45 V approximation gav
 
 ## Related implementation
 
-[USB bridge and isolation](usb_vcp.md), [buck passives](buck_tps560430.md), [decoupling](decoupling.md), [current BOM](BOM.md). PWREN# pull-up is RMCF0805FT10K0; EN pull-down is ERJ-6GEYJ473V. The bridge capacitor quantities remain TBD in B1-B061–063; charge figures above retain the planning allocation, not a completed schematic count. Reconcile the accepted RS-485 bias and UART_MD pull-up loads with the existing allowances before claiming a worst-case budget. Question status remains in [requirements](requirements.md) (B1-Q002/011).
+[USB bridge and isolation](usb_vcp.md), [buck passives](buck_tps560430.md), [decoupling](decoupling.md), [current BOM](BOM.md). PWREN# pull-up is RMCF0805FT10K0; EN pull-down is ERJ-6GEYJ473V. The captured B1-B061–063 counts reconcile to the existing 14.9 uF direct input and 5.71 uF derived/control allocation (18.543 uC), so the nominal charge model is unchanged. The six B1-B079 pull-ups add at most 1.32 mA on main 3.3 V and 0.66 mA on FTDI_3V3 when held low; these fit inside the existing miscellaneous/bridge planning allowances, not an independently validated maximum budget. Reconcile the accepted RS-485 bias and UART_MD pull-up loads with the existing allowances before claiming a worst-case budget. Question status remains in [requirements](requirements.md) (B1-Q002/011).
 
 ## Retained load and passive qualification evidence
 

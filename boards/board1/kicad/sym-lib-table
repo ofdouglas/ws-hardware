@@ -12,4 +12,5 @@
   (lib (name "RCLAMP0504S.TCT")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/RCLAMP0504S.TCT/RCLAMP0504S.TCT.kicad_sym")(options "")(descr "Exact-part symbol; see library README for evidence"))
   (lib (name "ESD2CAN24DBZRQ1")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/ESD2CAN24DBZRQ1/ESD2CAN24DBZRQ1.kicad_sym")(options "")(descr "Exact-part symbol; see library README for evidence"))
   (lib (name "ESDS452DBZR")(type "KiCad")(uri "${KIPRJMOD}/../../../libraries/symbols/ESDS452DBZR/ESDS452DBZR.kicad_sym")(options "")(descr "Exact-part symbol; see library README for evidence"))
+  (lib (name "Board1")(type "KiCad")(uri "${KIPRJMOD}/board1_symbols.kicad_sym")(options "")(descr "FT232HL bus-powered pin electrical types; see README"))
 )

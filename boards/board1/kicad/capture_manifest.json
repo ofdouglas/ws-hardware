@@ -1,0 +1,708 @@
+{
+  "J1": {
+    "lib_id": "Connector:USB_B",
+    "BOM_ID": "B1-B005",
+    "MPN": "USB-B1HSB6",
+    "value": "USB-B1HSB6",
+    "footprint": "Connector_USB:USB_B_OST_USB-B1HSxx_Horizontal",
+    "sheet": "board1",
+    "pins": {
+      "1": "VBUS_RAW",
+      "4": "GND",
+      "5": "GND",
+      "2": "USB_DM",
+      "3": "USB_DP"
+    }
+  },
+  "U1": {
+    "lib_id": "TPS22810DBVT:TPS22810DBVT",
+    "BOM_ID": "B1-B044",
+    "MPN": "TPS22810DBVT",
+    "value": "TPS22810DBVT",
+    "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+    "sheet": "board1",
+    "pins": {
+      "1": "VBUS_RAW",
+      "3": "VBUS_RAW",
+      "2": "GND",
+      "4": "IN_CT",
+      "5": "USB_5V",
+      "6": "USB_5V"
+    }
+  },
+  "D1": {
+    "lib_id": "Device:D",
+    "BOM_ID": "B1-B006",
+    "MPN": "SMF6.0A",
+    "value": "SMF6.0A",
+    "footprint": "Diode_SMD:D_SOD-123F",
+    "sheet": "board1",
+    "pins": {
+      "1": "VBUS_RAW",
+      "2": "GND"
+    }
+  },
+  "C1": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B045",
+    "MPN": "CL21B105KAFNFNE",
+    "value": "1u / 25V",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "VBUS_RAW",
+      "2": "GND"
+    }
+  },
+  "R1": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B047",
+    "MPN": "SG73P2BTTD1R0J",
+    "value": "1R / pulse",
+    "footprint": "Resistor_SMD:R_1206_3216Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "VBUS_RAW",
+      "2": "VBUS_DAMP"
+    }
+  },
+  "C2": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B046",
+    "MPN": "CL21A475KBQNNNE",
+    "value": "4u7 / 50V",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "VBUS_DAMP",
+      "2": "GND"
+    }
+  },
+  "C3": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B048",
+    "MPN": "CL21B473KBCNNNC",
+    "value": "47n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "2": "GND",
+      "1": "IN_CT"
+    }
+  },
+  "C4": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B063",
+    "MPN": "GRM21BR71C475KE51L",
+    "value": "4u7",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "USB_5V",
+      "2": "GND"
+    }
+  },
+  "C5": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "USB_5V",
+      "2": "GND"
+    }
+  },
+  "D2": {
+    "lib_id": "RCLAMP0504S.TCT:RCLAMP0504S.TCT",
+    "BOM_ID": "B1-B018",
+    "MPN": "RCLAMP0504S.TCT",
+    "value": "RCLAMP0504S.TCT",
+    "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+    "sheet": "board1",
+    "pins": {
+      "1": "USB_DM",
+      "3": "USB_DP",
+      "2": "GND",
+      "4": null,
+      "5": null,
+      "6": null
+    }
+  },
+  "U2": {
+    "lib_id": "TPS560430X3FDBVR:TPS560430X3FDBVR",
+    "BOM_ID": "B1-B012",
+    "MPN": "TPS560430X3FDBVR",
+    "value": "TPS560430X3FDBVR",
+    "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+    "sheet": "board1",
+    "pins": {
+      "5": "USB_5V",
+      "6": "BUCK_SW",
+      "1": "BUCK_CB",
+      "3": "3V3_SYS",
+      "2": "GND",
+      "4": "BUCK_EN"
+    }
+  },
+  "C6": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B029",
+    "MPN": "C3216X7R1V106K160AC",
+    "value": "10u / 35V",
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "USB_5V",
+      "2": "GND"
+    }
+  },
+  "C9": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B052",
+    "MPN": "C0805C104K5RACTU",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "USB_5V",
+      "2": "GND"
+    }
+  },
+  "L1": {
+    "lib_id": "Device:L",
+    "BOM_ID": "B1-B028",
+    "MPN": "SRN6045TA-120M",
+    "value": "12uH",
+    "footprint": "Inductor_SMD:L_Bourns_SRN6045TA",
+    "sheet": "board1",
+    "pins": {
+      "1": "BUCK_SW",
+      "2": "3V3_SYS"
+    }
+  },
+  "C8": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B031",
+    "MPN": "C0805C104K5RACTU",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "BUCK_CB",
+      "2": "BUCK_SW"
+    }
+  },
+  "C7": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B030",
+    "MPN": "C3225X7R1C226M250AC",
+    "value": "22u / 16V",
+    "footprint": "Capacitor_SMD:C_1210_3225Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "3V3_SYS",
+      "2": "GND"
+    }
+  },
+  "U3": {
+    "lib_id": "MC74HC1G14DBVT1G:MC74HC1G14DBVT1G",
+    "BOM_ID": "B1-B015",
+    "MPN": "MC74HC1G14DBVT1G",
+    "value": "MC74HC1G14DBVT1G",
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "sheet": "board1",
+    "pins": {
+      "2": "PWREN_N",
+      "4": "BUCK_EN",
+      "5": "FTDI_3V3",
+      "3": "GND",
+      "1": null
+    }
+  },
+  "R2": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B054",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "PWREN_N"
+    }
+  },
+  "R3": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B055",
+    "MPN": "ERJ-6GEYJ473V",
+    "value": "47k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "BUCK_EN",
+      "2": "GND"
+    }
+  },
+  "C10": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "GND"
+    }
+  },
+  "R4": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B026",
+    "MPN": "RK73H2ATTD3301F",
+    "value": "3k3",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "board1",
+    "pins": {
+      "1": "3V3_SYS",
+      "2": "PWR_LED_A"
+    }
+  },
+  "D3": {
+    "lib_id": "Device:LED",
+    "BOM_ID": "B1-B025",
+    "MPN": "CSL1901DW1",
+    "value": "Orange",
+    "footprint": "LED_SMD:LED_0603_1608Metric",
+    "sheet": "board1",
+    "pins": {
+      "2": "PWR_LED_A",
+      "1": "GND"
+    }
+  },
+  "U4": {
+    "lib_id": "Board1:FT232HL_BusPowered",
+    "BOM_ID": "B1-B004",
+    "MPN": "FT232HL-REEL",
+    "value": "FT232HL-REEL",
+    "footprint": "Package_QFP:LQFP-48_7x7mm_P0.5mm",
+    "sheet": "usb_bridge",
+    "pins": {
+      "40": "USB_5V",
+      "39": "FTDI_3V3",
+      "38": "FTDI_VCORE",
+      "37": "FTDI_VCCA",
+      "6": "USB_DM",
+      "7": "USB_DP",
+      "34": "FTDI_RESET_N",
+      "5": "FTDI_REF",
+      "45": "EECS",
+      "44": "EECLK",
+      "43": "EEDATA",
+      "1": "XTIN",
+      "2": "XTOUT",
+      "13": "FTDI_TX",
+      "14": "FTDI_RX",
+      "15": "FTDI_RTS_N",
+      "16": "FTDI_CTS_N",
+      "21": "PWREN_N",
+      "17": null,
+      "18": null,
+      "19": null,
+      "20": null,
+      "25": null,
+      "26": null,
+      "27": null,
+      "28": null,
+      "29": null,
+      "30": null,
+      "31": null,
+      "32": null,
+      "33": null,
+      "3": "FTDI_VPHY",
+      "8": "FTDI_VPLL",
+      "12": "FTDI_3V3",
+      "24": "FTDI_3V3",
+      "46": "FTDI_3V3",
+      "4": "GND",
+      "9": "GND",
+      "10": "GND",
+      "11": "GND",
+      "22": "GND",
+      "23": "GND",
+      "35": "GND",
+      "36": "GND",
+      "41": "GND",
+      "47": "GND",
+      "48": "GND",
+      "42": "GND"
+    }
+  },
+  "Y1": {
+    "lib_id": "Device:Crystal",
+    "BOM_ID": "B1-B014",
+    "MPN": "ECS-120-18-5PX-CKM-TR",
+    "value": "12MHz / CL18p",
+    "footprint": "Crystal:Crystal_SMD_HC49-SD",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "XTIN",
+      "2": "XTOUT"
+    }
+  },
+  "C12": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B058",
+    "MPN": "C0805C270F5GACTU",
+    "value": "27p C0G",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "XTIN",
+      "2": "GND"
+    }
+  },
+  "C13": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B058",
+    "MPN": "C0805C270F5GACTU",
+    "value": "27p C0G",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "XTOUT",
+      "2": "GND"
+    }
+  },
+  "R5": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B051",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "FTDI_RESET_N"
+    }
+  },
+  "C14": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B064",
+    "MPN": "CL21B103KBANNNC",
+    "value": "10n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "2": "GND",
+      "1": "FTDI_RESET_N"
+    }
+  },
+  "R6": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B057",
+    "MPN": "RMCF0805FT12K0",
+    "value": "12k 1%",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_REF",
+      "2": "GND"
+    }
+  },
+  "U5": {
+    "lib_id": "AT93C56B-SSHM-B:AT93C56B-SSHM-B",
+    "BOM_ID": "B1-B013",
+    "MPN": "AT93C56B-SSHM-B",
+    "value": "AT93C56B-SSHM-B",
+    "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "EECS",
+      "2": "EECLK",
+      "3": "EEDATA",
+      "6": "FTDI_3V3",
+      "8": "FTDI_3V3",
+      "5": "GND",
+      "7": null,
+      "4": "EE_DO"
+    }
+  },
+  "R7": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B056",
+    "MPN": "RC0805FR-072K2L",
+    "value": "2k2",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "EE_DO",
+      "2": "EEDATA"
+    }
+  },
+  "R8": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B065",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "EE_DO"
+    }
+  },
+  "C15": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B063",
+    "MPN": "GRM21BR71C475KE51L",
+    "value": "4u7",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "GND"
+    }
+  },
+  "C16": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "GND"
+    }
+  },
+  "C17": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "GND"
+    }
+  },
+  "C18": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "GND"
+    }
+  },
+  "C19": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "GND"
+    }
+  },
+  "C20": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_VCORE",
+      "2": "GND"
+    }
+  },
+  "C21": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_VCCA",
+      "2": "GND"
+    }
+  },
+  "C11": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "GND"
+    }
+  },
+  "FB1": {
+    "lib_id": "Device:FerriteBead",
+    "BOM_ID": "B1-B078",
+    "MPN": "BLM21AG601SN1D",
+    "value": "600R @ 100MHz",
+    "footprint": "Inductor_SMD:L_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "FTDI_VPHY"
+    }
+  },
+  "C22": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_VPHY",
+      "2": "GND"
+    }
+  },
+  "FB2": {
+    "lib_id": "Device:FerriteBead",
+    "BOM_ID": "B1-B078",
+    "MPN": "BLM21AG601SN1D",
+    "value": "600R @ 100MHz",
+    "footprint": "Inductor_SMD:L_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "FTDI_VPLL"
+    }
+  },
+  "C23": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B061",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_VPLL",
+      "2": "GND"
+    }
+  },
+  "U6": {
+    "lib_id": "SN74LV125APWR:SN74LV125APWR",
+    "BOM_ID": "B1-B016",
+    "MPN": "SN74LV125APWR",
+    "value": "SN74LV125APWR",
+    "footprint": "Package_SO:TSSOP-14_4.4x5mm_P0.65mm",
+    "sheet": "usb_bridge",
+    "pins": {
+      "2": "FTDI_TX",
+      "3": "GW_VCP_RX",
+      "1": "PWREN_N",
+      "5": "FTDI_RTS_N",
+      "6": "GW_VCP_CTS_N",
+      "4": "PWREN_N",
+      "9": "GW_VCP_TX",
+      "8": "FTDI_RX",
+      "10": "PWREN_N",
+      "12": "GW_VCP_RTS_N",
+      "11": "FTDI_CTS_N",
+      "13": "PWREN_N",
+      "14": "3V3_SYS",
+      "7": "GND"
+    }
+  },
+  "R9": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B079",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "3V3_SYS",
+      "2": "GW_VCP_RX"
+    }
+  },
+  "R10": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B079",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "3V3_SYS",
+      "2": "GW_VCP_CTS_N"
+    }
+  },
+  "R11": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B079",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "FTDI_RX"
+    }
+  },
+  "R12": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B079",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "FTDI_3V3",
+      "2": "FTDI_CTS_N"
+    }
+  },
+  "R13": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B079",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "3V3_SYS",
+      "2": "GW_VCP_TX"
+    }
+  },
+  "R14": {
+    "lib_id": "Device:R",
+    "BOM_ID": "B1-B079",
+    "MPN": "RMCF0805FT10K0",
+    "value": "10k",
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "3V3_SYS",
+      "2": "GW_VCP_RTS_N"
+    }
+  },
+  "C24": {
+    "lib_id": "Device:C",
+    "BOM_ID": "B1-B036",
+    "MPN": "KGM21NR71E104KT",
+    "value": "100n",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "sheet": "usb_bridge",
+    "pins": {
+      "1": "3V3_SYS",
+      "2": "GND"
+    }
+  }
+}

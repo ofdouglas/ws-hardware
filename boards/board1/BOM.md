@@ -56,9 +56,9 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 | B1-B057 | 1 | 1 | FTDI REF resistor | RMCF0805FT12K0 | 12 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-030; ADR-031 |
 | B1-B058 | 2 | 2 | FTDI crystal load capacitors | C0805C270F5GACTU | 27 pF +/-1%; 50 V C0G; 0805 | components; planning allocation | unverified | ADR-031 |
 | B1-B059 | 0 | 4 | Per-MCU combined timing/debug headers | PRPC040SAAN-RC | 1x8; 2.54 mm; Cut 1x8 sections; 2.54 mm; through-hole | four 1x8 timing/debug sections included in B1-B027 | unverified | ADR-032; ADR-039; ADR-041; ADR-042 |
-| B1-B061 | TBD | TBD | Bridge-domain 100 nF bypass capacitors | KGM21NR71E104KT | 100 nF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-027 |
-| B1-B062 | TBD | TBD | Bridge-domain 1 uF capacitors | CL21B105KAFNFNE | 1 uF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-027 |
-| B1-B063 | TBD | TBD | Bridge-domain 4.7 uF capacitors | GRM21BR71C475KE51L | 4.7 uF 16 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-027 |
+| B1-B061 | 11 | 11 | Bridge-domain 100 nF bypass capacitors | KGM21NR71E104KT | 100 nF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-027 |
+| B1-B062 | 0 | 0 | Bridge-domain 1 uF capacitors | CL21B105KAFNFNE | 1 uF 25 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-027 |
+| B1-B063 | 2 | 2 | Bridge-domain 4.7 uF capacitors | GRM21BR71C475KE51L | 4.7 uF 16 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-027 |
 | B1-B064 | 1 | 1 | FTDI RESET# capacitor | CL21B103KBANNNC | 10 nF 50 V X7R +/-10%; 0805 | components; planning allocation | unverified | ADR-022; ADR-027 |
 | B1-B065 | 1 | 1 | EEPROM DO pull-up resistor | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-028 |
 | B1-B066 | 1 | 1 | Onboard open-drain UART quad driver | SN74LV125APWR | 4 channels; A=GND; TX drives /OE; TSSOP-14; footprint review pending | components; planning allocation | unverified | ADR-033 |
@@ -80,9 +80,11 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 |---|---:|---:|---|---|---|---|---|---|
 | B1-B007 | TBD | TBD | Remaining CAN interface protection | TBD | TBD; TBD | components; planning allocation | unverified | ADR-002; ADR-034; ADR-037 |
 | B1-B010 | TBD | TBD | Remaining MCU boot/reset support | TBD | TBD; TBD | components; planning allocation | unverified | ADR-004 |
-| B1-B017 | TBD | TBD | Remaining unenumerated USB/bridge support network | TBD | TBD; TBD | components; planning allocation | unverified | ADR-001; ADR-018; ADR-024 |
+| B1-B017 | 0 | 0 | Remaining unenumerated USB/bridge support network | TBD | TBD; TBD | components; planning allocation | unverified | ADR-001; ADR-018; ADR-024 |
 | B1-B023 | TBD | TBD | Remaining RS-485 protection and control network | TBD | TBD; TBD | components; planning allocation | unverified | ADR-007; ADR-034; ADR-036; ADR-038 |
 | B1-B060 | TBD | TBD | Debug UART support and off-state protection | TBD | TBD; TBD; 0805 passives preferred | components; planning allocation | unverified | ADR-032 |
+| B1-B078 | 2 | 2 | FTDI VPHY/VPLL supply ferrites | BLM21AG601SN1D | 600 ohm at 100 MHz; 0805 | components; planning allocation | unverified | ADR-001 |
+| B1-B079 | 6 | 6 | VCP receiving-domain idle/default pull-ups | RMCF0805FT10K0 | 10 kohm +/-1%; 0.125 W; 0805 | components; planning allocation | unverified | ADR-024; ADR-040 |
 
 ## Superseded; excluded from assembly and procurement
 
@@ -100,13 +102,13 @@ Status: planning BOM; selected baseline through ADR-042. [CSV](bom.csv) owns par
 
 - B1-B027 buys one 40-position PRPC040SAAN-RC strip; B1-B059 counts four included 1x8 timing/debug placement pieces (32 positions). Eight positions remain unallocated. Dedicated CAN jumper headers B1-B069 are separate.
 - B1-B011 represents PCB test pads and has zero purchased components. B1-B075 fitted scope-ground pins are accepted scope with MPN/count/locations TBD; spare strip posts are not yet allocated.
-- B1-B061–065 expose existing bridge allocations formerly in B1-B017. The residual row excludes all split parts; capacitor counts B1-B061–063 remain TBD. B1-B053 is excluded from Rev A by ADR-042 (zero components/footprints).
+- B1-B061–065 expose existing bridge allocations formerly in B1-B017. Power/USB capture settles B1-B061=11, B1-B062=0 and B1-B063=2; B1-B017 has zero residual parts after adding ferrites B1-B078 and VCP defaults B1-B079. B1-B053 is excluded from Rev A by ADR-042 (zero components/footprints).
 - B1-B036 contains 39 main-rail 100 nF positions, including four auxiliary reserves: VCP and UART_MD buffers consume two, leaving two. [Decoupling](decoupling.md) owns the allocation explanation and 34.61 uF nominal main-rail calculation. Core, bridge, buck-input and bootstrap capacitance are separate.
 - Two SN74LV125APWR ICs serve VCP and UART_MD separately. B1-B008 is exactly four accepted 10 kohm /OE pull-ups; B1-B074 is the accepted shared 470 ohm pull-up.
 - [Termination](termination.md), [bias](rs485_bias.md) and [interfaces](interfaces.md) describe accepted bus networks. Residual B1-B007/023 exclude their separately listed resistors, jumpers and TVS arrays.
 - Superseded rows preserve stable IDs with zero quantities. Their assembly=tbd field does not authorize fitted or DNP footprints.
 - [Symbol catalog](../../libraries/symbols/README.md), [exact-part checks](../../libraries/symbols/symbol_checks.md) and [remaining IC coverage](../../libraries/symbols/remaining_ic_symbol_checks.md) describe real library artifacts. Library checks do not verify board allocation or complete schematic/layout sign-off.
-- [Remaining selections](remaining_parts.md) indexes unresolved work; [requirements](requirements.md) owns question status. No quantities, choices or verification statuses were changed by this view.
+- [Remaining selections](remaining_parts.md) indexes unresolved work; [requirements](requirements.md) owns question status. The generated view reflects the CSV; capture details and partial whole-board references are in [KiCad notes](kicad/README.md).
 
 - B1-B076 adds 24 CRGP0805F330R series resistors: six per MCU beside its signal pins. B1-B071 retains two separate RS-485 bias resistors, giving 26 of this MPN total. B1-B060 excludes the eight debug series resistors already in B1-B076. No static pull-up load is added by a series resistor alone; retain the existing provisional external-load allowance until actual loads are specified.
 
