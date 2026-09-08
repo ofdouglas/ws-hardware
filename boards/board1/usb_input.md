@@ -25,7 +25,7 @@ USB D+/D- -> RCLAMP0504S.TCT -> FTDI D+/D- (ADR-015).
 
 No TLV803E or parallel precharge path. The 1 ohm resistor carries damping-capacitor current, not board DC current. TVS cathode to VBUS_RAW, anode to ground; place beside connector with short ground return. Put the direct bypass and damping branch beside switch VIN/GND, and each load's input bypass at its own pins. Use a common ground plane. The draft bonds connector shield directly to GND at entry, a conventional bench implementation; review the physical bond at layout.
 
-Raw input selections: B045 CL21B105KAFNFNE (1 uF 25 V X7R), B046 CL21A475KBQNNNE (4.7 uF 50 V X5R), B047 SG73P2BTTD1R0J (1 ohm +/-5%, 1206 pulse resistor), and CT B048 CL21B473KBCNNNC (47 nF 50 V X7R). ADR-029 accepts the X5R and 5% changes. Effective capacitance and hot-plug qualification remain open. See bom.csv for current exact MPNs; all sourcing through DigiKey.
+Raw input selections: B045 CL21B105KAFNFNE (1 uF 25 V X7R), B046 CL21A475KBQNNNE (4.7 uF 50 V X5R), B047 SG73P2BTTD1R0J (1 ohm +/-5%, 1206 pulse resistor), and CT B048 CL21B473KBCNNNC (47 nF 50 V X7R). ADR-029 accepts the X5R and 5% changes. Effective capacitance and hot-plug qualification remain open. See bom_internal.csv for current exact MPNs; all sourcing through DigiKey.
 
 ## Operating estimates and limits
 

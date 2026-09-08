@@ -1,0 +1,23 @@
+{
+  "stage": "initial placement only; not a clean fabrication DRC",
+  "schematic_components": 239,
+  "schematic_pins": 879,
+  "physical_numbered_pads": 880,
+  "mechanical_NPTH_holes": 4,
+  "tracks_and_vias": 0,
+  "zones": 0,
+  "outline_mm": [
+    155.0,
+    110.0
+  ],
+  "testpoint_function_labels": 12,
+  "communication_headers": 7,
+  "testpoint_min_center_spacing_mm": 6.0,
+  "testpoint_max_ground_distance_mm": 14.76,
+  "drc_counts": {
+    "clearance": 48,
+    "silk_edge_clearance": 2,
+    "unconnected_items": 499
+  },
+  "remaining": "Unrouted connections expected. SWD internal pad clearance and USB outline silkscreen require layout-release disposition."
+}

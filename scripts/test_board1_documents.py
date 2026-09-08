@@ -36,7 +36,7 @@ class DocumentAuditTests(unittest.TestCase):
         self.audit()
 
     def test_csv_override_conflicts_fail(self):
-        path = self.board / 'bom.csv'
+        path = self.board / 'bom_internal.csv'
         original = path.read_bytes()
         for item, count in [('B1-B059', '5'), ('B1-B027', '2'), ('B1-B011', '1')]:
             with self.subTest(item=item):

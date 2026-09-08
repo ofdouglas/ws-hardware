@@ -1,6 +1,8 @@
 # Board 1 decoupling allocation
 
-Status: accepted parts/allocation; capacitor corners and implementation unverified. Authority: surviving MCU allocation in ADR-010; converter/filter ADR-021/025; ceramic SAM core ADR-026 (`026-sam-core-ceramic.md`); MPNs ADR-027. [CSV](bom.csv) owns quantities. [Buck note](buck_tps560430.md) owns the local converter network.
+Gateway correction (2026-09-07): STM32G473RBT6 is selected and captured per [ADR-043](../../docs/decisions/043-gateway-part-correction.md). DS12288 references and older workbook/PDF snapshots below are prior G474 evidence, not G473 qualification. Recheck exact G473 AF/electrical limits under B1-Q005/008 before schematic approval.
+
+Status: accepted parts/allocation; capacitor corners and implementation unverified. Authority: surviving MCU allocation in ADR-010; converter/filter ADR-021/025; ceramic SAM core ADR-026 (`026-sam-core-ceramic.md`); MPNs ADR-027. [CSV](bom_internal.csv) owns quantities. [Buck note](buck_tps560430.md) owns the local converter network.
 
 ## Main 3.3 V rail
 

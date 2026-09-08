@@ -120,6 +120,10 @@ def preserved_power_usb(expected):
     for ref, before in original.items():
         require(ref in expected, f'{ref}: preserved power/USB component is missing')
         after = expected[ref]
+        # ADR-045 changes only these two MPNs; retain every other capture invariant.
+        if ref in {'C12', 'C13'}:
+            require(before['MPN'] == 'C0805C270F5GACTU', f'{ref}: unexpected historical MPN')
+            before = dict(before, MPN='CC0805FRNPO9BN270')
         require({key: value for key, value in before.items() if key != 'sheet'}
                 == {key: value for key, value in after.items() if key != 'sheet'},
                 f'{ref}: completed power/USB component fields or pin mapping changed')
@@ -332,7 +336,12 @@ def semantic_checks(expected, pin_net, nets):
         named(terminal, pin, signal)
     connectors = {ref for ref, spec in expected.items()
                   if spec['lib_id'].startswith('Connector') and spec['BOM_ID'] != 'B1-B011'}
-    allowed_connectors = set(parts('B1-B005', 1) + swd_headers + headers + jumpers + ground_headers + [terminal])
+    communication = [('FD_CAN_A_H','FD_CAN_A_L'),('FD_CAN_B_H','FD_CAN_B_L'),('RS485_A','RS485_B'),('RING_01','GND'),('RING_12','GND'),('RING_20','GND'),('UART_MD','GND')]
+    for i, pair in enumerate(communication,19):
+        require(expected[f'J{i}']['pins'] == dict(zip(['1','2'], pair)), f'J{i}: measurement header pin order differs')
+        for pin, netname in enumerate(pair, 1):
+            named(f'J{i}', pin, netname)
+    allowed_connectors = set(parts('B1-B005', 1) + swd_headers + headers + jumpers + ground_headers + parts('B1-B084', 7) + [terminal])
     require(connectors == allowed_connectors, 'Unexpected or reserved connector outside captured Rev A scope')
 
     # SAM pin 43 is a regulator output: never tie the three core rails together.
@@ -347,7 +356,7 @@ def semantic_checks(expected, pin_net, nets):
 
 def check(manifest=CAD / 'complete_manifest.json', allocations_path=CAD / 'schematic_bom_allocations.json', netlist=None):
     expected = json.loads(Path(manifest).read_text())
-    with (ROOT / 'boards/board1/bom.csv').open() as handle:
+    with (ROOT / 'boards/board1/bom_internal.csv').open() as handle:
         rows = list(csv.DictReader(handle))
     bom = {row['item_id']: row for row in rows}
     require(len(bom) == len(rows), 'Duplicate BOM IDs')

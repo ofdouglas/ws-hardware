@@ -172,3 +172,7 @@ Maintainer requests one 1x8, 0.1-inch header per MCU: debug UART RX/TX, two grou
 ## USR-37 — shared timing input pull-downs
 
 2026-09-07: Maintainer requires pull-down resistors on global SYNC and TRIG and asks whether anything else must be settled before draft schematic capture. One pull-down on each shared net is recorded under B1-R027/B1-B077; the 10 kohm value and existing RMCF0805FT10K0 MPN are routine implementation choices, not separately maintainer-specified values.
+
+## USR-38 — communications measurement headers
+
+2026-09-07: In this conversation the maintainer states: “communications test points should use 2-pin 0.1" headers” and “we need test points for the UART ring”. The supplied table specifies CAN A CANH/CANL, CAN B CANH/CANL, RS-485 A/B, each of SAM0→SAM1, SAM1→SAM2, SAM2→SAM0 signal/GND, and shared UART_MD signal/GND. ADR-046 records this explicit replacement/addition scope. Reference assignments J19–J25 and reuse of selected PRPC002SAAN-RC are routine implementation choices; the maintainer did not separately select that MPN. The preceding placement feedback requests logical measurement locations, uncrowded probe access, nearby ground headers and concise function silkscreen.

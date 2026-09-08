@@ -2,14 +2,14 @@
 
 Status: draft · Owner: project maintainer · Updated: 2026-09-06
 
-Hardware experiments for WireSpaces (WS), starting with a small four-MCU bench board. This repository is a design scaffold, not a fabrication release. Selected parts and project-local symbol libraries exist; Board1 now has a complete draft KiCad schematic and reconciled counts; schematic approval, layout and hardware qualification remain. This is not a validated fabrication or ordering package.
+Hardware experiments for WireSpaces (WS), starting with a small four-MCU bench board. This repository is a design scaffold, not a fabrication release. Board1 has a complete draft KiCad schematic, reconciled counts and [initial unrouted PCB placement](boards/board1/kicad/placement.md). Schematic approval, detailed placement/routing and hardware qualification remain. This is not a validated fabrication or ordering package.
 
 ## Start here
 
 1. Read [agent instructions](AGENTS.md) and [document/decision conventions](docs/DESIGN_PRINCIPLES.md).
 2. Read [system context](docs/WIRESPACES_SYSTEM_CONTEXT.md) and [family architecture](docs/HARDWARE_ARCHITECTURE.md).
 3. Check the [ADR index](docs/decisions/README.md) before changing a decision.
-4. Work from [Board 1 requirements](boards/board1/requirements.md), then its [current design overview](boards/board1/README.md), [pinmap](boards/board1/pinmap.md) and [BOM](boards/board1/bom.csv).
+4. Work from [Board 1 requirements](boards/board1/requirements.md), then its [current design overview](boards/board1/README.md), [pinmap](boards/board1/pinmap.md) and [BOM](boards/board1/bom_internal.csv).
 
 ```text
 ws-hardware/
@@ -26,7 +26,7 @@ ws-hardware/
 │   ├── README.md
 │   ├── requirements.md
 │   ├── pinmap.md
-│   ├── bom.csv
+│   ├── bom_internal.csv
 │   └── kicad/                    # board CAD workspace; see board status
 └── libraries/
     ├── symbols/

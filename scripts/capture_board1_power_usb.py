@@ -35,7 +35,7 @@ def xy(p):return f'{fmt(p[0])} {fmt(p[1])}'
 def effects(size=1.0,justify='',hide=False):
     return f'(effects (font (size {size} {size}))'+(f' (justify {justify})' if justify else '')+(' hide' if hide else '')+')'
 
-rows={r['item_id']:r for r in csv.DictReader((ROOT/'boards/board1/bom.csv').open())}
+rows={r['item_id']:r for r in csv.DictReader((ROOT/'boards/board1/bom_internal.csv').open())}
 cache={}
 def lib(libid):
     if libid not in cache:

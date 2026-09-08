@@ -7,7 +7,7 @@ created: 2026-09-06
 accepted_on: 2026-09-06
 accepted_by: Explicit maintainer selection USR-15
 supersedes: none
-superseded_by: none
+superseded_by: ADR-043 (gateway MPN only)
 requirements: [B1-R001]
 questions: [B1-Q005]
 sources: [SRC-ARCH sections 3 and 17, SRC-DIAGRAM, USR-15]
@@ -36,3 +36,7 @@ The maintainer explicitly selects one `STM32G474RBT6` and three `ATSAMC21G17A-AU
 ## Draft implementation evidence
 
 [Board 1 pinmap](../../boards/board1/pinmap.md) links draft sheets for all four selected MCUs. These are implementation proposals, not accepted or verified allocations. B1-Q005 remains open.
+
+## Gateway correction — 2026-09-07
+
+[ADR-043](043-gateway-part-correction.md) records the maintainer correction to STM32G473RBT6. The G474 references above are retained history; the three SAM selections remain in force.

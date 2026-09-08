@@ -17,7 +17,7 @@ sources: [USR-25]
 
 ## Decision
 
-Record the three exact connector MPNs explicitly selected by the maintainer in USR-25 as accepted. The authoritative MPNs, distributor codes and quantities are in [BOM B1-B009/022/027](../../boards/board1/bom.csv): independent Cortex SWD/reset headers, the external bus terminal block and the GPIO breakaway source strip respectively. This implements ADR-007/011 without replacing their architecture or adding deferred interfaces.
+Record the three exact connector MPNs explicitly selected by the maintainer in USR-25 as accepted. The authoritative MPNs, distributor codes and quantities are in [BOM B1-B009/022/027](../../boards/board1/bom_internal.csv): independent Cortex SWD/reset headers, the external bus terminal block and the GPIO breakaway source strip respectively. This implements ADR-007/011 without replacing their architecture or adding deferred interfaces.
 
 ## Context and alternatives
 

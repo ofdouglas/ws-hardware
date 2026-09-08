@@ -1751,8 +1751,8 @@
       ]
     },
     "GW": {
-      "mpn": "STM32G474RBT6",
-      "symbol": "MCU_ST_STM32G4:STM32G474RBTx",
+      "mpn": "STM32G473RBT6",
+      "symbol": "MCU_ST_STM32G4:STM32G473RBTx",
       "footprint": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
       "pins": [
         {
@@ -1764,7 +1764,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Supply in",
-          "source": "DS12288 Rev.6 p.50; \u00a73.11; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; \u00a73.11; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1776,7 +1776,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1788,7 +1788,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1800,7 +1800,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1812,7 +1812,7 @@
           "peripheral": "RCC/HSE",
           "mux": "Dedicated",
           "direction": "Analog in",
-          "source": "DS12288 Rev.6 p.50; 58",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 58; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1824,7 +1824,7 @@
           "peripheral": "RCC/HSE",
           "mux": "Dedicated",
           "direction": "Analog out",
-          "source": "DS12288 Rev.6 p.50; 58",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 58; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1836,7 +1836,7 @@
           "peripheral": "Reset",
           "mux": "Dedicated",
           "direction": "I/O",
-          "source": "DS12288 Rev.6 p.50; 58; 72",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 58; 72; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1848,7 +1848,7 @@
           "peripheral": "EXTI0",
           "mux": "GPIO/SYSCFG port C",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 58\u201359; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 58\u201359; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1860,7 +1860,7 @@
           "peripheral": "EXTI1",
           "mux": "GPIO/SYSCFG port C",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 58\u201359; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 58\u201359; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1872,7 +1872,7 @@
           "peripheral": "GPIO",
           "mux": "GPIO",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 58\u201359; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 58\u201359; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1884,7 +1884,7 @@
           "peripheral": "GPIO",
           "mux": "GPIO",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 58\u201359; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 58\u201359; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1896,7 +1896,7 @@
           "peripheral": "USART2_CTS",
           "mux": "AF7",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 59; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 59; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1908,7 +1908,7 @@
           "peripheral": "USART2_RTS",
           "mux": "AF7",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 59; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 59; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1920,7 +1920,7 @@
           "peripheral": "USART2_TX",
           "mux": "AF7",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 59; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 59; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1932,7 +1932,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Ground",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1944,7 +1944,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Supply in",
-          "source": "DS12288 Rev.6 p.50; \u00a73.11; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; \u00a73.11; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1956,7 +1956,7 @@
           "peripheral": "USART2_RX",
           "mux": "AF7",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 60; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 60; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1968,7 +1968,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1980,7 +1980,7 @@
           "peripheral": "GPIO",
           "mux": "GPIO",
           "direction": "Out",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -1992,7 +1992,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2004,7 +2004,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2016,7 +2016,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2028,7 +2028,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2040,7 +2040,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2052,7 +2052,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2064,7 +2064,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2076,7 +2076,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Ground",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2088,7 +2088,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Supply in",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2100,7 +2100,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Supply in",
-          "source": "DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error)",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev6 Table12 pp60-61 (corrected prior workbook pad error); exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2112,7 +2112,7 @@
           "peripheral": "LPUART1_RX",
           "mux": "AF8",
           "direction": "In",
-          "source": "DS12288 Rev.6 pp.50,63,74",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 pp.50,63,74; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2124,7 +2124,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Ground",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2136,7 +2136,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Supply in",
-          "source": "DS12288 Rev.6 p.50; \u00a73.11; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; \u00a73.11; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2148,7 +2148,7 @@
           "peripheral": "LPUART1_TX",
           "mux": "AF8",
           "direction": "Out",
-          "source": "DS12288 Rev.6 pp.50,63,74",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 pp.50,63,74; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2160,7 +2160,7 @@
           "peripheral": "FDCAN2_RX",
           "mux": "AF9",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 64; 74",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 64; 74; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2172,7 +2172,7 @@
           "peripheral": "FDCAN2_TX",
           "mux": "AF9",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 64; 74",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 64; 74; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2184,7 +2184,7 @@
           "peripheral": "USART3_DE",
           "mux": "AF7",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 64; 74",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 64; 74; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2196,7 +2196,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2208,7 +2208,7 @@
           "peripheral": "GPIO",
           "mux": "GPIO",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 65; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 65; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2220,7 +2220,7 @@
           "peripheral": "GPIO",
           "mux": "GPIO",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 65; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 65; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2232,7 +2232,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2244,7 +2244,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2256,7 +2256,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2268,7 +2268,7 @@
           "peripheral": "USART1_TX",
           "mux": "AF7",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 65\u201366; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 65\u201366; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2280,7 +2280,7 @@
           "peripheral": "USART1_RX",
           "mux": "AF7",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 66; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 66; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2292,7 +2292,7 @@
           "peripheral": "FDCAN1_RX",
           "mux": "AF9",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 66; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 66; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2304,7 +2304,7 @@
           "peripheral": "FDCAN1_TX",
           "mux": "AF9",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 66; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 66; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2316,7 +2316,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Ground",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2328,7 +2328,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Supply in",
-          "source": "DS12288 Rev.6 p.50; \u00a73.11; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; \u00a73.11; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2340,7 +2340,7 @@
           "peripheral": "SYS/SWDIO",
           "mux": "AF0",
           "direction": "I/O",
-          "source": "DS12288 Rev.6 p.50; 67; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 67; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2352,7 +2352,7 @@
           "peripheral": "SYS/SWCLK",
           "mux": "AF0",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 67; 73",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 67; 73; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2364,7 +2364,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2376,7 +2376,7 @@
           "peripheral": "USART3_TX",
           "mux": "AF7",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 67; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 67; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2388,7 +2388,7 @@
           "peripheral": "USART3_RX",
           "mux": "AF7",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 68; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 68; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2400,7 +2400,7 @@
           "peripheral": "GPIO",
           "mux": "GPIO",
           "direction": "Out",
-          "source": "DS12288 Rev.6 p.50; 68; 75",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 68; 75; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2412,7 +2412,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2424,7 +2424,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2436,7 +2436,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2448,7 +2448,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2460,7 +2460,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2472,7 +2472,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2484,7 +2484,7 @@
           "peripheral": "Boot configuration",
           "mux": "Dedicated at boot",
           "direction": "In",
-          "source": "DS12288 Rev.6 p.50; 71; \u00a73.7",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; 71; \u00a73.7; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2496,7 +2496,7 @@
           "peripheral": "NA",
           "mux": "NA",
           "direction": "NA",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2508,7 +2508,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Ground",
-          "source": "DS12288 Rev.6 p.50; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         },
         {
@@ -2520,7 +2520,7 @@
           "peripheral": "Power",
           "mux": "NA",
           "direction": "Supply in",
-          "source": "DS12288 Rev.6 p.50; \u00a73.11; Table 12",
+          "source": "ADR-043: native G473/G474 LQFP64 pin geometry/name/type comparison passed; prior G474 evidence: DS12288 Rev.6 p.50; \u00a73.11; Table 12; exact G473 datasheet/AF review pending B1-Q005",
           "status": "unverified"
         }
       ]
@@ -2566,7 +2566,7 @@
     "timing_series": "One330CRGP0805F330R from each *_MCU signal tocorrespondingheadernet; privateRX/TX/EVENTandsharedSYNC/TRIG.24total. SharedSYNC/TRIG10kpulldown eachatheaderside, nointernalpulldowns needed.",
     "GW_supply": "DirectSYS pins1VBAT,16/32/48/64VDD,28VREF+,29VDDA. GND15/27/31/47/63. Six100n maincaps(4VDD+VBAT+VREF),1u sharedVDDA/VREF,10nVDDA,4.7udigitalbulk. VREFBUFdisabled/highZ. NoVCAP pin.",
     "SAM_supply": "EachSYS pins6VDDANA,17/36VDDIO,44VDDIN withfour100n plusone1ulocalbulk. Ground5/18/35/42. Corepin43 separatelyone1u +100n toGND; neverjoincoresorSYS.",
-    "crystals": "Four12MHzECS-120-20-3X-EN-TR, each33pF C0805C330F5GACTU toGND bothends. GWpins5/6, SAM23/24. Noaddedfeedback/seriesresistor. Acceptedinitialloadvalues; startup/drive/loadedfrequencybringupcheck.",
+    "crystals": "Four12MHzECS-120-20-3X-EN-TR, each33pF CC0805FRNPO9BN330 toGND bothends. GWpins5/6, SAM23/24. Noaddedfeedback/seriesresistor. Acceptedinitialloadvalues; startup/drive/loadedfrequencybringupcheck.",
     "led": "EachMCUGPIO sourcesvia3k3RMCF0805JT3K30toCSL1901DW1anode,cathodeGND; activehigh. ExistingB024/B026.",
     "debug_defaults": "InternalRXpullup in firmware adequate forshortbench debug cables; keep externaldriverhighimpedancewhenmainoff. Noextrasupportorprotection inferred."
   },

@@ -20,7 +20,7 @@ An alternate requires pin, footprint, electrical and firmware compatibility revi
 
 ## BOM schema
 
-`bom.csv` is an initial functional planning BOM. `item_id` is stable. `quantity` is total per board for that row; `TBD` is permitted until resolved. `references=TBD` means schematic designators do not exist yet. Split grouped rows when actual parts/designators are assigned.
+`bom_internal.csv` is an initial functional planning BOM. `item_id` is stable. `quantity` is total per board for that row; `TBD` is permitted until resolved. `references=TBD` means schematic designators do not exist yet. Split grouped rows when actual parts/designators are assigned.
 
 `assembly`: `fit` (planned populated), `dnp` (designed footprint, omitted), `tbd` (undecided). `selection_status`: `proposed`, `accepted`, `rejected`, `superseded`. `evidence_status`: `unverified`, `verified`. `TBD` marks unknown fields. A planned `fit` row is not evidence of an accepted design. Deferred architecture is omitted from the BOM rather than represented as DNP.
 

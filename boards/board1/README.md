@@ -1,12 +1,12 @@
 # Board 1 Rev A
 
-Status: complete Rev A schematic captured in KiCad 7.0.11, A-draft; selected baseline through ADR-042. Part acceptance does not establish electrical or fabrication readiness.
+Status: complete Rev A schematic and initial unrouted PCB placement in KiCad 7.0.11; gateway corrected by ADR-043. Part acceptance does not establish electrical or fabrication readiness.
 
-Board 1 is a four-MCU WireSpaces lab: one STM32G474RBT6 gateway and three ATSAMC21G17A-AUT leaves. Each MCU connects to both shared CAN-FD buses and the onboard multidrop UART; the SAMs also form a private UART ring. The gateway provides USB VCP and one external ST3485EBDR RS-485 port. Both CAN pairs and RS-485 have terminal-block access with ground.
+Board 1 is a four-MCU WireSpaces lab: one STM32G473RBT6 gateway and three ATSAMC21G17A-AUT leaves. Each MCU connects to both shared CAN-FD buses and the onboard multidrop UART; the SAMs also form a private UART ring. The gateway provides USB VCP and one external ST3485EBDR RS-485 port. Both CAN pairs and RS-485 have terminal-block access with ground.
 
 USB-B powers an independent FT232HL bridge through the TPS22810 attachment ramp. FTDI PWREN# enables the TPS560430 main 3.3 V converter through MC74HC1G14DBVT1G. SN74LV125APWR isolates VCP TX/RX/RTS/CTS when main power is off. Rev A requires an active PC and must fit the 500 mA configured USB budget; full-load and startup qualification remain open.
 
-The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have independent selected 12 MHz crystals and initial load capacitors. Other link rates still need qualification. Each MCU has SWD, a dedicated 115200-baud text UART, a combined 1x8 timing/debug header and an LED; a fifth LED indicates board power. General-purpose breakouts are deferred under ADR-041.
+The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have independent selected 12 MHz crystals and initial load capacitors. Other link rates still need qualification. Each MCU has SWD, a dedicated 115200-baud text UART, a combined 1x8 timing/debug header and an LED; a fifth LED indicates board power. General-purpose breakouts are deferred under ADR-041. Seven 1×2 communications measurement headers expose both CAN pairs, RS-485, all three directed UART-ring hops and UART_MD per ADR-046; twelve rail/reset/boot/core pads and six ground headers remain.
 
 ## Current design documents
 
@@ -15,7 +15,7 @@ The gateway targets 168 MHz and 12 Mbaud VCP. All four MCUs and the FTDI have in
 | Complete editable CAD and review PDF | [KiCad project](kicad/README.md) |
 | Scope and authoritative question status | [Requirements](requirements.md) |
 | Accepted decisions; do not routinely reopen | [ADR register](../../docs/decisions/README.md) |
-| Parts, quantities, evidence | [BOM view](BOM.md), [CSV](bom.csv), [remaining selections](remaining_parts.md) |
+| Parts, quantities, evidence | [BOM view](BOM.md), [CSV](bom_internal.csv), [remaining selections](remaining_parts.md) |
 | Unfinished implementation choices | [Decision checklist](unfinished_decisions.md) |
 | USB input, sequencing and current estimates | [USB input](usb_input.md), [model maintenance](models.md) |
 | Bridge, EEPROM, VCP isolation and recovery | [USB VCP](usb_vcp.md) |
@@ -32,8 +32,8 @@ Use Host/HostId terminology. Requirements own scope and question status; accepte
 
 External 24 V power, additional transceivers (including CAN3 and the second Board 1 point-to-point RS-485), the full bench backbone and FPGA/fault instrumentation are later work. RS_485_MULTIDROP is descoped for Board 1, retained in the overall bench architecture. No future footprint or pin reservation is implied.
 
-All MCU, network and connector sections are captured. The review corrected STM32 physical-pad errors and finalized timing interrupts, ordinary reset/boot, interface defaults and probe access. Remaining work is schematic approval/ERC, layout and bring-up, as staged in the requirements register.
+All MCU, network and connector sections are captured. The review corrected STM32 physical-pad errors and finalized timing interrupts, ordinary reset/boot, interface defaults and probe access. All components are now approximately placed on the [native PCB](kicad/board1.kicad_pcb), with the terminal opposite USB; see [placement notes and preview](kicad/placement.md). Remaining work is schematic approval/ERC, detailed placement/routing and bring-up, as staged in the requirements register.
 
 ADR-042 fixes the timing/debug header pin order and adds 330 ohm near each of its six MCU signal pins (24 total). Automated CBUS reset/BOOT0 recovery is deferred to Rev B; Rev A retains ordinary reset, BOOT0-low defaults and independent SWD programming.
 
-Checks: native KiCad export and full-board checker pass for239schematic objects/872pins; all208 MCU pads independently agree with the corrected workbook. ElevenPDF pages were rendered and reviewed. ERC has not run (KiCad7CLI lacks it); no PCB/DRC or hardware validation. See [complete capture notes](kicad/README.md).
+Checks: native KiCad export and full-board checker pass for239 schematic objects / 879 pins; the PCB connectivity is checked against the same native schematic. Prior G474 MCU/workbook evidence is qualified by the ADR-043 correction note. Initial-placement DRC found no component collisions; expected unrouted connections, SWD internal pad-clearance findings and USB edge-silk cleanup remain. ERC has not run (KiCad7CLI lacks it); no hardware validation. See [complete capture notes](kicad/README.md) and [placement checks](kicad/placement.md#checks-performed).

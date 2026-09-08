@@ -1,6 +1,6 @@
 # Board 1 remaining review and bring-up
 
-The Rev A schematic is fully captured. MCU pin allocation, timing interrupts, ordinary reset/boot, receiver/default networks, connector numbering and capacitor counts are implemented in [KiCad](kicad/README.md). The corrected [pinmap](pinmap.md) and BOM agree with native export. Accepted ADRs through042 remain in force; no new scope decision was required.
+The Rev A schematic is fully captured. MCU pin allocation, timing interrupts, ordinary reset/boot, receiver/default networks, connector numbering and capacitor counts are implemented in [KiCad](kicad/README.md). The corrected [pinmap](pinmap.md) and BOM agree with native export. Current authority is the ADR register; ADR-046 records the maintainer-requested communications measurement headers.
 
 | Existing question IDs | Remaining stage / check |
 |---|---|

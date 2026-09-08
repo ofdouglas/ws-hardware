@@ -15,7 +15,7 @@ Read this map before the chronological register. An accepted ADR may retain only
 | Crystals / clocks | ADR-005 timing targets; ADR-014 MCU crystals; ADR-017 separate FTDI strategy; ADR-030 exact FTDI crystal; ADR-031 initial load caps and REF correction | [Clocks](../../boards/board1/clocking.md), [crystals](../../boards/board1/crystal_networks.md) |
 | CAN / RS-485 | ADR-002 TCAN3413; ADR-034 ST3485/termination; ADR-035 termination MPNs; ADR-036 bias; ADR-037 CAN TVS; ADR-038 restricted RS-485 TVS envelope; ADR-039 bias MPNs | [Interfaces](../../boards/board1/interfaces.md), [termination](../../boards/board1/termination.md), [bias](../../boards/board1/rs485_bias.md) |
 | Onboard UART | ADR-033 second LV125 driver; ADR-039 support resistors; actual rate unqualified | [Interfaces](../../boards/board1/interfaces.md) |
-| Debug / recovery / connectors | ADR-011 SWD; ADR-018 EEPROM; ADR-042 defers ADR-023 CBUS recovery; [ADR-026 connectors](026-reva-connectors.md); ADR-032 text UART; ADR-039 test access; ADR-041/042 combined timing/debug headers and series resistors; USR-37 shared pull-downs (timing_headers.md) | [Pinmap](../../boards/board1/pinmap.md), [remaining work](../../boards/board1/remaining_parts.md) |
+| Debug / recovery / connectors | ADR-011 SWD; ADR-018 EEPROM; ADR-042 defers ADR-023 CBUS recovery; [ADR-026 connectors](026-reva-connectors.md); ADR-032 text UART; ADR-039 rail/reset/boot/core pads and ground access; ADR-046 communications headers; ADR-041/042 combined timing/debug headers and series resistors; USR-37 shared pull-downs (timing_headers.md) | [Pinmap](../../boards/board1/pinmap.md), [remaining work](../../boards/board1/remaining_parts.md) |
 | LEDs / GPIO | ADR-007 scope; ADR-029 LEDs; ADR-039 LED resistors; ADR-041 timing interface replaces general GPIO breakouts | [BOM](../../boards/board1/BOM.md) |
 | Assembly / sourcing | ADR-009 plus current maintainer package rules; DigiKey-only sourcing policy | [Part policy](../PART_SELECTION_POLICY.md) |
 
@@ -30,7 +30,7 @@ Allocation-note reconciliation (2026-09-07): [pinmap](../../boards/board1/pinmap
 | [ADR-001](001-usb-power.md) | USB power and independent VCP bring-up (power/isolation architecture) | accepted | Board 1 MVP |
 | [ADR-002](002-can-transceivers.md) | CAN-FD transceiver selection (TCAN3413DR) | accepted | Board 1 CAN1/CAN2 |
 | [ADR-003](003-terminology-and-mvp-boundary.md) | Host terminology and reduced first PCBA | accepted | Repository / Board 1 |
-| [ADR-004](004-board1-mcu-baseline.md) | MCU selection (STM32G474RBT6 / ATSAMC21G17A-AUT) | accepted | Board 1 |
+| [ADR-004](004-board1-mcu-baseline.md) | MCU baseline (gateway corrected by ADR-043; SAM selection retained) | accepted | Board 1 |
 | [ADR-005](005-clock-and-vcp-speed.md) | Crystal clocks and 12 Mbaud gateway VCP | accepted | Board 1 Spin A |
 | [ADR-006](006-reva-external-buses.md) | Rev A links and terminal access | superseded | Board 1 Rev A |
 | [ADR-007](007-board1-rs485-power-scope.md) | Board 1 RS-485 scope, LEDs and GPIO | accepted | Board 1; bench multidrop retained |
@@ -71,7 +71,15 @@ Allocation-note reconciliation (2026-09-07): [pinmap](../../boards/board1/pinmap
 | [ADR-041](041-timing-debug-headers.md) | Combined per-MCU timing/debug headers; general breakouts deferred | accepted | B1-R025/027; B1-B027/059 |
 | [ADR-042](042-header-resistors-recovery-scope.md) | Header series resistors and Rev A recovery scope | accepted | Exact pin order, 24 series resistors; automated recovery deferred to Rev B |
 
-Use [template.md](template.md); next ID: ADR-043. Numbering is permanent.
+| [ADR-043](043-gateway-part-correction.md) | Gateway transcription correction to STM32G473RBT6 | accepted | Supersedes ADR-004 gateway MPN only |
+
+| [ADR-044](044-yageo-crystal-load-capacitors.md) | YAGEO 33 pF crystal load capacitors | accepted | Supersedes ADR-031 33 pF MPN only |
+
+| [ADR-045](045-yageo-27pf-crystal-capacitors.md) | YAGEO 27 pF FTDI crystal capacitors | accepted | Supersedes ADR-031 27 pF MPN only |
+
+| [ADR-046](046-communications-measurement-headers.md) | Communications measurement headers | accepted | Supersedes ADR-039 communications copper-pad scope; seven 1x2 headers including all UART-ring hops |
+
+Use [template.md](template.md); next ID: ADR-047. Numbering is permanent.
 
 Historical collision: both [connector selection](026-reva-connectors.md) and [ceramic SAM core selection](026-sam-core-ceramic.md) carry ADR-026. Preserve both IDs and histories; use the filename-qualified reference to distinguish them. BOM references now do this explicitly.
 

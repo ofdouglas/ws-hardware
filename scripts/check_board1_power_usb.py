@@ -18,7 +18,7 @@ CAD = ROOT / 'boards/board1/kicad'
 
 def check():
     expected = json.loads((CAD / 'capture_manifest.json').read_text())
-    bom = {r['item_id']: r for r in csv.DictReader((ROOT / 'boards/board1/bom.csv').open())}
+    bom = {r['item_id']: r for r in csv.DictReader((ROOT / 'boards/board1/bom_internal.csv').open())}
     with tempfile.TemporaryDirectory() as directory:
         path = Path(directory) / 'board1.xml'
         subprocess.run(['kicad-cli', 'sch', 'export', 'netlist', '--format', 'kicadxml',

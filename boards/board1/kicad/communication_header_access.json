@@ -1,0 +1,79 @@
+[
+  {
+    "reference": "J19",
+    "silkscreen": "CAN A",
+    "pins": {
+      "1": "FD_CAN_A_H",
+      "2": "FD_CAN_A_L"
+    },
+    "x_mm": 146,
+    "y_mm": 42,
+    "rotation": 0
+  },
+  {
+    "reference": "J20",
+    "silkscreen": "CAN B",
+    "pins": {
+      "1": "FD_CAN_B_H",
+      "2": "FD_CAN_B_L"
+    },
+    "x_mm": 138,
+    "y_mm": 42,
+    "rotation": 0
+  },
+  {
+    "reference": "J21",
+    "silkscreen": "RS485",
+    "pins": {
+      "1": "RS485_A",
+      "2": "RS485_B"
+    },
+    "x_mm": 130,
+    "y_mm": 42,
+    "rotation": 0
+  },
+  {
+    "reference": "J22",
+    "silkscreen": "RING01",
+    "pins": {
+      "1": "RING_01",
+      "2": "GND"
+    },
+    "x_mm": 46.7,
+    "y_mm": 43,
+    "rotation": 90
+  },
+  {
+    "reference": "J23",
+    "silkscreen": "RING12",
+    "pins": {
+      "1": "RING_12",
+      "2": "GND"
+    },
+    "x_mm": 86.7,
+    "y_mm": 43,
+    "rotation": 90
+  },
+  {
+    "reference": "J24",
+    "silkscreen": "RING20",
+    "pins": {
+      "1": "RING_20",
+      "2": "GND"
+    },
+    "x_mm": 121,
+    "y_mm": 26,
+    "rotation": 90
+  },
+  {
+    "reference": "J25",
+    "silkscreen": "UART_MD",
+    "pins": {
+      "1": "UART_MD",
+      "2": "GND"
+    },
+    "x_mm": 81.73,
+    "y_mm": 88,
+    "rotation": 90
+  }
+]

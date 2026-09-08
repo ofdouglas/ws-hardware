@@ -1,6 +1,6 @@
 # Connector and crystal footprint checks
 
-Board-authored footprints live in [Board1.pretty](Board1.pretty), registered with `${KIPRJMOD}` in [fp-lib-table](fp-lib-table). Both parsed successfully in pcbnew. They are real land patterns, not empty placeholders; no PCB placement/layout exists.
+Board-authored footprints live in [Board1.pretty](Board1.pretty), registered with `${KIPRJMOD}` in [fp-lib-table](fp-lib-table). Both parsed successfully in pcbnew and are used in the [initial unrouted placement](placement.md). Standard libraries are also explicitly registered with portable KiCad paths. Placement checks do not establish final mechanical qualification.
 
 | Part | Drawing and checked geometry | Footprint |
 |---|---|---|

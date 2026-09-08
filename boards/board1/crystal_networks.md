@@ -1,12 +1,12 @@
 # Crystal network proposal
 
-Status: initial fitted capacitor values/MPNs accepted ADR-031, 2026-09-06. Crystal MPNs finalized ADR-030. B1-Q008 owns startup, gain, drive and frequency qualification.
+Status: initial fitted values accepted ADR-031; 33 pF MPN replaced by ADR-044 and 27 pF MPN by ADR-045, 2026-09-06. Crystal MPNs finalized ADR-030. B1-Q008 owns startup, gain, drive and frequency qualification.
 
 | Oscillator | Crystal CL | Capacitors to ground | Qty / board | Accepted initial part |
 |---|---:|---:|---:|---|
-| STM32 gateway | 20 pF | 33 pF each side | 2 | KEMET C0805C330F5GACTU |
-| Three SAM C21 | 20 pF | 33 pF each side | 6 | KEMET C0805C330F5GACTU |
-| FT232HL | 18 pF | 27 pF each side | 2 | KEMET C0805C270F5GACTU |
+| STM32 gateway | 20 pF | 33 pF each side | 2 | YAGEO CC0805FRNPO9BN330 |
+| Three SAM C21 | 20 pF | 33 pF each side | 6 | YAGEO CC0805FRNPO9BN330 |
+| FT232HL | 18 pF | 27 pF each side | 2 | YAGEO CC0805FRNPO9BN270 |
 
 Both parts are 0805, 50 V, C0G/NP0, +/-1%. Use C0G for frequency-setting capacitors. Eight 33 pF and two 27 pF are accepted allocation quantities, not electrically qualified production values. No extra crystal or auxiliary oscillator added.
 
@@ -16,9 +16,9 @@ Place each crystal and two capacitors close to its IC; short quiet traces and sh
 
 Check startup across rails/temperature, drive level, and loaded frequency. FTDI's narrow remaining loading-error budget makes fine adjustment important; 1% capacitors alone do not establish frequency accuracy. Prefer measuring a buffered/divided clock output where available; avoid loading a crystal pin with an ordinary oscilloscope probe. No extra DNP trim footprints are implied by this proposal; change the fitted capacitor values if needed.
 
-Sources: [ST AN2867](https://www.st.com/resource/en/application_note/cd00221665.pdf), [FT232H oscillator example, section 6.3](https://ftdichip.com/wp-content/uploads/2020/07/DS_FT232H.pdf), [33 pF exact manufacturer sheet](https://yageogroup.com/download/specsheet/C0805C330F5GACTU), [27 pF exact manufacturer sheet](https://yageogroup.com/download/specsheet/C0805C270F5GACTU). FTDI source is historical v2.0; reconcile latest revision before sign-off. ECS crystal evidence is retained below.
+Sources: [ST AN2867](https://www.st.com/resource/en/application_note/cd00221665.pdf), [FT232H oscillator example, section 6.3](https://ftdichip.com/wp-content/uploads/2020/07/DS_FT232H.pdf), [33 pF exact-part listing](https://www.digikey.com/en/products/detail/yageo/CC0805FRNPO9BN330/5883941), [27 pF exact manufacturer sheet](https://yageogroup.com/download/specsheet/CC0805FRNPO9BN270). FTDI source is historical v2.0; reconcile latest revision before sign-off. ECS crystal evidence is retained below.
 
-DigiKey: [33 pF](https://www.digikey.com/en/products/detail/kemet/C0805C330F5GACTU/2212505), [27 pF](https://www.digikey.com/en/products/detail/kemet/C0805C270F5GACTU/2212364). Listing availability is not a live stock guarantee. No hardware measurements performed.
+DigiKey: [33 pF](https://www.digikey.com/en/products/detail/yageo/CC0805FRNPO9BN330/5883941), [27 pF](https://www.digikey.com/en/products/detail/yageo/CC0805FRNPO9BN270/8025262). Listing availability is not a live stock guarantee. No hardware measurements performed.
 
 ## Selected crystals and retained accuracy evidence
 

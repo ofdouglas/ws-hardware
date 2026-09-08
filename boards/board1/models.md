@@ -7,7 +7,7 @@ Status: planning calculations, not measured maxima or compliance evidence. Autho
 | [power_budget.json](power_budget.json) | Schema v2; active_model names current_rev_a_input, the sole current Rev A steady-state model. Includes original load assumptions, explicit path resistance and rounded reference results. |
 | [power_budget_future.json](power_budget_future.json) | Deferred expanded Board 1 sensitivities; original no-path-loss arithmetic retained. Not a current power design or an efficiency requirement. |
 | [vbus_hotplug_model.py](vbus_hotplug_model.py), [snapshot](vbus_hotplug_model.json) | Exploratory ideal cable/RC sweep, excluding the actual TVS, switch, loads and contact bounce. Peak voltage is not the protected FTDI rail prediction. |
-| [bom.csv](bom.csv) | Authoritative part selections, planning quantities and verification status. |
+| [bom_internal.csv](bom_internal.csv) | Authoritative part selections, planning quantities and verification status. |
 | [bom_quantity_rules.json](bom_quantity_rules.json) | ADR-039 exceptions: strip purchase versus cut placement counts, non-purchased PCB pads. Unknown quantities stay TBD. |
 | [bom_allocation_notes.md](bom_allocation_notes.md) | Editable allocation prose included in the generated BOM view. |
 

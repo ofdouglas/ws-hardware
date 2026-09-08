@@ -354,7 +354,7 @@
   "C12": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B058",
-    "MPN": "C0805C270F5GACTU",
+    "MPN": "CC0805FRNPO9BN270",
     "value": "27p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "usb_bridge",
@@ -366,7 +366,7 @@
   "C13": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B058",
-    "MPN": "C0805C270F5GACTU",
+    "MPN": "CC0805FRNPO9BN270",
     "value": "27p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "usb_bridge",
@@ -706,10 +706,10 @@
     }
   },
   "U7": {
-    "lib_id": "MCU_ST_STM32G4:STM32G474RBTx",
+    "lib_id": "MCU_ST_STM32G4:STM32G473RBTx",
     "BOM_ID": "B1-B001",
-    "MPN": "STM32G474RBT6",
-    "value": "STM32G474RBT6",
+    "MPN": "STM32G473RBT6",
+    "value": "STM32G473RBT6",
     "footprint": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
     "sheet": "gateway",
     "pins": {
@@ -1060,7 +1060,7 @@
   "C35": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B042",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "gateway",
@@ -1072,7 +1072,7 @@
   "C36": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B042",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "gateway",
@@ -1420,7 +1420,7 @@
   "C45": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B043",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "sam0",
@@ -1432,7 +1432,7 @@
   "C46": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B043",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "sam0",
@@ -1780,7 +1780,7 @@
   "C55": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B043",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "sam1",
@@ -1792,7 +1792,7 @@
   "C56": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B043",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "sam1",
@@ -2140,7 +2140,7 @@
   "C65": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B043",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "sam2",
@@ -2152,7 +2152,7 @@
   "C66": {
     "lib_id": "Device:C",
     "BOM_ID": "B1-B043",
-    "MPN": "C0805C330F5GACTU",
+    "MPN": "CC0805FRNPO9BN330",
     "value": "33p C0G",
     "footprint": "Capacitor_SMD:C_0805_2012Metric",
     "sheet": "sam2",
@@ -3184,81 +3184,88 @@
       "1": "SAM2_VDDCORE"
     }
   },
-  "TP13": {
-    "lib_id": "Connector:TestPoint",
-    "BOM_ID": "B1-B011",
-    "MPN": "NA",
+  "J19": {
+    "lib_id": "Connector_Generic:Conn_01x02",
+    "BOM_ID": "B1-B084",
+    "MPN": "PRPC002SAAN-RC",
+    "value": "CAN A",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+    "sheet": "access",
+    "pins": {
+      "1": "FD_CAN_A_H",
+      "2": "FD_CAN_A_L"
+    }
+  },
+  "J20": {
+    "lib_id": "Connector_Generic:Conn_01x02",
+    "BOM_ID": "B1-B084",
+    "MPN": "PRPC002SAAN-RC",
+    "value": "CAN B",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+    "sheet": "access",
+    "pins": {
+      "1": "FD_CAN_B_H",
+      "2": "FD_CAN_B_L"
+    }
+  },
+  "J21": {
+    "lib_id": "Connector_Generic:Conn_01x02",
+    "BOM_ID": "B1-B084",
+    "MPN": "PRPC002SAAN-RC",
+    "value": "RS485",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+    "sheet": "access",
+    "pins": {
+      "1": "RS485_A",
+      "2": "RS485_B"
+    }
+  },
+  "J22": {
+    "lib_id": "Connector_Generic:Conn_01x02",
+    "BOM_ID": "B1-B084",
+    "MPN": "PRPC002SAAN-RC",
+    "value": "RING01",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+    "sheet": "access",
+    "pins": {
+      "1": "RING_01",
+      "2": "GND"
+    }
+  },
+  "J23": {
+    "lib_id": "Connector_Generic:Conn_01x02",
+    "BOM_ID": "B1-B084",
+    "MPN": "PRPC002SAAN-RC",
+    "value": "RING12",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+    "sheet": "access",
+    "pins": {
+      "1": "RING_12",
+      "2": "GND"
+    }
+  },
+  "J24": {
+    "lib_id": "Connector_Generic:Conn_01x02",
+    "BOM_ID": "B1-B084",
+    "MPN": "PRPC002SAAN-RC",
+    "value": "RING20",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+    "sheet": "access",
+    "pins": {
+      "1": "RING_20",
+      "2": "GND"
+    }
+  },
+  "J25": {
+    "lib_id": "Connector_Generic:Conn_01x02",
+    "BOM_ID": "B1-B084",
+    "MPN": "PRPC002SAAN-RC",
     "value": "UART_MD",
-    "footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
     "sheet": "access",
     "pins": {
-      "1": "UART_MD"
-    }
-  },
-  "TP14": {
-    "lib_id": "Connector:TestPoint",
-    "BOM_ID": "B1-B011",
-    "MPN": "NA",
-    "value": "RS485_A",
-    "footprint": "TestPoint:TestPoint_Pad_D2.0mm",
-    "sheet": "access",
-    "pins": {
-      "1": "RS485_A"
-    }
-  },
-  "TP15": {
-    "lib_id": "Connector:TestPoint",
-    "BOM_ID": "B1-B011",
-    "MPN": "NA",
-    "value": "RS485_B",
-    "footprint": "TestPoint:TestPoint_Pad_D2.0mm",
-    "sheet": "access",
-    "pins": {
-      "1": "RS485_B"
-    }
-  },
-  "TP16": {
-    "lib_id": "Connector:TestPoint",
-    "BOM_ID": "B1-B011",
-    "MPN": "NA",
-    "value": "FD_CAN_A_H",
-    "footprint": "TestPoint:TestPoint_Pad_D2.0mm",
-    "sheet": "access",
-    "pins": {
-      "1": "FD_CAN_A_H"
-    }
-  },
-  "TP17": {
-    "lib_id": "Connector:TestPoint",
-    "BOM_ID": "B1-B011",
-    "MPN": "NA",
-    "value": "FD_CAN_A_L",
-    "footprint": "TestPoint:TestPoint_Pad_D2.0mm",
-    "sheet": "access",
-    "pins": {
-      "1": "FD_CAN_A_L"
-    }
-  },
-  "TP18": {
-    "lib_id": "Connector:TestPoint",
-    "BOM_ID": "B1-B011",
-    "MPN": "NA",
-    "value": "FD_CAN_B_H",
-    "footprint": "TestPoint:TestPoint_Pad_D2.0mm",
-    "sheet": "access",
-    "pins": {
-      "1": "FD_CAN_B_H"
-    }
-  },
-  "TP19": {
-    "lib_id": "Connector:TestPoint",
-    "BOM_ID": "B1-B011",
-    "MPN": "NA",
-    "value": "FD_CAN_B_L",
-    "footprint": "TestPoint:TestPoint_Pad_D2.0mm",
-    "sheet": "access",
-    "pins": {
-      "1": "FD_CAN_B_L"
+      "1": "UART_MD",
+      "2": "GND"
     }
   }
 }

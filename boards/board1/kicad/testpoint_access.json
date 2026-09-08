@@ -1,0 +1,110 @@
+[
+  {
+    "reference": "TP1",
+    "silkscreen": "RAW5V",
+    "net": "VBUS_RAW",
+    "x_mm": 6.0,
+    "y_mm": 93.0,
+    "nearest_ground": "J17",
+    "ground_distance_mm": 14.76
+  },
+  {
+    "reference": "TP2",
+    "silkscreen": "USB5V",
+    "net": "USB_5V",
+    "x_mm": 6.0,
+    "y_mm": 87.0,
+    "nearest_ground": "J17",
+    "ground_distance_mm": 9.9
+  },
+  {
+    "reference": "TP3",
+    "silkscreen": "FT3V3",
+    "net": "FTDI_3V3",
+    "x_mm": 28.0,
+    "y_mm": 80.0,
+    "nearest_ground": "J17",
+    "ground_distance_mm": 12.46
+  },
+  {
+    "reference": "TP4",
+    "silkscreen": "3V3",
+    "net": "3V3_SYS",
+    "x_mm": 5.0,
+    "y_mm": 76.0,
+    "nearest_ground": "J17",
+    "ground_distance_mm": 8.94
+  },
+  {
+    "reference": "TP5",
+    "silkscreen": "GW_RST",
+    "net": "GW_RESET_N",
+    "x_mm": 92.0,
+    "y_mm": 99.0,
+    "nearest_ground": "J13",
+    "ground_distance_mm": 5.81
+  },
+  {
+    "reference": "TP6",
+    "silkscreen": "BOOT0",
+    "net": "GW_BOOT0",
+    "x_mm": 98.0,
+    "y_mm": 99.0,
+    "nearest_ground": "J13",
+    "ground_distance_mm": 11.63
+  },
+  {
+    "reference": "TP7",
+    "silkscreen": "S0_RST",
+    "net": "SAM0_RESET_N",
+    "x_mm": 11.0,
+    "y_mm": 23.0,
+    "nearest_ground": "J14",
+    "ground_distance_mm": 7.0
+  },
+  {
+    "reference": "TP8",
+    "silkscreen": "S0_CORE",
+    "net": "SAM0_VDDCORE",
+    "x_mm": 17.5,
+    "y_mm": 23.0,
+    "nearest_ground": "J14",
+    "ground_distance_mm": 8.04
+  },
+  {
+    "reference": "TP9",
+    "silkscreen": "S1_RST",
+    "net": "SAM1_RESET_N",
+    "x_mm": 51.0,
+    "y_mm": 23.0,
+    "nearest_ground": "J15",
+    "ground_distance_mm": 7.0
+  },
+  {
+    "reference": "TP10",
+    "silkscreen": "S1_CORE",
+    "net": "SAM1_VDDCORE",
+    "x_mm": 57.5,
+    "y_mm": 23.0,
+    "nearest_ground": "J15",
+    "ground_distance_mm": 8.04
+  },
+  {
+    "reference": "TP11",
+    "silkscreen": "S2_RST",
+    "net": "SAM2_RESET_N",
+    "x_mm": 91.0,
+    "y_mm": 23.0,
+    "nearest_ground": "J16",
+    "ground_distance_mm": 7.0
+  },
+  {
+    "reference": "TP12",
+    "silkscreen": "S2_CORE",
+    "net": "SAM2_VDDCORE",
+    "x_mm": 97.5,
+    "y_mm": 23.0,
+    "nearest_ground": "J16",
+    "ground_distance_mm": 8.04
+  }
+]

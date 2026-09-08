@@ -4,7 +4,7 @@
   "overrides": {
     "B1-B011": {
       "purchase_quantity": 0,
-      "placement_quantity": 19,
+      "placement_quantity": 12,
       "unit": "PCB pads; no purchased part",
       "csv_quantity_basis": "purchase_quantity"
     },
@@ -33,5 +33,5 @@
     ],
     "spare_positions_unallocated": 8
   },
-  "authority": "ADR-041; electrical/physical qualification remains open"
+  "authority": "ADR-041; ADR-046; electrical/physical qualification remains open"
 }

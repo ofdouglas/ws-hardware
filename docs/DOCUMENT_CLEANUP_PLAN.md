@@ -15,7 +15,7 @@ Status: steps 1–6 implemented through ADR-039. Maintainer instructed deletion 
 
 ## Proposed sequence
 
-1. **Completed — repair current entry points.** Rewrite board README as a short current topology/status/navigation page. Keep BOM.md generated from bom.csv, with one allocation-notes section. Remove superseded prose rather than prepend more overrides. requirements.md remains the sole owner of open-question status; remaining_parts.md becomes its concise selection-focused index. Cross-link existing symbol validation instead of duplicating it.
+1. **Completed — repair current entry points.** Rewrite board README as a short current topology/status/navigation page. Keep BOM.md generated from bom_internal.csv, with one allocation-notes section. Remove superseded prose rather than prepend more overrides. requirements.md remains the sole owner of open-question status; remaining_parts.md becomes its concise selection-focused index. Cross-link existing symbol validation instead of duplicating it.
 
 2. **Completed — consolidate current implementation notes.** Retain buck_tps560430.md, crystal_networks.md, clocking.md, pinmap.md and current bus/protection details. Extract current MCU/core decoupling into decoupling.md from decoupling.md and the BOM. Consolidate USB/VCP and input sequencing into clearly named current notes (usb_vcp.md and usb_input.md). Merge termination.md + termination.md into termination.md; retain rs485_bias.md. Add one current interface/protection note covering the accepted ST PHY, CAN/RS485 TVS and UART_MD circuit. Preserve assumptions and open electrical checks.
 

@@ -1,5 +1,7 @@
 # Board 1 interfaces and protection
 
+Gateway correction (2026-09-07): STM32G473RBT6 is selected and captured per [ADR-043](../../docs/decisions/043-gateway-part-correction.md). DS12288 references and older workbook/PDF snapshots below are prior G474 evidence, not G473 qualification. Recheck exact G473 AF/electrical limits under B1-Q005/008 before schematic approval.
+
 Status: current selected implementation through ADR-039; complete draft capture; rates and electrical qualification remain open in [requirements](requirements.md). [BOM](BOM.md) owns exact counts; [pinmap](pinmap.md) owns allocation evidence.
 
 ## External buses

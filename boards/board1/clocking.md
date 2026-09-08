@@ -1,5 +1,7 @@
 # Clocking and VCP timing
 
+Gateway correction (2026-09-07): STM32G473RBT6 is selected and captured per [ADR-043](../../docs/decisions/043-gateway-part-correction.md). DS12288 references and older workbook/PDF snapshots below are prior G474 evidence, not G473 qualification. Recheck exact G473 AF/electrical limits under B1-Q005/008 before schematic approval.
+
 Status: draft implementation note · Requirements: B1-R014, B1-R015 · Decision: ADR-005
 Updated: 2026-09-06 · Physical allocation and bench validation: pending
 

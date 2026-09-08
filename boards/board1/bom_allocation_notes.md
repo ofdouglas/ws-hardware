@@ -1,7 +1,7 @@
 # BOM allocation and sourcing notes
 
 - B1-B027 buys one 40-position PRPC040SAAN-RC strip; B1-B059 counts four included 1x8 timing/debug placement pieces (32 positions). Eight positions remain unallocated. Dedicated CAN jumper headers B1-B069 are separate.
-- B1-B011 represents PCB test pads and has zero purchased components. B1-B011 has19 CAD pads. B1-B075 is six dedicated two-post PRPC002SAAN-RC ground headers; spare strip posts remain unallocated.
+- B1-B011 represents PCB test pads and has zero purchased components. B1-B011 has 12 CAD pads (TP1–TP12); TP13–TP19 are retired. B1-B084 adds seven fitted communications measurement headers J19–J25 under ADR-046, reusing PRPC002SAAN-RC. B1-B075 is six dedicated two-post PRPC002SAAN-RC ground headers; spare strip posts remain unallocated.
 - B1-B061–065 expose existing bridge allocations formerly in B1-B017. Power/USB capture settles B1-B061=11, B1-B062=0 and B1-B063=2; B1-B017 has zero residual parts after adding ferrites B1-B078 and VCP defaults B1-B079. B1-B053 is excluded from Rev A by ADR-042 (zero components/footprints).
 - B1-B036 contains37 actual main-rail100nF positions, including one each at VCP/UART_MD. Two unused auxiliary reserves were removed. [Decoupling](decoupling.md) owns the allocation explanation and 34.41 uF nominal main-rail calculation. Core, bridge, buck-input and bootstrap capacitance are separate.
 - Two SN74LV125APWR ICs serve VCP and UART_MD separately. B1-B008 is exactly four accepted 10 kohm /OE pull-ups; B1-B074 is the accepted shared 470 ohm pull-up.

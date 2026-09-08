@@ -7,7 +7,7 @@ created: 2026-09-06
 accepted_on: 2026-09-06
 accepted_by: Explicit maintainer instruction USR-33
 supersedes: none
-superseded_by: ADR-041 (header/general-breakout clauses only)
+superseded_by: ADR-041 (header/general-breakout clauses only); ADR-046 (communications copper-testpad scope only)
 requirements: [B1-R003, B1-R008, B1-R019, B1-R020, B1-R025]
 questions: [B1-Q003, B1-Q004, B1-Q009, B1-Q010, B1-Q014]
 sources: [USR-33]
@@ -26,3 +26,5 @@ Accept ordinary PCB signal/rail test pads B1-B011, with no purchased component f
 [Closeout review](https://github.com/ofdouglas/ws-hardware/blob/dbcaba10831ade0516dba825d2c97d3f0017e0f5/boards/board1/bom_closeout.md) supplies part and sourcing references. Retain thermal, bias, reset, timing, GPIO load and debug power-off qualification questions. No ERC/DRC or hardware validation was performed; evidence remains unverified.
 
 Header/general-breakout clauses are partially superseded by [ADR-041](041-timing-debug-headers.md). Other decisions remain in force.
+
+The communications copper-testpad scope is superseded by [ADR-046](046-communications-measurement-headers.md). Rail/reset/boot/core copper pads and fitted scope-ground access remain in force.

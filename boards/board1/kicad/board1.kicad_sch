@@ -1,5 +1,5 @@
 (kicad_sch (version 20230121) (generator ws_hardware_capture) (uuid ab028fb1-c655-584d-9b32-a6ba9517f8a2) (paper "A3")
-(title_block (title "Board 1 - Rev A system overview") (date "2026-09-07") (rev "A-draft") (company "WireSpaces") (comment 1 "Rev A complete schematic draft - no PCB layout"))
+(title_block (title "Board 1 - Rev A system overview") (date "2026-09-07") (rev "A-draft") (company "WireSpaces") (comment 1 "Rev A schematic draft - PCB placement unrouted"))
 (lib_symbols
 
 )
@@ -9,8 +9,8 @@
 (text "02  USB input and power" (at 30 72 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid cccead6c-d572-5c92-bc05-d02abe152f58))
 (sheet (at 153 63) (size 112 27) (stroke (width 0) (type solid)) (fill (color 0 0 0 0)) (uuid 8950ae98-9416-5722-b4c1-1f7c4b496376) (property "Sheetname" "USB bridge and VCP" (at 153 62 0) (effects (font (size 1.27 1.27)) (justify left bottom))) (property "Sheetfile" "usb_bridge.kicad_sch" (at 153 91 0) (effects (font (size 1.0 1.0)) (justify left top))) (instances (project "board1" (path "/ab028fb1-c655-584d-9b32-a6ba9517f8a2" (page "3")))))
 (text "03  USB bridge and VCP" (at 158 72 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid 9e3a314c-6fa0-5382-a316-a213b1f746d9))
-(sheet (at 281 63) (size 112 27) (stroke (width 0) (type solid)) (fill (color 0 0 0 0)) (uuid 14f78068-67a6-5a51-92ec-629f028ff951) (property "Sheetname" "Gateway STM32G474" (at 281 62 0) (effects (font (size 1.27 1.27)) (justify left bottom))) (property "Sheetfile" "gateway.kicad_sch" (at 281 91 0) (effects (font (size 1.0 1.0)) (justify left top))) (instances (project "board1" (path "/ab028fb1-c655-584d-9b32-a6ba9517f8a2" (page "4")))))
-(text "04  Gateway STM32G474" (at 286 72 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid 2d961247-d27a-5ae1-b737-8497a4a613e4))
+(sheet (at 281 63) (size 112 27) (stroke (width 0) (type solid)) (fill (color 0 0 0 0)) (uuid 14f78068-67a6-5a51-92ec-629f028ff951) (property "Sheetname" "Gateway STM32G473" (at 281 62 0) (effects (font (size 1.27 1.27)) (justify left bottom))) (property "Sheetfile" "gateway.kicad_sch" (at 281 91 0) (effects (font (size 1.0 1.0)) (justify left top))) (instances (project "board1" (path "/ab028fb1-c655-584d-9b32-a6ba9517f8a2" (page "4")))))
+(text "04  Gateway STM32G473" (at 286 72 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid 2d961247-d27a-5ae1-b737-8497a4a613e4))
 (sheet (at 25 106) (size 112 27) (stroke (width 0) (type solid)) (fill (color 0 0 0 0)) (uuid 080727c3-b66b-5b6f-8a75-93fa3577f285) (property "Sheetname" "SAM0" (at 25 105 0) (effects (font (size 1.27 1.27)) (justify left bottom))) (property "Sheetfile" "sam0.kicad_sch" (at 25 134 0) (effects (font (size 1.0 1.0)) (justify left top))) (instances (project "board1" (path "/ab028fb1-c655-584d-9b32-a6ba9517f8a2" (page "5")))))
 (text "05  SAM0" (at 30 115 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid 23ebff35-eb0e-5486-9854-211d30ef22c6))
 (sheet (at 153 106) (size 112 27) (stroke (width 0) (type solid)) (fill (color 0 0 0 0)) (uuid f9a75962-f919-5cdf-8c01-3821a3e54d90) (property "Sheetname" "SAM1" (at 153 105 0) (effects (font (size 1.27 1.27)) (justify left bottom))) (property "Sheetfile" "sam1.kicad_sch" (at 153 134 0) (effects (font (size 1.0 1.0)) (justify left top))) (instances (project "board1" (path "/ab028fb1-c655-584d-9b32-a6ba9517f8a2" (page "6")))))
@@ -26,6 +26,6 @@
 (sheet (at 25 192) (size 112 27) (stroke (width 0) (type solid)) (fill (color 0 0 0 0)) (uuid 325aed7c-bfa4-5b54-a4b9-43bab113f6a3) (property "Sheetname" "Test access" (at 25 191 0) (effects (font (size 1.27 1.27)) (justify left bottom))) (property "Sheetfile" "access.kicad_sch" (at 25 220 0) (effects (font (size 1.0 1.0)) (justify left top))) (instances (project "board1" (path "/ab028fb1-c655-584d-9b32-a6ba9517f8a2" (page "11")))))
 (text "11  Test access" (at 30 201 0) (effects (font (size 1.4 1.4)) (justify left top)) (uuid ca604eb3-f2ec-591b-9d51-c9ece0e2c85d))
 (text "CAN A/B: GW + SAM0 + SAM1 + SAM2, eight PHYs.\nUART_MD: four receivers; one LV125 channel per transmitter.\nSAM ring: SAM0 -> SAM1 -> SAM2 -> SAM0.\nEach MCU: SWD, private debug UART, SYNC/TRIG and EVENT0/1." (at 155 201 0) (effects (font (size 1.35 1.35)) (justify left top)) (uuid 6dce0955-94ba-5796-b77a-a4109a823809))
-(text "Named global nets join sheets; local analog nets stay within their sheet.\nReview PDF and checks describe draft-capture evidence. ERC, layout/DRC\nand hardware bring-up are separate stages. No PCB layout yet." (at 25 256 0) (effects (font (size 1.2 1.2)) (justify left top)) (uuid 7ff15a09-69fc-52ff-8bb1-b001b36de299))
+(text "Named global nets join sheets; local analog nets stay within their sheet.\nReview PDF and checks describe draft-capture evidence. ERC, layout/DRC\nand hardware bring-up are separate stages. Initial PCB placement is unrouted." (at 25 256 0) (effects (font (size 1.2 1.2)) (justify left top)) (uuid 7ff15a09-69fc-52ff-8bb1-b001b36de299))
 (sheet_instances (path "/" (page "1")))
 )
